@@ -1,0 +1,44 @@
+{
+  "id": "level_004",
+  "name": "Veiled Corridors",
+  "worldId": "world_1",
+  "discoveryMode": "fog",
+  "moveLimit": null,
+  "starThresholds": {
+    "threeStars": 14,
+    "twoStars": 18,
+    "oneStar": 22
+  },
+  "objectives": {
+    "reachExit": true,
+    "collectAllGems": false,
+    "minGems": 0
+  },
+  "grid": {
+    "width": 7,
+    "height": 7,
+    "cells": [
+      [
+        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "start"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "exit"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+      ]
+    ]
+  }
+}

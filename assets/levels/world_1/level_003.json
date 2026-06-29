@@ -1,0 +1,44 @@
+{
+  "id": "level_003",
+  "name": "Locked Passage",
+  "worldId": "world_1",
+  "discoveryMode": "full",
+  "moveLimit": null,
+  "starThresholds": {
+    "threeStars": 16,
+    "twoStars": 20,
+    "oneStar": 26
+  },
+  "objectives": {
+    "reachExit": true,
+    "collectAllGems": false,
+    "minGems": 0
+  },
+  "grid": {
+    "width": 7,
+    "height": 7,
+    "cells": [
+      [
+        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "start"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor", "keyId": "bronze_key"}, {"type": "floor"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor", "lockId": "bronze_key"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "exit"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+      ]
+    ]
+  }
+}

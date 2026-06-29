@@ -1,0 +1,44 @@
+{
+  "id": "level_002",
+  "name": "Shimmering Stones",
+  "worldId": "world_1",
+  "discoveryMode": "full",
+  "moveLimit": null,
+  "starThresholds": {
+    "threeStars": 14,
+    "twoStars": 18,
+    "oneStar": 24
+  },
+  "objectives": {
+    "reachExit": true,
+    "collectAllGems": true,
+    "minGems": 0
+  },
+  "grid": {
+    "width": 7,
+    "height": 7,
+    "cells": [
+      [
+        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "start"}, {"type": "floor", "hasGem": true}, {"type": "floor"}, {"type": "floor", "hasGem": true}, {"type": "floor"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "floor", "hasGem": true}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor", "hasGem": true}, {"type": "floor"}, {"type": "exit"}, {"type": "wall"}
+      ],
+      [
+        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+      ]
+    ]
+  }
+}

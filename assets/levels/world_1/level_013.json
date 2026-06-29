@@ -1,0 +1,184 @@
+{
+  "id": "level_013",
+  "name": "Chamber 13",
+  "worldId": "world_1",
+  "discoveryMode": "full",
+  "moveLimit": null,
+  "starThresholds": {
+    "threeStars": 23,
+    "twoStars": 27,
+    "oneStar": 33
+  },
+  "objectives": {
+    "reachExit": true,
+    "collectAllGems": false,
+    "minGems": 0
+  },
+  "grid": {
+    "width": 7,
+    "height": 7,
+    "cells": [
+      [
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        }
+      ],
+      [
+        {
+          "type": "wall"
+        },
+        {
+          "type": "start"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "wall"
+        }
+      ],
+      [
+        {
+          "type": "wall"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "wall"
+        }
+      ],
+      [
+        {
+          "type": "wall"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "wall"
+        }
+      ],
+      [
+        {
+          "type": "wall"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "wall"
+        }
+      ],
+      [
+        {
+          "type": "wall"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "exit"
+        },
+        {
+          "type": "wall"
+        }
+      ],
+      [
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        },
+        {
+          "type": "wall"
+        }
+      ]
+    ]
+  }
+}

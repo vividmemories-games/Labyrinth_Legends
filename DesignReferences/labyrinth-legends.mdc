@@ -1,0 +1,426 @@
+---
+description: Cursor rules for Labyrinth Legends Flutter mobile game
+alwaysApply: true
+---
+
+# Labyrinth Legends — Cursor Rules
+
+You are working on **Labyrinth Legends**, a premium mobile puzzle adventure game built with Flutter for iOS and Android.
+
+This project is based on the master plan and second-brain documentation inside:
+
+```text
+docs/second-brain/
+```
+
+Before making major changes, read the relevant documents from the second brain.
+
+---
+
+# 1. Project Identity
+
+Labyrinth Legends is a mobile puzzle adventure game where players draw paths through ancient labyrinths, solve environmental puzzles, collect treasures, avoid traps, and escape increasingly complex mazes.
+
+The game should feel:
+
+- Easy to learn
+- Difficult to master
+- Relaxing
+- Strategic
+- Premium
+- Replayable
+- Ancient, mystical, and atmospheric
+
+Primary mood references:
+
+- Ancient ruins
+- Lost civilizations
+- Mystical technology
+- Monument Valley-like atmosphere
+- Premium puzzle adventure games
+
+---
+
+# 2. Core Game Pillars
+
+Every feature must support at least one of these pillars:
+
+## 1. Draw Your Fate
+
+The player does not directly control the character moment-to-moment.
+
+The player:
+
+1. Draws a path
+2. Reviews the route
+3. Confirms the path
+4. Watches the character execute it
+
+This creates planning-based puzzle gameplay.
+
+## 2. Ancient Mysteries
+
+The game should feel like exploring mysterious ruins, forgotten temples, and ancient mechanisms.
+
+## 3. Strategic Puzzle Solving
+
+The player should think before acting.
+
+Movement, keys, traps, gates, treasures, and path order should matter.
+
+## 4. Rewarding Exploration
+
+Collectibles, treasure, hidden paths, and optional rewards should make exploration satisfying.
+
+## 5. Replayability
+
+The game should support future procedural generation, optional challenges, collectibles, and level variation.
+
+---
+
+# 3. MVP Discipline
+
+Do not add non-MVP features unless explicitly requested.
+
+MVP features should focus on:
+
+- Grid-based labyrinth levels
+- Start tile
+- Exit tile
+- Walls
+- Path drawing
+- Path confirmation
+- Character path execution
+- Gems or treasures
+- Keys and locked gates
+- Basic traps or hazards
+- Level progression
+- Basic save progress
+- Clean mobile UI
+- Basic animations
+- Basic sound hooks
+
+Avoid adding early unless requested:
+
+- Multiplayer
+- Online leaderboards
+- Complex social features
+- Heavy procedural generation
+- Skins store
+- Battle pass
+- Guilds/clans
+- Excessive currencies
+- Complex live ops
+- Over-engineered backend systems
+
+If an idea is good but not MVP, document it in:
+
+```text
+docs/second-brain/06_Decisions/Open_Questions.md
+```
+
+or:
+
+```text
+docs/second-brain/06_Decisions/Rejected_Ideas.md
+```
+
+depending on its status.
+
+---
+
+# 4. Architecture Rules
+
+Flutter widgets must not contain gameplay rules.
+
+Use this separation:
+
+```text
+UI Layer
+↓
+Controller / State Management Layer
+↓
+Game State Layer
+↓
+Domain Logic Layer
+↓
+Data / Storage Layer
+```
+
+## Hard Rules
+
+- Do not place core game logic inside widgets.
+- Widgets should render state and forward player input.
+- Maze validation must be testable without UI.
+- Path validation must be testable without UI.
+- Level rules must be separate from rendering.
+- Save/load logic must be abstracted.
+- Firebase or backend code must not leak into core game logic.
+- Random generation must be deterministic when seeded.
+- Avoid global mutable state.
+- Avoid tightly coupling UI to level data.
+- Avoid magic numbers. Use named constants or config objects.
+- Keep files small and focused.
+- Prefer pure Dart classes for game logic.
+
+---
+
+# 5. Suggested Code Organization
+
+Use a structure similar to this unless the project already has a better approved structure:
+
+```text
+lib/
+  app/
+    app.dart
+    router.dart
+    theme.dart
+
+  features/
+    labyrinth/
+      presentation/
+        screens/
+        widgets/
+        controllers/
+
+      domain/
+        models/
+        services/
+        rules/
+
+      data/
+        repositories/
+        local/
+
+  shared/
+    widgets/
+    utils/
+    constants/
+```
+
+Core gameplay logic should live under:
+
+```text
+lib/features/labyrinth/domain/
+```
+
+UI should live under:
+
+```text
+lib/features/labyrinth/presentation/
+```
+
+---
+
+# 6. Game Logic Rules
+
+Game logic must be deterministic, testable, and separated from Flutter rendering.
+
+Important systems:
+
+- Maze grid
+- Tile type
+- Player path
+- Path validation
+- Key collection
+- Gate unlocking
+- Trap interaction
+- Treasure collection
+- Win/loss condition
+- Level completion
+- Scoring/rewards
+- Save progress
+
+Before implementing or changing a mechanic, check:
+
+```text
+docs/second-brain/02_Game_Design/
+```
+
+If the mechanic is not documented, add or update the appropriate second-brain note.
+
+---
+
+# 7. Path Drawing Rules
+
+The path drawing system is central to the game.
+
+When working on path drawing:
+
+- Keep input handling separate from path validation.
+- Keep visual path rendering separate from game rules.
+- Invalid paths should be handled by the domain layer.
+- The domain layer should return clear validation results.
+- The player should be able to cancel or revise before execution.
+- Execution should happen only after confirmation.
+
+Do not make the character move freely like a joystick game unless explicitly requested.
+
+---
+
+# 8. Level Design Rules
+
+Levels should teach mechanics gradually.
+
+Each new mechanic should have:
+
+1. Introduction level
+2. Practice level
+3. Combination level
+4. Challenge level
+
+Do not introduce too many mechanics at once.
+
+Level data should be stored in a structured format that can later support external level editing.
+
+---
+
+# 9. Art and UI Rules
+
+The visual style should feel:
+
+- Premium
+- Ancient
+- Clean
+- Magical
+- Calm
+- Atmospheric
+- Mobile-friendly
+
+Avoid:
+
+- Cheap cartoon style
+- Overly noisy UI
+- Generic fantasy clutter
+- Too many colors
+- UI that feels like a casino game
+- Aggressive monetization visuals
+
+Prioritize:
+
+- Clean touch targets
+- Clear path visibility
+- Smooth animations
+- Readable tiles
+- Minimal but beautiful UI
+- Strong contrast between walls, paths, traps, treasures, and exits
+
+---
+
+# 10. Monetization Rules
+
+Monetization must not damage the premium puzzle feel.
+
+Preferred monetization:
+
+- Rewarded ads for optional help
+- Cosmetic purchases
+- Hint packs
+- Remove ads
+- Premium unlock
+- Optional bundles
+
+Avoid:
+
+- Forced ads after every level
+- Pay-to-win mechanics
+- Aggressive popups
+- Energy systems unless explicitly approved
+- Excessive currencies
+
+Before adding monetization logic, check:
+
+```text
+docs/second-brain/05_Product/Monetization.md
+```
+
+---
+
+# 11. Testing Rules
+
+Add tests for domain/gameplay logic whenever possible.
+
+Prioritize tests for:
+
+- Path validation
+- Maze boundaries
+- Wall collision
+- Key and gate rules
+- Trap behavior
+- Treasure collection
+- Win condition
+- Save/load behavior
+- Maze generation
+
+Do not rely only on manual UI testing for core rules.
+
+---
+
+# 12. Cursor Behavior Rules
+
+When asked to implement something:
+
+1. Check relevant second-brain docs.
+2. Respect MVP scope.
+3. Avoid unnecessary rewrites.
+4. Keep the existing architecture intact.
+5. Make the smallest clean change that solves the task.
+6. Update or suggest updates to second-brain docs if the change affects design, architecture, roadmap, or decisions.
+7. Explain what changed clearly.
+
+When unsure:
+
+- Prefer asking for clarification if the decision affects product direction.
+- If the task is small and obvious, proceed with a sensible default.
+- Do not invent large new systems without approval.
+
+---
+
+# 13. Documentation Update Rule
+
+After meaningful changes, update the second brain.
+
+Meaningful changes include:
+
+- New mechanic
+- Changed mechanic
+- New screen
+- Changed architecture
+- New dependency
+- New monetization behavior
+- New level structure
+- New save-system behavior
+- New design decision
+- Rejected idea
+- Important bug pattern
+- Testing strategy change
+
+Update one or more of:
+
+```text
+docs/second-brain/00_Project_Home.md
+docs/second-brain/02_Game_Design/
+docs/second-brain/04_Technical/
+docs/second-brain/05_Product/
+docs/second-brain/06_Decisions/Decision_Log.md
+docs/second-brain/06_Decisions/Open_Questions.md
+docs/second-brain/06_Decisions/Rejected_Ideas.md
+docs/second-brain/07_Tasks/Backlog.md
+docs/second-brain/07_Tasks/Current_Sprint.md
+```
+
+Never leave the second brain stale after a major implementation or design change.
+
+---
+
+# 14. Definition of Done
+
+A task is not done until:
+
+- Code compiles.
+- Core logic is kept outside widgets.
+- Relevant tests are added or updated where practical.
+- No unrelated files are changed.
+- No unnecessary scope is added.
+- Second-brain docs are updated if needed.
+- The change still follows the master plan.

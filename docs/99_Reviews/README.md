@@ -1,0 +1,154 @@
+# Review Packages (99_Reviews)
+
+Formal handoff artifacts for **ChatGPT**, **Codex**, and **Human** review — without requiring continuous access to the local project folder.
+
+## Purpose
+
+After every major Cursor task, a review package is created here. It is the **official handoff artifact** recording what changed, why it changed, risks, dependencies, product impact, future debt, and whether it is ready for external review.
+
+**Every major task requires a review package.** Cursor must **not** mark a major task complete until the review package exists and is filled in using the **v2 template** (`docs/99_Reviews/Review_Template.md`).
+
+## v2 Template (required)
+
+All new review packages must use **template v2**, which includes:
+
+- **Motivation** — why the work was undertaken and why this approach
+- **Risk Assessment** — level, affected areas, rollback, migration, user impact
+- **Dependencies** — depends on, enables, blocks
+- **Product Impact** — player, visual, UX, performance, developer experience
+- **Future Technical Debt** — shortcuts, temporary implementations, cleanup tasks
+- **Recommended Next Task** — suggested follow-up for the next milestone
+- **Reviewer Notes** — standardized Codex, ChatGPT, and Human sections with verdict, score, and recommendations
+
+Scaffold with `./scripts/new_review_package.sh` — it always uses the current v2 template.
+
+## Workflow
+
+```text
+Cursor implements task
+    → Updates LLDS docs as needed
+    → Runs test / analyze
+    → Scaffolds review package (scripts/new_review_package.sh — v2 template)
+    → Fills all v2 sections (motivation, risk, dependencies, product impact, debt, next task)
+    → Marks Ready For: Codex + ChatGPT + Human
+Codex / ChatGPT review the package (+ selected files if repo access available)
+    → Fill Reviewer Notes section
+Human approves
+    → Next phase may begin
+```
+
+**Do not start the next major phase until the review package is approved** (or explicitly waived by Human).
+
+## Folder Structure
+
+```text
+docs/99_Reviews/
+├── README.md                 ← this file
+├── Review_Template.md        ← v2 template for every new review
+├── Design_System/            ← tokens, components, showcase
+├── Screens/                  ← screen shells and UI flows
+├── Gameplay/                 ← engine, mechanics, levels
+├── Architecture/             ← structure, services, state
+├── Economy/                  ← monetization, currencies, shop
+└── Releases/                 ← milestones, LLDS governance, releases
+```
+
+## Naming Convention
+
+Sequential global IDs with snake_case topic:
+
+```text
+NNNN_topic_name.md
+```
+
+Examples:
+
+- `Design_System/0001_design_system_foundation.md`
+- `Screens/0002_home_screen_shell.md`
+- `Architecture/0003_folder_structure_review.md`
+
+**Next ID:** Check all category folders for highest number; increment by 1 — or run the generator script (below).
+
+## Automate Creation
+
+Use `scripts/new_review_package.sh` instead of copying the template manually:
+
+```bash
+./scripts/new_review_package.sh <Category> <topic_slug> [options]
+```
+
+Examples:
+
+```bash
+# Level select screen shell (next ID assigned automatically)
+./scripts/new_review_package.sh Screens level_select_shell
+
+# Custom title and phase; also append to index table
+./scripts/new_review_package.sh Design_System token_refresh \
+  --task-name "Token Refresh" \
+  --phase "Phase 2 — Design System" \
+  --update-index
+
+# Preview without writing files
+./scripts/new_review_package.sh Screens level_select_shell --dry-run
+```
+
+**Options:** `--task-name`, `--phase`, `--owner`, `--update-index`, `--dry-run`
+
+Categories: `Design_System`, `Screens`, `Gameplay`, `Architecture`, `Economy`, `Releases` (case-insensitive; `-` also works).
+
+Cursor should run this at the **start** of filling in a review package (scaffold), then complete the sections after implementation.
+
+### Cursor stop hook
+
+A project-level **stop hook** (`.cursor/hooks.json`) reminds the agent at session end when `lib/` or `test/` Dart files are newer than the latest review package:
+
+```text
+.cursor/hooks.json
+.cursor/hooks/remind-review-package.sh
+```
+
+Reload Cursor (or save `hooks.json`) after changes. Check the **Hooks** output channel if debugging.
+
+## Who Reviews What
+
+| Reviewer | Focus |
+|----------|-------|
+| **Codex** | Architecture, maintainability, performance, tests, Flutter quality |
+| **ChatGPT** | UX, LLDL compliance, gameplay feel, monetization, player experience, polish |
+| **Human** | Final product/business approval |
+
+## Sharing Without Repo Access
+
+Share with reviewers:
+
+1. The review package markdown file (copy/paste or export)
+2. Screenshots listed in **Screenshots / Visual Evidence**
+3. Selected file excerpts if needed
+4. Test/analyze output from **Commands Run**
+
+The in-app showcase (`/dev/design-system`) is the live visual reference when running the dev build locally.
+
+## Index of Completed Reviews
+
+| ID | File | Status |
+|----|------|--------|
+| 0001 | [Design_System/0001_design_system_foundation.md](Design_System/0001_design_system_foundation.md) | Ready for Review |
+| 0002 | [Screens/0002_home_screen_shell.md](Screens/0002_home_screen_shell.md) | Ready for Review |
+| 0003 | [Releases/0003_review_package_workflow.md](Releases/0003_review_package_workflow.md) | Ready for Review |
+| 0004 | [Releases/0004_review_package_stop_hook.md](Releases/0004_review_package_stop_hook.md) | Ready for Review |
+| 0005 | [Releases/0005_review_package_v2_template.md](Releases/0005_review_package_v2_template.md) | Ready for Review |
+| 0006 | [Gameplay/0006_gp4_hazards_failure.md](Gameplay/0006_gp4_hazards_failure.md) | Draft |
+| 0007 | [Gameplay/0007_gp5_objectives_completion.md](Gameplay/0007_gp5_objectives_completion.md) | Draft |
+| 0008 | [Gameplay/0008_gp6_gameplay_feedback.md](Gameplay/0008_gp6_gameplay_feedback.md) | Draft |
+| 0009 | [Gameplay/0009_gp7_gameplay_rules.md](Gameplay/0009_gp7_gameplay_rules.md) | Ready for Review |
+| 0010 | [Gameplay/0010_gameplay_integration.md](Gameplay/0010_gameplay_integration.md) | Draft |
+
+**Next ID:** 0011
+
+## Related Docs
+
+- `AGENTS.md` — agent roles and mandatory review rule
+- `.cursor/rules/labyrinth-legends.mdc` — Cursor mandatory review package
+- `docs/05_AI/Cursor/Workflow.md`
+- `docs/05_AI/Codex/Review_Checklist.md`

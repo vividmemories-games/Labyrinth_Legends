@@ -1,0 +1,94 @@
+---
+description: Labyrinth Legends — LLDS-governed Flutter mobile game
+alwaysApply: true
+---
+
+# Labyrinth Legends — Cursor Rules
+
+You are working on **Labyrinth Legends**, a premium Flutter puzzle adventure (iOS + Android).
+
+## Mandatory: Labyrinth Legends Design Language (LLDL)
+
+- Labyrinth Legends follows **LLDL** — `docs/02_Design_System/LLDL.md`
+- **LLDL is mandatory for every UI/UX change**
+- Do **not** use default Flutter Material visuals without custom LLDL styling
+- Do **not** create generic mobile app UI
+- Do **not** create cyberpunk/neon arcade UI
+- Do **not** create cartoonish UI
+- Visual identity: **Ancient Tech + Mythical Ruins**
+- UI must feel like a **premium ancient magical temple interface**
+
+## Documentation Priority
+
+If documents conflict, **higher wins:**
+
+1. `docs/02_Design_System/LLDL.md`
+2. `docs/02_Design_System/Design_Tokens.md`
+3. `docs/03_Screens/*`
+4. `docs/01_Game_Design/*`
+5. `docs/04_Technical/*`
+6. This file (`.cursor/rules/labyrinth-legends.mdc`)
+7. Current task prompt
+
+**Never invent** visual styles, UI components, gameplay mechanics, or technical patterns if they exist in documentation.
+
+Before major work, read `docs/README.md` and relevant sections.
+
+## Design Implementation Rules
+
+- All reusable UI from **shared components** — `docs/02_Design_System/Components.md`
+- Implement in `lib/design_system/` — not ad-hoc widgets in features
+- **Do not hardcode** colors, spacing, shadows, radii, or typography
+- Use **design tokens** (`LLColor`, `LLSpacing`, `LLRadius`, etc.)
+- If a token is missing → define in `Design_Tokens.md` first, then implement
+- If a component is missing → document in `Components.md`, build reusable, then use
+- **Primary actions = gold** (`LLColor.ancientGold`). **Cyan = paths/energy only**
+
+## Architecture Rules
+
+- **Game logic never in widgets** — lives in `lib/game_engine/`
+- UI in `lib/features/` — render state, forward input only
+- Data/persistence in `lib/data/`
+- Service interfaces in `lib/core/services/` — mock first
+- State: **Riverpod**
+- Navigation: **go_router**
+- Codex reviews major changes — write readable, reviewable code
+
+## Project Restart Status
+
+Prototype code in `lib/` is **not authoritative**. See `docs/00_Project/Prototype_Status.md`.
+
+Do **not** extend `ruins_button`, `app_colors`, or prototype theme. Rebuild via `design_system/`.
+
+## Core Gameplay (Draw Your Fate)
+
+1. Study maze → 2. Draw path → 3. Confirm → 4. Character executes → 5. Collect / avoid → 6. Exit → 7. Rewards
+
+No joystick. No real-time movement control.
+
+## Mandatory Review Package
+
+After every **major task**, create a review package in `docs/99_Reviews/`. Review packages are the **official handoff artifact** for Codex, ChatGPT, and Human approval. Cursor must **not** mark a major task complete until the review package exists.
+
+All packages must use the **v2 template** (motivation, risk, dependencies, product impact, future debt, recommended next task, standardized reviewer notes).
+
+```bash
+./scripts/new_review_package.sh <Category> <topic_slug> --phase "..." --update-index
+```
+
+Then fill in all sections from `docs/99_Reviews/Review_Template.md` (v2).
+
+## Definition of Done
+
+- Matches LLDL + screen spec
+- Docs updated if behavior/design changed
+- Engine logic tested (not in widgets)
+- `Decisions.md` updated for material choices
+- No scope creep beyond task
+- **Review package created** in `docs/99_Reviews/` for major tasks
+
+## AI Workflows
+
+- Cursor: `docs/05_AI/Cursor/Workflow.md`
+- Codex: `docs/05_AI/Codex/Review_Checklist.md`
+- Human agent guide: `AGENTS.md`
