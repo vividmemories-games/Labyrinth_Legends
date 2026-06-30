@@ -159,8 +159,9 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0024 | [Design_System/0024_ws10_ws11_implementation_reconciliation.md](Design_System/0024_ws10_ws11_implementation_reconciliation.md) | Approved |
 | 0025 | [Design_System/0025_tier3_downstream_accessibility_migration.md](Design_System/0025_tier3_downstream_accessibility_migration.md) | Approved |
 | 0026 | [Releases/0026_llds_repository_consistency_cleanup.md](Releases/0026_llds_repository_consistency_cleanup.md) | Ready for Review |
+| 0027 | [Design_System/0027_asset_bible_structure.md](Design_System/0027_asset_bible_structure.md) | Draft |
 
-**Next ID:** 0027
+**Next ID:** 0028
 
 ## Related Docs
 

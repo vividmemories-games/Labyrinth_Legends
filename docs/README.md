@@ -86,6 +86,7 @@ If a conflict exists, **preserve the higher-authority document and report the co
 |------------|------|
 | Understand the game | [Vision](00_Project/Vision.md), [Game Bible](01_Game_Design/Game_Bible.md) |
 | Build UI | [LLDL](02_Design_System/LLDL.md), [Components](02_Design_System/Components.md), relevant `03_Screens/` |
+| Produce assets | [Asset Bible](06_Asset_Bible/README.md) *(planned)*, [LLDL](02_Design_System/LLDL.md) |
 | Build engine | [Architecture](04_Technical/Architecture.md), [Gameplay](01_Game_Design/Gameplay.md), [Gameplay Specs (GP series)](01_Game_Design/Gameplay/README.md) |
 | Start a Cursor task | [Cursor Workflow](05_AI/Cursor/Workflow.md) |
 | Review a PR | [Codex Review Checklist](05_AI/Codex/Review_Checklist.md) |
@@ -101,6 +102,7 @@ docs/
 ├── 03_Screens/       Per-screen specs
 ├── 04_Technical/     Architecture, Firebase, save
 ├── 05_AI/            Cursor + Codex workflows
+├── 06_Asset_Bible/   Asset production standards, AI pipeline, store/marketing assets
 ├── 99_Reviews/       Milestone review packages (handoff artifacts)
 └── assets/           Mockups and references (not Flutter bundles)
 ```
@@ -123,7 +125,7 @@ Planned first-class artifacts not yet authored:
 
 | Document | Description | Authority |
 |----------|-------------|-----------|
-| `Asset_Bible.md` | Future production handbook for visual assets, icons, App Store artwork, marketing images, AI prompt libraries, export standards, naming conventions, and asset versioning. It inherits from LLDL and does not redefine design philosophy. | LLDL.md → Asset_Bible.md → Production assets |
+| [Asset Bible](06_Asset_Bible/README.md) · `Asset_Bible.md` | Production handbook for visual assets, icons, App Store artwork, marketing images, AI prompt libraries, export standards, naming conventions, and asset versioning. Workshop roadmap at `06_Asset_Bible/`; integration document not yet authored. Inherits from LLDL — does not redefine design philosophy. | LLDL.md → Asset_Bible.md → Production assets |
 
 ## Archive
 
