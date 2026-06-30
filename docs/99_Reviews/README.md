@@ -138,12 +138,12 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0003 | [Releases/0003_review_package_workflow.md](Releases/0003_review_package_workflow.md) | Ready for Review |
 | 0004 | [Releases/0004_review_package_stop_hook.md](Releases/0004_review_package_stop_hook.md) | Ready for Review |
 | 0005 | [Releases/0005_review_package_v2_template.md](Releases/0005_review_package_v2_template.md) | Ready for Review |
-| 0006 | [Gameplay/0006_gp4_hazards_failure.md](Gameplay/0006_gp4_hazards_failure.md) | Draft |
-| 0007 | [Gameplay/0007_gp5_objectives_completion.md](Gameplay/0007_gp5_objectives_completion.md) | Draft |
-| 0008 | [Gameplay/0008_gp6_gameplay_feedback.md](Gameplay/0008_gp6_gameplay_feedback.md) | Draft |
+| 0006 | [Gameplay/0006_gp4_hazards_failure.md](Gameplay/0006_gp4_hazards_failure.md) | Ready for Review |
+| 0007 | [Gameplay/0007_gp5_objectives_completion.md](Gameplay/0007_gp5_objectives_completion.md) | Ready for Review |
+| 0008 | [Gameplay/0008_gp6_gameplay_feedback.md](Gameplay/0008_gp6_gameplay_feedback.md) | Ready for Review |
 | 0009 | [Gameplay/0009_gp7_gameplay_rules.md](Gameplay/0009_gp7_gameplay_rules.md) | Ready for Review |
-| 0010 | [Gameplay/0010_gameplay_integration.md](Gameplay/0010_gameplay_integration.md) | Draft |
-| 0011 | [Design_System/0011_ws0_design_philosophy.md](Design_System/0011_ws0_design_philosophy.md) | Draft |
+| 0010 | [Gameplay/0010_gameplay_integration.md](Gameplay/0010_gameplay_integration.md) | Ready for Review |
+| 0011 | [Design_System/0011_ws0_design_philosophy.md](Design_System/0011_ws0_design_philosophy.md) | Approved |
 | 0012 | [Design_System/0012_ws1_visual_identity.md](Design_System/0012_ws1_visual_identity.md) | Draft |
 | 0013 | [Design_System/0013_ws2_color_language.md](Design_System/0013_ws2_color_language.md) | Draft |
 | 0014 | [Design_System/0014_ws3_environment_language.md](Design_System/0014_ws3_environment_language.md) | Draft |
@@ -155,11 +155,12 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0020 | [Design_System/0020_ws9_accessibility_language.md](Design_System/0020_ws9_accessibility_language.md) | Draft |
 | 0021 | [Design_System/0021_ws10_design_tokens_language.md](Design_System/0021_ws10_design_tokens_language.md) | Draft |
 | 0022 | [Design_System/0022_ws11_components_language.md](Design_System/0022_ws11_components_language.md) | Draft |
-| 0023 | [Design_System/0023_lldl_architecture_integration.md](Design_System/0023_lldl_architecture_integration.md) | Draft |
-| 0024 | [Design_System/0024_ws10_ws11_implementation_reconciliation.md](Design_System/0024_ws10_ws11_implementation_reconciliation.md) | Draft |
-| 0025 | [Design_System/0025_tier3_downstream_accessibility_migration.md](Design_System/0025_tier3_downstream_accessibility_migration.md) | Draft |
+| 0023 | [Design_System/0023_lldl_architecture_integration.md](Design_System/0023_lldl_architecture_integration.md) | Approved |
+| 0024 | [Design_System/0024_ws10_ws11_implementation_reconciliation.md](Design_System/0024_ws10_ws11_implementation_reconciliation.md) | Approved |
+| 0025 | [Design_System/0025_tier3_downstream_accessibility_migration.md](Design_System/0025_tier3_downstream_accessibility_migration.md) | Approved |
+| 0026 | [Releases/0026_llds_repository_consistency_cleanup.md](Releases/0026_llds_repository_consistency_cleanup.md) | Ready for Review |
 
-**Next ID:** 0026
+**Next ID:** 0027
 
 ## Related Docs
 

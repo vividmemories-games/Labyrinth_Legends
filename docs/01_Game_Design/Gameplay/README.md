@@ -2,7 +2,7 @@
 
 Authoritative gameplay specifications under `docs/01_Game_Design/Gameplay/`.
 
-These documents sit between [Game Loop](../Game_Loop.md) (loop architecture) and [Gameplay.md](../Gameplay.md) (integration layer — **v2.0.0 Draft for Review**).
+These documents sit between [Game Loop](../Game_Loop.md) (loop architecture) and [Gameplay.md](../Gameplay.md) (integration layer — **v2.1.0 Approved / Locked**).
 
 ## Authority
 
@@ -26,19 +26,19 @@ Gameplay.md
 
 | ID | Document | Status | Scope |
 |----|----------|--------|-------|
-| **GP1** | [GP1_Player_Explorer.md](GP1_Player_Explorer.md) | Draft — Pending Review | Player ↔ Explorer relationship, agency, planning vs execution |
-| **GP2** | [GP2_Movement_System.md](GP2_Movement_System.md) | Draft — Pending Review | Node-to-node movement, path creation, validation, execution |
+| **GP1** | [GP1_Player_Explorer.md](GP1_Player_Explorer.md) | Approved / Locked | Player ↔ Explorer relationship, agency, planning vs execution |
+| **GP2** | [GP2_Movement_System.md](GP2_Movement_System.md) | Approved / Locked | Node-to-node movement, path creation, validation, execution |
 | **GP7** | [GP7_Gameplay_Rules.md](GP7_Gameplay_Rules.md) | Approved / Locked | Rule precedence, execution order |
 
 ### Puzzle Design Series (GP3.1–GP3.5)
 
 | ID | Document | Status | Scope |
 |----|----------|--------|-------|
-| **GP3.1** | [GP3/GP3.1_Puzzle_Taxonomy.md](GP3/GP3.1_Puzzle_Taxonomy.md) | Draft — Pending Review | Puzzle taxonomy, philosophy, classification |
-| GP3.2 | [GP3/GP3.2_Static_Traversal_Collectible_Elements.md](GP3/GP3.2_Static_Traversal_Collectible_Elements.md) | Draft — Pending Review | Static, traversal & collectible elements |
-| GP3.3 | [GP3/GP3.3_Interactive_Elements.md](GP3/GP3.3_Interactive_Elements.md) | Draft — Pending Review | Interactive elements |
-| GP3.4 | [GP3/GP3.4_Environmental_Dynamic_Systems.md](GP3/GP3.4_Environmental_Dynamic_Systems.md) | Draft — Pending Review | Environmental & dynamic systems |
-| GP3.5 | [GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md) | Draft — Pending Review | Puzzle composition & level design rules |
+| **GP3.1** | [GP3/GP3.1_Puzzle_Taxonomy.md](GP3/GP3.1_Puzzle_Taxonomy.md) | Approved / Locked | Puzzle taxonomy, philosophy, classification |
+| GP3.2 | [GP3/GP3.2_Static_Traversal_Collectible_Elements.md](GP3/GP3.2_Static_Traversal_Collectible_Elements.md) | Approved / Locked | Static, traversal & collectible elements |
+| GP3.3 | [GP3/GP3.3_Interactive_Elements.md](GP3/GP3.3_Interactive_Elements.md) | Approved / Locked | Interactive elements |
+| GP3.4 | [GP3/GP3.4_Environmental_Dynamic_Systems.md](GP3/GP3.4_Environmental_Dynamic_Systems.md) | Approved / Locked | Environmental & dynamic systems |
+| GP3.5 | [GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md) | Approved / Locked | Puzzle composition & level design rules |
 
 Index: [GP3/README.md](GP3/README.md)
 

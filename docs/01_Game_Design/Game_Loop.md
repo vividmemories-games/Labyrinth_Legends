@@ -6,8 +6,8 @@
 | **Document Name** | Game Loop |
 | **Document ID** | LLDS-DOC-01-GL-001 |
 | **Path** | `docs/01_Game_Design/Game_Loop.md` |
-| **Version** | 2.0.0 |
-| **Status** | Draft — Pending Review |
+| **Version** | 2.1.0 |
+| **Status** | Approved — Locked |
 | **Owner** | Apoorv |
 | **Prepared By** | ChatGPT (workshops) · Cursor (compiler) |
 | **Last Updated** | 2026-06-29 |
@@ -31,11 +31,13 @@
 | 1.0.0 | 2026-06-28 | Cursor | Phase 1 scaffold — placeholders |
 | 1.1.0 | 2026-06-29 | Cursor | WS1–WS5 workshop outputs linked |
 | 2.0.0 | 2026-06-29 | ChatGPT / Cursor | Consolidated gameplay loop architecture — synthesis of WS1–WS5 |
+| 2.1.0 | 2026-06-30 | Apoorv / ChatGPT / Codex | Approved and locked after repository documentation review |
 
 ## Change Log
 
 | Version | Change |
 |---------|--------|
+| 2.1.0 | Marked Game Loop as approved and locked; no design content changed |
 | 2.0.0 | Full architecture document: hierarchy, summaries, loop interaction, time scales, principles, failure cases, conclusions |
 
 ---

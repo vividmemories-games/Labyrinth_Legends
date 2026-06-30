@@ -522,6 +522,12 @@ Future design documentation inherits from LLDL workshops. These categories are *
 
 New documents must declare their workshop dependencies and follow the inheritance rules in [§11](#11-inheritance-rules).
 
+### Planned future artifact
+
+| Document | Description | Authority |
+|----------|-------------|-----------|
+| `Asset_Bible.md` | Future production handbook for visual assets, icons, App Store artwork, marketing images, AI prompt libraries, export standards, naming conventions, and asset versioning. It inherits from LLDL and does not redefine design philosophy. | LLDL.md → Asset_Bible.md → Production assets |
+
 ---
 
 ## 14. Maintaining Design Consistency
