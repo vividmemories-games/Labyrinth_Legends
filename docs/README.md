@@ -31,11 +31,11 @@ Develop in dependency order. **Do not substantially expand lower-priority docume
 
 | # | Document | Status |
 |---|----------|--------|
-| 1 | [Vision](00_Project/Vision.md) | Draft — Pending Review (v2.0.0) |
-| 2 | [Game Loop](01_Game_Design/Game_Loop.md) · [WS1–WS5](01_Game_Design/Game_Loop/README.md) | Draft — v2.0.0 architecture, pending review |
-| 3 | [Gameplay](01_Game_Design/Gameplay.md) | Draft for Review — GP integration (v2.0.0) |
-| 4 | [LLDL](02_Design_System/LLDL.md) | Approved — WS0–WS11 architecture integration (v2.0.0) |
-| 5 | [Game Bible](01_Game_Design/Game_Bible.md) | Draft — Awaiting ChatGPT |
+| 1 | [Vision](00_Project/Vision.md) | Approved — Locked (v2.1.0) |
+| 2 | [Game Loop](01_Game_Design/Game_Loop.md) · [WS1–WS5](01_Game_Design/Game_Loop/README.md) | Approved — Locked (v2.1.0) |
+| 3 | [Gameplay](01_Game_Design/Gameplay.md) | Approved — Locked (v2.1.0) |
+| 4 | [LLDL](02_Design_System/LLDL.md) | Approved — Locked (v2.0.0) |
+| 5 | [Game Bible](01_Game_Design/Game_Bible.md) | Draft — Future document |
 
 ```mermaid
 flowchart LR
@@ -47,15 +47,38 @@ flowchart LR
 
 ## Documentation Priority (conflict resolution)
 
-When documents conflict, **higher number wins:**
+Authority follows the model defined in [`AGENTS.md`](../AGENTS.md) §6. When documents conflict, the **higher-authority document wins:**
 
-1. `02_Design_System/LLDL.md`
-2. `02_Design_System/Design_Tokens.md`
-3. `03_Screens/*`
-4. `01_Game_Design/*`
-5. `04_Technical/*`
-6. `.cursor/rules/labyrinth-legends.mdc`
-7. Current Cursor task prompt
+```text
+Vision.md
+    ↓
+Game_Loop.md
+    ↓
+Gameplay Core Specifications — GP1, GP2, GP7
+    ↓
+GP3 Puzzle Element Series — GP3.1–GP3.5
+    ↓
+Gameplay Feature Specifications — GP3 Integration, GP4–GP6
+    ↓
+Gameplay.md
+    ↓
+LLDL.md
+    ↓
+Technical Documentation
+    ↓
+Implementation
+```
+
+Lower-level documents may **extend** higher-level documents but may **never redefine** them.
+
+| Domain | Authority |
+|--------|-----------|
+| Product intent | **Vision** wins |
+| Mechanical rules | **Gameplay** wins |
+| Design language / visual expression | **LLDL** wins |
+| Repository governance | **AGENTS.md** defines it |
+
+If a conflict exists, **preserve the higher-authority document and report the conflict** — do not silently reinterpret the design.
 
 ## Quick Start
 
@@ -63,7 +86,7 @@ When documents conflict, **higher number wins:**
 |------------|------|
 | Understand the game | [Vision](00_Project/Vision.md), [Game Bible](01_Game_Design/Game_Bible.md) |
 | Build UI | [LLDL](02_Design_System/LLDL.md), [Components](02_Design_System/Components.md), relevant `03_Screens/` |
-| Build engine | [Architecture](04_Technical/Architecture.md), [Gameplay](01_Game_Design/Gameplay.md), [Mechanics](01_Game_Design/Mechanics.md) |
+| Build engine | [Architecture](04_Technical/Architecture.md), [Gameplay](01_Game_Design/Gameplay.md), [Gameplay Specs (GP series)](01_Game_Design/Gameplay/README.md) |
 | Start a Cursor task | [Cursor Workflow](05_AI/Cursor/Workflow.md) |
 | Review a PR | [Codex Review Checklist](05_AI/Codex/Review_Checklist.md) |
 | Hand off a milestone | [99_Reviews](99_Reviews/README.md) |
@@ -93,6 +116,14 @@ Every priority document includes:
 - Placeholders until ChatGPT specification is compiled
 
 Avoid duplicate information — link to authoritative documents.
+
+## Future Documentation
+
+Planned first-class artifacts not yet authored:
+
+| Document | Description | Authority |
+|----------|-------------|-----------|
+| `Asset_Bible.md` | Future production handbook for visual assets, icons, App Store artwork, marketing images, AI prompt libraries, export standards, naming conventions, and asset versioning. It inherits from LLDL and does not redefine design philosophy. | LLDL.md → Asset_Bible.md → Production assets |
 
 ## Archive
 

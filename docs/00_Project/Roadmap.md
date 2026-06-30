@@ -45,3 +45,9 @@
 - Daily challenge leaderboard, cloud save (optional)
 
 See `Milestones.md` for release gates.
+
+## Future Documentation
+
+| Document | Description | Authority |
+|----------|-------------|-----------|
+| `Asset_Bible.md` | Future production handbook for visual assets, icons, App Store artwork, marketing images, AI prompt libraries, export standards, naming conventions, and asset versioning. It inherits from LLDL and does not redefine design philosophy. | LLDL.md → Asset_Bible.md → Production assets |

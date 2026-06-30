@@ -24,11 +24,11 @@ Gameplay.md
 
 | ID | Document | Status | Scope |
 |----|----------|--------|-------|
-| **GP3.1** | [GP3.1_Puzzle_Taxonomy.md](GP3.1_Puzzle_Taxonomy.md) | Draft — Pending Review | Universal taxonomy, philosophy, classification |
-| **GP3.2** | [GP3.2_Static_Traversal_Collectible_Elements.md](GP3.2_Static_Traversal_Collectible_Elements.md) | Draft — Pending Review | Static, traversal & collectible elements |
-| **GP3.3** | [GP3.3_Interactive_Elements.md](GP3.3_Interactive_Elements.md) | Draft — Pending Review | Interactive elements |
-| **GP3.4** | [GP3.4_Environmental_Dynamic_Systems.md](GP3.4_Environmental_Dynamic_Systems.md) | Draft — Pending Review | Environmental & dynamic systems |
-| **GP3.5** | [GP3.5_Puzzle_Composition_Level_Design_Rules.md](GP3.5_Puzzle_Composition_Level_Design_Rules.md) | Draft — Pending Review | Puzzle composition & level design rules |
+| **GP3.1** | [GP3.1_Puzzle_Taxonomy.md](GP3.1_Puzzle_Taxonomy.md) | Approved / Locked | Universal taxonomy, philosophy, classification |
+| **GP3.2** | [GP3.2_Static_Traversal_Collectible_Elements.md](GP3.2_Static_Traversal_Collectible_Elements.md) | Approved / Locked | Static, traversal & collectible elements |
+| **GP3.3** | [GP3.3_Interactive_Elements.md](GP3.3_Interactive_Elements.md) | Approved / Locked | Interactive elements |
+| **GP3.4** | [GP3.4_Environmental_Dynamic_Systems.md](GP3.4_Environmental_Dynamic_Systems.md) | Approved / Locked | Environmental & dynamic systems |
+| **GP3.5** | [GP3.5_Puzzle_Composition_Level_Design_Rules.md](GP3.5_Puzzle_Composition_Level_Design_Rules.md) | Approved / Locked | Puzzle composition & level design rules |
 
 Downstream integration: [`Puzzle_Elements.md`](../Puzzle_Elements.md) (when authored)
 

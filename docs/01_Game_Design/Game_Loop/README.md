@@ -14,13 +14,13 @@ Workshop outputs for session and loop design under `docs/01_Game_Design/Game_Loo
 
 | Workshop | Document | Status | Scope |
 |----------|----------|--------|-------|
-| **WS1** | [WS1_Core_Loop.md](WS1_Core_Loop.md) | Draft — Pending Review | Core gameplay loop — observe, plan, draw, confirm, execute, evaluate |
-| **WS2** | [WS2_Session_Loop.md](WS2_Session_Loop.md) | Draft — Pending Review | Session loop — how multiple core loops form a satisfying play session |
-| **WS3** | [WS3_Progression_Loop.md](WS3_Progression_Loop.md) | Draft — Pending Review | Progression loop — long-term mastery, unlocks, and player journey |
-| **WS4** | [WS4_Completion_Loop.md](WS4_Completion_Loop.md) | Draft — Pending Review | Completion loop — milestone closure, optional mastery, end-of-world experience |
-| **WS5** | [WS5_Retention_Loop.md](WS5_Retention_Loop.md) | Draft — Pending Review | Retention loop — voluntary long-term return, trust, post-completion engagement |
+| **WS1** | [WS1_Core_Loop.md](WS1_Core_Loop.md) | Approved | Core gameplay loop — observe, plan, draw, confirm, execute, evaluate |
+| **WS2** | [WS2_Session_Loop.md](WS2_Session_Loop.md) | Approved | Session loop — how multiple core loops form a satisfying play session |
+| **WS3** | [WS3_Progression_Loop.md](WS3_Progression_Loop.md) | Approved | Progression loop — long-term mastery, unlocks, and player journey |
+| **WS4** | [WS4_Completion_Loop.md](WS4_Completion_Loop.md) | Approved | Completion loop — milestone closure, optional mastery, end-of-world experience |
+| **WS5** | [WS5_Retention_Loop.md](WS5_Retention_Loop.md) | Approved | Retention loop — voluntary long-term return, trust, post-completion engagement |
 
-> **Series status:** WS1–WS5 complete at philosophy layer — pending Human review. Implementation lives in downstream docs ([Gameplay](../Gameplay.md), [Progression](../Progression.md), [LiveOps](../LiveOps.md), etc.).
+> **Series status:** WS1–WS5 approved at philosophy layer. Implementation lives in downstream docs ([Gameplay](../Gameplay.md), [Progression](../Progression.md), [LiveOps](../LiveOps.md), etc.).
 
 ## Workshop Stack
 

@@ -5,7 +5,7 @@
 | **Document** | Game Bible |
 | **Path** | `docs/01_Game_Design/Game_Bible.md` |
 | **Version** | 1.0.0 |
-| **Status** | Draft — Awaiting ChatGPT Specification |
+| **Status** | Draft — Future Executive Design Document |
 | **Last Updated** | 2026-06-28 |
 | **Authoritative Source** | ChatGPT (product design) |
 | **Compiler** | Cursor |

@@ -5,8 +5,8 @@
 | **Project** | Labyrinth Legends |
 | **Document Name** | Vision |
 | **Document ID** | LLDS-DOC-00-001 |
-| **Version** | 2.0.0 |
-| **Status** | Draft — Pending Review |
+| **Version** | 2.1.0 |
+| **Status** | Approved — Locked |
 | **Owner** | Apoorv |
 | **Prepared By** | ChatGPT (specification) · Cursor (compiler) |
 | **Last Updated** | 2026-06-28 |
@@ -27,11 +27,13 @@
 |---------|------|--------|---------|
 | 1.0.0 | 2026-06-28 | Cursor | Phase 1 scaffold — metadata and placeholders |
 | 2.0.0 | 2026-06-28 | ChatGPT / Cursor | Full vision specification compiled |
+| 2.1.0 | 2026-06-30 | Apoorv / ChatGPT / Codex | Approved and locked after repository documentation review |
 
 ## Change Log
 
 | Version | Change |
 |---------|--------|
+| 2.1.0 | Marked Vision as approved and locked; no design content changed |
 | 2.0.0 | Full vision specification; owner Apoorv; Draft — Pending Review; Document Authority; writing order Vision → Game Loop → Gameplay → LLDL → Game Bible |
 | 1.0.0 | Document structure and navigation scaffold |
 
