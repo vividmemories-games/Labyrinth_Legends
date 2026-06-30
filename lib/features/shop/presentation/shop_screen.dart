@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:labyrinth_legends/core/constants/app_colors.dart';
 import 'package:labyrinth_legends/core/services/purchase_service.dart';
 import 'package:labyrinth_legends/core/services/service_providers.dart';
-import 'package:labyrinth_legends/core/widgets/currency_pill.dart';
-import 'package:labyrinth_legends/core/widgets/ruins_button.dart';
 import 'package:labyrinth_legends/data/providers.dart';
+import 'package:labyrinth_legends/design_system/design_system.dart';
 
 class ShopScreen extends ConsumerWidget {
   const ShopScreen({super.key});
@@ -18,8 +16,10 @@ class ShopScreen extends ConsumerWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        backgroundColor: LLColor.templeBlack,
         appBar: AppBar(
-          title: const Text('Ruins Market'),
+          backgroundColor: LLColor.templeBlack,
+          title: Text('Ruins Market', style: LLTextStyle.h2),
           bottom: const TabBar(
             tabs: [
               Tab(text: 'Skins'),
@@ -29,12 +29,12 @@ class ShopScreen extends ConsumerWidget {
           ),
           actions: [
             progressAsync.when(
-              loading: () => const SizedBox(width: 48),
-              error: (_, __) => const SizedBox(width: 48),
+              loading: () => SizedBox(width: LLSize.touchTarget),
+              error: (_, __) => SizedBox(width: LLSize.touchTarget),
               data: (progress) => Padding(
-                padding: const EdgeInsets.only(right: 12),
-                child: CurrencyPill(
-                  icon: Icons.diamond_outlined,
+                padding: EdgeInsets.only(right: LLSpacing.md - LLSpacing.xs),
+                child: LLCurrencyChip(
+                  type: LLCurrencyType.gems,
                   amount: progress.gems,
                   compact: true,
                 ),
@@ -71,8 +71,12 @@ class _PlaceholderTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Text(message, textAlign: TextAlign.center),
+        padding: EdgeInsets.all(LLSpacing.lg),
+        child: Text(
+          message,
+          textAlign: TextAlign.center,
+          style: LLTextStyle.body,
+        ),
       ),
     );
   }
@@ -92,7 +96,7 @@ class _BoostersTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.all(16),
+      padding: EdgeInsets.all(LLSpacing.md),
       children: [
         _ShopCard(
           title: 'Gem Cache',
@@ -115,10 +119,10 @@ class _BoostersTab extends StatelessWidget {
           icon: Icons.block,
           onTap: () => purchaseService.purchase(PurchaseProduct.removeAds),
         ),
-        const SizedBox(height: 16),
-        RuinsButton(
+        SizedBox(height: LLSpacing.md),
+        LLButton(
           label: 'Restore Purchases',
-          variant: RuinsButtonVariant.ghost,
+          variant: LLButtonVariant.ghost,
           expanded: true,
           onPressed: purchaseService.restorePurchases,
         ),
@@ -144,46 +148,39 @@ class _ShopCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.only(bottom: 12),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(16),
+    return Padding(
+      padding: EdgeInsets.only(bottom: LLSpacing.md - LLSpacing.xs),
+      child: LLCard(
         onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Row(
-            children: [
-              Container(
-                width: 48,
-                height: 48,
-                decoration: BoxDecoration(
-                  color: AppColors.cyanDeep.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(12),
-                  border: Border.all(
-                    color: AppColors.cyanGlow.withValues(alpha: 0.3),
-                  ),
-                ),
-                child: Icon(icon, color: AppColors.cyanGlow),
-              ),
-              const SizedBox(width: 14),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title, style: Theme.of(context).textTheme.titleLarge),
-                    Text(subtitle),
-                  ],
+        child: Row(
+          children: [
+            Container(
+              width: LLSize.touchTarget,
+              height: LLSize.touchTarget,
+              decoration: BoxDecoration(
+                color: LLColor.portalBlue.withValues(alpha: 0.15),
+                borderRadius: LLRadius.cardBorder,
+                border: Border.all(
+                  color: LLColor.energyCyan.withValues(alpha: 0.3),
                 ),
               ),
-              Text(
-                price,
-                style: const TextStyle(
-                  color: AppColors.gold,
-                  fontWeight: FontWeight.w700,
-                ),
+              child: Icon(icon, color: LLColor.energyCyan),
+            ),
+            SizedBox(width: LLSpacing.md - LLSpacing.xs),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(title, style: LLTextStyle.h2.copyWith(fontSize: 18)),
+                  Text(subtitle, style: LLTextStyle.caption),
+                ],
               ),
-            ],
-          ),
+            ),
+            Text(
+              price,
+              style: LLTextStyle.currencyValue.copyWith(color: LLColor.ancientGold),
+            ),
+          ],
         ),
       ),
     );

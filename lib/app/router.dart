@@ -1,9 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:labyrinth_legends/core/env/app_env.dart';
-import 'package:labyrinth_legends/design_system/components/components.dart';
 import 'package:labyrinth_legends/design_system/showcase/design_system_showcase_screen.dart';
-import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
 import 'package:labyrinth_legends/features/daily_challenge/presentation/daily_challenge_screen.dart';
 import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_screen.dart';
 import 'package:labyrinth_legends/features/home/presentation/home_screen.dart';

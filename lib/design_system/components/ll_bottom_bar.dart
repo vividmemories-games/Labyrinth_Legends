@@ -59,31 +59,42 @@ class _BottomItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isInteractive = item.onTap != null;
     final color =
         item.selected ? LLColor.ancientGold : LLColor.textSecondary;
 
-    return InkWell(
-      onTap: item.onTap,
-      borderRadius: LLRadius.mdBorder,
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: LLSpacing.sm,
-          vertical: LLSpacing.xs,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(item.icon, color: color, size: LLSize.iconMd),
-            SizedBox(height: LLSpacing.xs),
-            Text(
-              item.label,
-              style: LLTextStyle.caption.copyWith(
-                color: color,
-                fontWeight:
-                    item.selected ? FontWeight.w600 : FontWeight.w400,
-              ),
+    return Semantics(
+      button: true,
+      enabled: isInteractive,
+      selected: item.selected,
+      label: item.label,
+      excludeSemantics: true,
+      child: Opacity(
+        opacity: isInteractive ? 1 : 0.55,
+        child: InkWell(
+          onTap: item.onTap,
+          borderRadius: LLRadius.mdBorder,
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: LLSpacing.sm,
+              vertical: LLSpacing.xs,
             ),
-          ],
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(item.icon, color: color, size: LLSize.iconMd),
+                SizedBox(height: LLSpacing.xs),
+                Text(
+                  item.label,
+                  style: LLTextStyle.caption.copyWith(
+                    color: color,
+                    fontWeight:
+                        item.selected ? FontWeight.w600 : FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );

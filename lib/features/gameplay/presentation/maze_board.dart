@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:labyrinth_legends/core/constants/app_colors.dart';
+import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
 import 'package:labyrinth_legends/core/constants/game_constants.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_type.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_visibility.dart';
@@ -97,7 +97,7 @@ class _MazePainter extends CustomPainter {
     final isWall = cell.type == CellType.wall;
     final basePaint = Paint()
       ..style = PaintingStyle.fill
-      ..color = isWall ? AppColors.wall : AppColors.floor;
+      ..color = isWall ? LLColor.stoneMid : LLColor.stoneDark;
 
     canvas.drawRRect(
       RRect.fromRectAndRadius(rect.deflate(1.5), const Radius.circular(4)),
@@ -107,7 +107,7 @@ class _MazePainter extends CustomPainter {
     if (isWall) return;
 
     if (cell.type == CellType.start) {
-      _paintGlow(canvas, rect, AppColors.cyanGlow.withValues(alpha: 0.25));
+      _paintGlow(canvas, rect, LLColor.energyCyan.withValues(alpha: 0.25));
     }
     if (cell.type == CellType.exit) {
       _paintPortal(canvas, rect);
@@ -137,14 +137,14 @@ class _MazePainter extends CustomPainter {
     final rect = _tileRect(origin, tileW, tileH, col, row);
     canvas.drawRRect(
       RRect.fromRectAndRadius(rect.deflate(1), const Radius.circular(4)),
-      Paint()..color = AppColors.voidBlack.withValues(alpha: 0.92),
+      Paint()..color = LLColor.templeBlack.withValues(alpha: 0.92),
     );
   }
 
   void _paintPath(Canvas canvas, Offset origin, double tileW, double tileH) {
     if (state.path.length < 2) return;
     final paint = Paint()
-      ..color = AppColors.cyanGlow.withValues(alpha: 0.85)
+      ..color = LLColor.energyCyan.withValues(alpha: 0.85)
       ..strokeWidth = tileW * 0.18
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
@@ -168,13 +168,13 @@ class _MazePainter extends CustomPainter {
     if (pos == null) return;
     final center = _tileCenter(origin, tileW, tileH, pos.col, pos.row);
     final glow = Paint()
-      ..color = AppColors.cyanGlow.withValues(alpha: 0.35)
+      ..color = LLColor.energyCyan.withValues(alpha: 0.35)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8);
     canvas.drawCircle(center, tileW * 0.28, glow);
     canvas.drawCircle(
       center,
       tileW * 0.2,
-      Paint()..color = AppColors.cyanGlow,
+      Paint()..color = LLColor.energyCyan,
     );
   }
 
@@ -185,14 +185,14 @@ class _MazePainter extends CustomPainter {
       center,
       radius,
       Paint()
-        ..color = AppColors.cyanDeep.withValues(alpha: 0.35)
+        ..color = LLColor.portalBlue.withValues(alpha: 0.35)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6),
     );
     canvas.drawCircle(
       center,
       radius * 0.7,
       Paint()
-        ..color = AppColors.cyanGlow
+        ..color = LLColor.energyCyan
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2,
     );
@@ -205,18 +205,18 @@ class _MazePainter extends CustomPainter {
       ..lineTo(rect.center.dx, rect.bottom - 6)
       ..lineTo(rect.left + 6, rect.center.dy)
       ..close();
-    canvas.drawPath(path, Paint()..color = AppColors.mysticPurple);
+    canvas.drawPath(path, Paint()..color = LLColor.crystalPurple);
   }
 
   void _paintKey(Canvas canvas, Rect rect) {
     canvas.drawCircle(
       Offset(rect.center.dx - 3, rect.center.dy - 2),
       4,
-      Paint()..color = AppColors.gold,
+      Paint()..color = LLColor.ancientGold,
     );
     canvas.drawRect(
       Rect.fromLTWH(rect.center.dx, rect.center.dy - 1, 8, 3),
-      Paint()..color = AppColors.gold,
+      Paint()..color = LLColor.ancientGold,
     );
   }
 
@@ -224,7 +224,7 @@ class _MazePainter extends CustomPainter {
     canvas.drawCircle(
       rect.center,
       rect.shortestSide * 0.22,
-      Paint()..color = AppColors.gold.withValues(alpha: 0.9),
+      Paint()..color = LLColor.ancientGold.withValues(alpha: 0.9),
     );
   }
 
@@ -234,7 +234,7 @@ class _MazePainter extends CustomPainter {
         Rect.fromCenter(center: rect.center, width: 10, height: 8),
         const Radius.circular(2),
       ),
-      Paint()..color = AppColors.danger,
+      Paint()..color = LLColor.emberRed,
     );
   }
 

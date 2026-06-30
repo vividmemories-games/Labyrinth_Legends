@@ -1,8 +1,9 @@
 import 'package:flutter/animation.dart';
 
-/// Animation tokens — see docs/02_Design_System/Design_Tokens.md
+/// Motion tokens — WS10 semantic duration roles (WS5 temperament).
+/// See docs/02_Design_System/Design_Tokens.md
 abstract final class LLAnimation {
-  // Durations
+  // Semantic durations
   static const Duration fast = Duration(milliseconds: 150);
   static const Duration normal = Duration(milliseconds: 300);
   static const Duration slow = Duration(milliseconds: 500);

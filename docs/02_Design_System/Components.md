@@ -1,248 +1,354 @@
 # Components
 
-Reusable UI catalog. Implementation: `lib/design_system/components/`
+**Authority:** [WS11 — Components Language](LLDL/WS11_Components_Language.md)  
+**Token authority:** [WS10 — Design Tokens Language](LLDL/WS10_Design_Tokens_Language.md) · [Design_Tokens](Design_Tokens.md)  
+**Implementation:** `lib/design_system/components/`
 
 **Showcase:** `/dev/design-system` (dev builds only) — add every new component here immediately.
 
-**Rule:** Screens in `lib/features/` compose these — no duplicate styling.
+**Rule:** Screens in `lib/features/` compose these — no duplicate styling, no `ruins_*` or `app_colors` bypass.
 
 ---
 
-## Containers
+## Governance
 
-### LLPanel
+| Rule | Source |
+|------|--------|
+| Components inherit upstream WS meaning — never redefine color roles locally | WS11 §4 |
+| Consume component tokens, then semantic tokens — never raw literals | WS11 §5 |
+| Gameplay components default **functional** tier; meta-game may use **ceremonial** accents | WS11 §6–§8 |
+| States must be multichannel — not color alone | WS11 §19 |
+| New families require catalog entry + component token set + showcase | WS11 §27 |
 
-**Purpose:** Primary stone slab container with engraved gold border.
-
-**Variants:** `compact` — reduced padding for chips and dense layouts.
-
-**API:** `child`, `padding?`, `compact`
-
-**States:** Static container.
-
-**Guidelines:** Use for grouped content, HUD frames, showcase sections.
-
-**Used by:** Home (via currency), Showcase, future Gameplay HUD frame.
-
-**Extensions:** Optional `onTap` wrapper in future if needed — prefer LLCard for tappable.
-
-**Tokens:** `LLSurface.panel`, `LLSpacing`, `LLRadius.panel`
-
----
-
-### LLCard
-
-**Purpose:** Lighter elevated card with soft shadow; supports tap.
-
-**API:** `child`, `padding?`, `onTap?`
-
-**Guidelines:** World list items, shop rows, reward lists.
-
-**Used by:** Showcase, future Worlds/Shop screens.
-
-**Tokens:** `LLSurface.card`, `LLShadow.soft`
+```text
+WS0–WS9 (channel meaning)
+    ↓
+WS10 (token hierarchy)
+    ↓
+WS11 (component families)
+    ↓
+Components.md (this catalog)
+    ↓
+docs/03_Screens/* (composition & layout)
+```
 
 ---
 
-### LLSection
+## Inheritance Map
 
-**Purpose:** Section header (h2) + optional subtitle + child content.
-
-**API:** `title`, `subtitle?`, `child`, `trailing?`
-
-**Used by:** Showcase, future settings grouped lists.
-
----
-
-### LLScreenBackground
-
-**Purpose:** Full-screen temple backdrop with optional hero image and veil gradient.
-
-**API:** `child`, `heroImageAsset?`, `heroAlignment`
-
-**Used by:** Home, Showcase preview.
+| Component concern | Upstream authority |
+|-------------------|-------------------|
+| Materials & visual identity | [WS1](LLDL/WS1_Visual_Identity_Artistic_Direction.md) · [WS4](LLDL/WS4_UI_Language.md) |
+| Color roles & state emphasis | [WS2](LLDL/WS2_Color_Language.md) |
+| Environmental continuity | [WS3](LLDL/WS3_Environment_Language.md) |
+| UI density & progressive HUD | [WS4](LLDL/WS4_UI_Language.md) |
+| Motion & transitions | [WS5](LLDL/WS5_Motion_Language.md) |
+| Audio feedback hooks | [WS6](LLDL/WS6_Audio_Language.md) |
+| Text roles | [WS7](LLDL/WS7_Typography_Language.md) |
+| Icons & sigils | [WS8](LLDL/WS8_Iconography_Language.md) |
+| Accessibility defaults | [WS9](LLDL/WS9_Accessibility_Language.md) |
+| Token consumption | [WS10](LLDL/WS10_Design_Tokens_Language.md) |
 
 ---
 
-## Buttons
+## Functional vs Ceremonial Tiers
 
-### LLButton
+| Tier | When | Expression |
+|------|------|------------|
+| **Functional** | Gameplay HUD, settings, confirmations, utility | Legibility first; minimal ornament; functional typography |
+| **Ceremonial** | Rewards, unlocks, relic reveals, world completion | Inscription accents, seal framing, brief luminous emphasis — still WS9-compliant |
 
-**Purpose:** Primary interaction button.
-
-**Variants:** `primary` (gold), `secondary` (cyan energy), `ghost`, `danger`
-
-**API:** `label`, `onPressed?`, `icon?`, `variant`, `expanded`, `enabled`
-
-**Guidelines:** Primary actions = gold only. Cyan = secondary/magical actions.
-
-**Used by:** Home, Showcase, LLDialog.
-
-**Tokens:** `LLGradient.goldButton`, `LLShadow.goldGlow`, `LLTextStyle.button`
+Ceremonial treatment **never replaces** functional clarity on critical paths.
 
 ---
 
-### LLIconButton
+## Standard Component States
 
-**Purpose:** Toolbar / app bar icon control.
+All interactive components must support perceptible multichannel states per WS11 §19.
 
-**Variants:** `gold`, `ghost`, `danger`
+| State | Requirement |
+|-------|-------------|
+| **Default** | Resting temple material; no false urgency |
+| **Focus** | Visible focus ring or elevation shift (WS9) |
+| **Pressed** | Material depression via `InkWell` / inset |
+| **Disabled** | Reduced contrast **and** non-color cue (opacity, no glow, muted border) |
+| **Selected** | Shape, border, icon, or label — not hue alone |
+| **Loading** | Non-blocking indicator; stable layout |
+| **Error** | Label/icon support; `emberRed` semantics |
+| **Success** | Brief warm confirmation |
 
-**API:** `icon`, `onPressed?`, `variant`, `tooltip?`
-
-**Used by:** LLTopBar, Showcase.
-
-**Tokens:** `LLSize.touchTarget`, `LLRadius.md`
-
----
-
-### LLFloatingButton
-
-**Purpose:** Circular gold FAB for prominent single action.
-
-**API:** `icon`, `onPressed?`, `label?` (reserved)
-
-**Used by:** Showcase; future quick-play overlay.
+**Gameplay rule:** fewer states — no decorative proliferation. **Motion:** calm transitions only — no bounce on core controls (WS5).
 
 ---
 
-## Navigation
+## Catalog by Domain
 
-### LLTopBar
+### Containers — Meta-game · Functional default
 
-**Purpose:** Temple-styled app bar with gold title.
+#### LLPanel
 
-**API:** `title`, `leading?`, `actions`
+| Field | Value |
+|-------|-------|
+| **Domain** | Meta-game, shared layout |
+| **Tier** | Functional |
+| **Purpose** | Primary stone slab container with engraved gold border |
+| **Variants** | `compact` — reduced padding for dense layouts |
+| **API** | `child`, `padding?`, `compact` |
+| **States** | Static container |
+| **Tokens** | `LLSurface.panel`, `LLSpacing`, `LLRadius.panel` |
+| **Used by** | Home, Showcase, future Gameplay HUD frame |
+| **Guidelines** | Grouped content, HUD frames; prefer `LLCard` for tappable surfaces |
 
-**Static helper:** `LLTopBar.backButton(context)`
+#### LLCard
 
-**Used by:** Showcase; future inner screens.
+| Field | Value |
+|-------|-------|
+| **Domain** | Meta-game |
+| **Tier** | Functional |
+| **Purpose** | Lighter elevated card with soft shadow; supports tap |
+| **API** | `child`, `padding?`, `onTap?`, `semanticsLabel?` |
+| **States** | Default, pressed (ink), disabled (no `onTap`) |
+| **Accessibility** | Tappable: `Semantics(button: true)`; optional `semanticsLabel` |
+| **Tokens** | `LLSurface.card`, `LLShadow.soft` |
+| **Used by** | Showcase, Worlds, Shop rows |
 
----
+#### LLSection
 
-### LLBottomBar
+| Field | Value |
+|-------|-------|
+| **Domain** | Meta-game |
+| **Tier** | Functional |
+| **Purpose** | Section header (h2) + optional subtitle + child |
+| **API** | `title`, `subtitle?`, `child`, `trailing?` |
+| **States** | Static |
+| **Tokens** | `LLTextStyle.h2`, `LLTextStyle.caption` |
+| **Used by** | Showcase, settings lists |
 
-**Purpose:** Bottom tab navigation on stone slab.
+#### LLScreenBackground
 
-**API:** `items: List<LLBottomBarItem>` — `icon`, `label`, `onTap?`, `selected`
-
-**Used by:** Showcase; future main shell.
-
----
-
-## Currency
-
-### LLCurrencyChip
-
-**Purpose:** Display coins, gems, or stars.
-
-**Types:** `LLCurrencyType.coins | gems | stars`
-
-**API:** `type`, `amount`, `onTap?`, `compact`
-
-**Guidelines:** Top-right HUD on Home; gameplay HUD later.
-
-**Used by:** Home, Showcase.
-
-**Future:** Animated count transitions.
-
----
-
-## Progress
-
-### LLProgressBar
-
-**Purpose:** Gold fill on stone track for world/level progress.
-
-**API:** `value` (0–1), `label?`, `showPercent`
-
-**Used by:** Showcase; future World Select.
-
----
-
-## Badges
-
-### LLBadge
-
-**Purpose:** Small status labels on nodes and items.
-
-**Variants:** `locked`, `completed`, `newItem`, `perfect`
-
-**API:** `label`, `variant`, `icon?`
-
-**Used by:** Showcase; future Level Select nodes.
+| Field | Value |
+|-------|-------|
+| **Domain** | Shared shell |
+| **Tier** | Functional |
+| **Purpose** | Full-screen temple backdrop with optional hero image and veil |
+| **API** | `child`, `heroImageAsset?`, `heroAlignment` |
+| **States** | Static |
+| **Tokens** | `LLColor.templeBlack`, `LLGradient.screenVeil` |
+| **Used by** | Home, Showcase |
 
 ---
 
-## Rewards
+### Buttons — Shared · Functional default
 
-### LLRewardCard
+#### LLButton
 
-**Purpose:** Generic reward row — icon, title, subtitle, amount. **No game logic.**
+| Field | Value |
+|-------|-------|
+| **Domain** | Shared (gameplay + meta-game) |
+| **Tier** | Functional; ceremonial accent only on reward flows |
+| **Purpose** | Mechanism of commitment — engraved plate actions |
+| **Variants** | `primary` (gold), `secondary` (cyan energy), `ghost`, `danger` |
+| **API** | `label`, `onPressed?`, `icon?`, `variant`, `expanded`, `enabled` |
+| **States** | Default, pressed, disabled (opacity + no glow), focus (ink splash) |
+| **Tokens** | `LLGradient.goldButton`, `LLShadow.goldGlow`, `LLTextStyle.button` |
+| **Rules** | One primary gold CTA per surface; cyan = secondary/magical only |
+| **Used by** | Home, Showcase, LLDialog, future Gameplay controls |
+| **Accessibility** | `Semantics` label; min height via padding + `LLSize.touchTarget` |
 
-**API:** `title`, `subtitle?`, `amount?`, `icon`, `accentColor?`
+#### LLIconButton
 
-**Used by:** Showcase; future Victory screen.
+| Field | Value |
+|-------|-------|
+| **Domain** | Shared |
+| **Tier** | Functional |
+| **Purpose** | Toolbar / app bar icon control |
+| **Variants** | `gold`, `ghost`, `danger` |
+| **API** | `icon`, `onPressed?`, `variant`, `tooltip?` |
+| **States** | Default, pressed, disabled |
+| **Tokens** | `LLSize.touchTarget`, `LLRadius.md` |
+| **Used by** | LLTopBar, Showcase |
 
----
+#### LLFloatingButton
 
-## Dialogs
-
-### LLDialog
-
-**Purpose:** Temple modal with gold title and LLButton actions.
-
-**API:** `title`, `content`, `primaryLabel`, `secondaryLabel?`, `onPrimary?`, `onSecondary?`, `danger`
-
-**Static:** `LLDialog.show(context, ...)`
-
-**Used by:** Showcase.
-
----
-
-## Feedback
-
-### LLToast
-
-**Purpose:** Floating snackbar feedback.
-
-**Variants:** `info`, `success`, `warning`, `danger`
-
-**Static:** `LLToast.show(context, message:, variant:)`
-
-**Used by:** Showcase.
-
----
-
-### LLLoadingIndicator
-
-**Purpose:** Pulsing portal loader.
-
-**API:** `size`, `message?`
-
-**Animation:** `LLAnimation.portalPulse`
-
-**Used by:** Showcase; future async screen loads.
+| Field | Value |
+|-------|-------|
+| **Domain** | Meta-game |
+| **Tier** | Functional |
+| **Purpose** | Circular gold FAB for single prominent action |
+| **API** | `icon`, `onPressed?`, `label?` (reserved) |
+| **States** | Default, pressed, disabled |
+| **Tokens** | `LLSize.fab`, `LLGradient.goldButton`, `LLShadow.goldGlow` |
+| **Used by** | Showcase; future quick-play |
 
 ---
 
-## Not Yet Implemented (documented for future)
+### Navigation — Meta-game · Functional
 
-| Component | Planned use |
-|-----------|-------------|
-| LLStarRating | Victory, Level Select |
-| LLPortal | Maze exit, loading branding |
-| LLMazeTile | Gameplay board only |
-| LLRewardPopup | Victory layout composition |
+#### LLTopBar
+
+| Field | Value |
+|-------|-------|
+| **Domain** | Meta-game |
+| **Tier** | Functional |
+| **Purpose** | Temple-styled app bar with gold title |
+| **API** | `title`, `leading?`, `actions` |
+| **Helper** | `LLTopBar.backButton(context)` |
+| **States** | Static chrome; action buttons use LLIconButton states |
+| **Tokens** | `LLTextStyle.h2`, `LLColor.ancientGold` |
+| **Used by** | Showcase, inner screens |
+
+#### LLBottomBar
+
+| Field | Value |
+|-------|-------|
+| **Domain** | Meta-game shell |
+| **Tier** | Functional |
+| **Purpose** | Bottom tab navigation on stone slab |
+| **API** | `items: List<LLBottomBarItem>` — `icon`, `label`, `onTap?`, `selected` |
+| **States** | Selected (multichannel — icon + label + weight); disabled (`onTap: null`, 0.55 opacity) |
+| **Accessibility** | Per item: `Semantics(button, enabled, selected, label)` |
+| **Tokens** | `LLGradient.stonePanel`, `LLTextStyle.caption` |
+| **Used by** | Showcase, main shell |
+
+---
+
+### HUD — Gameplay · Functional only
+
+#### LLCurrencyChip
+
+| Field | Value |
+|-------|-------|
+| **Domain** | Gameplay HUD, meta-game header |
+| **Tier** | **Functional only** — no ceremonial treatment |
+| **Purpose** | Display coins, gems, or stars |
+| **Types** | `LLCurrencyType.coins`, `gems`, `stars` |
+| **API** | `type`, `amount`, `onTap?`, `compact` |
+| **States** | Default; optional tap |
+| **Tokens** | `LLSurface.pill`, `LLTextStyle.currencyValue` |
+| **Rules** | Progressive HUD per WS4 — surface only when phase requires |
+| **Used by** | Home, Showcase, future Gameplay HUD |
+
+#### LLProgressBar
+
+| Field | Value |
+|-------|-------|
+| **Domain** | Meta-game progression |
+| **Tier** | Functional |
+| **Purpose** | Gold fill on stone track |
+| **API** | `value` (0–1), `label?`, `showPercent` |
+| **States** | Static fill |
+| **Tokens** | `LLColor.ancientGold`, `LLColor.stoneDark`, `LLSize.progressHeight` |
+| **Used by** | Showcase, World Select |
+
+---
+
+### Badges & Status — Meta-game · Functional
+
+#### LLBadge
+
+| Field | Value |
+|-------|-------|
+| **Domain** | Meta-game, level select |
+| **Tier** | Functional |
+| **Purpose** | Small status labels on nodes and items |
+| **Variants** | `locked`, `completed`, `newItem`, `perfect` |
+| **API** | `label`, `variant`, `icon?` |
+| **States** | Static semantic variants |
+| **Tokens** | Variant-mapped `LLColor` roles |
+| **Used by** | Showcase, Level Select |
+
+---
+
+### Rewards — Meta-game · Ceremonial allowance
+
+#### LLRewardCard
+
+| Field | Value |
+|-------|-------|
+| **Domain** | Meta-game, victory |
+| **Tier** | Ceremonial accent permitted |
+| **Purpose** | Reward row — icon, title, subtitle, amount. **No game logic.** |
+| **API** | `title`, `subtitle?`, `amount?`, `icon`, `accentColor?` |
+| **States** | Static presentation |
+| **Tokens** | `LLSurface.card`, `LLTextStyle.h2`, `LLTextStyle.caption` |
+| **Used by** | Showcase, Victory screen |
+
+---
+
+### Modals & Overlays — Shared
+
+#### LLDialog
+
+| Field | Value |
+|-------|-------|
+| **Domain** | Shared |
+| **Tier** | Functional default; deliberate pacing for destructive flows |
+| **Purpose** | Temple modal with gold title and LLButton actions |
+| **API** | `title`, `content`, `primaryLabel`, `secondaryLabel?`, `onPrimary?`, `onSecondary?`, `danger` |
+| **Helper** | `LLDialog.show(context, ...)` |
+| **States** | Open/close via navigator; button states per LLButton |
+| **Tokens** | `LLRadius.dialog`, `LLSurface.panel` |
+| **Used by** | Showcase |
+
+---
+
+### Feedback — Shared
+
+#### LLToast
+
+| Field | Value |
+|-------|-------|
+| **Domain** | Shared |
+| **Tier** | Functional |
+| **Purpose** | Transient non-blocking feedback |
+| **Variants** | `info`, `success`, `warning`, `danger` |
+| **Helper** | `LLToast.show(context, message:, variant:)` |
+| **Rules** | Multichannel per WS9; do not trap navigation |
+| **Used by** | Showcase |
+
+#### LLLoadingIndicator
+
+| Field | Value |
+|-------|-------|
+| **Domain** | Shared |
+| **Tier** | Functional |
+| **Purpose** | Calm portal loader |
+| **API** | `size`, `message?` |
+| **States** | Loading loop |
+| **Tokens** | `LLAnimation.portalPulse`, `LLColor.portalBlue` |
+| **Rules** | Calm loop — not frantic spin (WS5) |
+| **Used by** | Showcase, async loads |
+
+---
+
+## Planned — Not Yet Implemented
+
+| Component | Domain | Tier | Planned use |
+|-----------|--------|------|-------------|
+| LLStarRating | Meta-game | Ceremonial | Victory, Level Select |
+| LLPortal | Gameplay | Functional | Maze exit, loading branding |
+| LLMazeTile | Gameplay | Functional | Gameplay board painter only |
+| LLRewardPopup | Meta-game | Ceremonial | Victory layout composition |
 
 ---
 
 ## Adding Components
 
-1. Document in this file
-2. Implement in `lib/design_system/components/`
-3. Add to `components.dart` export
-4. Add section to `DesignSystemShowcaseScreen`
-5. Reference from `docs/03_Screens/*.md`
+1. Verify WS11 domain placement (gameplay vs meta-game) and tier
+2. Document in this file with states, tokens, and inheritance
+3. Define or extend component tokens in [Design_Tokens](Design_Tokens.md)
+4. Implement in `lib/design_system/components/`
+5. Export from `components.dart`
+6. Add to `DesignSystemShowcaseScreen`
+7. Reference from `docs/03_Screens/*.md`
 
 See `docs/assets/mockups/ui_board_master.png` for visual reference.
+
+---
+
+## Related Documents
+
+- [WS11 — Components Language](LLDL/WS11_Components_Language.md)
+- [Design_Tokens](Design_Tokens.md)
+- [Accessibility](Accessibility.md) — WS9 measurable requirements (expand from stub)
+- [LLDL](LLDL.md)

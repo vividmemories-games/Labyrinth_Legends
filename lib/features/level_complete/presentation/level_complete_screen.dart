@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:labyrinth_legends/core/constants/app_colors.dart';
-import 'package:labyrinth_legends/core/widgets/ruins_button.dart';
 import 'package:labyrinth_legends/data/providers.dart';
+import 'package:labyrinth_legends/design_system/design_system.dart';
 
 class LevelCompleteScreen extends ConsumerWidget {
   const LevelCompleteScreen({super.key, required this.levelId});
@@ -26,7 +25,7 @@ class LevelCompleteScreen extends ConsumerWidget {
 
     return levelAsync.when(
       loading: () => const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
+        body: Center(child: LLLoadingIndicator()),
       ),
       error: (e, _) => Scaffold(body: Center(child: Text('$e'))),
       data: (level) {
@@ -39,12 +38,12 @@ class LevelCompleteScreen extends ConsumerWidget {
               gradient: LinearGradient(
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
-                colors: [AppColors.surfaceElevated, AppColors.voidBlack],
+                colors: [LLColor.stoneMid, LLColor.templeBlack],
               ),
             ),
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(24),
+                padding: EdgeInsets.all(LLSpacing.lg),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
@@ -52,33 +51,31 @@ class LevelCompleteScreen extends ConsumerWidget {
                     Text(
                       'Level Complete',
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                            color: AppColors.gold,
-                          ),
+                      style: LLTextStyle.h1.copyWith(color: LLColor.ancientGold),
                     ),
                     if (level != null) ...[
-                      const SizedBox(height: 8),
+                      SizedBox(height: LLSpacing.sm),
                       Text(
                         level.name,
                         textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: LLTextStyle.h2,
                       ),
                     ],
-                    const SizedBox(height: 24),
+                    SizedBox(height: LLSpacing.lg),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: List.generate(3, (i) {
                         return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 6),
+                          padding: EdgeInsets.symmetric(horizontal: LLSpacing.xs + LLSpacing.xs),
                           child: Icon(
                             i < stars ? Icons.star : Icons.star_border,
-                            size: 40,
-                            color: AppColors.gold,
+                            size: LLSize.iconLg + LLSpacing.sm,
+                            color: LLColor.ancientGold,
                           ),
                         );
                       }),
                     ),
-                    const SizedBox(height: 24),
+                    SizedBox(height: LLSpacing.lg),
                     if (progress != null)
                       _ResultRow(
                         label: 'Coins',
@@ -86,30 +83,30 @@ class LevelCompleteScreen extends ConsumerWidget {
                       ),
                     const Spacer(),
                     if (nextId != null)
-                      RuinsButton(
+                      LLButton(
                         label: 'Next Level',
                         icon: Icons.arrow_forward,
                         expanded: true,
                         onPressed: () => context.go('/play/$nextId'),
                       ),
-                    const SizedBox(height: 12),
-                    RuinsButton(
+                    SizedBox(height: LLSpacing.md - LLSpacing.xs),
+                    LLButton(
                       label: 'Retry',
-                      variant: RuinsButtonVariant.secondary,
+                      variant: LLButtonVariant.secondary,
                       expanded: true,
                       onPressed: () => context.go('/play/$levelId'),
                     ),
-                    const SizedBox(height: 12),
-                    RuinsButton(
+                    SizedBox(height: LLSpacing.md - LLSpacing.xs),
+                    LLButton(
                       label: 'Level Select',
-                      variant: RuinsButtonVariant.ghost,
+                      variant: LLButtonVariant.ghost,
                       expanded: true,
                       onPressed: () => context.go('/worlds/world_1/levels'),
                     ),
-                    const SizedBox(height: 12),
-                    RuinsButton(
+                    SizedBox(height: LLSpacing.md - LLSpacing.xs),
+                    LLButton(
                       label: 'Home',
-                      variant: RuinsButtonVariant.ghost,
+                      variant: LLButtonVariant.ghost,
                       onPressed: () => context.go('/'),
                     ),
                   ],
@@ -132,17 +129,14 @@ class _ResultRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 6),
+      padding: EdgeInsets.symmetric(vertical: LLSpacing.xs + LLSpacing.xs),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label),
+          Text(label, style: LLTextStyle.body),
           Text(
             value,
-            style: const TextStyle(
-              color: AppColors.gold,
-              fontWeight: FontWeight.w600,
-            ),
+            style: LLTextStyle.currencyValue.copyWith(color: LLColor.ancientGold),
           ),
         ],
       ),

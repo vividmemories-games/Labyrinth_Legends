@@ -1,9 +1,86 @@
+import 'dart:ui' show Tristate;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labyrinth_legends/design_system/components/components.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
 
 void main() {
+  testWidgets('LLIconButton disabled is not tappable', (tester) async {
+    var tapped = false;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: LLIconButton(
+            icon: Icons.settings,
+            tooltip: 'Settings',
+            enabled: false,
+            onPressed: () => tapped = true,
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.byIcon(Icons.settings));
+    await tester.pump();
+    expect(tapped, isFalse);
+  });
+
+  testWidgets('LLIconButton exposes semantics label from tooltip', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: LLIconButton(
+            icon: Icons.settings,
+            tooltip: 'Settings',
+            onPressed: () {},
+          ),
+        ),
+      ),
+    );
+
+    final handle = tester.ensureSemantics();
+    await tester.pumpAndSettle();
+    expect(find.bySemanticsLabel('Settings'), findsOneWidget);
+    handle.dispose();
+  });
+
+  testWidgets('LLButton disabled is not tappable', (tester) async {
+    var tapped = false;
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: LLButton(
+            label: 'Play',
+            enabled: false,
+            onPressed: () => tapped = true,
+          ),
+        ),
+      ),
+    );
+    await tester.tap(find.text('Play'));
+    await tester.pump();
+    expect(tapped, isFalse);
+  });
+
+  testWidgets('LLButton null onPressed reports disabled semantics', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: LLButton(label: 'Play', onPressed: null),
+        ),
+      ),
+    );
+
+    final handle = tester.ensureSemantics();
+    await tester.pumpAndSettle();
+
+    final semantics = tester.getSemantics(find.bySemanticsLabel('Play'));
+    expect(semantics.label, 'Play');
+    expect(semantics.flagsCollection.isButton, isTrue);
+    expect(semantics.flagsCollection.isEnabled, Tristate.isFalse);
+    handle.dispose();
+  });
+
   testWidgets('LLButton primary renders label', (tester) async {
     await tester.pumpWidget(
       MaterialApp(
@@ -24,6 +101,79 @@ void main() {
       ),
     );
     expect(find.text('99'), findsOneWidget);
+  });
+
+  testWidgets('LLCurrencyChip tappable exposes button semantics', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: LLCurrencyChip(
+            type: LLCurrencyType.gems,
+            amount: 12,
+            onTap: () {},
+          ),
+        ),
+      ),
+    );
+
+    final handle = tester.ensureSemantics();
+    await tester.pumpAndSettle();
+
+    final semantics = tester.getSemantics(find.bySemanticsLabel('12 gems'));
+    expect(semantics.label, '12 gems');
+    expect(semantics.flagsCollection.isButton, isTrue);
+    expect(semantics.flagsCollection.isEnabled, Tristate.isTrue);
+    handle.dispose();
+  });
+
+  testWidgets('LLCard tappable exposes button semantics', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: LLCard(
+            semanticsLabel: 'World pack',
+            onTap: () {},
+            child: const Text('Pack'),
+          ),
+        ),
+      ),
+    );
+
+    final handle = tester.ensureSemantics();
+    await tester.pumpAndSettle();
+
+    final semantics = tester.getSemantics(find.bySemanticsLabel('World pack'));
+    expect(semantics.label, 'World pack');
+    expect(semantics.flagsCollection.isButton, isTrue);
+    expect(semantics.flagsCollection.isEnabled, Tristate.isTrue);
+    handle.dispose();
+  });
+
+  testWidgets('LLBottomBar disabled item reports disabled semantics', (tester) async {
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: Scaffold(
+          body: LLBottomBar(
+            items: [
+              LLBottomBarItem(
+                icon: Icons.home,
+                label: 'Home',
+                onTap: null,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+
+    final handle = tester.ensureSemantics();
+    await tester.pumpAndSettle();
+
+    final semantics = tester.getSemantics(find.bySemanticsLabel('Home'));
+    expect(semantics.label, 'Home');
+    expect(semantics.flagsCollection.isButton, isTrue);
+    expect(semantics.flagsCollection.isEnabled, Tristate.isFalse);
+    handle.dispose();
   });
 
   testWidgets('LLBadge locked variant', (tester) async {

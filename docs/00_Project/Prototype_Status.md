@@ -20,9 +20,10 @@
 | Path | Issue |
 |------|-------|
 | `lib/app/theme.dart` | Hardcoded colors; not LLDL tokens |
-| `lib/core/constants/app_colors.dart` | Pre-LLDL palette; replace with `LLColor` |
-| `lib/core/widgets/ruins_button.dart` | Ad-hoc component; replace with `LLButton` |
-| `lib/features/**` | Prototype screens — rebuild from `docs/03_Screens/*` |
+| `lib/core/constants/app_colors.dart` | **Deprecated** — feature code migrated to `LLColor`; thin legacy file remains |
+| `lib/core/widgets/ruins_button.dart` | **Deprecated** — delegates to `LLButton` |
+| `lib/core/widgets/currency_pill.dart` | **Deprecated** — delegates to `LLCurrencyChip` |
+| `lib/features/**` | Prototype screens migrated to `design_system/` (2026-06-30 Tier 3) — Settings included |
 | `lib/game_engine/**` | Logic direction OK; re-implement against updated `Mechanics.md` and tests |
 | `lib/data/**` | Rebuild after save-system spec locked |
 | `test/**` | Rewrite after engine reset |

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:labyrinth_legends/core/constants/app_colors.dart';
 import 'package:labyrinth_legends/data/providers.dart';
+import 'package:labyrinth_legends/design_system/design_system.dart';
 import 'package:labyrinth_legends/features/level_select/presentation/level_preview_sheet.dart';
 
 class LevelSelectScreen extends ConsumerWidget {
@@ -17,24 +17,26 @@ class LevelSelectScreen extends ConsumerWidget {
     final world = ref.watch(worldsProvider).firstWhere((w) => w.id == worldId);
 
     return Scaffold(
-      appBar: AppBar(title: Text(world.name)),
+      backgroundColor: LLColor.templeBlack,
+      appBar: AppBar(
+        backgroundColor: LLColor.templeBlack,
+        title: Text(world.name, style: LLTextStyle.h2),
+      ),
       body: levelsAsync.when(
-        loading: () => const Center(child: CircularProgressIndicator()),
+        loading: () => const Center(child: LLLoadingIndicator()),
         error: (e, _) => Center(child: Text('$e')),
         data: (levels) {
           final progress = progressAsync.value;
           final notifier = ref.read(playerProgressProvider.notifier);
 
           return ListView(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(LLSpacing.lg - LLSpacing.xs),
             children: [
               Text(
                 world.loreBlurb,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppColors.slate,
-                    ),
+                style: LLTextStyle.body.copyWith(color: LLColor.stoneEdge),
               ),
-              const SizedBox(height: 24),
+              SizedBox(height: LLSpacing.lg),
               ...List.generate(levels.length, (index) {
                 final level = levels[index];
                 final unlocked = progress == null
@@ -43,7 +45,7 @@ class LevelSelectScreen extends ConsumerWidget {
                 final starsFuture = ref.watch(levelStarsProvider(level.id));
 
                 return Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
+                  padding: EdgeInsets.only(bottom: LLSpacing.md - LLSpacing.xs),
                   child: _LevelPathNode(
                     levelNumber: index + 1,
                     title: level.name,
@@ -54,6 +56,7 @@ class LevelSelectScreen extends ConsumerWidget {
                         ? () => showModalBottomSheet<void>(
                               context: context,
                               isScrollControlled: true,
+                              backgroundColor: LLColor.stoneDark,
                               builder: (_) => LevelPreviewSheet(
                                 level: level,
                                 onPlay: () {
@@ -101,36 +104,29 @@ class _LevelPathNode extends StatelessWidget {
             GestureDetector(
               onTap: onTap,
               child: Container(
-                width: 48,
-                height: 48,
+                width: LLSize.touchTarget,
+                height: LLSize.touchTarget,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: unlocked
-                      ? AppColors.surfaceElevated
-                      : AppColors.voidBlack,
+                  color: unlocked ? LLColor.stoneMid : LLColor.templeBlack,
                   border: Border.all(
-                    color: unlocked ? AppColors.gold : AppColors.slate,
+                    color: unlocked ? LLColor.ancientGold : LLColor.stoneEdge,
                     width: 2.5,
                   ),
-                  boxShadow: unlocked
-                      ? [
-                          BoxShadow(
-                            color: AppColors.gold.withValues(alpha: 0.25),
-                            blurRadius: 8,
-                          ),
-                        ]
-                      : null,
+                  boxShadow: unlocked ? LLShadow.goldGlow : null,
                 ),
                 child: Center(
                   child: unlocked
                       ? Text(
                           '$levelNumber',
-                          style: const TextStyle(
-                            color: AppColors.gold,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: LLTextStyle.button
+                              .copyWith(color: LLColor.ancientGold),
                         )
-                      : const Icon(Icons.lock, size: 18, color: AppColors.slate),
+                      : Icon(
+                          Icons.lock,
+                          size: LLSize.iconSm,
+                          color: LLColor.stoneEdge,
+                        ),
                 ),
               ),
             ),
@@ -141,26 +137,26 @@ class _LevelPathNode extends StatelessWidget {
                 child: CustomPaint(
                   painter: _DottedPathPainter(
                     color: unlocked
-                        ? AppColors.cyanGlow.withValues(alpha: 0.65)
-                        : AppColors.slate.withValues(alpha: 0.4),
+                        ? LLColor.energyCyan.withValues(alpha: 0.65)
+                        : LLColor.stoneEdge.withValues(alpha: 0.4),
                   ),
                 ),
               ),
           ],
         ),
-        const SizedBox(width: 16),
+        SizedBox(width: LLSpacing.md),
         Expanded(
           child: GestureDetector(
             onTap: onTap,
             child: Padding(
-              padding: const EdgeInsets.only(top: 8),
+              padding: EdgeInsets.only(top: LLSpacing.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: TextStyle(
-                      color: unlocked ? Colors.white : AppColors.slate,
+                    style: LLTextStyle.body.copyWith(
+                      color: unlocked ? LLColor.textPrimary : LLColor.stoneEdge,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -169,8 +165,8 @@ class _LevelPathNode extends StatelessWidget {
                       children: List.generate(3, (i) {
                         return Icon(
                           i < stars ? Icons.star : Icons.star_border,
-                          size: 16,
-                          color: AppColors.gold,
+                          size: LLSize.iconSm,
+                          color: LLColor.ancientGold,
                         );
                       }),
                     ),

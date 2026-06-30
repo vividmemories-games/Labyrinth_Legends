@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:labyrinth_legends/core/constants/app_colors.dart';
 import 'package:labyrinth_legends/data/providers.dart';
+import 'package:labyrinth_legends/design_system/design_system.dart';
 
 class WorldsScreen extends ConsumerWidget {
   const WorldsScreen({super.key});
@@ -12,34 +12,45 @@ class WorldsScreen extends ConsumerWidget {
     final worlds = ref.watch(worldsProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Worlds')),
+      backgroundColor: LLColor.templeBlack,
+      appBar: AppBar(
+        backgroundColor: LLColor.templeBlack,
+        title: Text('Worlds', style: LLTextStyle.h2),
+      ),
       body: ListView.separated(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(LLSpacing.md),
         itemCount: worlds.length,
-        separatorBuilder: (_, __) => const SizedBox(height: 12),
+        separatorBuilder: (_, __) => SizedBox(height: LLSpacing.md - LLSpacing.xs),
         itemBuilder: (context, index) {
           final world = worlds[index];
-          return ListTile(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-              side: BorderSide(
-                color: Color(world.themeColor).withValues(alpha: 0.4),
-              ),
-            ),
-            tileColor: AppColors.surfaceElevated,
-            leading: Icon(
-              world.unlocked ? Icons.landscape_outlined : Icons.lock,
-              color: Color(world.themeColor),
-            ),
-            title: Text(world.name),
-            subtitle: Text(world.loreBlurb),
-            trailing: world.unlocked
-                ? const Icon(Icons.chevron_right)
-                : null,
-            enabled: world.unlocked,
+          return LLCard(
             onTap: world.unlocked
                 ? () => context.push('/worlds/${world.id}/levels')
                 : null,
+            child: Row(
+              children: [
+                Icon(
+                  world.unlocked ? Icons.landscape_outlined : Icons.lock,
+                  color: Color(world.themeColor),
+                ),
+                SizedBox(width: LLSpacing.md - LLSpacing.xs),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(world.name, style: LLTextStyle.h2.copyWith(fontSize: 18)),
+                      SizedBox(height: LLSpacing.xs),
+                      Text(
+                        world.loreBlurb,
+                        style: LLTextStyle.caption,
+                      ),
+                    ],
+                  ),
+                ),
+                if (world.unlocked)
+                  Icon(Icons.chevron_right, color: LLColor.textSecondary),
+              ],
+            ),
           );
         },
       ),

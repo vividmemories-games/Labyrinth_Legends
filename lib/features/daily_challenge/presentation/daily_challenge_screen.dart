@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:labyrinth_legends/core/constants/app_colors.dart';
-import 'package:labyrinth_legends/core/widgets/ruins_button.dart';
 import 'package:labyrinth_legends/data/daily_level_builder.dart';
+import 'package:labyrinth_legends/design_system/design_system.dart';
 
 class DailyChallengeScreen extends ConsumerWidget {
   const DailyChallengeScreen({super.key});
@@ -16,70 +15,77 @@ class DailyChallengeScreen extends ConsumerWidget {
     final level = buildDailyLevel(seed);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Daily Challenge')),
+      backgroundColor: LLColor.templeBlack,
+      appBar: AppBar(
+        backgroundColor: LLColor.templeBlack,
+        title: Text(
+          'Daily Challenge',
+          style: LLTextStyle.h2.copyWith(color: LLColor.ancientGold),
+        ),
+      ),
       body: Padding(
-        padding: const EdgeInsets.all(24),
+        padding: EdgeInsets.all(LLSpacing.lg),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              padding: const EdgeInsets.all(20),
+            DecoratedBox(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: LLRadius.cardBorder,
                 gradient: LinearGradient(
                   colors: [
-                    AppColors.mysticPurple.withValues(alpha: 0.25),
-                    AppColors.surface,
+                    LLColor.crystalPurple.withValues(alpha: 0.25),
+                    LLColor.stoneDark,
                   ],
                 ),
                 border: Border.all(
-                  color: AppColors.gold.withValues(alpha: 0.35),
+                  color: LLColor.ancientGold.withValues(alpha: LLColor.borderGoldAlpha),
                 ),
               ),
-              child: Column(
-                children: [
-                  const Icon(
-                    Icons.calendar_month,
-                    size: 48,
-                    color: AppColors.gold,
-                  ),
-                  const SizedBox(height: 12),
-                  Text(
-                    _formatDate(today),
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: AppColors.gold,
-                        ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    '${level.name} · ${level.grid.width}×${level.grid.height}',
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Seed $seed — same maze for every player today',
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: AppColors.textSecondary,
+              child: Padding(
+                padding: EdgeInsets.all(LLSpacing.lg - LLSpacing.xs),
+                child: Column(
+                  children: [
+                    Icon(
+                      Icons.calendar_month,
+                      size: LLSize.iconLg + LLSpacing.md,
+                      color: LLColor.ancientGold,
                     ),
-                  ),
-                ],
+                    SizedBox(height: LLSpacing.md - LLSpacing.xs),
+                    Text(
+                      _formatDate(today),
+                      style: LLTextStyle.h2.copyWith(color: LLColor.ancientGold),
+                    ),
+                    SizedBox(height: LLSpacing.sm),
+                    Text(
+                      '${level.name} · ${level.grid.width}×${level.grid.height}',
+                      textAlign: TextAlign.center,
+                      style: LLTextStyle.body,
+                    ),
+                    SizedBox(height: LLSpacing.sm),
+                    Text(
+                      'Seed $seed — same maze for every player today',
+                      textAlign: TextAlign.center,
+                      style: LLTextStyle.caption
+                          .copyWith(color: LLColor.textSecondary),
+                    ),
+                  ],
+                ),
               ),
             ),
-            const SizedBox(height: 24),
-            const Text(
+            SizedBox(height: LLSpacing.lg),
+            Text(
               'A fresh procedural labyrinth each day. Complete it for bonus rewards.',
               textAlign: TextAlign.center,
+              style: LLTextStyle.body.copyWith(color: LLColor.textPrimary),
             ),
             const Spacer(),
-            RuinsButton(
+            LLButton(
               label: 'Begin Challenge',
               icon: Icons.play_arrow,
               expanded: true,
               onPressed: () => context.push('/play/$levelId'),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: LLSpacing.md),
           ],
         ),
       ),

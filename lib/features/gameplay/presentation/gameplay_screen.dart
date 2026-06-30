@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:labyrinth_legends/core/constants/app_colors.dart';
 import 'package:labyrinth_legends/core/constants/game_constants.dart';
-import 'package:labyrinth_legends/core/widgets/ruins_button.dart';
 import 'package:labyrinth_legends/data/models/reward_result.dart';
 import 'package:labyrinth_legends/data/providers.dart';
+import 'package:labyrinth_legends/design_system/design_system.dart';
 import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_provider.dart';
 import 'package:labyrinth_legends/features/gameplay/presentation/maze_board.dart';
 
@@ -20,7 +19,7 @@ class GameplayScreen extends ConsumerWidget {
 
     return levelAsync.when(
       loading: () => const Scaffold(
-        body: Center(child: CircularProgressIndicator()),
+        body: Center(child: LLLoadingIndicator()),
       ),
       error: (e, _) => Scaffold(
         body: Center(child: Text('Failed to load level: $e')),
@@ -30,7 +29,7 @@ class GameplayScreen extends ConsumerWidget {
           return Scaffold(
             appBar: AppBar(title: const Text('Level Not Found')),
             body: Center(
-              child: RuinsButton(
+              child: LLButton(
                 label: 'Back',
                 onPressed: () => context.pop(),
               ),
@@ -40,6 +39,7 @@ class GameplayScreen extends ConsumerWidget {
 
         final state = ref.watch(gameplayControllerProvider(level));
         final controller = ref.read(gameplayControllerProvider(level).notifier);
+        final isDrawing = state.uiPhase == GameplayUiPhase.drawing;
 
         ref.listen(gameplayControllerProvider(level), (prev, next) async {
           if (next.uiPhase == GameplayUiPhase.won &&
@@ -71,17 +71,31 @@ class GameplayScreen extends ConsumerWidget {
 
         final totalGems = level.grid.countGems();
         final keysHeld = state.session.context.collectedKeys.length;
+        final showGemChip =
+            totalGems > 0 || level.objectives.collectAllGems;
+        final showKeyChip = level.grid.cells
+            .expand((row) => row)
+            .any((cell) => cell.keyId != null || cell.lockId != null);
 
         return Scaffold(
+          backgroundColor: LLColor.templeBlack,
           appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
+            backgroundColor: LLColor.templeBlack,
+            foregroundColor: LLColor.textPrimary,
+            leading: LLIconButton(
+              icon: Icons.arrow_back,
+              tooltip: 'Back',
+              variant: LLIconButtonVariant.ghost,
               onPressed: () => context.pop(),
             ),
-            title: Text(level.name),
+            title: Text(
+              level.name,
+              style: LLTextStyle.h2.copyWith(color: LLColor.ancientGold),
+            ),
             actions: [
-              IconButton(
-                icon: const Icon(Icons.pause),
+              LLIconButton(
+                icon: Icons.pause,
+                tooltip: 'Pause',
                 onPressed: controller.pause,
               ),
             ],
@@ -90,69 +104,59 @@ class GameplayScreen extends ConsumerWidget {
             children: [
               Column(
                 children: [
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        _StatChip(
-                          icon: Icons.route,
-                          label: 'Moves ${state.path.length}',
-                        ),
-                        _StatChip(
-                          icon: Icons.diamond_outlined,
-                          label:
-                              'Gems ${state.session.context.gemsCollected}/$totalGems',
-                        ),
-                        _StatChip(
-                          icon: Icons.vpn_key_outlined,
-                          label: 'Key ${keysHeld > 0 ? 1 : 0}',
-                        ),
-                      ],
+                  if (isDrawing && (showGemChip || showKeyChip))
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: LLSpacing.md,
+                        vertical: LLSpacing.sm,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          if (showGemChip) ...[
+                            _StatChip(
+                              icon: Icons.diamond_outlined,
+                              label:
+                                  'Gems ${state.session.context.gemsCollected}/$totalGems',
+                            ),
+                            SizedBox(width: LLSpacing.sm),
+                          ],
+                          if (showKeyChip)
+                            _StatChip(
+                              icon: Icons.vpn_key_outlined,
+                              label: 'Key ${keysHeld > 0 ? 1 : 0}',
+                            ),
+                        ],
+                      ),
                     ),
-                  ),
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.all(12),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          border: Border.all(
-                            color: AppColors.gold.withValues(alpha: 0.25),
-                          ),
-                          gradient: const LinearGradient(
-                            begin: Alignment.topCenter,
-                            end: Alignment.bottomCenter,
-                            colors: [AppColors.surface, AppColors.voidBlack],
-                          ),
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
-                          child: MazeBoard(
-                            state: state,
-                            onCellTap: controller.addPathPoint,
-                          ),
+                      padding: EdgeInsets.all(LLSpacing.md - LLSpacing.xs),
+                      child: LLPanel(
+                        child: MazeBoard(
+                          state: state,
+                          onCellTap: controller.addPathPoint,
                         ),
                       ),
                     ),
                   ),
-                  if (state.message != null)
+                  if (isDrawing && state.message != null)
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      padding: EdgeInsets.symmetric(horizontal: LLSpacing.md),
                       child: Text(
                         state.message!,
-                        style: const TextStyle(color: AppColors.danger),
+                        style: LLTextStyle.caption
+                            .copyWith(color: LLColor.emberRed),
                       ),
                     ),
-                  _ControlBar(
-                    onUndo: controller.undo,
-                    onErase: controller.erase,
-                    onHint: controller.useHint,
-                    onGo: controller.go,
-                    canAct: state.uiPhase == GameplayUiPhase.drawing,
-                  ),
-                  const SizedBox(height: 12),
+                  if (isDrawing)
+                    _ControlBar(
+                      onUndo: controller.undo,
+                      onErase: controller.erase,
+                      onHint: controller.useHint,
+                      onGo: controller.go,
+                    ),
+                  SizedBox(height: LLSpacing.md - LLSpacing.xs),
                 ],
               ),
               if (state.uiPhase == GameplayUiPhase.paused)
@@ -183,20 +187,24 @@ class _StatChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-      decoration: BoxDecoration(
-        color: AppColors.surfaceElevated,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: AppColors.slate),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, size: 14, color: AppColors.gold),
-          const SizedBox(width: 4),
-          Text(label, style: const TextStyle(fontSize: 12)),
-        ],
+    return DecoratedBox(
+      decoration: LLSurface.pill(),
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: LLSpacing.sm + LLSpacing.xs,
+          vertical: LLSpacing.xs + LLSpacing.xs,
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: LLSize.iconSm, color: LLColor.ancientGold),
+            SizedBox(width: LLSpacing.xs),
+            Text(
+              label,
+              style: LLTextStyle.caption.copyWith(color: LLColor.textPrimary),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -208,57 +216,56 @@ class _ControlBar extends StatelessWidget {
     required this.onErase,
     required this.onHint,
     required this.onGo,
-    required this.canAct,
   });
 
   final VoidCallback onUndo;
   final VoidCallback onErase;
   final Future<void> Function() onHint;
   final VoidCallback onGo;
-  final bool canAct;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(12, 8, 12, 0),
+      padding: EdgeInsets.fromLTRB(
+        LLSpacing.md - LLSpacing.xs,
+        LLSpacing.sm,
+        LLSpacing.md - LLSpacing.xs,
+        0,
+      ),
       child: Row(
         children: [
           Expanded(
-            child: RuinsButton(
+            child: LLButton(
               label: 'Undo',
               icon: Icons.undo,
-              variant: RuinsButtonVariant.ghost,
-              onPressed: canAct ? onUndo : null,
-              enabled: canAct,
+              variant: LLButtonVariant.ghost,
+              onPressed: onUndo,
             ),
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: LLSpacing.sm),
           Expanded(
-            child: RuinsButton(
+            child: LLButton(
               label: 'Erase',
               icon: Icons.delete_outline,
-              variant: RuinsButtonVariant.ghost,
-              onPressed: canAct ? onErase : null,
-              enabled: canAct,
+              variant: LLButtonVariant.ghost,
+              onPressed: onErase,
             ),
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: LLSpacing.sm),
           Expanded(
-            child: RuinsButton(
+            child: LLButton(
               label: 'Hint',
               icon: Icons.lightbulb_outline,
-              variant: RuinsButtonVariant.secondary,
-              onPressed: canAct ? () => onHint() : null,
-              enabled: canAct,
+              variant: LLButtonVariant.secondary,
+              onPressed: () => onHint(),
             ),
           ),
-          const SizedBox(width: 8),
+          SizedBox(width: LLSpacing.sm),
           Expanded(
-            child: RuinsButton(
+            child: LLButton(
               label: 'Go',
               icon: Icons.play_arrow,
-              onPressed: canAct ? onGo : null,
-              enabled: canAct,
+              onPressed: onGo,
             ),
           ),
         ],
@@ -275,19 +282,22 @@ class _PauseOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.voidBlack.withValues(alpha: 0.85),
+    return ColoredBox(
+      color: LLColor.templeBlack.withValues(alpha: LLColor.overlayVeilAlpha),
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text('Paused', style: Theme.of(context).textTheme.headlineMedium),
-            const SizedBox(height: 24),
-            RuinsButton(label: 'Resume', onPressed: onResume, expanded: false),
-            const SizedBox(height: 12),
-            RuinsButton(
+            Text(
+              'Paused',
+              style: LLTextStyle.h1.copyWith(color: LLColor.ancientGold),
+            ),
+            SizedBox(height: LLSpacing.lg),
+            LLButton(label: 'Resume', onPressed: onResume),
+            SizedBox(height: LLSpacing.md - LLSpacing.xs),
+            LLButton(
               label: 'Quit',
-              variant: RuinsButtonVariant.ghost,
+              variant: LLButtonVariant.ghost,
               onPressed: onQuit,
             ),
           ],
@@ -312,19 +322,26 @@ class _OverlayMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.voidBlack.withValues(alpha: 0.88),
+    return ColoredBox(
+      color: LLColor.templeBlack.withValues(alpha: 0.88),
       child: Center(
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: EdgeInsets.all(LLSpacing.lg),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(title, style: Theme.of(context).textTheme.headlineMedium),
-              const SizedBox(height: 8),
-              Text(message, textAlign: TextAlign.center),
-              const SizedBox(height: 24),
-              RuinsButton(label: actionLabel, onPressed: onAction),
+              Text(
+                title,
+                style: LLTextStyle.h1.copyWith(color: LLColor.ancientGold),
+              ),
+              SizedBox(height: LLSpacing.sm),
+              Text(
+                message,
+                textAlign: TextAlign.center,
+                style: LLTextStyle.body.copyWith(color: LLColor.textPrimary),
+              ),
+              SizedBox(height: LLSpacing.lg),
+              LLButton(label: actionLabel, onPressed: onAction),
             ],
           ),
         ),

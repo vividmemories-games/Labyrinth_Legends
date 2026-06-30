@@ -30,6 +30,12 @@ class LLCurrencyChip extends StatelessWidget {
         LLCurrencyType.stars => LLColor.ancientGold,
       };
 
+  String get _typeLabel => switch (type) {
+        LLCurrencyType.coins => 'coins',
+        LLCurrencyType.gems => 'gems',
+        LLCurrencyType.stars => 'stars',
+      };
+
   @override
   Widget build(BuildContext context) {
     final padding = EdgeInsets.symmetric(
@@ -56,14 +62,26 @@ class LLCurrencyChip extends StatelessWidget {
       ),
     );
 
-    if (onTap == null) return content;
-
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: LLRadius.pillBorder,
+    if (onTap == null) {
+      return Semantics(
+        label: '$amount $_typeLabel',
+        excludeSemantics: true,
         child: content,
+      );
+    }
+
+    return Semantics(
+      button: true,
+      enabled: true,
+      label: '$amount $_typeLabel',
+      excludeSemantics: true,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: LLRadius.pillBorder,
+          child: content,
+        ),
       ),
     );
   }

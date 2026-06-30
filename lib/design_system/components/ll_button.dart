@@ -24,40 +24,50 @@ class LLButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isInteractive = enabled && onPressed != null;
     final style = _styleFor(variant);
     final foreground = style.foreground;
 
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: enabled ? onPressed : null,
-        borderRadius: LLRadius.buttonBorder,
-        child: Ink(
-          width: expanded ? double.infinity : null,
-          decoration: BoxDecoration(
+    return Semantics(
+      button: true,
+      enabled: isInteractive,
+      label: label,
+      excludeSemantics: true,
+      child: Opacity(
+        opacity: isInteractive ? 1 : 0.55,
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: isInteractive ? onPressed : null,
             borderRadius: LLRadius.buttonBorder,
-            gradient: style.gradient,
-            color: style.background,
-            border: Border.all(color: style.border, width: 1.5),
-            boxShadow: style.shadows,
-          ),
-          padding: EdgeInsets.symmetric(
-            horizontal: LLSpacing.lg,
-            vertical: LLSpacing.md - LLSpacing.xs,
-          ),
-          child: Row(
-            mainAxisSize: expanded ? MainAxisSize.max : MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              if (icon != null) ...[
-                Icon(icon, size: LLSpacing.md + LLSpacing.xs, color: foreground),
-                SizedBox(width: LLSpacing.sm),
-              ],
-              Text(
-                label,
-                style: LLTextStyle.button.copyWith(color: foreground),
+            child: Ink(
+              width: expanded ? double.infinity : null,
+              decoration: BoxDecoration(
+                borderRadius: LLRadius.buttonBorder,
+                gradient: style.gradient,
+                color: style.background,
+                border: Border.all(color: style.border, width: 1.5),
+                boxShadow: isInteractive ? style.shadows : null,
               ),
-            ],
+              padding: EdgeInsets.symmetric(
+                horizontal: LLSpacing.lg,
+                vertical: LLSpacing.md - LLSpacing.xs,
+              ),
+              child: Row(
+                mainAxisSize: expanded ? MainAxisSize.max : MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (icon != null) ...[
+                    Icon(icon, size: LLSpacing.md + LLSpacing.xs, color: foreground),
+                    SizedBox(width: LLSpacing.sm),
+                  ],
+                  Text(
+                    label,
+                    style: LLTextStyle.button.copyWith(color: foreground),
+                  ),
+                ],
+              ),
+            ),
           ),
         ),
       ),

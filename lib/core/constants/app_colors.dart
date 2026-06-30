@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
-/// Labyrinth Legends palette — Ancient Tech / Mystical Ruins (see DesignReferences/image.png).
+/// Deprecated prototype palette — use [LLColor] from `design_system`.
+@Deprecated(
+  'Prototype palette. Use LLColor from package:labyrinth_legends/design_system/tokens/tokens.dart',
+)
 abstract final class AppColors {
   static const Color cyanGlow = Color(0xFF00D9FF);
   static const Color cyanDeep = Color(0xFF00AEEF);

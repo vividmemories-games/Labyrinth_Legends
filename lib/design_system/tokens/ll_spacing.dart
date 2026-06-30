@@ -1,4 +1,5 @@
-/// Spacing tokens — see docs/02_Design_System/Design_Tokens.md
+/// Spacing tokens — WS10 foundational scale + semantic roles.
+/// See docs/02_Design_System/Design_Tokens.md
 abstract final class LLSpacing {
   static const double xs = 4;
   static const double sm = 8;

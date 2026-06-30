@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:labyrinth_legends/core/constants/app_colors.dart';
+import 'package:labyrinth_legends/design_system/components/ll_currency_chip.dart';
 
+/// Deprecated prototype currency chip — use [LLCurrencyChip] from `design_system`.
+@Deprecated(
+  'Prototype widget. Use LLCurrencyChip from package:labyrinth_legends/design_system/design_system.dart',
+)
 class CurrencyPill extends StatelessWidget {
   const CurrencyPill({
     super.key,
@@ -15,44 +19,19 @@ class CurrencyPill extends StatelessWidget {
   final VoidCallback? onTap;
   final bool compact;
 
+  LLCurrencyType get _type => switch (icon) {
+        Icons.diamond_outlined => LLCurrencyType.gems,
+        Icons.star => LLCurrencyType.stars,
+        _ => LLCurrencyType.coins,
+      };
+
   @override
   Widget build(BuildContext context) {
-    final content = Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Icon(icon, size: compact ? 16 : 18, color: AppColors.gold),
-        SizedBox(width: compact ? 4 : 6),
-        Text(
-          '$amount',
-          style: TextStyle(
-            color: AppColors.textPrimary,
-            fontWeight: FontWeight.w700,
-            fontSize: compact ? 13 : 15,
-          ),
-        ),
-      ],
-    );
-
-    return Material(
-      color: AppColors.surfaceElevated,
-      borderRadius: BorderRadius.circular(20),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(20),
-        child: Container(
-          padding: EdgeInsets.symmetric(
-            horizontal: compact ? 10 : 14,
-            vertical: compact ? 6 : 8,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: AppColors.gold.withValues(alpha: 0.35),
-            ),
-          ),
-          child: content,
-        ),
-      ),
+    return LLCurrencyChip(
+      type: _type,
+      amount: amount,
+      onTap: onTap,
+      compact: compact,
     );
   }
 }

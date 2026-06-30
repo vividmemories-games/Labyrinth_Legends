@@ -34,7 +34,7 @@ Develop in dependency order. **Do not substantially expand lower-priority docume
 | 1 | [Vision](00_Project/Vision.md) | Draft — Pending Review (v2.0.0) |
 | 2 | [Game Loop](01_Game_Design/Game_Loop.md) · [WS1–WS5](01_Game_Design/Game_Loop/README.md) | Draft — v2.0.0 architecture, pending review |
 | 3 | [Gameplay](01_Game_Design/Gameplay.md) | Draft for Review — GP integration (v2.0.0) |
-| 4 | [LLDL](02_Design_System/LLDL.md) | Draft — Awaiting ChatGPT |
+| 4 | [LLDL](02_Design_System/LLDL.md) | Approved — WS0–WS11 architecture integration (v2.0.0) |
 | 5 | [Game Bible](01_Game_Design/Game_Bible.md) | Draft — Awaiting ChatGPT |
 
 ```mermaid

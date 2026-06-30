@@ -11,37 +11,57 @@ class LLIconButton extends StatelessWidget {
     this.onPressed,
     this.variant = LLIconButtonVariant.gold,
     this.tooltip,
+    this.semanticsLabel,
+    this.enabled = true,
   });
 
   final IconData icon;
   final VoidCallback? onPressed;
   final LLIconButtonVariant variant;
   final String? tooltip;
+  final String? semanticsLabel;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
+    final isInteractive = enabled && onPressed != null;
     final colors = _colorsFor(variant);
+    final label = semanticsLabel ?? tooltip;
+    assert(
+      !isInteractive || label != null,
+      'LLIconButton requires tooltip or semanticsLabel when interactive',
+    );
 
-    final button = Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onPressed,
-        borderRadius: LLRadius.mdBorder,
-        child: Ink(
-          width: LLSize.touchTarget,
-          height: LLSize.touchTarget,
-          decoration: BoxDecoration(
-            borderRadius: LLRadius.mdBorder,
-            color: colors.background,
-            border: Border.all(color: colors.border, width: LLSize.borderWidth),
+    final button = Opacity(
+      opacity: isInteractive ? 1 : 0.55,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: isInteractive ? onPressed : null,
+          borderRadius: LLRadius.mdBorder,
+          child: Ink(
+            width: LLSize.touchTarget,
+            height: LLSize.touchTarget,
+            decoration: BoxDecoration(
+              borderRadius: LLRadius.mdBorder,
+              color: colors.background,
+              border: Border.all(color: colors.border, width: LLSize.borderWidth),
+            ),
+            child: Icon(icon, color: colors.foreground, size: LLSize.iconMd),
           ),
-          child: Icon(icon, color: colors.foreground, size: LLSize.iconMd),
         ),
       ),
     );
 
-    if (tooltip == null) return button;
-    return Tooltip(message: tooltip!, child: button);
+    final semanticButton = Semantics(
+      button: true,
+      enabled: isInteractive,
+      label: label,
+      child: button,
+    );
+
+    if (tooltip == null) return semanticButton;
+    return Tooltip(message: tooltip!, child: semanticButton);
   }
 
   _IconButtonColors _colorsFor(LLIconButtonVariant variant) {

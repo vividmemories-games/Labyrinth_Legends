@@ -8,11 +8,13 @@ class LLCard extends StatelessWidget {
     required this.child,
     this.padding,
     this.onTap,
+    this.semanticsLabel,
   });
 
   final Widget child;
   final EdgeInsetsGeometry? padding;
   final VoidCallback? onTap;
+  final String? semanticsLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +28,18 @@ class LLCard extends StatelessWidget {
 
     if (onTap == null) return content;
 
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: LLRadius.cardBorder,
-        child: content,
+    return Semantics(
+      button: true,
+      enabled: true,
+      label: semanticsLabel,
+      excludeSemantics: semanticsLabel != null,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: LLRadius.cardBorder,
+          child: content,
+        ),
       ),
     );
   }
