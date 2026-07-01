@@ -22,7 +22,7 @@
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [AB1 — Production Standards](AB1_Production_Standards.md) | AB3 — UI & Brand Assets *(planned)* | [Asset Bible](README.md) · [Documentation Home](../README.md) |
+| [AB1 — Production Standards](AB1_Production_Standards.md) | [AB3 — UI & Brand Assets](AB3_UI_Brand_Assets.md) | [Asset Bible](README.md) · [Documentation Home](../README.md) |
 
 ---
 
@@ -736,8 +736,8 @@ AB2 — Game Assets records the following workshop conclusions for review:
 
 - [AB0 — Asset Philosophy](AB0_Asset_Philosophy_Production_Principles.md)
 - [AB1 — Production Standards](AB1_Production_Standards.md)
-- AB3 — UI & Brand Assets *(planned)*
-- AB4 — Marketing & Store Assets *(planned)*
+- [AB3 — UI & Brand Assets](AB3_UI_Brand_Assets.md)
+- [AB4 — Marketing & Store Assets](AB4_Marketing_Store_Assets.md)
 - AB5 — AI Production Pipeline *(planned)*
 - AB6 — Review & Asset Lifecycle *(planned)*
 - `Asset_Bible.md` *(planned — integration)*

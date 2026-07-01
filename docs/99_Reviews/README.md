@@ -163,8 +163,10 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0028 | [Design_System/0028_ab0_asset_philosophy.md](Design_System/0028_ab0_asset_philosophy.md) | Approved |
 | 0029 | [Design_System/0029_ab1_production_standards.md](Design_System/0029_ab1_production_standards.md) | Approved |
 | 0030 | [Design_System/0030_ab2_game_assets.md](Design_System/0030_ab2_game_assets.md) | Approved |
+| 0031 | [Design_System/0031_ab3_ui_brand_assets.md](Design_System/0031_ab3_ui_brand_assets.md) | Approved |
+| 0032 | [Design_System/0032_ab4_marketing_store_assets.md](Design_System/0032_ab4_marketing_store_assets.md) | Approved |
 
-**Next ID:** 0031
+**Next ID:** 0033
 
 ## Related Docs
 
