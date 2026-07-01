@@ -160,8 +160,11 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0025 | [Design_System/0025_tier3_downstream_accessibility_migration.md](Design_System/0025_tier3_downstream_accessibility_migration.md) | Approved |
 | 0026 | [Releases/0026_llds_repository_consistency_cleanup.md](Releases/0026_llds_repository_consistency_cleanup.md) | Ready for Review |
 | 0027 | [Design_System/0027_asset_bible_structure.md](Design_System/0027_asset_bible_structure.md) | Draft |
+| 0028 | [Design_System/0028_ab0_asset_philosophy.md](Design_System/0028_ab0_asset_philosophy.md) | Approved |
+| 0029 | [Design_System/0029_ab1_production_standards.md](Design_System/0029_ab1_production_standards.md) | Approved |
+| 0030 | [Design_System/0030_ab2_game_assets.md](Design_System/0030_ab2_game_assets.md) | Approved |
 
-**Next ID:** 0028
+**Next ID:** 0031
 
 ## Related Docs
 
