@@ -210,7 +210,7 @@ docs/06_Asset_Bible/README.md
 - **Verdict:** Approved (after status hygiene pass)
 - **Score:** 8.5/10
 - **Blocking Issues:** None — resolved in follow-up pass. AB2 system specification is sound; lifecycle states now aligned across `AB2_Game_Assets.md`, `06_Asset_Bible/README.md`, review package `0030`, and upstream AB0/AB1 Approved status. AB2 remains Approved — not Approved — Locked; lock order AB0 → AB1 → AB2 preserved.
-- **Recommendations:** Approve AB2 content. Human lock AB2 when ready; proceed to AB3 after lock.
+- **Recommendations:** Approve AB2 content. Final Codex re-check confirmed `docs/99_Reviews/README.md` lists `0030` as Approved and the Asset Bible index lists AB0/AB1/AB2 as Approved. Human lock AB2 when ready; proceed to AB3 after lock.
 
 ### ChatGPT Product Review
 
@@ -226,4 +226,3 @@ docs/06_Asset_Bible/README.md
 - **Date:**
 - **Verdict:**
 - **Notes:**
-
