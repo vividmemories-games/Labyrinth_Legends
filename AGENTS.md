@@ -18,7 +18,7 @@ The **Labyrinth Legends Documentation System (LLDS)** must stay up to date at al
 
 - Start at [`docs/README.md`](docs/README.md)
 - Product authority: [`docs/00_Project/Vision.md`](docs/00_Project/Vision.md)
-- Visual authority: [`docs/02_Design_System/LLDL.md`](docs/02_Design_System/LLDL.md)
+- Visual authority: [`docs/02_Design_System/LLDL/LLDL.md`](docs/02_Design_System/LLDL/LLDL.md)
 
 Do not treat documentation as optional.
 
@@ -49,7 +49,7 @@ Update the appropriate LLDS folder when changing:
 
 | Domain | Primary locations |
 |--------|-------------------|
-| Game design | `docs/01_Game_Design/` · [`Game_Loop.md`](docs/01_Game_Design/Game_Loop.md) · gameplay specs |
+| Game design | `docs/01_Game_Design/` · [`Game_Loop.md`](docs/01_Game_Design/Game_Loop/Game_Loop.md) · gameplay specs |
 | Visual / UX | `docs/02_Design_System/` · `docs/03_Screens/` |
 | Technical | `docs/04_Technical/` |
 | Product / governance | `docs/00_Project/` (`Decisions.md`, `Roadmap.md`) |
@@ -122,7 +122,7 @@ Read **only what the task requires**, but always start from the general list.
 ```text
 docs/README.md
 docs/00_Project/Vision.md
-docs/01_Game_Design/Game_Loop.md
+docs/01_Game_Design/Game_Loop/Game_Loop.md
 docs/00_Project/Decisions.md
 ```
 
@@ -132,7 +132,7 @@ docs/00_Project/Decisions.md
 
 ```text
 docs/00_Project/Vision.md
-docs/01_Game_Design/Game_Loop.md
+docs/01_Game_Design/Game_Loop/Game_Loop.md
 ```
 
 **Gameplay Core Specifications** (foundations — read for any gameplay task):
@@ -165,7 +165,7 @@ docs/01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md     (GP6)
 **Integration layer:**
 
 ```text
-docs/01_Game_Design/Gameplay.md
+docs/01_Game_Design/Gameplay/Gameplay.md
 ```
 
 Index: [`docs/01_Game_Design/Gameplay/README.md`](docs/01_Game_Design/Gameplay/README.md)
@@ -185,7 +185,7 @@ docs/02_Design_System/
 docs/03_Screens/
 ```
 
-Key entry: [`docs/02_Design_System/LLDL.md`](docs/02_Design_System/LLDL.md)
+Key entry: [`docs/02_Design_System/LLDL/LLDL.md`](docs/02_Design_System/LLDL/LLDL.md)
 
 ## AI Workflow
 
@@ -228,13 +228,13 @@ Implementation (lib/, test/)
 | Level | Path |
 |-------|------|
 | Vision | `docs/00_Project/Vision.md` |
-| Game Loop | `docs/01_Game_Design/Game_Loop.md` · WS1–WS5 workshops |
+| Game Loop | `docs/01_Game_Design/Game_Loop/Game_Loop.md` · WS1–WS5 workshops |
 | Gameplay Core | `Gameplay/GP1_Player_Explorer.md` (GP1) · `GP2_Movement_System.md` (GP2) · `GP7_Gameplay_Rules.md` (GP7) |
 | GP3 Puzzle Element Series | `Gameplay/GP3/` (GP3.1–GP3.5) |
 | GP3 Integration | `Gameplay/Puzzle_Elements.md` — integrates GP3.1–GP3.5; does not override them |
 | Gameplay Features | `Gameplay/GP4_Hazards_Failure.md` (GP4) · `GP5_Objectives_Completion.md` (GP5) · `GP6_Gameplay_Feedback.md` (GP6) |
-| Gameplay integration | `docs/01_Game_Design/Gameplay.md` |
-| Design system | `docs/02_Design_System/LLDL.md` · `Design_Tokens.md` · `Components.md` |
+| Gameplay integration | `docs/01_Game_Design/Gameplay/Gameplay.md` |
+| Design system | `docs/02_Design_System/LLDL/LLDL.md` · `Design_Tokens.md` · `Components.md` |
 | Screens | `docs/03_Screens/*` |
 | Technical | `docs/04_Technical/*` |
 
@@ -315,7 +315,7 @@ Puzzle_Elements.md integrates GP3.1–GP3.5.
 Gameplay.md integrates all gameplay documentation.
 ```
 
-No gameplay document may redefine [Vision](docs/00_Project/Vision.md) or [Game Loop](docs/01_Game_Design/Game_Loop.md) philosophy.
+No gameplay document may redefine [Vision](docs/00_Project/Vision.md) or [Game Loop](docs/01_Game_Design/Game_Loop/Game_Loop.md) philosophy.
 
 ---
 

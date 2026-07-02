@@ -32,9 +32,9 @@ Develop in dependency order. **Do not substantially expand lower-priority docume
 | # | Document | Status |
 |---|----------|--------|
 | 1 | [Vision](00_Project/Vision.md) | Approved — Locked (v2.1.0) |
-| 2 | [Game Loop](01_Game_Design/Game_Loop.md) · [WS1–WS5](01_Game_Design/Game_Loop/README.md) | Approved — Locked (v2.1.0) |
-| 3 | [Gameplay](01_Game_Design/Gameplay.md) | Approved — Locked (v2.1.0) |
-| 4 | [LLDL](02_Design_System/LLDL.md) | Approved — Locked (v2.0.0) |
+| 2 | [Game Loop](01_Game_Design/Game_Loop/Game_Loop.md) · [WS1–WS5](01_Game_Design/Game_Loop/README.md) | Approved — Locked (v2.1.0) |
+| 3 | [Gameplay](01_Game_Design/Gameplay/Gameplay.md) | Approved — Locked (v2.1.0) |
+| 4 | [LLDL](02_Design_System/LLDL/LLDL.md) | Approved — Locked (v2.0.0) |
 | 5 | [Game Bible](01_Game_Design/Game_Bible.md) | Draft — Future document |
 
 ```mermaid
@@ -85,9 +85,9 @@ If a conflict exists, **preserve the higher-authority document and report the co
 | I need to… | Read |
 |------------|------|
 | Understand the game | [Vision](00_Project/Vision.md), [Game Bible](01_Game_Design/Game_Bible.md) |
-| Build UI | [LLDL](02_Design_System/LLDL.md), [Components](02_Design_System/Components.md), relevant `03_Screens/` |
-| Produce assets | [Asset Bible](06_Asset_Bible/README.md) *(planned)*, [LLDL](02_Design_System/LLDL.md) |
-| Build engine | [Architecture](04_Technical/Architecture.md), [Gameplay](01_Game_Design/Gameplay.md), [Gameplay Specs (GP series)](01_Game_Design/Gameplay/README.md) |
+| Build UI | [LLDL](02_Design_System/LLDL/LLDL.md), [Components](02_Design_System/Components.md), relevant `03_Screens/` |
+| Produce assets | [Asset Bible](06_Asset_Bible/Asset_Bible.md), [LLDL](02_Design_System/LLDL/LLDL.md) |
+| Build engine | [Architecture](04_Technical/Architecture.md), [Gameplay](01_Game_Design/Gameplay/Gameplay.md), [Gameplay Specs (GP series)](01_Game_Design/Gameplay/README.md) |
 | Start a Cursor task | [Cursor Workflow](05_AI/Cursor/Workflow.md) |
 | Review a PR | [Codex Review Checklist](05_AI/Codex/Review_Checklist.md) |
 | Hand off a milestone | [99_Reviews](99_Reviews/README.md) |
@@ -125,7 +125,9 @@ Planned first-class artifacts not yet authored:
 
 | Document | Description | Authority |
 |----------|-------------|-----------|
-| [Asset Bible](06_Asset_Bible/README.md) · `Asset_Bible.md` | Production handbook for visual assets, icons, App Store artwork, marketing images, AI prompt libraries, export standards, naming conventions, and asset versioning. Workshop roadmap at `06_Asset_Bible/`; integration document not yet authored. Inherits from LLDL — does not redefine design philosophy. | LLDL.md → Asset_Bible.md → Production assets |
+| [Game Bible](01_Game_Design/Game_Bible.md) | Narrative and world detail integrated with Vision and Game Loop. | Vision.md → Game Bible |
+
+The **Asset Bible** is authored: workshops [AB0–AB6](06_Asset_Bible/README.md) are **Approved — Locked**; integration entry point is [Asset_Bible.md](06_Asset_Bible/Asset_Bible.md).
 
 ## Archive
 

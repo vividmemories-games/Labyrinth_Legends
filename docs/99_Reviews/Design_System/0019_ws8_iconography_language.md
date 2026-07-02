@@ -15,7 +15,7 @@
 | **Status**             | Draft                                                                                                |
 | **Review Type**        | Design System                                                                                        |
 | **Template Version**   | v2                                                                                                   |
-| **Related Docs**       | `docs/02_Design_System/LLDL/WS8_Iconography_Language.md` · WS0–WS7 · `docs/02_Design_System/LLDL.md` |
+| **Related Docs**       | `docs/02_Design_System/LLDL/WS8_Iconography_Language.md` · WS0–WS7 · `docs/02_Design_System/LLDL/LLDL.md` |
 | **Related Screens**    | N/A — iconography authority document                                                                 |
 | **Related Components** | N/A                                                                                                  |
 
@@ -42,7 +42,7 @@ docs/99_Reviews/Design_System/0019_ws8_iconography_language.md
 ## Files Modified
 
 ```text
-docs/02_Design_System/LLDL.md — WS8 authority, stack, dependencies
+docs/02_Design_System/LLDL/LLDL.md — WS8 authority, stack, dependencies
 docs/02_Design_System/LLDL/WS7_Typography_Language.md — navigation Next → WS8
 docs/99_Reviews/README.md — index (via script)
 ```
@@ -124,7 +124,7 @@ docs/99_Reviews/README.md — index (via script)
 
 ```text
 docs/02_Design_System/LLDL/WS8_Iconography_Language.md
-docs/02_Design_System/LLDL.md
+docs/02_Design_System/LLDL/LLDL.md
 docs/02_Design_System/LLDL/WS7_Typography_Language.md
 docs/99_Reviews/Design_System/0019_ws8_iconography_language.md
 docs/99_Reviews/README.md
@@ -198,7 +198,7 @@ docs/99_Reviews/README.md
 ## Ready For
 
 - [x] Codex Engineering Review
-- [ ] ChatGPT Product Review
+- [x] ChatGPT Product Review
 - [x] Human Approval
 
 ---
@@ -227,3 +227,4 @@ docs/99_Reviews/README.md
 - **Date:**
 - **Verdict:**
 - **Notes:**
+

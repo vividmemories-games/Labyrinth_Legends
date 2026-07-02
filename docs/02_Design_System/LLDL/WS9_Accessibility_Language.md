@@ -14,13 +14,13 @@
 | **Workshop** | WS9 — Accessibility Language |
 | **Path** | `docs/02_Design_System/LLDL/WS9_Accessibility_Language.md` |
 | **Dependencies** | [Vision](../../00_Project/Vision.md) · [WS0 — Design Philosophy](WS0_Design_Philosophy.md) · [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) · [WS2 — Color Language](WS2_Color_Language.md) · [WS3 — Environment Language](WS3_Environment_Language.md) · [WS4 — UI Language](WS4_UI_Language.md) · [WS5 — Motion Language](WS5_Motion_Language.md) · [WS6 — Audio Language](WS6_Audio_Language.md) · [WS7 — Typography Language](WS7_Typography_Language.md) · [WS8 — Iconography Language](WS8_Iconography_Language.md) |
-| **Related Documents** | [LLDL](../LLDL.md) · [Accessibility](../Accessibility.md) · `docs/03_Screens/*` |
+| **Related Documents** | [LLDL](LLDL.md) · [Accessibility](../Accessibility.md) · `docs/03_Screens/*` |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS8 — Iconography Language](WS8_Iconography_Language.md) | [WS10 — Design Tokens Language](WS10_Design_Tokens_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS8 — Iconography Language](WS8_Iconography_Language.md) | [WS10 — Design Tokens Language](WS10_Design_Tokens_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |
 
 ---
 
@@ -770,14 +770,14 @@ Freeze workshop outcomes before technical accessibility guides and settings spec
 
 - [WS9 — Accessibility Language](WS9_Accessibility_Language.md) — Accessibility authority
 - [WS10 — Design Tokens Language](WS10_Design_Tokens_Language.md) — Design tokens authority
-- [LLDL](../LLDL.md) — Design language specification
+- [LLDL](LLDL.md) — Design language specification
 - [Accessibility](../Accessibility.md) — Technical accessibility guidance
 - [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md)
 - `docs/03_Screens/*` — Per-screen specifications
 
 ### Gameplay alignment
 
-- [Gameplay](../../01_Game_Design/Gameplay.md) · [GP4 Hazards & Failure](../../01_Game_Design/Gameplay/GP4_Hazards_Failure.md) · [GP6 Gameplay Feedback](../../01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md) · [GP7 Gameplay Rules](../../01_Game_Design/Gameplay/GP7_Gameplay_Rules.md)
+- [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) · [GP4 Hazards & Failure](../../01_Game_Design/Gameplay/GP4_Hazards_Failure.md) · [GP6 Gameplay Feedback](../../01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md) · [GP7 Gameplay Rules](../../01_Game_Design/Gameplay/GP7_Gameplay_Rules.md)
 
 ### Governance
 
@@ -790,4 +790,4 @@ Freeze workshop outcomes before technical accessibility guides and settings spec
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS8 — Iconography Language](WS8_Iconography_Language.md) | [WS10 — Design Tokens Language](WS10_Design_Tokens_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS8 — Iconography Language](WS8_Iconography_Language.md) | [WS10 — Design Tokens Language](WS10_Design_Tokens_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |

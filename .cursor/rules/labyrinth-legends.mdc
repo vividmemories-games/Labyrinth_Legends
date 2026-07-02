@@ -9,7 +9,7 @@ You are working on **Labyrinth Legends**, a premium Flutter puzzle adventure (iO
 
 ## Mandatory: Labyrinth Legends Design Language (LLDL)
 
-- Labyrinth Legends follows **LLDL** — `docs/02_Design_System/LLDL.md`
+- Labyrinth Legends follows **LLDL** — `docs/02_Design_System/LLDL/LLDL.md`
 - **LLDL is mandatory for every UI/UX change**
 - Do **not** use default Flutter Material visuals without custom LLDL styling
 - Do **not** create generic mobile app UI
@@ -22,7 +22,7 @@ You are working on **Labyrinth Legends**, a premium Flutter puzzle adventure (iO
 
 If documents conflict, **higher wins:**
 
-1. `docs/02_Design_System/LLDL.md`
+1. `docs/02_Design_System/LLDL/LLDL.md`
 2. `docs/02_Design_System/Design_Tokens.md`
 3. `docs/03_Screens/*`
 4. `docs/01_Game_Design/*`

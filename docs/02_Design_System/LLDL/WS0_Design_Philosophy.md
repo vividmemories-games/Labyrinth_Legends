@@ -13,14 +13,14 @@
 | **Last Updated** | 2026-06-29 |
 | **Workshop** | WS0 — Design Philosophy |
 | **Path** | `docs/02_Design_System/LLDL/WS0_Design_Philosophy.md` |
-| **Dependencies** | [Vision](../../00_Project/Vision.md) · [Gameplay](../../01_Game_Design/Gameplay.md) |
-| **Related Documents** | [LLDL](../LLDL.md) · [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md) · [Game Bible](../../01_Game_Design/Game_Bible.md) · [Gameplay](../../01_Game_Design/Gameplay.md) |
+| **Dependencies** | [Vision](../../00_Project/Vision.md) · [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) |
+| **Related Documents** | [LLDL](LLDL.md) · [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md) · [Game Bible](../../01_Game_Design/Game_Bible.md) · [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [Gameplay](../../01_Game_Design/Gameplay.md) | [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) | [Documentation Home](../../README.md) · [Design System](../LLDL.md) |
+| [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) | [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) | [Documentation Home](../../README.md) · [Design System](LLDL.md) |
 
 ---
 
@@ -45,14 +45,14 @@
 | Conflict type | Authority |
 |---------------|-----------|
 | Design philosophy (why the game should look and feel as it does) | **WS0 wins** |
-| Visual and UX execution detail | [LLDL](../LLDL.md) wins — must align with WS0 |
+| Visual and UX execution detail | [LLDL](LLDL.md) wins — must align with WS0 |
 | Token values and component APIs | [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md) — must align with LLDL and WS0 |
 | Product intent (genre, pillars, audience, non-goals) | [Vision](../../00_Project/Vision.md) wins |
-| Mechanical rules | [Gameplay](../../01_Game_Design/Gameplay.md) wins — presentation must support, never contradict |
+| Mechanical rules | [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) wins — presentation must support, never contradict |
 
 When any design document conflicts with WS0 on **philosophical intent**, WS0 overrides until [Decisions](../../00_Project/Decisions.md) records an explicit, Human-approved exception.
 
-WS0 defines *why* the visual language exists. [LLDL](../LLDL.md) defines *how* that language is expressed. Downstream documents inherit both.
+WS0 defines *why* the visual language exists. [LLDL](LLDL.md) defines *how* that language is expressed. Downstream documents inherit both.
 
 ---
 
@@ -294,7 +294,7 @@ The core gameplay model — study, plan, commit, witness consequence — imposes
 - Support hazard fairness through readable danger language
 - Celebrate mastery through thematic marks, not generic scoring spectacle
 
-Mechanical authority remains in [Gameplay](../../01_Game_Design/Gameplay.md). WS0 defines how presentation **honors** those mechanics.
+Mechanical authority remains in [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md). WS0 defines how presentation **honors** those mechanics.
 
 ### Design Intent
 
@@ -464,7 +464,7 @@ Lower layers may extend upper layers. They may not silently redefine them.
 Any proposal that introduces a new visual dialect — a new primary color role, a new material family, a new interface metaphor — requires:
 
 1. Mapping to WS0 pillars
-2. Review against [LLDL](../LLDL.md)
+2. Review against [LLDL](LLDL.md)
 3. Human approval
 4. [Decisions](../../00_Project/Decisions.md) entry if material
 
@@ -572,7 +572,7 @@ Clarity requires boundaries. WS0 explicitly excludes the following misinterpreta
 | A UI layout specification | Screen structure lives in `docs/03_Screens/*` |
 | An art production checklist | Production planning is out of scope |
 | A shader or rendering guide | Technical implementation is out of scope |
-| A puzzle or level design document | Mechanics live in [Gameplay](../../01_Game_Design/Gameplay.md) |
+| A puzzle or level design document | Mechanics live in [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) |
 | A marketing copy deck | WS0 informs brand; it does not write campaigns |
 | A license to add visual complexity | Philosophy demands restraint |
 | A trend board | Identity is stable, not seasonal |
@@ -609,7 +609,7 @@ Labyrinth Legends presents a **premium archaeological puzzle-adventure** through
 
 Every artist, designer, and reviewer who inherits this document shares one obligation: **make the ruin feel real, the interface feel inscribed, and the player's intelligence feel honored.**
 
-Downstream specification begins at [LLDL](../LLDL.md).
+Downstream specification begins at [LLDL](LLDL.md).
 
 ---
 
@@ -641,12 +641,12 @@ Freeze workshop outcomes so future LLDL expansion does not reopen settled philos
 ### Upstream
 
 - [Vision](../../00_Project/Vision.md) — Product intent and player fantasy
-- [Gameplay](../../01_Game_Design/Gameplay.md) — Mechanical contract presentation must support
+- [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) — Mechanical contract presentation must support
 
 ### Downstream (LLDL stack)
 
 - [WS1 — Visual Identity & Artistic Direction](WS1_Visual_Identity_Artistic_Direction.md) — Artistic identity authority
-- [LLDL](../LLDL.md) — Design language specification
+- [LLDL](LLDL.md) — Design language specification
 - [Design_Tokens](../Design_Tokens.md) — Canonical values
 - [Components](../Components.md) — Reusable UI catalog
 - [Colors](../Colors.md) · [Typography](../Typography.md) · [Animations](../Animations.md) · [Effects](../Effects.md) · [Icons](../Icons.md) · [Accessibility](../Accessibility.md) · [Audio](../Audio.md)
@@ -662,4 +662,4 @@ Freeze workshop outcomes so future LLDL expansion does not reopen settled philos
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [Gameplay](../../01_Game_Design/Gameplay.md) | [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) | [Documentation Home](../../README.md) · [Design System](../LLDL.md) |
+| [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) | [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) | [Documentation Home](../../README.md) · [Design System](LLDL.md) |

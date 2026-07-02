@@ -10,7 +10,7 @@
 | **Owner** | Cursor |
 | **Status** | Ready for Review |
 | **Review Type** | Screen |
-| **Related Docs** | `docs/03_Screens/Home.md`, `docs/02_Design_System/LLDL.md` |
+| **Related Docs** | `docs/03_Screens/Home.md`, `docs/02_Design_System/LLDL/LLDL.md` |
 | **Related Screens** | Home |
 | **Related Components** | LLScreenBackground, LLTopBar, LLPanel, LLButton, LLCurrencyChip, LLSection |
 

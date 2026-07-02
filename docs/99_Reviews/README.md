@@ -160,8 +160,18 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0025 | [Design_System/0025_tier3_downstream_accessibility_migration.md](Design_System/0025_tier3_downstream_accessibility_migration.md) | Approved |
 | 0026 | [Releases/0026_llds_repository_consistency_cleanup.md](Releases/0026_llds_repository_consistency_cleanup.md) | Ready for Review |
 | 0027 | [Design_System/0027_asset_bible_structure.md](Design_System/0027_asset_bible_structure.md) | Draft |
+| 0028 | [Design_System/0028_ab0_asset_philosophy.md](Design_System/0028_ab0_asset_philosophy.md) | Approved |
+| 0029 | [Design_System/0029_ab1_production_standards.md](Design_System/0029_ab1_production_standards.md) | Approved |
+| 0030 | [Design_System/0030_ab2_game_assets.md](Design_System/0030_ab2_game_assets.md) | Approved |
+| 0031 | [Design_System/0031_ab3_ui_brand_assets.md](Design_System/0031_ab3_ui_brand_assets.md) | Approved |
+| 0032 | [Design_System/0032_ab4_marketing_store_assets.md](Design_System/0032_ab4_marketing_store_assets.md) | Approved |
+| 0033 | [Design_System/0033_ab5_ai_production_pipeline.md](Design_System/0033_ab5_ai_production_pipeline.md) | Approved |
+| 0034 | [Design_System/0034_ab6_review_asset_lifecycle.md](Design_System/0034_ab6_review_asset_lifecycle.md) | Approved |
+| 0035 | [Design_System/0035_asset_bible_integration.md](Design_System/0035_asset_bible_integration.md) | Approved |
+| 0036 | [Releases/0036_docs_hygiene_audit.md](Releases/0036_docs_hygiene_audit.md) | Approved |
+| 0037 | [Gameplay/0037_puzzle_elements_integration.md](Gameplay/0037_puzzle_elements_integration.md) | Ready for Review |
 
-**Next ID:** 0028
+**Next ID:** 0038
 
 ## Related Docs
 

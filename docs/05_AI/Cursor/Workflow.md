@@ -10,7 +10,7 @@
 
 When documents conflict, **higher wins:**
 
-1. `docs/02_Design_System/LLDL.md`
+1. `docs/02_Design_System/LLDL/LLDL.md`
 2. `docs/02_Design_System/Design_Tokens.md`
 3. `docs/03_Screens/*`
 4. `docs/01_Game_Design/*`

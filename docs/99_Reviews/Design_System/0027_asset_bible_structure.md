@@ -5,18 +5,20 @@
 
 ## Metadata
 
-| Field | Value |
-|-------|-------|
-| **Review ID** | 0027 |
-| **Date** | 2026-06-30 |
-| **Phase** | Asset Bible — Structure Scaffold |
-| **Owner** | Cursor |
-| **Status** | Ready for Review |
-| **Review Type** | Design System |
-| **Template Version** | v2 |
-| **Related Docs** | `docs/06_Asset_Bible/README.md` · `docs/README.md` · `docs/02_Design_System/LLDL.md` · `docs/00_Project/Vision.md` |
-| **Related Screens** | N/A — documentation scaffold only |
-| **Related Components** | N/A |
+
+| Field                  | Value                                                                                                              |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Review ID**          | 0027                                                                                                               |
+| **Date**               | 2026-06-30                                                                                                         |
+| **Phase**              | Asset Bible — Structure Scaffold                                                                                   |
+| **Owner**              | Cursor                                                                                                             |
+| **Status**             | Ready for Review                                                                                                   |
+| **Review Type**        | Design System                                                                                                      |
+| **Template Version**   | v2                                                                                                                 |
+| **Related Docs**       | `docs/06_Asset_Bible/README.md` · `docs/README.md` · `docs/02_Design_System/LLDL/LLDL.md` · `docs/00_Project/Vision.md` |
+| **Related Screens**    | N/A — documentation scaffold only                                                                                  |
+| **Related Components** | N/A                                                                                                                |
+
 
 ## Task Summary
 
@@ -52,21 +54,23 @@ docs/99_Reviews/README.md — index entry (via script)
 
 ## Risk Assessment
 
-| Field | Value |
-|-------|-------|
-| **Risk Level** | Low |
-| **Affected Areas** | LLDS documentation structure and navigation only |
-| **Rollback Complexity** | Low — remove folder and revert README changes |
-| **Migration Required** | No |
-| **User-Facing Impact** | No — documentation scaffold only |
+
+| Field                   | Value                                            |
+| ----------------------- | ------------------------------------------------ |
+| **Risk Level**          | Low                                              |
+| **Affected Areas**      | LLDS documentation structure and navigation only |
+| **Rollback Complexity** | Low — remove folder and revert README changes    |
+| **Migration Required**  | No                                               |
+| **User-Facing Impact**  | No — documentation scaffold only                 |
+
 
 ## Dependencies
 
 ### Depends On
 
 - [Vision.md](../../00_Project/Vision.md) — product intent referenced in authority hierarchy
-- [Gameplay.md](../../01_Game_Design/Gameplay.md) — mechanical meaning referenced, not redefined
-- [LLDL.md](../../02_Design_System/LLDL.md) — parent visual authority; Asset Bible inherits from LLDL
+- [Gameplay.md](../../01_Game_Design/Gameplay/Gameplay.md) — mechanical meaning referenced, not redefined
+- [LLDL.md](../../02_Design_System/LLDL/LLDL.md) — parent visual authority; Asset Bible inherits from LLDL
 
 ### Enables
 
@@ -81,13 +85,15 @@ docs/99_Reviews/README.md — index entry (via script)
 
 ## Product Impact
 
-| Area | Impact |
-|------|--------|
-| **Player-facing** | No |
-| **Visual impact** | None — roadmap only; no assets or standards defined |
-| **UX impact** | None |
-| **Performance impact** | None |
+
+| Area                            | Impact                                                                             |
+| ------------------------------- | ---------------------------------------------------------------------------------- |
+| **Player-facing**               | No                                                                                 |
+| **Visual impact**               | None — roadmap only; no assets or standards defined                                |
+| **UX impact**                   | None                                                                               |
+| **Performance impact**          | None                                                                               |
 | **Developer experience impact** | Medium — clear navigation and authority hierarchy for future asset production work |
+
 
 ## Design System Impact
 
@@ -125,9 +131,11 @@ docs/README.md — LLDS structure index updated with 06_Asset_Bible/
 
 ## Screenshots / Visual Evidence
 
-| Screen | Path or description |
-|--------|---------------------|
-| N/A | Documentation scaffold only — no UI changes |
+
+| Screen | Path or description                         |
+| ------ | ------------------------------------------- |
+| N/A    | Documentation scaffold only — no UI changes |
+
 
 ## Commands Run
 
@@ -137,10 +145,12 @@ docs/README.md — LLDS structure index updated with 06_Asset_Bible/
 
 ## Test / Analyze Results
 
-| Command | Result |
-|---------|--------|
-| `flutter test` | N/A — documentation-only change |
-| `flutter analyze` | N/A — no code changed |
+
+| Command           | Result                          |
+| ----------------- | ------------------------------- |
+| `flutter test`    | N/A — documentation-only change |
+| `flutter analyze` | N/A — no code changed           |
+
 
 ## Known Issues
 
@@ -209,3 +219,4 @@ Complete **AB0 — Asset Philosophy & Production Principles** workshop document 
 - **Date:**
 - **Verdict:**
 - **Notes:**
+

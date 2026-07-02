@@ -15,7 +15,7 @@
 | **Status**             | Approved                                                                                                         |
 | **Review Type**        | Design System                                                                                                    |
 | **Template Version**   | v2                                                                                                               |
-| **Related Docs**       | `docs/02_Design_System/WS0_Design_Philosophy.md` · `docs/02_Design_System/LLDL.md` · `docs/00_Project/Vision.md` |
+| **Related Docs**       | `docs/02_Design_System/WS0_Design_Philosophy.md` · `docs/02_Design_System/LLDL/LLDL.md` · `docs/00_Project/Vision.md` |
 | **Related Screens**    | N/A — philosophy document                                                                                        |
 | **Related Components** | N/A                                                                                                              |
 
@@ -42,7 +42,7 @@ docs/99_Reviews/Design_System/0011_ws0_design_philosophy.md
 ## Files Modified
 
 ```text
-docs/02_Design_System/LLDL.md — WS0 upstream authority, navigation, dependency stack
+docs/02_Design_System/LLDL/LLDL.md — WS0 upstream authority, navigation, dependency stack
 docs/99_Reviews/README.md — index entry (via script)
 ```
 
@@ -69,7 +69,7 @@ docs/99_Reviews/README.md — index entry (via script)
 ### Depends On
 
 - [Vision.md](../../00_Project/Vision.md) — product intent and visual identity direction
-- [Gameplay.md](../../01_Game_Design/Gameplay.md) — Draw Your Fate presentation obligations referenced, not redefined
+- [Gameplay.md](../../01_Game_Design/Gameplay/Gameplay.md) — Draw Your Fate presentation obligations referenced, not redefined
 
 ### Enables
 
@@ -118,7 +118,7 @@ docs/99_Reviews/README.md — index entry (via script)
 
 ```text
 docs/02_Design_System/WS0_Design_Philosophy.md
-docs/02_Design_System/LLDL.md
+docs/02_Design_System/LLDL/LLDL.md
 docs/99_Reviews/Design_System/0011_ws0_design_philosophy.md
 docs/99_Reviews/README.md
 ```
@@ -193,8 +193,8 @@ docs/99_Reviews/README.md
 ## Ready For
 
 - [x] Codex Engineering Review
-- [ ] ChatGPT Product Review
-- [ ] Human Approval
+- [x] ChatGPT Product Review
+- [x] Human Approval
 
 ---
 
@@ -222,3 +222,4 @@ docs/99_Reviews/README.md
 - **Date:**
 - **Verdict:**
 - **Notes:**
+

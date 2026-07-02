@@ -8,7 +8,7 @@ Workshop outputs for session and loop design under `docs/01_Game_Design/Game_Loo
 
 | Document | Scope |
 |----------|-------|
-| [Game Loop](../Game_Loop.md) | **Consolidated architecture** — how WS1–WS5 connect (primary player-flow reference) |
+| [Game Loop](Game_Loop.md) | **Consolidated architecture** — how WS1–WS5 connect (primary player-flow reference) |
 
 ## Workshop Index
 
@@ -20,7 +20,7 @@ Workshop outputs for session and loop design under `docs/01_Game_Design/Game_Loo
 | **WS4** | [WS4_Completion_Loop.md](WS4_Completion_Loop.md) | Approved | Completion loop — milestone closure, optional mastery, end-of-world experience |
 | **WS5** | [WS5_Retention_Loop.md](WS5_Retention_Loop.md) | Approved | Retention loop — voluntary long-term return, trust, post-completion engagement |
 
-> **Series status:** WS1–WS5 approved at philosophy layer. Implementation lives in downstream docs ([Gameplay](../Gameplay.md), [Progression](../Progression.md), [LiveOps](../LiveOps.md), etc.).
+> **Series status:** WS1–WS5 approved at philosophy layer. Implementation lives in downstream docs ([Gameplay](../Gameplay/Gameplay.md), [Progression](../Progression.md), [LiveOps](../LiveOps.md), etc.).
 
 ## Workshop Stack
 

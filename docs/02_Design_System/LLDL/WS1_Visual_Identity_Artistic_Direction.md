@@ -14,13 +14,13 @@
 | **Workshop** | WS1 — Visual Identity & Artistic Direction |
 | **Path** | `docs/02_Design_System/LLDL/WS1_Visual_Identity_Artistic_Direction.md` |
 | **Dependencies** | [Vision](../../00_Project/Vision.md) · [WS0 — Design Philosophy](WS0_Design_Philosophy.md) |
-| **Related Documents** | [LLDL](../LLDL.md) · [Colors](../Colors.md) · [Game Bible](../../01_Game_Design/Game_Bible.md) |
+| **Related Documents** | [LLDL](LLDL.md) · [Colors](../Colors.md) · [Game Bible](../../01_Game_Design/Game_Bible.md) |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS0 — Design Philosophy](WS0_Design_Philosophy.md) | [WS2 — Color Language](WS2_Color_Language.md) | [Documentation Home](../../README.md) · [Design System](../LLDL.md) |
+| [WS0 — Design Philosophy](WS0_Design_Philosophy.md) | [WS2 — Color Language](WS2_Color_Language.md) | [Documentation Home](../../README.md) · [Design System](LLDL.md) |
 
 ---
 
@@ -48,7 +48,7 @@
 | Design philosophy (why the game should look and feel as it does) | [WS0 — Design Philosophy](WS0_Design_Philosophy.md) wins |
 | Artistic identity (what the game should look like) | **WS1 wins** |
 | Color language, environment language, UI language, motion language (future specs) | Must align with WS1 — WS1 wins on identity conflict |
-| Token values and component APIs | [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md) — must align with WS1 and [LLDL](../LLDL.md) |
+| Token values and component APIs | [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md) — must align with WS1 and [LLDL](LLDL.md) |
 
 WS1 extends [WS0](WS0_Design_Philosophy.md). It does not override WS0 pillars or [Vision](../../00_Project/Vision.md) product intent. When artistic execution conflicts with WS0 philosophical intent, WS0 prevails until [Decisions](../../00_Project/Decisions.md) records an explicit, Human-approved exception.
 
@@ -719,7 +719,7 @@ Lower layers extend upper layers. They do not silently redefine them.
 
 ### Change Control
 
-New motif families, material classes, or silhouette dialects require WS1 alignment review, [LLDL](../LLDL.md) check, Human approval, and [Decisions](../../00_Project/Decisions.md) entry if material.
+New motif families, material classes, or silhouette dialects require WS1 alignment review, [LLDL](LLDL.md) check, Human approval, and [Decisions](../../00_Project/Decisions.md) entry if material.
 
 ### Design Intent
 
@@ -808,7 +808,7 @@ Labyrinth Legends looks like **forgotten temples where inscribed architecture an
 
 Every artist working on this project shares one obligation: **build a ruin that feels real, legible, and unmistakably ours.**
 
-Downstream specification of color roles, environment modules, and interface language begins after WS1 approval — starting with [LLDL](../LLDL.md) and future LLDL workshop documents.
+Downstream specification of color roles, environment modules, and interface language begins after WS1 approval — starting with [LLDL](LLDL.md) and future LLDL workshop documents.
 
 ---
 
@@ -845,7 +845,7 @@ Freeze workshop outcomes so downstream artistic specifications do not reopen ide
 ### Sibling & Downstream (LLDL stack)
 
 - [WS2 — Color Language](WS2_Color_Language.md) — Color authority
-- [LLDL](../LLDL.md) — Design language specification
+- [LLDL](LLDL.md) — Design language specification
 - [Colors](../Colors.md) — Extended color guidance (future sync with WS1)
 - [Typography](../Typography.md) · [Animations](../Animations.md) · [Effects](../Effects.md) · [Icons](../Icons.md) · [Audio](../Audio.md)
 - [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md) · [Accessibility](../Accessibility.md)
@@ -865,4 +865,4 @@ Freeze workshop outcomes so downstream artistic specifications do not reopen ide
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS0 — Design Philosophy](WS0_Design_Philosophy.md) | [WS2 — Color Language](WS2_Color_Language.md) | [Documentation Home](../../README.md) · [Design System](../LLDL.md) |
+| [WS0 — Design Philosophy](WS0_Design_Philosophy.md) | [WS2 — Color Language](WS2_Color_Language.md) | [Documentation Home](../../README.md) · [Design System](LLDL.md) |

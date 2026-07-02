@@ -13,7 +13,7 @@
 | **Last Updated**      | 2026-06-28                                                                                                                                                     |
 | **Workshop**          | WS1 — Core Gameplay Loop                                                                                                                                       |
 | **Dependencies**      | [Vision](../../00_Project/Vision.md)                                                                                                                           |
-| **Related Documents** | [Game Loop](../Game_Loop.md) · [WS2–WS5](README.md) · [Gameplay](../Gameplay.md) · [Game Bible](../Game_Bible.md) · [Decisions](../../00_Project/Decisions.md) |
+| **Related Documents** | [Game Loop](Game_Loop.md) · [WS2–WS5](README.md) · [Gameplay](../Gameplay/Gameplay.md) · [Game Bible](../Game_Bible.md) · [Decisions](../../00_Project/Decisions.md) |
 
 
 ## Navigation
@@ -50,7 +50,7 @@ This document records the **approved decisions from WS1 — Core Gameplay Loop W
 
 [Vision](../../00_Project/Vision.md) explains *why* the game exists. **WS1 explains what the player does every few seconds** — observe, plan, draw, confirm, execute, evaluate, and learn.
 
-Mechanical rules belong in [Gameplay](../Gameplay.md). Session and meta flow belong in [Game Loop](../Game_Loop.md). Narrative framing belongs in [Game Bible](../Game_Bible.md).
+Mechanical rules belong in [Gameplay](../Gameplay/Gameplay.md). Session and meta flow belong in [Game Loop](Game_Loop.md). Narrative framing belongs in [Game Bible](../Game_Bible.md).
 
 ## Intended Audience
 
@@ -182,7 +182,7 @@ This loop converts spatial reasoning into drama: the player thinks like a planne
 
 ### Design Intent
 
-Lock the eight-phase loop as the canonical micro-experience. [Gameplay](../Gameplay.md) will specify rules; this document specifies the **rhythm of play**.
+Lock the eight-phase loop as the canonical micro-experience. [Gameplay](../Gameplay/Gameplay.md) will specify rules; this document specifies the **rhythm of play**.
 
 ---
 
@@ -426,7 +426,7 @@ Use this table as a regression test when reviewing new mechanics or level types.
 | **Hidden information**       | Player cannot form a fair plan               | Distinguish mystery from opacity; reveal through observation and earned discovery |
 | **Trial-and-error gameplay** | Success requires guessing, not planning      | Ensure failures are instructive; clues must be learnable                          |
 | **Loss of player agency**    | Systems override drawn plans without consent | Player chooses route; automation only after confirm                               |
-| **Visual clutter**           | Presentation obscures rules                  | Readability principle; detail in [LLDL](../../02_Design_System/LLDL.md)           |
+| **Visual clutter**           | Presentation obscures rules                  | Readability principle; detail in [LLDL](../../02_Design_System/LLDL/LLDL.md)           |
 
 
 ### Monitoring
@@ -456,11 +456,11 @@ During WS2–WS5 and level authoring, flag any feature that increases these risk
 | Topic                                   | Target workshop / document                                                                 |
 | --------------------------------------- | ------------------------------------------------------------------------------------------ |
 | Session structure and pacing            | WS2 · [WS2 — Session Loop](WS2_Session_Loop.md)                                            |
-| Tile types and interactions             | [Mechanics](../Mechanics.md) · [Gameplay](../Gameplay.md)                                  |
+| Tile types and interactions             | [Mechanics](../Mechanics.md) · [Gameplay](../Gameplay/Gameplay.md)                                  |
 | Discovery and fog rules                 | WS3+ / dedicated workshop TBD                                                              |
-| Presentation and phase UX               | [LLDL](../../02_Design_System/LLDL.md) · screen specs                                      |
+| Presentation and phase UX               | [LLDL](../../02_Design_System/LLDL/LLDL.md) · screen specs                                      |
 | Meta progression between puzzles        | WS3 · [WS3 — Progression Loop](WS3_Progression_Loop.md) · [Progression](../Progression.md) |
-| Input affordances and validation detail | [Gameplay](../Gameplay.md)                                                                 |
+| Input affordances and validation detail | [Gameplay](../Gameplay/Gameplay.md)                                                                 |
 
 
 ### Open Questions
@@ -478,9 +478,9 @@ During WS2–WS5 and level authoring, flag any feature that increases these risk
 ## Cross References
 
 - Upstream: [Vision](../../00_Project/Vision.md)
-- Parent: [Game Loop](../Game_Loop.md)
+- Parent: [Game Loop](Game_Loop.md)
 - Siblings: [WS2 — Session Loop](WS2_Session_Loop.md), [WS3 — Progression Loop](WS3_Progression_Loop.md), [WS4 — Completion Loop](WS4_Completion_Loop.md), [WS5 — Retention Loop](WS5_Retention_Loop.md)
-- Downstream: [Gameplay](../Gameplay.md), [Mechanics](../Mechanics.md)
+- Downstream: [Gameplay](../Gameplay/Gameplay.md), [Mechanics](../Mechanics.md)
 - Governance: [Decisions](../../00_Project/Decisions.md)
 
 ---

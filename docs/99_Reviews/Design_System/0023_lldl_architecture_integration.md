@@ -14,7 +14,7 @@
 | **Status** | Approved |
 | **Review Type** | Design System |
 | **Template Version** | v2 |
-| **Related Docs** | `docs/02_Design_System/LLDL.md` · WS0–WS11 · `docs/01_Game_Design/Gameplay.md` |
+| **Related Docs** | `docs/02_Design_System/LLDL/LLDL.md` · WS0–WS11 · `docs/01_Game_Design/Gameplay/Gameplay.md` |
 | **Related Screens** | N/A — architecture integration document |
 | **Related Components** | N/A — governance precedes implementation |
 
@@ -39,7 +39,7 @@ docs/99_Reviews/Design_System/0023_lldl_architecture_integration.md
 ## Files Modified
 
 ```text
-docs/02_Design_System/LLDL.md — full rewrite v2.0.0 architecture integration document
+docs/02_Design_System/LLDL/LLDL.md — full rewrite v2.0.0 architecture integration document
 docs/99_Reviews/README.md — index (via script)
 ```
 
@@ -64,7 +64,7 @@ docs/99_Reviews/README.md — index (via script)
 ### Depends On
 
 - [Vision.md](../../00_Project/Vision.md) — product intent authority
-- [Gameplay.md](../../01_Game_Design/Gameplay.md) — complementary architecture reference
+- [Gameplay.md](../../01_Game_Design/Gameplay/Gameplay.md) — complementary architecture reference
 - WS0–WS11 workshop series — indexed authorities
 
 ### Enables
@@ -109,7 +109,7 @@ docs/99_Reviews/README.md — index (via script)
 ## Documentation Updated
 
 ```text
-docs/02_Design_System/LLDL.md — v2.0.0 architecture integration
+docs/02_Design_System/LLDL/LLDL.md — v2.0.0 architecture integration
 docs/02_Design_System/LLDL/WS4_UI_Language.md — Approved
 docs/02_Design_System/LLDL/WS9_Accessibility_Language.md — Approved
 docs/02_Design_System/LLDL/WS10_Design_Tokens_Language.md — Approved

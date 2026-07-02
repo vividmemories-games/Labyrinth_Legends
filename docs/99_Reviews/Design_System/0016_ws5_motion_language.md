@@ -15,7 +15,7 @@
 | **Status**             | Draft                                                                                           |
 | **Review Type**        | Design System                                                                                   |
 | **Template Version**   | v2                                                                                              |
-| **Related Docs**       | `docs/02_Design_System/LLDL/WS5_Motion_Language.md` · WS0–WS4 · `docs/02_Design_System/LLDL.md` |
+| **Related Docs**       | `docs/02_Design_System/LLDL/WS5_Motion_Language.md` · WS0–WS4 · `docs/02_Design_System/LLDL/LLDL.md` |
 | **Related Screens**    | N/A — motion authority document                                                                 |
 | **Related Components** | N/A                                                                                             |
 
@@ -42,7 +42,7 @@ docs/99_Reviews/Design_System/0016_ws5_motion_language.md
 ## Files Modified
 
 ```text
-docs/02_Design_System/LLDL.md — WS5 authority, stack, dependencies, motion section
+docs/02_Design_System/LLDL/LLDL.md — WS5 authority, stack, dependencies, motion section
 docs/02_Design_System/LLDL/WS4_UI_Language.md — navigation Next → WS5
 docs/99_Reviews/README.md — index (via script)
 ```
@@ -122,7 +122,7 @@ docs/99_Reviews/README.md — index (via script)
 
 ```text
 docs/02_Design_System/LLDL/WS5_Motion_Language.md
-docs/02_Design_System/LLDL.md
+docs/02_Design_System/LLDL/LLDL.md
 docs/02_Design_System/LLDL/WS4_UI_Language.md
 docs/99_Reviews/Design_System/0016_ws5_motion_language.md
 docs/99_Reviews/README.md
@@ -197,7 +197,7 @@ docs/99_Reviews/README.md
 ## Ready For
 
 - [x] Codex Engineering Review
-- [ ] ChatGPT Product Review
+- [x] ChatGPT Product Review
 - [x] Human Approval
 
 ---
@@ -226,3 +226,4 @@ docs/99_Reviews/README.md
 - **Date:**
 - **Verdict:**
 - **Notes:**
+

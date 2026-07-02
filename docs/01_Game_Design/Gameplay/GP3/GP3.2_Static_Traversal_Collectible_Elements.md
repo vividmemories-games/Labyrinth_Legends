@@ -12,7 +12,7 @@
 | **Prepared By** | ChatGPT (specification) · Cursor (compiler) |
 | **Last Updated** | 2026-06-29 |
 | **Path** | `docs/01_Game_Design/Gameplay/GP3/GP3.2_Static_Traversal_Collectible_Elements.md` |
-| **Dependencies** | [Vision](../../../00_Project/Vision.md) · [Game Loop](../../Game_Loop.md) · [Player & Explorer](../Player_Explorer.md) · [Movement System](../Movement_System.md) · [Puzzle Taxonomy](GP3.1_Puzzle_Taxonomy.md) |
+| **Dependencies** | [Vision](../../../00_Project/Vision.md) · [Game Loop](../../Game_Loop/Game_Loop.md) · [Player & Explorer](../GP1_Player_Explorer.md) · [Movement System](../GP2_Movement_System.md) · [Puzzle Taxonomy](GP3.1_Puzzle_Taxonomy.md) |
 | **Related Documents** | [Gameplay Rules](../GP7_Gameplay_Rules.md) · [GP3.3 — Interactive](GP3.3_Interactive_Elements.md) · [Puzzle Elements](../Puzzle_Elements.md) |
 
 ## Navigation
@@ -113,8 +113,8 @@ These three families are documented together because they jointly define **navig
 GP3.2 may specify **how** static, traversal, and collectible elements behave. It may **not**:
 
 - Redefine taxonomy categories ([GP3.1-L01](GP3.1_Puzzle_Taxonomy.md#11-locked-decisions))
-- Override [Movement System](../Movement_System.md) node-to-node or orthogonal rules
-- Override [Player & Explorer](../Player_Explorer.md) planning/execution split
+- Override [Movement System](../GP2_Movement_System.md) node-to-node or orthogonal rules
+- Override [Player & Explorer](../GP1_Player_Explorer.md) planning/execution split
 - Assign rule precedence ([Gameplay Rules](../GP7_Gameplay_Rules.md))
 
 ```mermaid
@@ -210,7 +210,7 @@ GP3.2 is the **first mechanics layer** atop taxonomy — foundational, teachable
 | **Behaviour** | No node or non-traversable node; path cannot cross without Traversal aid |
 | **Readability** | Clear void vs floor |
 | **Common uses** | Gap puzzles with bridges/teleporters |
-| **Anti-patterns** | Jumpable chasm (Explorer cannot jump — [GP1](../Player_Explorer.md)) |
+| **Anti-patterns** | Jumpable chasm (Explorer cannot jump — [GP1](../GP1_Player_Explorer.md)) |
 
 #### Decorative Non-Interactive Geometry
 
@@ -232,7 +232,7 @@ Static elements are the **honest map**. Misleading static geometry is a critical
 
 ### Definition
 
-**Traversal Elements** change **where or how** the Explorer moves on the graph while **respecting** [Movement System](../Movement_System.md): node-to-node, orthogonal, deterministic, path-exact execution.
+**Traversal Elements** change **where or how** the Explorer moves on the graph while **respecting** [Movement System](../GP2_Movement_System.md): node-to-node, orthogonal, deterministic, path-exact execution.
 
 ### Element Specifications
 
@@ -255,7 +255,7 @@ Static elements are the **honest map**. Misleading static geometry is a critical
 | **Movement** | Edge direction enforced on traversal |
 | **Visibility** | Arrow or visual flow direction mandatory |
 | **Determinism** | Direction fixed per edge |
-| **Path planning** | Revisit rules per [Movement System](../Movement_System.md) §6 |
+| **Path planning** | Revisit rules per [Movement System](../GP2_Movement_System.md) §6 |
 | **Anti-patterns** | Unclear direction; reversible without teaching |
 
 #### Teleporters
@@ -274,7 +274,7 @@ Static elements are the **honest map**. Misleading static geometry is a critical
 | Aspect | Specification |
 |--------|---------------|
 | **Purpose** | Auto-displace Explorer one step in belt direction on entry |
-| **Movement** | Modifier on node per [Movement System](../Movement_System.md) §11 |
+| **Movement** | Modifier on node per [Movement System](../GP2_Movement_System.md) §11 |
 | **Visibility** | Belt direction visible |
 | **Determinism** | Fixed direction and distance |
 | **Path planning** | Player plans post-conveyor position |
@@ -334,7 +334,7 @@ Traversal elements **extend** movement — they never replace commitment, valida
 
 ### Definition
 
-**Collectible Elements** are acquired when the Explorer **traverses their node** (automatic collection per [GP1](../Player_Explorer.md)). They affect access, completion, discovery, or optional mastery.
+**Collectible Elements** are acquired when the Explorer **traverses their node** (automatic collection per [GP1](../GP1_Player_Explorer.md)). They affect access, completion, discovery, or optional mastery.
 
 ### Element Specifications
 
@@ -390,7 +390,7 @@ Traversal elements **extend** movement — they never replace commitment, valida
 
 | Aspect | Specification |
 |--------|---------------|
-| **Purpose** | Reward curiosity per [WS4](../Game_Loop/WS4_Completion_Loop.md) |
+| **Purpose** | Reward curiosity per [WS4](../../Game_Loop/WS4_Completion_Loop.md) |
 | **Mandatory vs optional** | Always optional for core progression |
 | **Persistent vs consumed** | Varies; must be documented per type |
 | **Visibility** | Fair detour signaling |
@@ -408,7 +408,7 @@ flowchart LR
   S --> V[Validation on future paths]
 ```
 
-> Collection requires **no extra input** during execution ([GP1-L05](../Player_Explorer.md#15-locked-decisions)).
+> Collection requires **no extra input** during execution ([GP1-L05](../GP1_Player_Explorer.md#15-locked-decisions)).
 
 ### Design Intent
 
@@ -479,7 +479,7 @@ GP3.2 elements are **ingredients**. GP3.3+ and [GP3.5 — Composition](GP3.5_Puz
 | ID | Constraint |
 |----|------------|
 | STC-C01 | Static elements must **never mislead** — passable vs blocked honest |
-| STC-C02 | Traversal elements must **never violate** [Movement System](../Movement_System.md) |
+| STC-C02 | Traversal elements must **never violate** [Movement System](../GP2_Movement_System.md) |
 | STC-C03 | Collectibles must **never become grind currency** ([Vision](../../../00_Project/Vision.md)) |
 | STC-C04 | Optional collectibles **reward curiosity**, never punish normal completion |
 | STC-C05 | All behaviours **deterministic** |
@@ -525,7 +525,7 @@ For any Static, Traversal, or Collectible element:
 | 1 | Is the element **visually readable**? | |
 | 2 | Does it **support planning** before confirm? | |
 | 3 | Is behaviour **deterministic**? | |
-| 4 | Does it respect **[Movement System](../Movement_System.md)**? | |
+| 4 | Does it respect **[Movement System](../GP2_Movement_System.md)**? | |
 | 5 | Is it **teachable** within one major beat? | |
 | 6 | Does it **combine cleanly** with other families? | |
 | 7 | Does it avoid **hidden rules**? | |
@@ -585,9 +585,9 @@ Locked decisions are binding for GP3.2 content. Open questions must be resolved 
 
 ## Cross References
 
-- Upstream: [GP3.1 Taxonomy](GP3.1_Puzzle_Taxonomy.md), [GP1](../Player_Explorer.md), [GP2](../Movement_System.md)
+- Upstream: [GP3.1 Taxonomy](GP3.1_Puzzle_Taxonomy.md), [GP1](../GP1_Player_Explorer.md), [GP2](../GP2_Movement_System.md)
 - Siblings: [GP3.3 Interactive](GP3.3_Interactive_Elements.md), [GP3.4 Environmental](GP3.4_Environmental_Dynamic_Systems.md)
-- Downstream: [Puzzle_Elements.md](../Puzzle_Elements.md), [Gameplay.md](../../Gameplay.md)
+- Downstream: [Puzzle_Elements.md](../Puzzle_Elements.md), [Gameplay.md](../Gameplay.md)
 - Governance: [Decisions](../../../00_Project/Decisions.md)
 
 ---

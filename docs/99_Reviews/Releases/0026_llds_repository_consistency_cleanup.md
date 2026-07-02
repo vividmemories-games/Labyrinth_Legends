@@ -14,7 +14,7 @@
 | **Status** | Ready for Review |
 | **Review Type** | Release |
 | **Template Version** | v2 |
-| **Related Docs** | `docs/README.md` · `docs/00_Project/Vision.md` · `docs/01_Game_Design/Game_Loop.md` · `docs/01_Game_Design/Gameplay/README.md` · `docs/99_Reviews/README.md` · `AGENTS.md` |
+| **Related Docs** | `docs/README.md` · `docs/00_Project/Vision.md` · `docs/01_Game_Design/Game_Loop/Game_Loop.md` · `docs/01_Game_Design/Gameplay/README.md` · `docs/99_Reviews/README.md` · `AGENTS.md` |
 | **Related Screens** | N/A — documentation only |
 | **Related Components** | N/A — documentation only |
 
@@ -42,12 +42,12 @@ docs/99_Reviews/Releases/0026_llds_repository_consistency_cleanup.md
 docs/README.md — writing-order statuses; conflict resolution replaced with AGENTS.md hierarchy + authority rules; Quick Start engine ref -> Gameplay.md + Gameplay/README.md; Asset_Bible future-docs note
 docs/00_Project/Vision.md — Status Approved — Locked; Version 2.1.0; Version History + Change Log rows
 docs/00_Project/Roadmap.md — Asset_Bible future-docs note
-docs/01_Game_Design/Game_Loop.md — Status Approved — Locked; Version 2.1.0; Version History + Change Log rows
+docs/01_Game_Design/Game_Loop/Game_Loop.md — Status Approved — Locked; Version 2.1.0; Version History + Change Log rows
 docs/01_Game_Design/Game_Loop/README.md — WS1–WS5 index Draft — Pending Review -> Approved (headers already Approved)
 docs/01_Game_Design/Gameplay/README.md — Gameplay.md v2.0.0 Draft -> v2.1.0 Approved/Locked; GP1/GP2/GP3.1–GP3.5 -> Approved/Locked
 docs/01_Game_Design/Gameplay/GP3/README.md — GP3.1–GP3.5 index -> Approved/Locked
 docs/01_Game_Design/Game_Bible.md — Status -> Draft — Future Executive Design Document
-docs/02_Design_System/LLDL.md — §13 Asset_Bible planned future artifact note
+docs/02_Design_System/LLDL/LLDL.md — §13 Asset_Bible planned future artifact note
 docs/99_Reviews/README.md — index rows synced to internal status; 0026 row added via script
 docs/99_Reviews/Design_System/0023_lldl_architecture_integration.md — filled ChatGPT/Human reviewer blocks
 docs/99_Reviews/Design_System/0024_ws10_ws11_implementation_reconciliation.md — filled ChatGPT/Human reviewer blocks; Human Ready-For checked
@@ -120,12 +120,12 @@ docs/99_Reviews/Design_System/0025_tier3_downstream_accessibility_migration.md �
 docs/README.md
 docs/00_Project/Vision.md
 docs/00_Project/Roadmap.md
-docs/01_Game_Design/Game_Loop.md
+docs/01_Game_Design/Game_Loop/Game_Loop.md
 docs/01_Game_Design/Game_Loop/README.md
 docs/01_Game_Design/Gameplay/README.md
 docs/01_Game_Design/Gameplay/GP3/README.md
 docs/01_Game_Design/Game_Bible.md
-docs/02_Design_System/LLDL.md
+docs/02_Design_System/LLDL/LLDL.md
 docs/99_Reviews/README.md
 docs/99_Reviews/Design_System/0023_lldl_architecture_integration.md
 docs/99_Reviews/Design_System/0024_ws10_ws11_implementation_reconciliation.md

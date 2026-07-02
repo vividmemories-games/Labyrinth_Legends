@@ -12,7 +12,7 @@ All design, screens, and architecture are governed by:
 
 ```text
 docs/README.md          ← start here
-docs/02_Design_System/LLDL.md
+docs/02_Design_System/LLDL/LLDL.md
 docs/02_Design_System/Design_Tokens.md
 ```
 
@@ -20,7 +20,7 @@ docs/02_Design_System/Design_Tokens.md
 
 When documents conflict, **higher wins:**
 
-1. `docs/02_Design_System/LLDL.md`
+1. `docs/02_Design_System/LLDL/LLDL.md`
 2. `docs/02_Design_System/Design_Tokens.md`
 3. `docs/03_Screens/*`
 4. `docs/01_Game_Design/*`

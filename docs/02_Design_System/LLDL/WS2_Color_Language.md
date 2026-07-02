@@ -14,13 +14,13 @@
 | **Workshop** | WS2 — Color Language |
 | **Path** | `docs/02_Design_System/LLDL/WS2_Color_Language.md` |
 | **Dependencies** | [Vision](../../00_Project/Vision.md) · [WS0 — Design Philosophy](WS0_Design_Philosophy.md) · [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) |
-| **Related Documents** | [LLDL](../LLDL.md) · [Colors](../Colors.md) · [Accessibility](../Accessibility.md) · [Game Bible](../../01_Game_Design/Game_Bible.md) |
+| **Related Documents** | [LLDL](LLDL.md) · [Colors](../Colors.md) · [Accessibility](../Accessibility.md) · [Game Bible](../../01_Game_Design/Game_Bible.md) |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS2 — Color Language](WS2_Color_Language.md) | [WS3 — Environment Language](WS3_Environment_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS2 — Color Language](WS2_Color_Language.md) | [WS3 — Environment Language](WS3_Environment_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |
 
 ---
 
@@ -49,7 +49,7 @@
 | Artistic identity (form, material, silhouette) | [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) wins |
 | Color meaning, application, and communication | **WS2 wins** |
 | Numerical color values and token implementation | [Design_Tokens](../Design_Tokens.md) · [Colors](../Colors.md) — must align with WS2 semantic roles |
-| Component styling | [Components](../Components.md) · [LLDL](../LLDL.md) — must implement WS2 roles without redefining them |
+| Component styling | [Components](../Components.md) · [LLDL](LLDL.md) — must implement WS2 roles without redefining them |
 
 WS2 extends Vision, WS0, and WS1. It does not override their non-color authority. When color communication conflicts with WS0 readability or WS1 material identity, the higher document prevails until [Decisions](../../00_Project/Decisions.md) records an explicit, Human-approved exception.
 
@@ -209,7 +209,7 @@ Color supports the Draw Your Fate contract: study, plan, commit, witness consequ
 - Support learnable hazard language across chambers
 - Remain consistent across world skins and difficulty escalations
 
-Mechanical precedence and feedback boundaries remain in [Gameplay](../../01_Game_Design/Gameplay.md) and WS0. WS2 owns **how color participates** in that contract.
+Mechanical precedence and feedback boundaries remain in [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) and WS0. WS2 owns **how color participates** in that contract.
 
 ### Design Intent
 
@@ -730,7 +730,7 @@ Labyrinth Legends uses color as **restrained semantic communication** inside a t
 - Accessibility requires multichannel encoding — color alone is never sufficient
 - Consistency and anti-patterns protect identity from mobile template drift
 
-Numerical values and component application follow in [Colors](../Colors.md), [Design_Tokens](../Design_Tokens.md), and [LLDL](../LLDL.md) — inheriting WS2 roles without redefining them.
+Numerical values and component application follow in [Colors](../Colors.md), [Design_Tokens](../Design_Tokens.md), and [LLDL](LLDL.md) — inheriting WS2 roles without redefining them.
 
 ---
 
@@ -770,7 +770,7 @@ Freeze workshop outcomes before numerical token authoring begins.
 - [Colors](../Colors.md) — Extended color guidance and values (sync with WS2)
 - [Design_Tokens](../Design_Tokens.md) — Canonical token implementation
 - [WS3 — Environment Language](WS3_Environment_Language.md) — Environment authority
-- [LLDL](../LLDL.md) — Design language specification
+- [LLDL](LLDL.md) — Design language specification
 - [Accessibility](../Accessibility.md) — Accessibility requirements
 - [Components](../Components.md) — Component color application
 
@@ -789,4 +789,4 @@ Freeze workshop outcomes before numerical token authoring begins.
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS2 — Color Language](WS2_Color_Language.md) | [WS3 — Environment Language](WS3_Environment_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS2 — Color Language](WS2_Color_Language.md) | [WS3 — Environment Language](WS3_Environment_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |

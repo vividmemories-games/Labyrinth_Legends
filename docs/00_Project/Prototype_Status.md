@@ -32,7 +32,7 @@
 
 Future tasks must:
 
-1. Read `docs/02_Design_System/LLDL.md` and `Design_Tokens.md`
+1. Read `docs/02_Design_System/LLDL/LLDL.md` and `Design_Tokens.md`
 2. Implement `lib/design_system/` first
 3. Build screens from documented components only
 

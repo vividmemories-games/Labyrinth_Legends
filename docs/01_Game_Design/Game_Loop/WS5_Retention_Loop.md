@@ -13,7 +13,7 @@
 | **Last Updated**      | 2026-06-29                                                                                                                                                                                                                   |
 | **Workshop**          | WS5 — Retention Loop                                                                                                                                                                                                         |
 | **Dependencies**      | [Vision](../../00_Project/Vision.md) · [WS1 — Core Loop](WS1_Core_Loop.md) · [WS2 — Session Loop](WS2_Session_Loop.md) · [WS3 — Progression Loop](WS3_Progression_Loop.md) · [WS4 — Completion Loop](WS4_Completion_Loop.md) |
-| **Related Documents** | [Game Loop](../Game_Loop.md) · [Progression](../Progression.md) · [LiveOps](../LiveOps.md) · [Decisions](../../00_Project/Decisions.md)                                                                                      |
+| **Related Documents** | [Game Loop](Game_Loop.md) · [Progression](../Progression.md) · [LiveOps](../LiveOps.md) · [Decisions](../../00_Project/Decisions.md)                                                                                      |
 
 
 ## Navigation
@@ -21,7 +21,7 @@
 
 | ← Previous                                      | Next →                       | Index                                                           |
 | ----------------------------------------------- | ---------------------------- | --------------------------------------------------------------- |
-| [WS4 — Completion Loop](WS4_Completion_Loop.md) | [Game Loop](../Game_Loop.md) | [Game Loop Workshops](README.md) · [LLDS Home](../../README.md) |
+| [WS4 — Completion Loop](WS4_Completion_Loop.md) | [Game Loop](Game_Loop.md) | [Game Loop Workshops](README.md) · [LLDS Home](../../README.md) |
 
 
 ---
@@ -468,7 +468,7 @@ This concludes the **WS1–WS5 Gameplay Loop Workshop Series**. Downstream docum
 ## Cross References
 
 - Upstream: [Vision](../../00_Project/Vision.md), [WS1](WS1_Core_Loop.md), [WS2](WS2_Session_Loop.md), [WS3](WS3_Progression_Loop.md), [WS4](WS4_Completion_Loop.md)
-- Parent: [Game Loop](../Game_Loop.md)
+- Parent: [Game Loop](Game_Loop.md)
 - Downstream: [LiveOps](../LiveOps.md), [Progression](../Progression.md), [Roadmap](../../00_Project/Roadmap.md)
 - Governance: [Decisions](../../00_Project/Decisions.md)
 
@@ -479,6 +479,6 @@ This concludes the **WS1–WS5 Gameplay Loop Workshop Series**. Downstream docum
 
 | ← Previous                                      | Next →                       | Index                                                           |
 | ----------------------------------------------- | ---------------------------- | --------------------------------------------------------------- |
-| [WS4 — Completion Loop](WS4_Completion_Loop.md) | [Game Loop](../Game_Loop.md) | [Game Loop Workshops](README.md) · [LLDS Home](../../README.md) |
+| [WS4 — Completion Loop](WS4_Completion_Loop.md) | [Game Loop](Game_Loop.md) | [Game Loop Workshops](README.md) · [LLDS Home](../../README.md) |
 
 

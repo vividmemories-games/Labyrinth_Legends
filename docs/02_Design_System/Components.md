@@ -351,4 +351,4 @@ See `docs/assets/mockups/ui_board_master.png` for visual reference.
 - [WS11 — Components Language](LLDL/WS11_Components_Language.md)
 - [Design_Tokens](Design_Tokens.md)
 - [Accessibility](Accessibility.md) — WS9 measurable requirements (expand from stub)
-- [LLDL](LLDL.md)
+- [LLDL](LLDL/LLDL.md)

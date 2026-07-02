@@ -12,14 +12,14 @@
 | **Prepared By** | ChatGPT (specification) · Cursor (compiler) |
 | **Last Updated** | 2026-06-29 |
 | **Path** | `docs/01_Game_Design/Gameplay/GP3/GP3.1_Puzzle_Taxonomy.md` |
-| **Dependencies** | [Vision](../../../00_Project/Vision.md) · [Game Loop](../../Game_Loop.md) · [Player & Explorer](../Player_Explorer.md) · [Movement System](../Movement_System.md) |
+| **Dependencies** | [Vision](../../../00_Project/Vision.md) · [Game Loop](../../Game_Loop/Game_Loop.md) · [Player & Explorer](../GP1_Player_Explorer.md) · [Movement System](../GP2_Movement_System.md) |
 | **Related Documents** | [Gameplay Rules](../GP7_Gameplay_Rules.md) · [GP3 Series](README.md) · [Puzzle Elements](../Puzzle_Elements.md) |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [Movement System](../Movement_System.md) | [GP3.2 — Static, Traversal & Collectible](GP3.2_Static_Traversal_Collectible_Elements.md) | [GP3 Series](README.md) · [Gameplay Specs](../README.md) |
+| [Movement System](../GP2_Movement_System.md) | [GP3.2 — Static, Traversal & Collectible](GP3.2_Static_Traversal_Collectible_Elements.md) | [GP3 Series](README.md) · [Gameplay Specs](../README.md) |
 
 ---
 
@@ -64,7 +64,7 @@ Without a shared taxonomy, puzzle content becomes a bag of exceptions — hard t
 - [GP3.5 — Composition](GP3.5_Puzzle_Composition_Level_Design_Rules.md)
 - [`Puzzle_Elements.md`](../Puzzle_Elements.md)
 
-> **Authority rule:** This document **extends** Core Specifications. It must **never** redefine player agency, movement philosophy, execution philosophy, or rule precedence ([Player & Explorer](../Player_Explorer.md), [Movement System](../Movement_System.md), [Gameplay Rules](../GP7_Gameplay_Rules.md)).
+> **Authority rule:** This document **extends** Core Specifications. It must **never** redefine player agency, movement philosophy, execution philosophy, or rule precedence ([Player & Explorer](../GP1_Player_Explorer.md), [Movement System](../GP2_Movement_System.md), [Gameplay Rules](../GP7_Gameplay_Rules.md)).
 
 ## Intended Audience
 
@@ -99,7 +99,7 @@ Without a shared taxonomy, puzzle content becomes a bag of exceptions — hard t
 
 A **Puzzle Element** is any authored world object or system whose **primary purpose** is to create a **meaningful planning decision** on the labyrinth graph during the planning phase, and/or to produce a **deterministic consequence** when the Explorer traverses the confirmed path.
 
-Puzzle elements interact with [Movement System](../Movement_System.md) node-to-node traversal and [Player & Explorer](../Player_Explorer.md) automatic interactions during execution.
+Puzzle elements interact with [Movement System](../GP2_Movement_System.md) node-to-node traversal and [Player & Explorer](../GP1_Player_Explorer.md) automatic interactions during execution.
 
 ### What Puzzle Elements Are
 
@@ -146,7 +146,7 @@ Every Puzzle Element must embody these universal principles:
 |-----------|---------|-----|
 | **Learnable** | Behaviour can be understood through play | Supports knowledge-as-progression ([Vision](../../../00_Project/Vision.md)) |
 | **Readable** | Current state visible or inferable | GP1 information visibility |
-| **Deterministic** | Same path + state → same outcome | [Movement System](../Movement_System.md) GP2-L05 |
+| **Deterministic** | Same path + state → same outcome | [Movement System](../GP2_Movement_System.md) GP2-L05 |
 | **Predictable** | Player can foresee effect before confirm | Planning contract |
 | **Fair** | Failure traces to plan or misunderstanding | WS1 failure philosophy |
 | **Reusable** | Same element type behaves consistently across levels | Taxonomy scalability |
@@ -210,7 +210,7 @@ flowchart TB
 |--------|-------------|
 | **Purpose** | Rewards on path that alter future legality or objectives |
 | **Role** | Optional or required acquisition along route |
-| **Philosophy** | Acquisition via traversal ([GP1](../Player_Explorer.md) automatic collection) |
+| **Philosophy** | Acquisition via traversal ([GP1](../GP1_Player_Explorer.md) automatic collection) |
 | **Typical responsibilities** | Keys, relics, tokens, optional treasure |
 | **Relationships** | Often gates Interactive or Traversal elements |
 
@@ -234,7 +234,7 @@ flowchart TB
 |--------|-------------|
 | **Purpose** | Modify how movement occurs on the graph |
 | **Role** | Alter edges, nodes, or step behaviour |
-| **Philosophy** | Extends [Movement System](../Movement_System.md) — does not replace it |
+| **Philosophy** | Extends [Movement System](../GP2_Movement_System.md) — does not replace it |
 | **Typical responsibilities** | One-way tiles, teleporters, bridges, portals |
 | **Relationships** | Overlays Static graph; triggered by Interactive state |
 
@@ -322,7 +322,7 @@ Universal behavioural rules for all categories:
 | B-05 | **Current state is communicated** — iconography, pose, lighting, LLDL |
 | B-06 | **Traversal triggers** follow GP1 automatic interaction model |
 | B-07 | **No player input** during execution beyond Pause/Restart |
-| B-08 | **Validation** reflects element state during planning ([Movement System](../Movement_System.md) §4) |
+| B-08 | **Validation** reflects element state during planning ([Movement System](../GP2_Movement_System.md) §4) |
 
 ### Design Intent
 
@@ -414,13 +414,13 @@ Tiers guide content roadmap — they do not grant permission for inconsistent be
 | ID | Constraint |
 |----|------------|
 | PT-C01 | Every element has **one primary taxonomy category** |
-| PT-C02 | **No hidden mandatory mechanics** ([GP1](../Player_Explorer.md)) |
+| PT-C02 | **No hidden mandatory mechanics** ([GP1](../GP1_Player_Explorer.md)) |
 | PT-C03 | **No arbitrary exceptions** to category behaviour |
 | PT-C04 | Every mechanic must be **teachable** |
 | PT-C05 | Every interaction **visually communicated** |
 | PT-C06 | Every element **supports planning** before confirm |
 | PT-C07 | Elements must be **deterministic** and **fair** |
-| PT-C08 | Elements **extend** movement — never redefine ([Movement System](../Movement_System.md)) |
+| PT-C08 | Elements **extend** movement — never redefine ([Movement System](../GP2_Movement_System.md)) |
 | PT-C09 | Decorative-only objects are **not** Puzzle Elements |
 | PT-C10 | Combination preferred over single-object complexity |
 
@@ -508,9 +508,9 @@ Anti-patterns are automatic reject in design review unless Human records explici
 
 ## Cross References
 
-- Upstream: [Vision](../../../00_Project/Vision.md), [Game Loop](../../Game_Loop.md), [GP1](../Player_Explorer.md), [GP2](../Movement_System.md)
+- Upstream: [Vision](../../../00_Project/Vision.md), [Game Loop](../../Game_Loop/Game_Loop.md), [GP1](../GP1_Player_Explorer.md), [GP2](../GP2_Movement_System.md)
 - Series: [GP3 README](README.md), [GP3.2](GP3.2_Static_Traversal_Collectible_Elements.md), [GP3.3](GP3.3_Interactive_Elements.md), [GP3.4](GP3.4_Environmental_Dynamic_Systems.md), [GP3.5](GP3.5_Puzzle_Composition_Level_Design_Rules.md)
-- Downstream: [Puzzle_Elements.md](../Puzzle_Elements.md), [Gameplay.md](../../Gameplay.md)
+- Downstream: [Puzzle_Elements.md](../Puzzle_Elements.md), [Gameplay.md](../Gameplay.md)
 - Governance: [Decisions](../../../00_Project/Decisions.md)
 
 ---
@@ -519,4 +519,4 @@ Anti-patterns are automatic reject in design review unless Human records explici
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [Movement System](../Movement_System.md) | [GP3.2 — Static, Traversal & Collectible](GP3.2_Static_Traversal_Collectible_Elements.md) | [GP3 Series](README.md) · [Gameplay Specs](../README.md) |
+| [Movement System](../GP2_Movement_System.md) | [GP3.2 — Static, Traversal & Collectible](GP3.2_Static_Traversal_Collectible_Elements.md) | [GP3 Series](README.md) · [Gameplay Specs](../README.md) |

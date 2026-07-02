@@ -13,7 +13,7 @@
 | **Prepared By**       | ChatGPT (specification) · Cursor (compiler)                                                                                                                                                                                                                                                                                                                           |
 | **Last Updated**      | 2026-06-29                                                                                                                                                                                                                                                                                                                                                            |
 | **Path**              | `docs/01_Game_Design/Gameplay/GP5_Objectives_Completion.md`                                                                                                                                                                                                                                                                                                           |
-| **Dependencies**      | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop.md) · [GP1 Player & Explorer](GP1_Player_Explorer.md) · [GP2 Movement System](GP2_Movement_System.md) · [Gameplay Rules](GP7_Gameplay_Rules.md) · [GP3.1](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md) · [GP4 Hazards & Failure](GP4_Hazards_Failure.md) |
+| **Dependencies**      | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop/Game_Loop.md) · [GP1 Player & Explorer](GP1_Player_Explorer.md) · [GP2 Movement System](GP2_Movement_System.md) · [Gameplay Rules](GP7_Gameplay_Rules.md) · [GP3.1](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md) · [GP4 Hazards & Failure](GP4_Hazards_Failure.md) |
 | **Related Documents** | [GP6 Gameplay Feedback](GP6_Gameplay_Feedback.md) · [Puzzle Elements](Puzzle_Elements.md) · [Progression](../Progression.md) · [WS4 Completion Loop](../Game_Loop/WS4_Completion_Loop.md)                                                                                                                                                                             |
 
 
@@ -133,7 +133,7 @@ Objectives make the Player feel like an **explorer mastering ancient labyrinths*
 | Document                                        | GP5 relationship                                                       |
 | ----------------------------------------------- | ---------------------------------------------------------------------- |
 | [Vision](../../00_Project/Vision.md)            | Premium puzzle-adventure; exploration over arcade scoring              |
-| [Game Loop](../Game_Loop.md)                    | Complete → reward → progress → replay                                  |
+| [Game Loop](../Game_Loop/Game_Loop.md)                    | Complete → reward → progress → replay                                  |
 | [GP1 Player & Explorer](GP1_Player_Explorer.md) | Player plans route; Explorer satisfies objectives on execution         |
 | [GP2 Movement System](GP2_Movement_System.md)   | Path reaches exit; validation before confirm                           |
 | [GP7 Gameplay Rules](GP7_Gameplay_Rules.md)     | Execution order; completion vs hazard precedence                       |
@@ -1019,7 +1019,7 @@ GP5 locks **what success means** — GP6/GP7/Progression implement presentation 
 - GP3: [GP3.1](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md)
 - Siblings: [GP4 Hazards & Failure](GP4_Hazards_Failure.md) · [GP6 Gameplay Feedback](GP6_Gameplay_Feedback.md)
 - Loops: [WS4](../Game_Loop/WS4_Completion_Loop.md) · [WS3](../Game_Loop/WS3_Progression_Loop.md)
-- Integration: [Puzzle_Elements](Puzzle_Elements.md) · [Gameplay.md](../Gameplay.md)
+- Integration: [Puzzle_Elements](Puzzle_Elements.md) · [Gameplay.md](Gameplay.md)
 - Governance: [Vision](../../00_Project/Vision.md) · [Decisions](../../00_Project/Decisions.md)
 
 ---

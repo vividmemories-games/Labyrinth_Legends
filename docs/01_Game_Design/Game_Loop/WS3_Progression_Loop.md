@@ -13,7 +13,7 @@
 | **Last Updated**      | 2026-06-29                                                                                                                                                                                                                                                                   |
 | **Workshop**          | WS3 — Progression Loop                                                                                                                                                                                                                                                       |
 | **Dependencies**      | [Vision](../../00_Project/Vision.md) · [WS1 — Core Loop](WS1_Core_Loop.md) · [WS2 — Session Loop](WS2_Session_Loop.md)                                                                                                                                                       |
-| **Related Documents** | [Game Loop](../Game_Loop.md) · [WS4 — Completion Loop](WS4_Completion_Loop.md) · [WS5 — Retention Loop](WS5_Retention_Loop.md) · [Progression](../Progression.md) · [Worlds](../Worlds.md) · [Level Design](../Level_Design.md) · [Decisions](../../00_Project/Decisions.md) |
+| **Related Documents** | [Game Loop](Game_Loop.md) · [WS4 — Completion Loop](WS4_Completion_Loop.md) · [WS5 — Retention Loop](WS5_Retention_Loop.md) · [Progression](../Progression.md) · [Worlds](../Worlds.md) · [Level Design](../Level_Design.md) · [Decisions](../../00_Project/Decisions.md) |
 
 
 ## Navigation
@@ -514,7 +514,7 @@ Economy, live ops, and meta feature proposals must be checked against WS3 before
 | Collectible and relic detail     | [Progression](../Progression.md) · [Game Bible](../Game_Bible.md) |
 | Economy and currency             | [Economy](../Economy.md) — must not violate WS3-L02               |
 | Daily and live structures        | [LiveOps](../LiveOps.md) — must not violate WS3-L10               |
-| Mechanical rule detail           | [Gameplay](../Gameplay.md) · [Mechanics](../Mechanics.md)         |
+| Mechanical rule detail           | [Gameplay](../Gameplay/Gameplay.md) · [Mechanics](../Mechanics.md)         |
 
 
 ### Open Questions
@@ -533,7 +533,7 @@ Economy, live ops, and meta feature proposals must be checked against WS3 before
 ## Cross References
 
 - Upstream: [Vision](../../00_Project/Vision.md), [WS1 — Core Loop](WS1_Core_Loop.md), [WS2 — Session Loop](WS2_Session_Loop.md)
-- Parent: [Game Loop](../Game_Loop.md)
+- Parent: [Game Loop](Game_Loop.md)
 - Siblings: [WS4 — Completion Loop](WS4_Completion_Loop.md), [WS5 — Retention Loop](WS5_Retention_Loop.md)
 - Downstream: [Progression](../Progression.md), [Worlds](../Worlds.md), [Level Design](../Level_Design.md)
 - Governance: [Decisions](../../00_Project/Decisions.md)
