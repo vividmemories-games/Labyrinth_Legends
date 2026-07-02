@@ -7,11 +7,11 @@
 | **Document Name**     | AB0 — Asset Philosophy & Production Principles                                                                                                                         |
 | **Document ID**       | AB0                                                                                                                                                                    |
 | **Series**            | AB0 — Labyrinth Legends Asset Bible Foundation                                                                                                                         |
-| **Version**           | 1.0.0                                                                                                                                                                  |
-| **Status**            | Approved                                                                                                                                                               |
+| **Version**           | 1.0.1                                                                                                                                                                  |
+| **Status**            | Approved — Locked                                                                                                                                                      |
 | **Owner**             | Apoorv                                                                                                                                                                 |
 | **Prepared By**       | ChatGPT (specification) · Cursor (compiler)                                                                                                                            |
-| **Last Updated**      | 2026-06-30                                                                                                                                                             |
+| **Last Updated**      | 2026-07-02                                                                                                                                                             |
 | **Workshop**          | AB0 — Asset Philosophy & Production Principles                                                                                                                         |
 | **Path**              | `docs/06_Asset_Bible/AB0_Asset_Philosophy_Production_Principles.md`                                                                                                    |
 | **Parent**            | [LLDL](../02_Design_System/LLDL/LLDL.md)                                                                                                                               |
@@ -36,6 +36,7 @@
 | Version | Date       | Author           | Summary                                                                  |
 | ------- | ---------- | ---------------- | ------------------------------------------------------------------------ |
 | 1.0.0   | 2026-06-30 | ChatGPT / Cursor | Initial AB0 workshop record — asset production philosophy and principles |
+| 1.0.1   | 2026-07-02 | Apoorv / Cursor  | Human lock — Asset Bible workshop chain locked for integration (`0035`)  |
 
 
 ## Change Log
@@ -44,6 +45,7 @@
 | Version | Change                                                                                                   |
 | ------- | -------------------------------------------------------------------------------------------------------- |
 | 1.0.0   | Initial workshop record: production philosophy, lifecycle beliefs, collaboration, AI posture, governance |
+| 1.0.1   | Human lock recorded — status `Approved — Locked`; no design content changed                              |
 
 
 ---
@@ -59,7 +61,7 @@
 | Mechanical meaning and gameplay readability requirements                      | [Gameplay](../01_Game_Design/Gameplay.md) wins                                           |
 | Visual language, emotional tone, design meaning                               | [LLDL](../02_Design_System/LLDL/LLDL.md) and its workshops win                           |
 | Asset production philosophy (principles and beliefs — not detailed standards) | **AB0 wins**                                                                             |
-| Production standards, formats, naming, pipelines                              | AB1–AB6 and `Asset_Bible.md` *(planned)* — must align with AB0; AB0 does not define them |
+| Production standards, formats, naming, pipelines                              | AB1–AB6 and [Asset_Bible.md](Asset_Bible.md) — must align with AB0; AB0 does not define them |
 
 
 AB0 defines *why* assets are produced the way they are. [LLDL](../02_Design_System/LLDL/LLDL.md) defines *how the game should look and feel*. Later Asset Bible workshops define *how production is executed*. AB0 must never redefine Vision, Gameplay, or LLDL.
@@ -691,7 +693,7 @@ Each layer inherits the layers above. AB1–AB6 may add specificity. They may no
 | AB2–AB4                    | Domain production guidance |
 | AB5                        | AI pipeline specification  |
 | AB6                        | Review gates and lifecycle |
-| Asset_Bible.md *(planned)* | Integrated reference       |
+| [Asset_Bible.md](Asset_Bible.md) | Integrated reference       |
 
 
 ### 8.3 Authority
@@ -830,9 +832,9 @@ AB0 — Asset Philosophy & Production Principles records the following workshop 
 - AB2 — Game Assets *(planned)*
 - AB3 — UI & Brand Assets *(planned)*
 - AB4 — Marketing & Store Assets *(planned)*
-- AB5 — AI Production Pipeline *(planned)*
-- AB6 — Review & Asset Lifecycle *(planned)*
-- `Asset_Bible.md` *(planned — integration)*
+- [AB5 — AI Production Pipeline](AB5_AI_Production_Pipeline.md)
+- [AB6 — Review & Asset Lifecycle](AB6_Review_Asset_Lifecycle.md)
+- [Asset Bible](Asset_Bible.md)
 
 ### Design reference
 

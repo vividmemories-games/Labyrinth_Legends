@@ -6,11 +6,11 @@
 | **Document Name** | AB2 — Game Assets |
 | **Document ID** | AB2 |
 | **Series** | AB2 — Labyrinth Legends Asset Bible Game Asset Systems |
-| **Version** | 1.0.0 |
-| **Status** | Approved |
+| **Version** | 1.0.2 |
+| **Status** | Approved — Locked |
 | **Owner** | Apoorv |
 | **Prepared By** | ChatGPT (specification) · Cursor (compiler) |
-| **Last Updated** | 2026-07-01 |
+| **Last Updated** | 2026-07-02 |
 | **Workshop** | AB2 — Game Assets |
 | **Path** | `docs/06_Asset_Bible/AB2_Game_Assets.md` |
 | **Parent** | [AB1 — Production Standards](AB1_Production_Standards.md) |
@@ -32,13 +32,15 @@
 |---------|------|--------|---------|
 | 1.0.0 | 2026-07-01 | ChatGPT / Cursor | Initial AB2 workshop record — playable-world asset system specifications |
 | 1.0.1 | 2026-07-01 | Cursor | Status hygiene — aligned to Approved across Asset Bible index and review package `0030` |
+| 1.0.2 | 2026-07-02 | Apoorv / Cursor | Human lock — Asset Bible workshop chain locked for integration (`0035`) |
 
 ## Change Log
 
 | Version | Change |
 |---------|--------|
 | 1.0.0 | Initial workshop record: seven asset systems with unified production specification template |
-| 1.0.1 | Status hygiene — aligned to Approved across README and review package `0030`; not Approved — Locked; lock order AB0 → AB1 → AB2 preserved |
+| 1.0.1 | Status hygiene — aligned to Approved across README and review package `0030` |
+| 1.0.2 | Human lock recorded — status `Approved — Locked`; no design content changed |
 
 ---
 
@@ -738,9 +740,9 @@ AB2 — Game Assets records the following workshop conclusions for review:
 - [AB1 — Production Standards](AB1_Production_Standards.md)
 - [AB3 — UI & Brand Assets](AB3_UI_Brand_Assets.md)
 - [AB4 — Marketing & Store Assets](AB4_Marketing_Store_Assets.md)
-- AB5 — AI Production Pipeline *(planned)*
-- AB6 — Review & Asset Lifecycle *(planned)*
-- `Asset_Bible.md` *(planned — integration)*
+- [AB5 — AI Production Pipeline](AB5_AI_Production_Pipeline.md)
+- [AB6 — Review & Asset Lifecycle](AB6_Review_Asset_Lifecycle.md)
+- [Asset Bible](Asset_Bible.md)
 - [Asset Bible README](README.md)
 
 ### Gameplay reference

@@ -96,14 +96,14 @@ Each workshop document (AB0–AB6) is authored, reviewed, and locked before the 
 
 | ID          | Planned Document                                                                               | Status      | Purpose                                                                             |
 | ----------- | ---------------------------------------------------------------------------------------------- | ----------- | ----------------------------------------------------------------------------------- |
-| AB0         | [AB0_Asset_Philosophy_Production_Principles.md](AB0_Asset_Philosophy_Production_Principles.md) | Approved    | Philosophy, scope, quality principles, ownership, governance                        |
-| AB1         | [AB1_Production_Standards.md](AB1_Production_Standards.md)                                     | Approved    | Universal production standards — culture, governance, collaboration, sustainability |
-| AB2         | [AB2_Game_Assets.md](AB2_Game_Assets.md)                                                       | Approved    | Playable-world asset system specifications (seven systems)                          |
-| AB3         | [AB3_UI_Brand_Assets.md](AB3_UI_Brand_Assets.md)                                               | Approved    | Interface experience specifications — brand, entry, navigation, gameplay UI, progression, system |
-| AB4         | [AB4_Marketing_Store_Assets.md](AB4_Marketing_Store_Assets.md)                                 | Approved    | Public brand communication — identity, store, campaigns, community, evolution |
-| AB5         | AB5_AI_Production_Pipeline.md                                                                  | Not Started | Prompt templates, style lock, references, iteration, upscaling, approval            |
-| AB6         | AB6_Review_Asset_Lifecycle.md                                                                  | Not Started | Review gates, quality metrics, outsourcing, lifecycle                               |
-| Integration | Asset_Bible.md                                                                                 | Not Started | Final integrated production handbook                                                |
+| AB0         | [AB0_Asset_Philosophy_Production_Principles.md](AB0_Asset_Philosophy_Production_Principles.md) | Approved — Locked | Philosophy, scope, quality principles, ownership, governance                        |
+| AB1         | [AB1_Production_Standards.md](AB1_Production_Standards.md)                                     | Approved — Locked | Universal production standards — culture, governance, collaboration, sustainability |
+| AB2         | [AB2_Game_Assets.md](AB2_Game_Assets.md)                                                       | Approved — Locked | Playable-world asset system specifications (seven systems)                          |
+| AB3         | [AB3_UI_Brand_Assets.md](AB3_UI_Brand_Assets.md)                                               | Approved — Locked | Interface experience specifications — brand, entry, navigation, gameplay UI, progression, system |
+| AB4         | [AB4_Marketing_Store_Assets.md](AB4_Marketing_Store_Assets.md)                                 | Approved — Locked | Public brand communication — identity, store, campaigns, community, evolution |
+| AB5         | [AB5_AI_Production_Pipeline.md](AB5_AI_Production_Pipeline.md)                               | Approved — Locked | Collaborative AI-assisted production operating model — roles, workflow, quality, evolution |
+| AB6         | [AB6_Review_Asset_Lifecycle.md](AB6_Review_Asset_Lifecycle.md)                               | Approved — Locked | Knowledge governance — review gates, lifecycle, change management, preservation |
+| Integration | [Asset_Bible.md](Asset_Bible.md)                                                               | Approved    | Integration guide and single entry point for AB0–AB6                                |
 
 
 ---
@@ -173,13 +173,13 @@ Do not bypass this workflow. See [Cursor Workflow](../05_AI/Cursor/Workflow.md) 
 
 ## 9. Current Status
 
-Asset Bible documentation is **in progress**. AB0, AB1, AB2, AB3, and AB4 are **Approved** (not Approved — Locked). AB5–AB6 and `Asset_Bible.md` remain unauthored.
+Asset Bible workshops **AB0–AB6** and [Asset_Bible.md](Asset_Bible.md) integration are **Approved** (not Approved — Locked). Human lock pending for integration document.
 
 ---
 
 ## 10. Next Step
 
-**Next step:** Human approval for AB4 lock when ready; then AB5 — AI Production Pipeline.
+**Next step:** Human approval and lock for [Asset_Bible.md](Asset_Bible.md) (`0035`); then begin asset production against locked workshops.
 
 ---
 
@@ -188,6 +188,6 @@ Asset Bible documentation is **in progress**. AB0, AB1, AB2, AB3, and AB4 are **
 
 | ← Previous                                                | Next →                                  | Index                              |
 | --------------------------------------------------------- | --------------------------------------- | ---------------------------------- |
-| [AB3 — UI & Brand Assets](AB3_UI_Brand_Assets.md) | [AB4 — Marketing & Store Assets](AB4_Marketing_Store_Assets.md) | [Documentation Home](../README.md) |
+| [AB6 — Review & Asset Lifecycle](AB6_Review_Asset_Lifecycle.md) | [Asset Bible](Asset_Bible.md) | [Documentation Home](../README.md) |
 
 

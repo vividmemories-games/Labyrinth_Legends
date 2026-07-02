@@ -6,11 +6,11 @@
 | **Document Name** | AB4 — Marketing & Store Assets |
 | **Document ID** | AB4 |
 | **Series** | AB4 — Labyrinth Legends Asset Bible Public Brand Communication |
-| **Version** | 1.0.1 |
-| **Status** | Approved |
+| **Version** | 1.0.2 |
+| **Status** | Approved — Locked |
 | **Owner** | Apoorv |
 | **Prepared By** | ChatGPT (specification) · Cursor (compiler) |
-| **Last Updated** | 2026-07-01 |
+| **Last Updated** | 2026-07-02 |
 | **Workshop** | AB4 — Marketing & Store Assets |
 | **Path** | `docs/06_Asset_Bible/AB4_Marketing_Store_Assets.md` |
 | **Parent** | [AB3 — UI & Brand Assets](AB3_UI_Brand_Assets.md) |
@@ -22,7 +22,7 @@
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [AB3 — UI & Brand Assets](AB3_UI_Brand_Assets.md) | AB5 — AI Production Pipeline *(planned)* | [Asset Bible](README.md) · [Documentation Home](../README.md) |
+| [AB3 — UI & Brand Assets](AB3_UI_Brand_Assets.md) | [AB5 — AI Production Pipeline](AB5_AI_Production_Pipeline.md) | [Asset Bible](README.md) · [Documentation Home](../README.md) |
 
 ---
 
@@ -32,6 +32,7 @@
 |---------|------|--------|---------|
 | 1.0.0 | 2026-07-01 | ChatGPT / Cursor | Initial AB4 workshop record — public brand communication system specifications |
 | 1.0.1 | 2026-07-02 | Cursor | Status hygiene pass — lifecycle aligned across AB4, Asset Bible README, and review package 0032 after Codex review |
+| 1.0.2 | 2026-07-02 | Apoorv / Cursor | Human lock — Asset Bible workshop chain locked for integration (`0035`) |
 
 ## Change Log
 
@@ -39,6 +40,7 @@
 |---------|--------|
 | 1.0.0 | Initial workshop record: five communication systems with unified production specification template |
 | 1.0.1 | Codex review hygiene — document status, index, and review package lifecycle states aligned; ChatGPT review notes recorded in 0032 |
+| 1.0.2 | Human lock recorded — status `Approved — Locked`; no design content changed |
 
 ---
 
@@ -731,9 +733,9 @@ AB4 — Marketing & Store Assets records the following workshop conclusions for 
 - [AB1 — Production Standards](AB1_Production_Standards.md)
 - [AB2 — Game Assets](AB2_Game_Assets.md)
 - [AB3 — UI & Brand Assets](AB3_UI_Brand_Assets.md)
-- AB5 — AI Production Pipeline *(planned)*
-- AB6 — Review & Asset Lifecycle *(planned)*
-- `Asset_Bible.md` *(planned — integration)*
+- [AB5 — AI Production Pipeline](AB5_AI_Production_Pipeline.md)
+- [AB6 — Review & Asset Lifecycle](AB6_Review_Asset_Lifecycle.md)
+- [Asset Bible](Asset_Bible.md)
 - [Asset Bible README](README.md)
 
 ### LLDL workshops (reference — do not redefine)

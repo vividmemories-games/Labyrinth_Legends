@@ -7,11 +7,11 @@
 | **Document Name**     | AB1 — Production Standards                                                                                                                                                                                                    |
 | **Document ID**       | AB1                                                                                                                                                                                                                           |
 | **Series**            | AB1 — Labyrinth Legends Asset Bible Production Standards                                                                                                                                                                      |
-| **Version**           | 1.0.0                                                                                                                                                                                                                         |
-| **Status**            | Approved                                                                                                                                                                                                                      |
+| **Version**           | 1.0.2                                                                                                                                                                                                                         |
+| **Status**            | Approved — Locked                                                                                                                                                                                                             |
 | **Owner**             | Apoorv                                                                                                                                                                                                                        |
 | **Prepared By**       | ChatGPT (specification) · Cursor (compiler)                                                                                                                                                                                   |
-| **Last Updated**      | 2026-07-01                                                                                                                                                                                                                    |
+| **Last Updated**      | 2026-07-02                                                                                                                                                                                                                    |
 | **Workshop**          | AB1 — Production Standards                                                                                                                                                                                                    |
 | **Path**              | `docs/06_Asset_Bible/AB1_Production_Standards.md`                                                                                                                                                                             |
 | **Parent**            | [AB0 — Asset Philosophy & Production Principles](AB0_Asset_Philosophy_Production_Principles.md)                                                                                                                               |
@@ -37,6 +37,7 @@
 | ------- | ---------- | ---------------- | ------------------------------------------------------------------------- |
 | 1.0.0   | 2026-07-01 | ChatGPT / Cursor | Initial AB1 workshop record — universal production standards              |
 | 1.0.1   | 2026-07-01 | Cursor           | Codex hygiene pass — status alignment, planned `Asset_Bible.md` de-linked |
+| 1.0.2   | 2026-07-02 | Apoorv / Cursor  | Human lock — Asset Bible workshop chain locked for integration (`0035`)   |
 
 
 ## Change Log
@@ -45,7 +46,8 @@
 | Version | Change                                                                                                                           |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------- |
 | 1.0.0   | Initial workshop record: production culture, governance, collaboration, sustainability, technology posture, knowledge management |
-| 1.0.1   | Codex review hygiene: `Asset_Bible.md` references plain-text only; status updated to Approved after Human approval                       |
+| 1.0.1   | Codex review hygiene: `Asset_Bible.md` references plain-text only; status updated to Approved after Human approval               |
+| 1.0.2   | Human lock recorded — status `Approved — Locked`; no design content changed                                                      |
 
 
 ---
@@ -787,7 +789,7 @@ The Asset Bible integration document — when complete — is the **compiled pro
 | **AB4**                        | Marketing and store asset specifications         |
 | **AB5**                        | AI production pipeline specifications            |
 | **AB6**                        | Review gates and lifecycle specifications        |
-| **Asset_Bible.md** *(planned)* | Integrated handbook                              |
+| **Asset_Bible.md** | Integrated handbook                              |
 
 
 ### 8.2 Inheritance
@@ -910,9 +912,9 @@ AB1 — Production Standards records the following workshop conclusions for revi
 - AB2 — Game Assets *(planned)*
 - AB3 — UI & Brand Assets *(planned)*
 - AB4 — Marketing & Store Assets *(planned)*
-- AB5 — AI Production Pipeline *(planned)*
-- AB6 — Review & Asset Lifecycle *(planned)*
-- `Asset_Bible.md` *(planned — integration)*
+- [AB5 — AI Production Pipeline](AB5_AI_Production_Pipeline.md)
+- [AB6 — Review & Asset Lifecycle](AB6_Review_Asset_Lifecycle.md)
+- [Asset Bible](Asset_Bible.md)
 - [Asset Bible README](README.md)
 
 ### Governance

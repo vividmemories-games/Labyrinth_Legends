@@ -6,11 +6,11 @@
 | **Document Name** | AB3 — UI & Brand Assets |
 | **Document ID** | AB3 |
 | **Series** | AB3 — Labyrinth Legends Asset Bible UI & Brand Systems |
-| **Version** | 1.0.1 |
-| **Status** | Approved |
+| **Version** | 1.0.2 |
+| **Status** | Approved — Locked |
 | **Owner** | Apoorv |
 | **Prepared By** | ChatGPT (specification) · Cursor (compiler) |
-| **Last Updated** | 2026-07-01 |
+| **Last Updated** | 2026-07-02 |
 | **Workshop** | AB3 — UI & Brand Assets |
 | **Path** | `docs/06_Asset_Bible/AB3_UI_Brand_Assets.md` |
 | **Parent** | [AB2 — Game Assets](AB2_Game_Assets.md) |
@@ -22,7 +22,7 @@
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [AB3 — UI & Brand Assets](AB3_UI_Brand_Assets.md) | [AB4 — Marketing & Store Assets](AB4_Marketing_Store_Assets.md) | [Asset Bible](README.md) · [Documentation Home](../README.md) |
+| [AB2 — Game Assets](AB2_Game_Assets.md) | [AB4 — Marketing & Store Assets](AB4_Marketing_Store_Assets.md) | [Asset Bible](README.md) · [Documentation Home](../README.md) |
 
 ---
 
@@ -32,6 +32,7 @@
 |---------|------|--------|---------|
 | 1.0.0 | 2026-07-01 | ChatGPT / Cursor | Initial AB3 workshop record — interface experience specifications |
 | 1.0.1 | 2026-07-01 | Cursor | Status hygiene pass — lifecycle aligned across AB3, Asset Bible README, and review package 0031 after Codex review |
+| 1.0.2 | 2026-07-02 | Apoorv / Cursor | Human lock — Asset Bible workshop chain locked for integration (`0035`) |
 
 ## Change Log
 
@@ -39,6 +40,7 @@
 |---------|--------|
 | 1.0.0 | Initial workshop record: six interface experiences with unified production specification template |
 | 1.0.1 | Codex review hygiene — document status, index, and review package lifecycle states aligned; ChatGPT review notes recorded in 0031 |
+| 1.0.2 | Human lock recorded — status `Approved — Locked`; no design content changed |
 
 ---
 
@@ -775,9 +777,9 @@ AB3 — UI & Brand Assets records the following workshop conclusions for review:
 - [AB1](AB1_Production_Standards.md)
 - [AB2](AB2_Game_Assets.md)
 - [AB4 — Marketing & Store Assets](AB4_Marketing_Store_Assets.md)
-- AB5 — AI Production Pipeline *(planned)*
-- AB6 — Review & Asset Lifecycle *(planned)*
-- `Asset_Bible.md` *(planned — integration)*
+- [AB5 — AI Production Pipeline](AB5_AI_Production_Pipeline.md)
+- [AB6 — Review & Asset Lifecycle](AB6_Review_Asset_Lifecycle.md)
+- [Asset Bible](Asset_Bible.md)
 - [Asset Bible README](README.md)
 
 ### Design reference
