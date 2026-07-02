@@ -171,8 +171,12 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0036 | [Releases/0036_docs_hygiene_audit.md](Releases/0036_docs_hygiene_audit.md) | Approved |
 | 0037 | [Gameplay/0037_puzzle_elements_integration.md](Gameplay/0037_puzzle_elements_integration.md) | Ready for Review |
 | 0038 | [Releases/0038_technical_implementation_plan.md](Releases/0038_technical_implementation_plan.md) | Approved |
+| 0039 | [Releases/0039_level_format.md](Releases/0039_level_format.md) | Ready for Review |
+| 0040 | [Releases/0040_coding_standards.md](Releases/0040_coding_standards.md) | Ready for Review |
+| 0041 | [Releases/0041_agents_governance_refinement.md](Releases/0041_agents_governance_refinement.md) | Draft |
+| 0042 | [Releases/0042_engine_architecture.md](Releases/0042_engine_architecture.md) | Draft |
 
-**Next ID:** 0039
+**Next ID:** 0043
 
 ## Related Docs
 

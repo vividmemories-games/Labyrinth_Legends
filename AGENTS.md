@@ -1,10 +1,12 @@
 # AGENTS.md — Labyrinth Legends
 
-| Field | Value |
-|-------|-------|
-| **Version** | 3.0.0 |
-| **Status** | Active |
-| **Last Updated** | 2026-06-29 |
+
+| Field            | Value      |
+| ---------------- | ---------- |
+| **Version**      | 3.0.0      |
+| **Status**       | Active     |
+| **Last Updated** | 2026-07-02 |
+
 
 This repository contains **Labyrinth Legends**, a premium Flutter mobile puzzle adventure game for iOS and Android.
 
@@ -16,9 +18,9 @@ All AI agents, coding assistants, and automated contributors must follow this fi
 
 The **Labyrinth Legends Documentation System (LLDS)** must stay up to date at all times.
 
-- Start at [`docs/README.md`](docs/README.md)
-- Product authority: [`docs/00_Project/Vision.md`](docs/00_Project/Vision.md)
-- Visual authority: [`docs/02_Design_System/LLDL/LLDL.md`](docs/02_Design_System/LLDL/LLDL.md)
+- Start at `[docs/README.md](docs/README.md)`
+- Product authority: `[docs/00_Project/Vision.md](docs/00_Project/Vision.md)`
+- Visual authority: `[docs/02_Design_System/LLDL/LLDL.md](docs/02_Design_System/LLDL/LLDL.md)`
 
 Do not treat documentation as optional.
 
@@ -30,12 +32,14 @@ If a change affects gameplay, architecture, scope, product direction, monetizati
 
 **LLDS is the project's single source of truth.**
 
-| Principle | Rule |
-|-----------|------|
-| **Defined authority** | Every document has a place in the hierarchy (see §6) |
+
+| Principle                           | Rule                                                                               |
+| ----------------------------------- | ---------------------------------------------------------------------------------- |
+| **Defined authority**               | Every document has a place in the hierarchy (see §6)                               |
 | **Philosophy above implementation** | Higher-level documents define *why* and *what*; lower-level documents define *how* |
-| **Extension, not redefinition** | Lower-level documents may extend higher-level documents |
-| **No silent overrides** | Lower-level documents may **never** redefine higher-level documents |
+| **Extension, not redefinition**     | Lower-level documents may extend higher-level documents                            |
+| **No silent overrides**             | Lower-level documents may **never** redefine higher-level documents                |
+
 
 ### When conflicts occur
 
@@ -47,14 +51,16 @@ If a change affects gameplay, architecture, scope, product direction, monetizati
 
 Update the appropriate LLDS folder when changing:
 
-| Domain | Primary locations |
-|--------|-------------------|
-| Game design | `docs/01_Game_Design/` · [`Game_Loop.md`](docs/01_Game_Design/Game_Loop/Game_Loop.md) · gameplay specs |
-| Visual / UX | `docs/02_Design_System/` · `docs/03_Screens/` |
-| Technical | `docs/04_Technical/` |
-| Product / governance | `docs/00_Project/` (`Decisions.md`, `Roadmap.md`) |
-| AI workflow | `docs/05_AI/` |
-| Milestone handoff | `docs/99_Reviews/` |
+
+| Domain               | Primary locations                                                                                      |
+| -------------------- | ------------------------------------------------------------------------------------------------------ |
+| Game design          | `docs/01_Game_Design/` · `[Game_Loop.md](docs/01_Game_Design/Game_Loop/Game_Loop.md)` · gameplay specs |
+| Visual / UX          | `docs/02_Design_System/` · `docs/03_Screens/`                                                          |
+| Technical            | `docs/04_Technical/`                                                                                   |
+| Product / governance | `docs/00_Project/` (`Decisions.md`, `Roadmap.md`)                                                      |
+| AI workflow          | `docs/05_AI/`                                                                                          |
+| Milestone handoff    | `docs/99_Reviews/`                                                                                     |
+
 
 Avoid duplicate prose — **link** to authoritative documents.
 
@@ -65,7 +71,7 @@ Avoid duplicate prose — **link** to authoritative documents.
 ## Cursor — Builder / Implementer
 
 - Implements code and documentation per LLDS
-- Must follow [`.cursor/rules/labyrinth-legends.mdc`](.cursor/rules/labyrinth-legends.mdc)
+- Must follow `[.cursor/rules/labyrinth-legends.mdc](.cursor/rules/labyrinth-legends.mdc)`
 - Must read relevant docs before implementation (see §5)
 - Must update LLDS when implementation changes behavior or design
 - **Must generate a review package after every major task** (see §4)
@@ -96,7 +102,7 @@ After every **major task**, Cursor must create a review package in `docs/99_Revi
 
 **Cursor must not mark a major task complete until the review package exists.**
 
-All review packages must use the **v2 template** ([`docs/99_Reviews/Review_Template.md`](docs/99_Reviews/Review_Template.md)), including:
+All review packages must use the **v2 template** (`[docs/99_Reviews/Review_Template.md](docs/99_Reviews/Review_Template.md)`), including:
 
 - Motivation, risk assessment, dependencies, product impact
 - Future technical debt and recommended next task
@@ -109,7 +115,7 @@ All review packages must use the **v2 template** ([`docs/99_Reviews/Review_Templ
 
 **Do not proceed to the next phase until review is approved** (or explicitly waived by Human).
 
-See [`docs/99_Reviews/README.md`](docs/99_Reviews/README.md) for folder structure and naming.
+See `[docs/99_Reviews/README.md](docs/99_Reviews/README.md)` for folder structure and naming.
 
 ---
 
@@ -168,7 +174,7 @@ docs/01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md     (GP6)
 docs/01_Game_Design/Gameplay/Gameplay.md
 ```
 
-Index: [`docs/01_Game_Design/Gameplay/README.md`](docs/01_Game_Design/Gameplay/README.md)
+Index: `[docs/01_Game_Design/Gameplay/README.md](docs/01_Game_Design/Gameplay/README.md)`
 
 ## Architecture Work
 
@@ -176,7 +182,11 @@ Index: [`docs/01_Game_Design/Gameplay/README.md`](docs/01_Game_Design/Gameplay/R
 docs/04_Technical/
 ```
 
-Key entry: [`docs/04_Technical/Architecture.md`](docs/04_Technical/Architecture.md)
+Key entries: `[docs/04_Technical/Architecture.md](docs/04_Technical/Architecture.md)` · `[docs/04_Technical/Engine_Architecture.md](docs/04_Technical/Engine_Architecture.md)`
+
+**Technical Contracts** — Approved documents that govern implementation (e.g. `Level_Format.md`, `Coding_Standards.md`, `Engine_Architecture.md`).
+
+**Engineering Reference Documents** — Implementation-informed references that inform but do not block coding unless promoted (e.g. `Engine_Session.md`).
 
 ## UI / UX Work
 
@@ -185,7 +195,7 @@ docs/02_Design_System/
 docs/03_Screens/
 ```
 
-Key entry: [`docs/02_Design_System/LLDL/LLDL.md`](docs/02_Design_System/LLDL/LLDL.md)
+Key entry: `[docs/02_Design_System/LLDL/LLDL.md](docs/02_Design_System/LLDL/LLDL.md)`
 
 ## AI Workflow
 
@@ -193,7 +203,7 @@ Key entry: [`docs/02_Design_System/LLDL/LLDL.md`](docs/02_Design_System/LLDL/LLD
 docs/05_AI/
 ```
 
-Key entries: [`docs/05_AI/Cursor/Workflow.md`](docs/05_AI/Cursor/Workflow.md) · [`docs/05_AI/Codex/Review_Checklist.md`](docs/05_AI/Codex/Review_Checklist.md)
+Key entries: `[docs/05_AI/Cursor/Workflow.md](docs/05_AI/Cursor/Workflow.md)` · `[docs/05_AI/Codex/Review_Checklist.md](docs/05_AI/Codex/Review_Checklist.md)`
 
 ---
 
@@ -225,18 +235,20 @@ Technical Documentation
 Implementation (lib/, test/)
 ```
 
-| Level | Path |
-|-------|------|
-| Vision | `docs/00_Project/Vision.md` |
-| Game Loop | `docs/01_Game_Design/Game_Loop/Game_Loop.md` · WS1–WS5 workshops |
-| Gameplay Core | `Gameplay/GP1_Player_Explorer.md` (GP1) · `GP2_Movement_System.md` (GP2) · `GP7_Gameplay_Rules.md` (GP7) |
-| GP3 Puzzle Element Series | `Gameplay/GP3/` (GP3.1–GP3.5) |
-| GP3 Integration | `Gameplay/Puzzle_Elements.md` — integrates GP3.1–GP3.5; does not override them |
-| Gameplay Features | `Gameplay/GP4_Hazards_Failure.md` (GP4) · `GP5_Objectives_Completion.md` (GP5) · `GP6_Gameplay_Feedback.md` (GP6) |
-| Gameplay integration | `docs/01_Game_Design/Gameplay/Gameplay.md` |
-| Design system | `docs/02_Design_System/LLDL/LLDL.md` · `Design_Tokens.md` · `Components.md` |
-| Screens | `docs/03_Screens/*` |
-| Technical | `docs/04_Technical/*` |
+
+| Level                     | Path                                                                                                              |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Vision                    | `docs/00_Project/Vision.md`                                                                                       |
+| Game Loop                 | `docs/01_Game_Design/Game_Loop/Game_Loop.md` · WS1–WS5 workshops                                                  |
+| Gameplay Core             | `Gameplay/GP1_Player_Explorer.md` (GP1) · `GP2_Movement_System.md` (GP2) · `GP7_Gameplay_Rules.md` (GP7)          |
+| GP3 Puzzle Element Series | `Gameplay/GP3/` (GP3.1–GP3.5)                                                                                     |
+| GP3 Integration           | `Gameplay/Puzzle_Elements.md` — integrates GP3.1–GP3.5; does not override them                                    |
+| Gameplay Features         | `Gameplay/GP4_Hazards_Failure.md` (GP4) · `GP5_Objectives_Completion.md` (GP5) · `GP6_Gameplay_Feedback.md` (GP6) |
+| Gameplay integration      | `docs/01_Game_Design/Gameplay/Gameplay.md`                                                                        |
+| Design system             | `docs/02_Design_System/LLDL/LLDL.md` · `Design_Tokens.md` · `Components.md`                                       |
+| Screens                   | `docs/03_Screens/*`                                                                                               |
+| Technical                 | `docs/04_Technical/*`                                                                                             |
+
 
 ### Conflict protocol
 
@@ -247,7 +259,7 @@ If a lower-level document appears to contradict a higher-level document:
 3. **Recommend** the required documentation update
 4. **Do not** invent a new interpretation
 
-Record material decisions and exceptions in [`docs/00_Project/Decisions.md`](docs/00_Project/Decisions.md).
+Record material decisions and exceptions in `[docs/00_Project/Decisions.md](docs/00_Project/Decisions.md)`.
 
 ---
 
@@ -259,11 +271,13 @@ Gameplay documentation is divided into **Core Specifications**, the **GP3 Puzzle
 
 Define gameplay **foundations**:
 
-| Document | ID | Defines |
-|----------|-----|---------|
-| [`GP1_Player_Explorer.md`](docs/01_Game_Design/Gameplay/GP1_Player_Explorer.md) | GP1 | Player agency, explorer identity, commitment model |
-| [`GP2_Movement_System.md`](docs/01_Game_Design/Gameplay/GP2_Movement_System.md) | GP2 | Path expression, execution, movement constraints |
-| [`GP7_Gameplay_Rules.md`](docs/01_Game_Design/Gameplay/GP7_Gameplay_Rules.md) | GP7 | Rule precedence, interaction order, execution philosophy |
+
+| Document                                                                        | ID  | Defines                                                  |
+| ------------------------------------------------------------------------------- | --- | -------------------------------------------------------- |
+| `[GP1_Player_Explorer.md](docs/01_Game_Design/Gameplay/GP1_Player_Explorer.md)` | GP1 | Player agency, explorer identity, commitment model       |
+| `[GP2_Movement_System.md](docs/01_Game_Design/Gameplay/GP2_Movement_System.md)` | GP2 | Path expression, execution, movement constraints         |
+| `[GP7_Gameplay_Rules.md](docs/01_Game_Design/Gameplay/GP7_Gameplay_Rules.md)`   | GP7 | Rule precedence, interaction order, execution philosophy |
+
 
 Core Specifications must **never** be overridden by Feature Specifications, GP3 element specs, or implementation code.
 
@@ -271,13 +285,15 @@ Core Specifications must **never** be overridden by Feature Specifications, GP3 
 
 Puzzle element taxonomy and mechanics (`Gameplay/GP3/`):
 
-| Document | ID |
-|----------|-----|
-| `GP3.1_Puzzle_Taxonomy.md` | GP3.1 |
+
+| Document                                         | ID    |
+| ------------------------------------------------ | ----- |
+| `GP3.1_Puzzle_Taxonomy.md`                       | GP3.1 |
 | `GP3.2_Static_Traversal_Collectible_Elements.md` | GP3.2 |
-| `GP3.3_Interactive_Elements.md` | GP3.3 |
-| `GP3.4_Environmental_Dynamic_Systems.md` | GP3.4 |
+| `GP3.3_Interactive_Elements.md`                  | GP3.3 |
+| `GP3.4_Environmental_Dynamic_Systems.md`         | GP3.4 |
 | `GP3.5_Puzzle_Composition_Level_Design_Rules.md` | GP3.5 |
+
 
 GP3 defines puzzle **elements** and composition rules. **GP3 always refers to puzzle elements** — not gameplay rules or precedence.
 
@@ -285,12 +301,14 @@ GP3 defines puzzle **elements** and composition rules. **GP3 always refers to pu
 
 **Extend** Core Specifications and GP3 — they may introduce mechanics but may **never redefine** Core rules:
 
-| Document | ID | Scope |
-|----------|-----|-------|
-| [`Puzzle_Elements.md`](docs/01_Game_Design/Gameplay/Puzzle_Elements.md) | GP3 Integration | Integrated puzzle catalogue; synthesizes GP3.1–GP3.5; does not override them |
-| [`Hazards_Failure.md`](docs/01_Game_Design/Gameplay/GP4_Hazards_Failure.md) | GP4 | Hazards, failure modes, fairness |
-| [`Objectives_Completion.md`](docs/01_Game_Design/Gameplay/GP5_Objectives_Completion.md) | GP5 | Win/lose, goals, completion standards |
-| [`Gameplay_Feedback.md`](docs/01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md) | GP6 | Player learning, feedback, readability |
+
+| Document                                                                                | ID              | Scope                                                                        |
+| --------------------------------------------------------------------------------------- | --------------- | ---------------------------------------------------------------------------- |
+| `[Puzzle_Elements.md](docs/01_Game_Design/Gameplay/Puzzle_Elements.md)`                 | GP3 Integration | Integrated puzzle catalogue; synthesizes GP3.1–GP3.5; does not override them |
+| `[Hazards_Failure.md](docs/01_Game_Design/Gameplay/GP4_Hazards_Failure.md)`             | GP4             | Hazards, failure modes, fairness                                             |
+| `[Objectives_Completion.md](docs/01_Game_Design/Gameplay/GP5_Objectives_Completion.md)` | GP5             | Win/lose, goals, completion standards                                        |
+| `[Gameplay_Feedback.md](docs/01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md)`         | GP6             | Player learning, feedback, readability                                       |
+
 
 **GP7 always refers to gameplay rules and precedence** (`GP7_Gameplay_Rules.md`). Do not list `GP7_Gameplay_Rules.md` under GP3 or Feature GP numbers other than GP7.
 
@@ -323,12 +341,14 @@ No gameplay document may redefine [Vision](docs/00_Project/Vision.md) or [Game L
 
 Log governance in LLDS — not in legacy folders.
 
-| Record | Location | When |
-|--------|----------|------|
-| **Decisions** | [`docs/00_Project/Decisions.md`](docs/00_Project/Decisions.md) | Material product, design, or architecture choices |
-| **Open questions** | Review package **Open Questions** section and/or `Decisions.md` | Unresolved items at task end |
-| **Roadmap / scope** | [`docs/00_Project/Roadmap.md`](docs/00_Project/Roadmap.md) | Phase changes, milestone shifts |
-| **Rejected / deferred ideas** | `Decisions.md` with status Deferred/Rejected | Ideas worth preserving but not building |
+
+| Record                        | Location                                                        | When                                              |
+| ----------------------------- | --------------------------------------------------------------- | ------------------------------------------------- |
+| **Decisions**                 | `[docs/00_Project/Decisions.md](docs/00_Project/Decisions.md)`  | Material product, design, or architecture choices |
+| **Open questions**            | Review package **Open Questions** section and/or `Decisions.md` | Unresolved items at task end                      |
+| **Roadmap / scope**           | `[docs/00_Project/Roadmap.md](docs/00_Project/Roadmap.md)`      | Phase changes, milestone shifts                   |
+| **Rejected / deferred ideas** | `Decisions.md` with status Deferred/Rejected                    | Ideas worth preserving but not building           |
+
 
 Do not silently make product or architecture decisions without recording them.
 
@@ -338,15 +358,17 @@ Do not silently make product or architecture decisions without recording them.
 
 The `docs/second-brain/` directory exists **only for historical reference and migration**.
 
-| Rule | Action |
-|------|--------|
-| **Do not** create new documentation there | Write in LLDS |
-| **Do not** maintain duplicate sources of truth | One authoritative home per topic |
-| **When useful content exists there** | Migrate into LLDS, preserve history, archive legacy content |
 
-All new documentation belongs inside LLDS (`docs/` per [`docs/README.md`](docs/README.md)).
+| Rule                                           | Action                                                      |
+| ---------------------------------------------- | ----------------------------------------------------------- |
+| **Do not** create new documentation there      | Write in LLDS                                               |
+| **Do not** maintain duplicate sources of truth | One authoritative home per topic                            |
+| **When useful content exists there**           | Migrate into LLDS, preserve history, archive legacy content |
 
-See [`docs/second-brain/README.md`](docs/second-brain/README.md) for the supersession map.
+
+All new documentation belongs inside LLDS (`docs/` per `[docs/README.md](docs/README.md)`).
+
+See `[docs/second-brain/README.md](docs/second-brain/README.md)` for the supersession map.
 
 ---
 
@@ -364,8 +386,16 @@ All agents must follow these architecture rules:
 - Avoid global mutable state, large files, and magic numbers
 - Prefer small, focused classes and clear names
 - Add tests for core game rules
+- `GameplaySession` is the only public engine API
+- `GameplaySession` owns runtime state
+- Flutter owns timing
+- Engine owns deterministic execution
 
-Full detail: [`docs/04_Technical/Architecture.md`](docs/04_Technical/Architecture.md)
+### Architecture Freeze Rule
+
+Engine architecture is frozen for the current milestone once M0 is complete. Do not redesign layer boundaries, dependency direction, or the `GameplaySession` public API during implementation without Human approval and a review package.
+
+Full detail: `[docs/04_Technical/Architecture.md](docs/04_Technical/Architecture.md)` · `[docs/04_Technical/Engine_Architecture.md](docs/04_Technical/Engine_Architecture.md)`
 
 ---
 
@@ -385,7 +415,7 @@ Needs Decision
 
 If it is not MVP, do not implement it unless explicitly approved by Human.
 
-Document non-MVP ideas in [`docs/00_Project/Decisions.md`](docs/00_Project/Decisions.md) or the task review package. Scope reference: [`docs/00_Project/Roadmap.md`](docs/00_Project/Roadmap.md).
+Document non-MVP ideas in `[docs/00_Project/Decisions.md](docs/00_Project/Decisions.md)` or the task review package. Scope reference: `[docs/00_Project/Roadmap.md](docs/00_Project/Roadmap.md)`.
 
 ---
 
@@ -397,7 +427,7 @@ Any pull request or major AI-generated change should include:
 
 **or**
 
-2. A short explanation:
+1. A short explanation:
 
 ```text
 No documentation update needed because this change is purely internal/refactor-only
@@ -442,8 +472,8 @@ Tests added/updated:
 A task is complete only when:
 
 - The code builds or the issue is clearly documented
-- The change aligns with [`Vision.md`](docs/00_Project/Vision.md) and relevant LLDS docs
-- The change respects MVP scope ([`Roadmap.md`](docs/00_Project/Roadmap.md))
+- The change aligns with `[Vision.md](docs/00_Project/Vision.md)` and relevant LLDS docs
+- The change respects MVP scope (`[Roadmap.md](docs/00_Project/Roadmap.md)`)
 - Core game logic remains outside widgets
 - Relevant tests are added or updated where practical
 - LLDS docs are updated when behavior or design changed

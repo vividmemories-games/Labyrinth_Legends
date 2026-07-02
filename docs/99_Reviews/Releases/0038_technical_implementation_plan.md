@@ -5,18 +5,20 @@
 
 ## Metadata
 
-| Field | Value |
-|-------|-------|
-| **Review ID** | 0038 |
-| **Date** | 2026-07-02 |
-| **Phase** | Pre-Implementation — Vertical Slice Bridge |
-| **Owner** | Cursor |
-| **Status** | Approved |
-| **Review Type** | Release |
-| **Template Version** | v2 |
-| **Related Docs** | `docs/04_Technical/Technical_Implementation_Plan.md` · `docs/04_Technical/README.md` · `docs/04_Technical/Architecture.md` · `AGENTS.md` · `docs/00_Project/Roadmap.md` |
-| **Related Screens** | Home · Level Select · Gameplay · Victory (planned — not implemented) |
-| **Related Components** | N/A — documentation only |
+
+| Field                  | Value                                                                                                                                                                   |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Review ID**          | 0038                                                                                                                                                                    |
+| **Date**               | 2026-07-02                                                                                                                                                              |
+| **Phase**              | Pre-Implementation — Vertical Slice Bridge                                                                                                                              |
+| **Owner**              | Cursor                                                                                                                                                                  |
+| **Status**             | Approved                                                                                                                                                                |
+| **Review Type**        | Release                                                                                                                                                                 |
+| **Template Version**   | v2                                                                                                                                                                      |
+| **Related Docs**       | `docs/04_Technical/Technical_Implementation_Plan.md` · `docs/04_Technical/README.md` · `docs/04_Technical/Architecture.md` · `AGENTS.md` · `docs/00_Project/Roadmap.md` |
+| **Related Screens**    | Home · Level Select · Gameplay · Victory (planned — not implemented)                                                                                                    |
+| **Related Components** | N/A — documentation only                                                                                                                                                |
+
 
 ## Task Summary
 
@@ -41,7 +43,7 @@ docs/99_Reviews/Releases/0038_technical_implementation_plan.md
 ```text
 docs/99_Reviews/README.md — added 0038 index entry via new_review_package.sh
 docs/04_Technical/Technical_Implementation_Plan.md — ChatGPT review hygiene fixes (v1.0.1); status Approved
-docs/99_Reviews/Releases/0038_technical_implementation_plan.md — ChatGPT review recorded; status Approved
+docs/99_Reviews/Releases/0038_technical_implementation_plan.md — ChatGPT review recorded; Codex follow-up stale sections updated
 ```
 
 ## Files Deleted
@@ -52,13 +54,15 @@ docs/99_Reviews/Releases/0038_technical_implementation_plan.md — ChatGPT revie
 
 ## Risk Assessment
 
-| Field | Value |
-|-------|-------|
-| **Risk Level** | Medium |
-| **Affected Areas** | Technical documentation, implementation sequencing, AI agent onboarding, vertical slice scope boundaries |
-| **Rollback Complexity** | Low |
-| **Migration Required** | No — documentation only |
-| **User-Facing Impact** | No direct player impact; high contributor workflow impact |
+
+| Field                   | Value                                                                                                    |
+| ----------------------- | -------------------------------------------------------------------------------------------------------- |
+| **Risk Level**          | Medium                                                                                                   |
+| **Affected Areas**      | Technical documentation, implementation sequencing, AI agent onboarding, vertical slice scope boundaries |
+| **Rollback Complexity** | Low                                                                                                      |
+| **Migration Required**  | No — documentation only                                                                                  |
+| **User-Facing Impact**  | No direct player impact; high contributor workflow impact                                                |
+
 
 ## Dependencies
 
@@ -81,17 +85,19 @@ docs/99_Reviews/Releases/0038_technical_implementation_plan.md — ChatGPT revie
 ### Blocks
 
 - **G0 approval required** before Phase 1 coding begins
-- Engine coding blocked until `Level_Format.md` is authored (P0 prerequisite)
+- Engine coding blocked until `Level_Format.md` is approved (G1) and `Coding_Standards.md` is expanded
 
 ## Product Impact
 
-| Area | Impact |
-|------|--------|
-| **Player-facing** | No — documentation only |
-| **Visual impact** | None |
-| **UX impact** | None in app; defines future slice UX scope (Home → Victory flow) |
-| **Performance impact** | None |
-| **Developer experience impact** | High — clear build order, scope boundaries, and first milestone |
+
+| Area                            | Impact                                                           |
+| ------------------------------- | ---------------------------------------------------------------- |
+| **Player-facing**               | No — documentation only                                          |
+| **Visual impact**               | None                                                             |
+| **UX impact**                   | None in app; defines future slice UX scope (Home → Victory flow) |
+| **Performance impact**          | None                                                             |
+| **Developer experience impact** | High — clear build order, scope boundaries, and first milestone  |
+
 
 ## Design System Impact
 
@@ -129,9 +135,11 @@ docs/99_Reviews/Releases/0038_technical_implementation_plan.md — this package
 
 ## Screenshots / Visual Evidence
 
-| Screen | Path or description |
-|--------|---------------------|
-| N/A | Documentation-only deliverable |
+
+| Screen | Path or description            |
+| ------ | ------------------------------ |
+| N/A    | Documentation-only deliverable |
+
 
 ## Commands Run
 
@@ -144,15 +152,19 @@ docs/99_Reviews/Releases/0038_technical_implementation_plan.md — this package
 
 ## Test / Analyze Results
 
-| Command | Result |
-|---------|--------|
-| `flutter test` | N/A — no code changed |
+
+| Command           | Result                |
+| ----------------- | --------------------- |
+| `flutter test`    | N/A — no code changed |
 | `flutter analyze` | N/A — no code changed |
+
 
 ## Known Issues
 
-- `Level_Format.md`, `Engine_Session.md`, and `Navigation.md` do not exist yet — flagged as Phase 1 prerequisites
-- Stub technical docs (Firebase, Analytics, Maze_Generator, Procedural_Generation, Coding_Standards) remain placeholders
+- `Level_Format.md` authored (Draft v1.0.1) — see review package `0039`; M1 blocked until G1 approval
+- `Engine_Session.md` and `Navigation.md` do not exist yet — `Engine_Session.md` strongly recommended before or alongside M1
+- `Coding_Standards.md` remains a stub — expand before multi-file engine coding
+- Stub technical docs (Firebase, Analytics, Maze_Generator, Procedural_Generation) remain placeholders
 - Prototype `lib/` code diverges from target structure — rebuild required per Prototype_Status.md
 - Existing levels 006–020 may not meet tutorial quality — slice scoped to 001–005
 
@@ -177,14 +189,15 @@ docs/99_Reviews/Releases/0038_technical_implementation_plan.md — this package
 
 ### Future Cleanup Tasks
 
-- Author and approve `Level_Format.md`, `Coding_Standards.md`, `Engine_Session.md`
+- Approve `Level_Format.md` (review package `0039`) and expand `Coding_Standards.md`
+- Author `Engine_Session.md` before or alongside M1 (GP7 pipeline, phase transitions, provider boundary)
 - Retire `ruins_*`, `app_colors`, prototype theme after design_system rebuild
 - Sync Save_System.md key names with implemented LocalProgressStore
 - Expand Architecture.md with GP7 class mapping
 
 ## Recommended Next Task
 
-**Phase 1 — Technical Prerequisites:** Author `docs/04_Technical/Level_Format.md` (JSON schema for hand-authored levels 001–005) and expand `docs/04_Technical/Coding_Standards.md`. Audit `assets/levels/world_1/level_001.json` through `level_003.json` against the schema. Review package required before Milestone M1 engine coding.
+**Phase 1 — G1 Prerequisites (active):** Complete Codex follow-up on review package `0039` (`Level_Format.md` v1.0.1). Expand `Coding_Standards.md` and author `Engine_Session.md` (recommended before M1). After Human + Codex approve `Level_Format.md`, implement `LevelFormatValidator`, `LevelDefinition`, and `test/game_engine/level_001_test.dart` — do not start M1 engine coding until G1 is satisfied.
 
 ## Cursor Self-Assessment
 
@@ -205,17 +218,17 @@ docs/99_Reviews/Releases/0038_technical_implementation_plan.md — this package
 
 ### Codex Engineering Review
 
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Blocking Issues:**
-- **Recommendations:**
+- **Date:** 2026-07-02
+- **Verdict:** Approved with Minor Follow-up
+- **Score:** 8.5/10
+- **Blocking Issues:** None. The bridge plan is directionally sound for a commercial Flutter foundation: it keeps gameplay rules in pure Dart `game_engine/`, defers Firebase/analytics/procedural generation, treats prototype code as reference-only, requires engine tests before UI wiring, and preserves Gameplay/LLDL/Asset Bible authority. The vertical-slice scope is appropriately narrow and the first coding milestone prioritizes the highest-risk system: GP2/GP7 path validation and execution.
+- **Recommendations:** Proceed with the plan, but keep G1 strict before engine coding. `Level_Format.md` and review package `0039` now exist — **0038 Known Issues and Recommended Next Task updated** to reference `0039` as the active G1 follow-up. Do not begin M1 engine implementation until `Level_Format.md` is approved (Codex follow-up applied in v1.0.1) and `Coding_Standards.md` is expanded enough to govern multi-file Dart work. Strongly recommend adding `Engine_Session.md` before or alongside M1 so the GP7 step pipeline, phase transitions, immutable state snapshots, and provider boundary are documented before Cursor starts generating engine code. No Flutter test/analyze is required for this documentation-only package.
 
 ### ChatGPT Product Review
 
 - **Date:** 2026-07-02
 - **Verdict:** Approved
-- **Score:** —
+- **Score:** 9.5/10
 - **Product Notes:** Bridge document correctly scopes the vertical slice without redefining Gameplay, LLDL, or Asset Bible. Phase sequencing and M1 engine-first milestone align with Draw Your Fate identity.
 - **UX / Design Notes:** N/A — documentation only; slice screen scope appropriately references existing screen specs.
 - **Recommendations:** Applied hygiene fixes — §5 go_router table row, §13 heading typo, M1 review-package path clarification. Document marked Approved (v1.0.1).
@@ -225,3 +238,4 @@ docs/99_Reviews/Releases/0038_technical_implementation_plan.md — this package
 - **Date:**
 - **Verdict:**
 - **Notes:**
+

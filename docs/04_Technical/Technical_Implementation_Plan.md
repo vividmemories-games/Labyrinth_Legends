@@ -158,16 +158,16 @@ Implementation — lib/, test/, assets/
 | Flutter design system | ⚠️ Partial | `lib/design_system/` exists; prototype screens still reference legacy paths |
 | Game engine | ⚠️ Partial | Prototype engine exists; must rebuild against GP7 pipeline |
 | Local persistence | ⚠️ Partial | Save_System.md defines intent; repository not aligned to spec |
-| Level content | ⚠️ Partial | 20 JSON files in `assets/levels/world_1/`; schema undocumented; levels 6–20 not tutorial-quality |
+| Level content | ✅ Ready | Schema v1.0.1 in Level_Format.md (Approved); levels 001–003 include `schemaVersion` |
 | Automated tests | ❌ Not ready | Prototype tests stale; engine tests required before UI wiring |
-| Stub technical docs | ⏸️ Deferred | Firebase, Analytics, Maze_Generator, Procedural_Generation, Coding_Standards |
+| Stub technical docs | ⏸️ Deferred | Firebase, Analytics, Maze_Generator, Procedural_Generation |
 
 ### Readiness verdict
 
 **Documentation is sufficient to plan the vertical slice.**  
 **Implementation should not begin until §14 prerequisite technical docs are expanded.**
 
-The highest-risk gap is the **missing formal level JSON schema** and **engine rebuild against GP7** — not UI polish.
+The highest-risk gap is **engine rebuild against GP7** — M0 prerequisites are complete; M1 engine coding may proceed per review package `M0_3_Architecture_Readiness_Review.md`.
 
 ### Prototype code status
 
@@ -179,23 +179,27 @@ Existing `lib/` code is **reference only** per [Prototype Status](../00_Project/
 
 | Document | Status | Authority for implementation? | Notes |
 |----------|--------|------------------------------|-------|
-| [Architecture.md](Architecture.md) | **Partial** | ✅ Yes — principles | Layers, flows, testing policy; needs level-format section |
+| [Architecture.md](Architecture.md) | **Partial** | ✅ Yes — principles | Layers, flows, testing policy; level format in Level_Format.md |
 | [Folder_Structure.md](Folder_Structure.md) | **Partial** | ✅ Yes — structure | Target layout; prototype diverges |
 | [State_Management.md](State_Management.md) | **Partial** | ✅ Yes — Riverpod patterns | Provider types defined; gameplay refactor noted |
 | [Save_System.md](Save_System.md) | **Partial** | ✅ Yes — local MVP | SharedPreferences model; cloud deferred |
-| [Technical_Implementation_Plan.md](Technical_Implementation_Plan.md) | **Draft** | ✅ Yes — sequencing | This document |
+| [Technical_Implementation_Plan.md](Technical_Implementation_Plan.md) | **Approved** | ✅ Yes — sequencing | This document |
+| [Level_Format.md](Level_Format.md) | **Approved** | ✅ Yes — M0.1 complete | Hand-authored level JSON schema |
 | [Firebase.md](Firebase.md) | **Stub** | ❌ No | Placeholder only — not in vertical slice |
 | [Analytics.md](Analytics.md) | **Stub** | ❌ No | Placeholder only — not in vertical slice |
 | [Maze_Generator.md](Maze_Generator.md) | **Stub** | ❌ No | Placeholder only — hand-authored levels only |
 | [Procedural_Generation.md](Procedural_Generation.md) | **Stub** | ❌ No | Placeholder only — not in vertical slice |
-| [Coding_Standards.md](Coding_Standards.md) | **Stub** | ❌ No — expand first | Required before multi-file coding tasks |
+| [Coding_Standards.md](Coding_Standards.md) | **Approved** | ✅ Yes — M0.2 complete | Engineering rulebook for Phase 2 |
+| [Engine_Architecture.md](Engine_Architecture.md) | **Approved & Locked** | ✅ Yes — M1 prerequisite | Pure Dart engine architecture contract |
 
 ### Missing technical documents (recommended)
 
 | Document | Priority | Purpose |
 |----------|----------|---------|
-| `Level_Format.md` | **P0 — before engine coding** | Formal JSON schema for hand-authored levels |
-| `Engine_Session.md` | **P1 — with engine coding** | GP7 pipeline mapping to Dart classes |
+| `Level_Format.md` | **P0 — Approved** | Formal JSON schema — see [Level_Format.md](Level_Format.md) |
+| `Coding_Standards.md` | **P0 — Approved** | Engineering standards — see [Coding_Standards.md](Coding_Standards.md) |
+| `Engine_Architecture.md` | **P0 — Approved & Locked** | Engine architecture contract — see [Engine_Architecture.md](Engine_Architecture.md) |
+| `Engine_Session.md` | **P1 — recommended** | Proven implementation reference; after first stable M1 engine (non-blocking per M0.3) |
 | `Navigation.md` | **P2 — before screen wiring** | go_router route table and deep-link policy |
 
 These are **not** stubs — they should be authored as part of Phase 1 prerequisites (§10).
@@ -303,7 +307,7 @@ lib/
     objectives/
       objective_evaluator.dart  # GP5 — exit completion for slice
     rewards/
-      reward_calculator.dart    # stars from path length
+      reward_calculator.dart    # stars from path node count
 
   data/
     models/
@@ -398,7 +402,7 @@ Aligned with [Gameplay.md §14](../01_Game_Design/Gameplay/Gameplay.md#14-mvp-ga
 | Objectives | **Exit reach** (level 001); add gems (002), key+lock (003) as band progresses | GP5 |
 | Hazards | **None in level 001**; one simple family when level justifies it | GP4 |
 | Feedback | Validation messages, execution phase HUD hide, win/lose states | GP6, WS4 |
-| Rewards | Star thresholds from path length | GP5, Level_Design.md |
+| Rewards | Star thresholds from path node count | GP5, Level_Design.md, Level_Format.md §14 |
 | Save | Completion flag, stars, attempts per level | Save_System.md |
 
 ### Content scope
@@ -461,7 +465,7 @@ Systems **must exist** for the vertical slice to be considered playable.
 | Path executor | Step-by-step traversal |
 | Step resolver | GP7 order for supported elements |
 | Objective evaluator | Exit reached → complete |
-| Reward calculator | Stars from path length vs thresholds |
+| Reward calculator | Stars from path node count vs thresholds |
 
 ### 8.5 Gameplay UI
 
@@ -583,13 +587,15 @@ flowchart TD
 
 | Task | Output |
 |------|--------|
-| Author `Level_Format.md` | JSON schema, validation rules, element encoding |
-| Expand `Coding_Standards.md` | Naming, imports, test policy, review expectations |
+| Author `Level_Format.md` | JSON schema, validation rules, element encoding — **Approved (M0.1)** |
+| Expand `Coding_Standards.md` | Naming, imports, test policy, review expectations — **Approved (M0.2)** |
+| M0.3 Architecture Readiness Review | Validate architecture sufficient for M1 — **Approved (M0 complete)** |
+| Author `Engine_Architecture.md` | Engine architecture contract EA-001–EA-008 — **Approved & Locked (v1.0.1)** |
 | Extend `Architecture.md` | Level load flow, GP7 class mapping summary |
-| Author `Engine_Session.md` (recommended) | Session lifecycle, phase transitions |
-| Audit tutorial levels 001–003 | Align JSON to schema; fix unsolvable layouts |
+| Author `Engine_Session.md` (recommended) | Session lifecycle, phase transitions — after first stable M1 engine |
+| Audit tutorial levels 001–003 | `schemaVersion` aligned; optional `tutorial` blocks remain |
 
-**Exit criteria:** Codex can implement engine from docs alone.
+**Exit criteria:** M0 complete — M1 engine coding may proceed.
 
 ### Phase 2 — Engine core
 
@@ -791,15 +797,15 @@ The following must be expanded **before** their dependent implementation phase b
 
 | Document | Action | Owner phase |
 |----------|--------|-------------|
-| **`Level_Format.md`** (create) | Define JSON schema: grid, cells, objectives, starThresholds, element encoding, discovery mode | Phase 1 |
-| **`Coding_Standards.md`** | Dart style, file naming, import rules, test requirements, `fvm` usage | Phase 1 |
+| **`Level_Format.md`** | Define JSON schema: grid, cells, objectives, starThresholds, element encoding, discovery mode | Phase 1 — **Approved (M0.1)** |
+| **`Coding_Standards.md`** | Dart style, file naming, import rules, test requirements, `fvm` usage | Phase 1 — **Approved (M0.2)** |
 | **`Architecture.md`** | Add level load diagram, engine class map, GP7 pipeline reference | Phase 1 |
 
 ### P1 — Block UI wiring
 
 | Document | Action | Owner phase |
 |----------|--------|-------------|
-| **`Engine_Session.md`** (create) | Session phases, state machine, immutable snapshots | Phase 1–2 |
+| **`Engine_Session.md`** (create) | Session phases, state machine, immutable snapshots | After M1 engine stabilizes (recommended, non-blocking) |
 | **`State_Management.md`** | GameplaySession provider pattern with immutable state examples | Phase 2–3 |
 | **`Save_System.md`** | Confirm key names, migration version field, unlock rules | Phase 3 |
 
@@ -842,6 +848,7 @@ The following must be expanded **before** their dependent implementation phase b
 ### M1 deliverables
 
 ```text
+docs/04_Technical/Engine_Architecture.md    — engine contract (M1 prerequisite)
 docs/04_Technical/Level_Format.md          — schema (Phase 1 prerequisite)
 lib/game_engine/models/*                   — LevelDefinition, MazeGrid
 lib/game_engine/path/path_validator.dart   — GP2 validation
@@ -854,11 +861,11 @@ test/game_engine/level_001_test.dart       — draw path → execute → win
 
 ### M1 acceptance criteria
 
-- [ ] `Level_Format.md` approved and level_001.json validates against schema
+- [ ] `Level_Format.md` approved and level_001.json validates against schema v1
 - [ ] Invalid path cannot be confirmed (GP2)
 - [ ] Valid path executes node-by-node deterministically (GP2)
 - [ ] Reaching exit marks objective complete (GP5 primary)
-- [ ] Stars computed from path length vs starThresholds
+- [ ] Stars computed from path node count vs starThresholds
 - [ ] All tests pass: `fvm flutter test test/game_engine/`
 - [ ] No Flutter UI imports in `game_engine/`
 - [ ] Review package: `docs/99_Reviews/Releases/` for technical phase gates, unless the change is gameplay-spec related.

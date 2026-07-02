@@ -25,4 +25,4 @@ Card per world: thumbnail, name, star progress, lock state. See `docs/03_Screens
 
 ## Level Format
 
-JSON in `assets/levels/{worldId}/level_NNN.json` — schema in `docs/04_Technical/Architecture.md`.
+JSON in `assets/levels/{worldId}/level_NNN.json` — schema in [Level_Format.md](../04_Technical/Level_Format.md).
