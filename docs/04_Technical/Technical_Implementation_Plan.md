@@ -7,7 +7,7 @@
 | **Document ID** | LLDS-DOC-04-TIP-001 |
 | **Path** | `docs/04_Technical/Technical_Implementation_Plan.md` |
 | **Version** | 1.0.0 |
-| **Status** | Draft — Ready for Review |
+| **Status** | Approved |
 | **Owner** | Apoorv |
 | **Prepared By** | Cursor (compiler) |
 | **Last Updated** | 2026-07-02 |
@@ -28,6 +28,7 @@
 | Version | Date | Author | Summary |
 |---------|------|--------|---------|
 | 1.0.0 | 2026-07-02 | Cursor | Initial bridge document — first playable vertical slice roadmap |
+| 1.0.1 | 2026-07-02 | ChatGPT | ChatGPT review completed — approved after minor hygiene fixes |
 
 ---
 
@@ -211,7 +212,7 @@ These assumptions apply to the vertical slice unless [Decisions](../00_Project/D
 |------------|-----------|
 | **Flutter** (iOS + Android) | Project standard |
 | **Riverpod** (`flutter_riverpod`) | Documented in State_Management.md |
-| **go_router** | Documented in libs in `lib/` per Folder_Structure.md | Consistent layering |
+| **go_router** | Route management for vertical-slice navigation; align with `lib/app/router.dart` from `Folder_Structure.md` |
 
 ### Layering (from Architecture.md)
 
@@ -755,7 +756,7 @@ These rules apply to all Cursor tasks executing this plan.
 | Local save only | Save_System.md |
 | Do not extend prototype `ruins_*` or `app_colors` | Prototype_Status.md |
 
-### After the following
+### After implementation
 
 - Add unit tests for every engine behaviour change
 - Update LLDS docs when behaviour or architecture changes
@@ -860,7 +861,7 @@ test/game_engine/level_001_test.dart       — draw path → execute → win
 - [ ] Stars computed from path length vs starThresholds
 - [ ] All tests pass: `fvm flutter test test/game_engine/`
 - [ ] No Flutter UI imports in `game_engine/`
-- [ ] Review package: `docs/99_Reviews/Gameplay/` or `Architecture/`
+- [ ] Review package: `docs/99_Reviews/Releases/` for technical phase gates, unless the change is gameplay-spec related.
 
 ### After M1
 
