@@ -28,7 +28,7 @@ Technical documentation defines **how approved design is built and shipped** in 
 
 | Document | Status | Description |
 |----------|--------|-------------|
-| **[Technical_Implementation_Plan.md](Technical_Implementation_Plan.md)** | Draft | **Bridge document** — vertical slice scope, phases, prerequisites, first coding milestone |
+| **[Technical_Implementation_Plan.md](Technical_Implementation_Plan.md)** | Approved | **Bridge document** — vertical slice scope, phases, prerequisites, first coding milestone |
 
 ### Authoritative (partial — usable now)
 
