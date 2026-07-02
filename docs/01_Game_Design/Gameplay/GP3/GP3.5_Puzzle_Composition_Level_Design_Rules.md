@@ -12,7 +12,7 @@
 | **Prepared By** | ChatGPT (specification) · Cursor (compiler) |
 | **Last Updated** | 2026-06-29 |
 | **Path** | `docs/01_Game_Design/Gameplay/GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md` |
-| **Dependencies** | [Vision](../../../00_Project/Vision.md) · [Game Loop](../../Game_Loop.md) · [Player & Explorer](../Player_Explorer.md) · [Movement System](../Movement_System.md) · [GP3.1 — Puzzle Taxonomy](GP3.1_Puzzle_Taxonomy.md) · [GP3.2](GP3.2_Static_Traversal_Collectible_Elements.md) · [GP3.3](GP3.3_Interactive_Elements.md) · [GP3.4](GP3.4_Environmental_Dynamic_Systems.md) |
+| **Dependencies** | [Vision](../../../00_Project/Vision.md) · [Game Loop](../../Game_Loop/Game_Loop.md) · [Player & Explorer](../GP1_Player_Explorer.md) · [Movement System](../GP2_Movement_System.md) · [GP3.1 — Puzzle Taxonomy](GP3.1_Puzzle_Taxonomy.md) · [GP3.2](GP3.2_Static_Traversal_Collectible_Elements.md) · [GP3.3](GP3.3_Interactive_Elements.md) · [GP3.4](GP3.4_Environmental_Dynamic_Systems.md) |
 | **Related Documents** | [Gameplay Rules](../GP7_Gameplay_Rules.md) · [Puzzle Elements](../Puzzle_Elements.md) · [Level Design](../../Level_Design.md) · [Progression](../../Progression.md) |
 
 ## Navigation
@@ -125,7 +125,7 @@ flowchart TB
 
 GP3.5 may define **composition and level-design rules**. It may **not**:
 
-- Redefine player agency, movement, or execution ([GP1](../Player_Explorer.md), [GP2](../Movement_System.md))
+- Redefine player agency, movement, or execution ([GP1](../GP1_Player_Explorer.md), [GP2](../GP2_Movement_System.md))
 - Redefine taxonomy categories or element behaviour ([GP3.1–GP3.4](GP3.1_Puzzle_Taxonomy.md))
 - Assign rule precedence ([Gameplay Rules](../GP7_Gameplay_Rules.md))
 
@@ -489,7 +489,7 @@ Level-design perspective on failure. Hazard outcomes: [Hazards_Failure](../GP4_H
 
 | Tool | When |
 |------|------|
-| **Restart** | Full puzzle reset — always available ([GP1](../Player_Explorer.md)) |
+| **Restart** | Full puzzle reset — always available ([GP1](../GP1_Player_Explorer.md)) |
 | **Pause** | Observation without penalty |
 | **Clear failure** | Hazard or block — player knows attempt ended |
 | **Readable mistake** | Player can attribute failure to specific step |
@@ -651,7 +651,7 @@ Practical pre-ship checklist for level designers:
 | 5 | Can the Player **understand failure**? | |
 | 6 | Can the puzzle **soft-lock**? (must be No) | |
 | 7 | Does optional content feel **optional**? | |
-| 8 | Does this respect **[Vision](../../../00_Project/Vision.md)** and **[Game Loop](../../Game_Loop.md)**? | |
+| 8 | Does this respect **[Vision](../../../00_Project/Vision.md)** and **[Game Loop](../../Game_Loop/Game_Loop.md)**? | |
 | 9 | Does it follow **[GP3.1](GP3.1_Puzzle_Taxonomy.md)–[GP3.4](GP3.4_Environmental_Dynamic_Systems.md)**? | |
 | 10 | Does it match the **introduction pattern** step for this tier? | |
 | 11 | Is **cognitive load** within budget (§6)? | |
@@ -710,9 +710,9 @@ GP3.5 completes the **GP3 puzzle design series** — downstream [`Puzzle_Element
 ## Cross References
 
 - Upstream: [GP3.1](GP3.1_Puzzle_Taxonomy.md) · [GP3.2](GP3.2_Static_Traversal_Collectible_Elements.md) · [GP3.3](GP3.3_Interactive_Elements.md) · [GP3.4](GP3.4_Environmental_Dynamic_Systems.md)
-- Core: [GP1](../Player_Explorer.md) · [GP2](../Movement_System.md) · [Gameplay Rules](../GP7_Gameplay_Rules.md)
-- Loops: [Game Loop](../../Game_Loop.md) · [WS3](../../Game_Loop/WS3_Progression_Loop.md) · [WS4](../../Game_Loop/WS4_Completion_Loop.md)
-- Downstream: [Puzzle_Elements.md](../Puzzle_Elements.md) · [Level Design](../../Level_Design.md) · [Gameplay.md](../../Gameplay.md)
+- Core: [GP1](../GP1_Player_Explorer.md) · [GP2](../GP2_Movement_System.md) · [Gameplay Rules](../GP7_Gameplay_Rules.md)
+- Loops: [Game Loop](../../Game_Loop/Game_Loop.md) · [WS3](../../Game_Loop/WS3_Progression_Loop.md) · [WS4](../../Game_Loop/WS4_Completion_Loop.md)
+- Downstream: [Puzzle_Elements.md](../Puzzle_Elements.md) · [Level Design](../../Level_Design.md) · [Gameplay.md](../Gameplay.md)
 - Governance: [Vision](../../../00_Project/Vision.md) · [Decisions](../../../00_Project/Decisions.md)
 
 ---

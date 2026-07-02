@@ -15,7 +15,7 @@
 | **Status**             | Ready for Review                                                                                                   |
 | **Review Type**        | Design System                                                                                                      |
 | **Template Version**   | v2                                                                                                                 |
-| **Related Docs**       | `docs/06_Asset_Bible/README.md` · `docs/README.md` · `docs/02_Design_System/LLDL.md` · `docs/00_Project/Vision.md` |
+| **Related Docs**       | `docs/06_Asset_Bible/README.md` · `docs/README.md` · `docs/02_Design_System/LLDL/LLDL.md` · `docs/00_Project/Vision.md` |
 | **Related Screens**    | N/A — documentation scaffold only                                                                                  |
 | **Related Components** | N/A                                                                                                                |
 
@@ -69,8 +69,8 @@ docs/99_Reviews/README.md — index entry (via script)
 ### Depends On
 
 - [Vision.md](../../00_Project/Vision.md) — product intent referenced in authority hierarchy
-- [Gameplay.md](../../01_Game_Design/Gameplay.md) — mechanical meaning referenced, not redefined
-- [LLDL.md](../../02_Design_System/LLDL.md) — parent visual authority; Asset Bible inherits from LLDL
+- [Gameplay.md](../../01_Game_Design/Gameplay/Gameplay.md) — mechanical meaning referenced, not redefined
+- [LLDL.md](../../02_Design_System/LLDL/LLDL.md) — parent visual authority; Asset Bible inherits from LLDL
 
 ### Enables
 

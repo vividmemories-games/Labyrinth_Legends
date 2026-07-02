@@ -13,8 +13,8 @@
 | **Prepared By**       | ChatGPT (specification) · Cursor (compiler)                                                                                                                                                                                                                                                                                                                                                                                             |
 | **Last Updated**      | 2026-06-29                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | **Path**              | `docs/01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md`                                                                                                                                                                                                                                                                                                                                                                                 |
-| **Dependencies**      | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop.md) · [GP1 Player & Explorer](GP1_Player_Explorer.md) · [GP2 Movement System](GP2_Movement_System.md) · [GP7 Gameplay Rules](GP7_Gameplay_Rules.md) · [GP3.1](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md) · [GP4 Hazards & Failure](GP4_Hazards_Failure.md) · [GP5 Objectives & Completion](GP5_Objectives_Completion.md) |
-| **Related Documents** | [Puzzle Elements](Puzzle_Elements.md) · [LLDL](../../02_Design_System/LLDL.md) · [Gameplay.md](../Gameplay.md)                                                                                                                                                                                                                                                                                                                          |
+| **Dependencies**      | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop/Game_Loop.md) · [GP1 Player & Explorer](GP1_Player_Explorer.md) · [GP2 Movement System](GP2_Movement_System.md) · [GP7 Gameplay Rules](GP7_Gameplay_Rules.md) · [GP3.1](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md) · [GP4 Hazards & Failure](GP4_Hazards_Failure.md) · [GP5 Objectives & Completion](GP5_Objectives_Completion.md) |
+| **Related Documents** | [Puzzle Elements](Puzzle_Elements.md) · [LLDL](../../02_Design_System/LLDL/LLDL.md) · [Gameplay.md](Gameplay.md)                                                                                                                                                                                                                                                                                                                          |
 
 
 ## Navigation
@@ -73,7 +73,7 @@ GP6 is the **gameplay feedback operating manual** — not a UI screen specificat
 | Excluded                   | Authority                                   |
 | -------------------------- | ------------------------------------------- |
 | Final UI layouts / screens | `docs/03_Screens/`*                         |
-| Visual design tokens       | [LLDL](../../02_Design_System/LLDL.md)      |
+| Visual design tokens       | [LLDL](../../02_Design_System/LLDL/LLDL.md)      |
 | Movement / path rules      | [GP2](GP2_Movement_System.md)               |
 | Hazard failure rules       | [GP4](GP4_Hazards_Failure.md)               |
 | Objective completion rules | [GP5](GP5_Objectives_Completion.md)         |
@@ -134,7 +134,7 @@ Feedback makes the Player feel **intelligent, informed, and in control** — wit
 | Document                                                    | GP6 relationship                                   |
 | ----------------------------------------------------------- | -------------------------------------------------- |
 | [Vision](../../00_Project/Vision.md)                        | Premium, calm, ancient-adventure tone              |
-| [Game Loop](../Game_Loop.md)                                | Plan → commit → execute → learn → retry            |
+| [Game Loop](../Game_Loop/Game_Loop.md)                                | Plan → commit → execute → learn → retry            |
 | [GP1 Player & Explorer](GP1_Player_Explorer.md)             | Feedback supports planning; execution observe-only |
 | [GP2 Movement System](GP2_Movement_System.md)               | Path preview, validation presentation              |
 | [GP7 Gameplay Rules](GP7_Gameplay_Rules.md)                 | Execution order for simultaneous feedback          |
@@ -840,8 +840,8 @@ GP6 completes **feature spec layer** before GP7 integration — LLDL and screens
 - Core: [GP1 Player & Explorer](GP1_Player_Explorer.md) · [GP2 Movement System](GP2_Movement_System.md) · [GP7 Gameplay Rules](GP7_Gameplay_Rules.md)
 - GP3: [GP3.1](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md)
 - Siblings: [GP4 Hazards & Failure](GP4_Hazards_Failure.md) · [GP5 Objectives & Completion](GP5_Objectives_Completion.md)
-- Visual: [LLDL](../../02_Design_System/LLDL.md) · [Components](../../02_Design_System/Components.md)
-- Integration: [Gameplay.md](../Gameplay.md) · [Puzzle Elements](Puzzle_Elements.md)
+- Visual: [LLDL](../../02_Design_System/LLDL/LLDL.md) · [Components](../../02_Design_System/Components.md)
+- Integration: [Gameplay.md](Gameplay.md) · [Puzzle Elements](Puzzle_Elements.md)
 - Governance: [Vision](../../00_Project/Vision.md) · [Decisions](../../00_Project/Decisions.md)
 
 ---

@@ -13,8 +13,8 @@
 | **Prepared By**       | ChatGPT (specification) · Cursor (compiler)                                                                                                                                                                   |
 | **Last Updated**      | 2026-06-29                                                                                                                                                                                                    |
 | **Path**              | `docs/01_Game_Design/Gameplay/Player_Explorer.md`                                                                                                                                                             |
-| **Dependencies**      | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop.md) · [WS1 — Core Loop](../Game_Loop/WS1_Core_Loop.md)                                                                                        |
-| **Related Documents** | [Movement_System](Movement_System.md) · [GP3 — Puzzle Taxonomy](GP3/GP3.1_Puzzle_Taxonomy.md) · [Gameplay_Rules](GP7_Gameplay_Rules.md) · [Gameplay](../Gameplay.md) · [Decisions](../../00_Project/Decisions.md) |
+| **Dependencies**      | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop/Game_Loop.md) · [WS1 — Core Loop](../Game_Loop/WS1_Core_Loop.md)                                                                                        |
+| **Related Documents** | [Movement_System](GP2_Movement_System.md) · [GP3 — Puzzle Taxonomy](GP3/GP3.1_Puzzle_Taxonomy.md) · [Gameplay_Rules](GP7_Gameplay_Rules.md) · [Gameplay](Gameplay.md) · [Decisions](../../00_Project/Decisions.md) |
 
 
 ## Navigation
@@ -22,7 +22,7 @@
 
 | ← Previous                   | Next →                                | Index                                                      |
 | ---------------------------- | ------------------------------------- | ---------------------------------------------------------- |
-| [Game Loop](../Game_Loop.md) | [Movement System](Movement_System.md) | [Gameplay Specs](README.md) · [LLDS Home](../../README.md) |
+| [Game Loop](../Game_Loop/Game_Loop.md) | [Movement System](GP2_Movement_System.md) | [Gameplay Specs](README.md) · [LLDS Home](../../README.md) |
 
 
 ---
@@ -91,7 +91,7 @@ flowchart LR
 
 
 
-Movement rules live in [Movement_System](Movement_System.md). Puzzle behavior lives in feature specs. This document defines **roles and philosophy only**.
+Movement rules live in [Movement_System](GP2_Movement_System.md). Puzzle behavior lives in feature specs. This document defines **roles and philosophy only**.
 
 ## Intended Audience
 
@@ -324,7 +324,7 @@ Unknown information may exist **only when intentionally designed** as part of th
 | **Readability**          | Player knows which phase they are in                                         |
 | **Fairness**             | Failure traces to plan or misunderstanding — not opacity                     |
 | **Puzzle communication** | Layout and presentation teach                                                |
-| **Visual clarity**       | LLDL supports legibility ([LLDL](../../02_Design_System/LLDL.md) downstream) |
+| **Visual clarity**       | LLDL supports legibility ([LLDL](../../02_Design_System/LLDL/LLDL.md) downstream) |
 
 
 ### Design Intent
@@ -441,7 +441,7 @@ New Explorer capabilities may be added only if they:
 
 ### Design Intent
 
-[Movement_System](Movement_System.md) specifies how movement expresses these capabilities mechanically.
+[Movement_System](GP2_Movement_System.md) specifies how movement expresses these capabilities mechanically.
 
 ---
 
@@ -525,7 +525,7 @@ Non-negotiable rules binding all gameplay work:
 
 ## 13. Anti-Patterns
 
-Explicitly forbidden — conflicts with [Vision](../../00_Project/Vision.md) and [Game Loop](../Game_Loop.md):
+Explicitly forbidden — conflicts with [Vision](../../00_Project/Vision.md) and [Game Loop](../Game_Loop/Game_Loop.md):
 
 
 | Anti-pattern                     | Why forbidden                             |
@@ -585,7 +585,7 @@ Use before approving any gameplay feature:
 
 | Topic                                  | Target document                                             |
 | -------------------------------------- | ----------------------------------------------------------- |
-| Path drawing input affordances         | [Movement_System](Movement_System.md)                       |
+| Path drawing input affordances         | [Movement_System](GP2_Movement_System.md)                       |
 | Interaction order and precedence       | [Gameplay_Rules](GP7_Gameplay_Rules.md)                         |
 | Inspect / preview presentation         | [Gameplay_Feedback](GP6_Gameplay_Feedback.md) · LLDL            |
 | Accessibility exceptions to commitment | [Decisions](../../00_Project/Decisions.md) · Human approval |
@@ -606,9 +606,9 @@ Use before approving any gameplay feature:
 
 ## Cross References
 
-- Upstream: [Vision](../../00_Project/Vision.md), [Game Loop](../Game_Loop.md), [WS1](../Game_Loop/WS1_Core_Loop.md)
-- Siblings: [Movement_System](Movement_System.md), [Gameplay_Rules](GP7_Gameplay_Rules.md)
-- Downstream: [Puzzle_Elements](Puzzle_Elements.md), [Gameplay](../Gameplay.md)
+- Upstream: [Vision](../../00_Project/Vision.md), [Game Loop](../Game_Loop/Game_Loop.md), [WS1](../Game_Loop/WS1_Core_Loop.md)
+- Siblings: [Movement_System](GP2_Movement_System.md), [Gameplay_Rules](GP7_Gameplay_Rules.md)
+- Downstream: [Puzzle_Elements](Puzzle_Elements.md), [Gameplay](Gameplay.md)
 - Governance: [Decisions](../../00_Project/Decisions.md)
 
 ---
@@ -618,6 +618,6 @@ Use before approving any gameplay feature:
 
 | ← Previous                   | Next →                                | Index                                                      |
 | ---------------------------- | ------------------------------------- | ---------------------------------------------------------- |
-| [Game Loop](../Game_Loop.md) | [Movement System](Movement_System.md) | [Gameplay Specs](README.md) · [LLDS Home](../../README.md) |
+| [Game Loop](../Game_Loop/Game_Loop.md) | [Movement System](GP2_Movement_System.md) | [Gameplay Specs](README.md) · [LLDS Home](../../README.md) |
 
 

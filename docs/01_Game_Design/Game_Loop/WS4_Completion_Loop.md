@@ -13,7 +13,7 @@
 | **Last Updated**      | 2026-06-29                                                                                                                                                                                                                                 |
 | **Workshop**          | WS4 — Completion Loop                                                                                                                                                                                                                      |
 | **Dependencies**      | [Vision](../../00_Project/Vision.md) · [WS1 — Core Loop](WS1_Core_Loop.md) · [WS2 — Session Loop](WS2_Session_Loop.md) · [WS3 — Progression Loop](WS3_Progression_Loop.md)                                                                 |
-| **Related Documents** | [Game Loop](../Game_Loop.md) · [WS5 — Retention Loop](WS5_Retention_Loop.md) · [Progression](../Progression.md) · [Victory](../../03_Screens/Victory.md) · [Level Design](../Level_Design.md) · [Decisions](../../00_Project/Decisions.md) |
+| **Related Documents** | [Game Loop](Game_Loop.md) · [WS5 — Retention Loop](WS5_Retention_Loop.md) · [Progression](../Progression.md) · [Victory](../../03_Screens/Victory.md) · [Level Design](../Level_Design.md) · [Decisions](../../00_Project/Decisions.md) |
 
 
 ## Navigation
@@ -421,7 +421,7 @@ Victory screens, achievement systems, and collectible pipelines must be reviewed
 
 | Topic                              | Target document                                                                 |
 | ---------------------------------- | ------------------------------------------------------------------------------- |
-| Victory screen presentation        | [Victory](../../03_Screens/Victory.md) · [LLDL](../../02_Design_System/LLDL.md) |
+| Victory screen presentation        | [Victory](../../03_Screens/Victory.md) · [LLDL](../../02_Design_System/LLDL/LLDL.md) |
 | Star / mastery scoring rules       | [Progression](../Progression.md)                                                |
 | Relic and collectible definitions  | [Progression](../Progression.md) · [Game Bible](../Game_Bible.md)               |
 | World-ending narrative beats       | [Worlds](../Worlds.md) · [Game Bible](../Game_Bible.md)                         |
@@ -445,7 +445,7 @@ Victory screens, achievement systems, and collectible pipelines must be reviewed
 ## Cross References
 
 - Upstream: [Vision](../../00_Project/Vision.md), [WS1](WS1_Core_Loop.md), [WS2](WS2_Session_Loop.md), [WS3](WS3_Progression_Loop.md)
-- Parent: [Game Loop](../Game_Loop.md)
+- Parent: [Game Loop](Game_Loop.md)
 - Sibling: [WS5 — Retention Loop](WS5_Retention_Loop.md)
 - Downstream: [Progression](../Progression.md), [Level Design](../Level_Design.md), [Victory](../../03_Screens/Victory.md)
 - Governance: [Decisions](../../00_Project/Decisions.md)

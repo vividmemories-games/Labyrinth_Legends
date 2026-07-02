@@ -15,7 +15,7 @@
 | **Status**             | Draft                                                                                          |
 | **Review Type**        | Design System                                                                                  |
 | **Template Version**   | v2                                                                                             |
-| **Related Docs**       | `docs/02_Design_System/LLDL/WS6_Audio_Language.md` · WS0–WS5 · `docs/02_Design_System/LLDL.md` |
+| **Related Docs**       | `docs/02_Design_System/LLDL/WS6_Audio_Language.md` · WS0–WS5 · `docs/02_Design_System/LLDL/LLDL.md` |
 | **Related Screens**    | N/A — audio authority document                                                                 |
 | **Related Components** | N/A                                                                                            |
 
@@ -42,7 +42,7 @@ docs/99_Reviews/Design_System/0017_ws6_audio_language.md
 ## Files Modified
 
 ```text
-docs/02_Design_System/LLDL.md — WS6 authority, stack, dependencies
+docs/02_Design_System/LLDL/LLDL.md — WS6 authority, stack, dependencies
 docs/02_Design_System/LLDL/WS5_Motion_Language.md — navigation Next → WS6
 docs/99_Reviews/README.md — index (via script)
 ```
@@ -122,7 +122,7 @@ docs/99_Reviews/README.md — index (via script)
 
 ```text
 docs/02_Design_System/LLDL/WS6_Audio_Language.md
-docs/02_Design_System/LLDL.md
+docs/02_Design_System/LLDL/LLDL.md
 docs/02_Design_System/LLDL/WS5_Motion_Language.md
 docs/99_Reviews/Design_System/0017_ws6_audio_language.md
 docs/99_Reviews/README.md

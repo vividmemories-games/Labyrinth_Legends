@@ -5,7 +5,7 @@
 | **Project** | Labyrinth Legends |
 | **Document Name** | Labyrinth Legends Design Language (LLDL) |
 | **Document ID** | LLDL-DOC-ARCH-001 |
-| **Path** | `docs/02_Design_System/LLDL.md` |
+| **Path** | `docs/02_Design_System/LLDL/LLDL.md` |
 | **Version** | 2.0.0 |
 | **Status** | Approved |
 | **Owner** | Apoorv |
@@ -13,14 +13,14 @@
 | **Last Updated** | 2026-06-30 |
 | **Phase** | Design System — Architecture Integration |
 | **Priority** | Integration / Reference |
-| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay.md) · [WS0–WS11](LLDL/WS0_Design_Philosophy.md) |
-| **Related Documents** | [Design_Tokens](Design_Tokens.md) · [Components](Components.md) · [Decisions](../00_Project/Decisions.md) · [Roadmap](../00_Project/Roadmap.md) |
+| **Dependencies** | [Vision](../../00_Project/Vision.md) · [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) · [WS0–WS11](WS0_Design_Philosophy.md) |
+| **Related Documents** | [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md) · [Decisions](../../00_Project/Decisions.md) · [Roadmap](../../00_Project/Roadmap.md) |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [Gameplay](../01_Game_Design/Gameplay.md) | [WS0 — Design Philosophy](LLDL/WS0_Design_Philosophy.md) | [Documentation Home](../README.md) · [Design System](#19-cross-references) |
+| [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) | [WS0 — Design Philosophy](WS0_Design_Philosophy.md) | [Documentation Home](../../README.md) · [Design System](#19-cross-references) |
 
 ---
 
@@ -42,20 +42,20 @@
 
 ## Document Authority
 
-**LLDL.md is the consolidated design architecture reference for Labyrinth Legends.** It is subordinate only to [Vision](../00_Project/Vision.md) on product intent.
+**LLDL.md is the consolidated design architecture reference for Labyrinth Legends.** It is subordinate only to [Vision](../../00_Project/Vision.md) on product intent.
 
 | Conflict type | Authority |
 |---------------|-----------|
-| Product intent (why, pillars, audience, non-goals) | [Vision](../00_Project/Vision.md) wins |
-| Design philosophy within LLDL | [WS0 — Design Philosophy](LLDL/WS0_Design_Philosophy.md) wins |
+| Product intent (why, pillars, audience, non-goals) | [Vision](../../00_Project/Vision.md) wins |
+| Design philosophy within LLDL | [WS0 — Design Philosophy](WS0_Design_Philosophy.md) wins |
 | Channel-specific design meaning (color, motion, type, etc.) | Respective WS workshop wins within its domain |
-| Mechanical rules and outcome resolution | [Gameplay](../01_Game_Design/Gameplay.md) wins |
+| Mechanical rules and outcome resolution | [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) wins |
 | Design architecture, inheritance, and governance | **LLDL.md wins** |
-| Token values, component APIs, screen layout | [Design_Tokens](Design_Tokens.md) · [Components](Components.md) · `docs/03_Screens/*` — must align with LLDL workshops |
+| Token values, component APIs, screen layout | [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md) · `docs/03_Screens/*` — must align with LLDL workshops |
 
 `LLDL.md` **summarizes, connects, and indexes** the authoritative design workshop series — it does **not** replace them.
 
-When any design document conflicts with Vision on **product intent**, Vision overrides until [Decisions](../00_Project/Decisions.md) records an explicit, Human-approved exception.
+When any design document conflicts with Vision on **product intent**, Vision overrides until [Decisions](../../00_Project/Decisions.md) records an explicit, Human-approved exception.
 
 ---
 
@@ -111,7 +111,7 @@ The Labyrinth Legends Design Language (LLDL) exists to ensure that every visual,
 
 | Architecture | Defines |
 |--------------|---------|
-| [Gameplay](../01_Game_Design/Gameplay.md) | **How the game works** — rules, agency, movement, puzzles, hazards, objectives, feedback |
+| [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) | **How the game works** — rules, agency, movement, puzzles, hazards, objectives, feedback |
 | **LLDL** (this document and its workshops) | **How the game feels** — identity, presentation, communication, atmosphere, inclusivity |
 
 Without LLDL, design quality becomes inconsistent across screens, features, artists, and production phases. LLDL preserves long-term consistency across the entire project by establishing a single architectural foundation that all future design work must inherit.
@@ -134,11 +134,11 @@ Without LLDL, design quality becomes inconsistent across screens, features, arti
 
 ### Out of scope
 
-- Workshop content (see [WS0–WS11](LLDL/WS0_Design_Philosophy.md))
-- Token hex values and naming (see [Design_Tokens](Design_Tokens.md) — governed by [WS10](LLDL/WS10_Design_Tokens_Language.md))
-- Component APIs and catalog detail (see [Components](Components.md) — governed by [WS11](LLDL/WS11_Components_Language.md))
+- Workshop content (see [WS0–WS11](WS0_Design_Philosophy.md))
+- Token hex values and naming (see [Design_Tokens](../Design_Tokens.md) — governed by [WS10](WS10_Design_Tokens_Language.md))
+- Component APIs and catalog detail (see [Components](../Components.md) — governed by [WS11](WS11_Components_Language.md))
 - Per-screen layout (see `docs/03_Screens/*`)
-- Gameplay rules and outcome resolution (see [Gameplay](../01_Game_Design/Gameplay.md))
+- Gameplay rules and outcome resolution (see [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md))
 - Engine architecture, frameworks, or production workflows (see `docs/04_Technical/*`)
 - Code, widget trees, or platform-specific implementation detail
 
@@ -146,7 +146,7 @@ Without LLDL, design quality becomes inconsistent across screens, features, arti
 
 ## 3. Relationship to Vision
 
-[Vision](../00_Project/Vision.md) is the highest authority for **product intent**. LLDL translates that intent into a governed experiential architecture.
+[Vision](../../00_Project/Vision.md) is the highest authority for **product intent**. LLDL translates that intent into a governed experiential architecture.
 
 | Vision provides | LLDL provides |
 |-----------------|---------------|
@@ -165,7 +165,7 @@ Vision.md
     └── Design Language      →  "How should it be experienced?"
 ```
 
-When product intent and design presentation appear to conflict, **preserve Vision** and reconcile presentation through the appropriate workshop — or record an explicit exception in [Decisions](../00_Project/Decisions.md).
+When product intent and design presentation appear to conflict, **preserve Vision** and reconcile presentation through the appropriate workshop — or record an explicit exception in [Decisions](../../00_Project/Decisions.md).
 
 ---
 
@@ -175,7 +175,7 @@ Gameplay and Design are **complementary but independent architectures**. They so
 
 | Question | Governing architecture |
 |----------|------------------------|
-| What should happen? | [Gameplay](../01_Game_Design/Gameplay.md) and GP specifications |
+| What should happen? | [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) and GP specifications |
 | How should it be experienced? | LLDL and WS0–WS11 workshops |
 
 ### Complementary relationship
@@ -189,7 +189,7 @@ Gameplay and Design are **complementary but independent architectures**. They so
 | Rule precedence (GP7) | Accessibility defaults and inclusive communication |
 | Deterministic outcome logic | Token semantics and component inheritance |
 
-Gameplay feedback ([GP6](../01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md)) describes **what** the player must understand. Design workshops describe **how** that understanding is communicated — without deciding outcomes.
+Gameplay feedback ([GP6](../../01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md)) describes **what** the player must understand. Design workshops describe **how** that understanding is communicated — without deciding outcomes.
 
 ### Full product stack
 
@@ -249,18 +249,18 @@ The Labyrinth Legends Design Language is organized as a **workshop series** — 
 
 | ID | Document | Domain |
 |----|----------|--------|
-| WS0 | [Design Philosophy](LLDL/WS0_Design_Philosophy.md) | Foundational design intent |
-| WS1 | [Visual Identity](LLDL/WS1_Visual_Identity_Artistic_Direction.md) | Artistic identity |
-| WS2 | [Color Language](LLDL/WS2_Color_Language.md) | Color meaning and application |
-| WS3 | [Environment Language](LLDL/WS3_Environment_Language.md) | Environmental identity and world construction |
-| WS4 | [UI Language](LLDL/WS4_UI_Language.md) | Interaction philosophy and interface identity |
-| WS5 | [Motion Language](LLDL/WS5_Motion_Language.md) | Movement, transitions, and animation philosophy |
-| WS6 | [Audio Language](LLDL/WS6_Audio_Language.md) | Music, ambience, sound design, and silence |
-| WS7 | [Typography Language](LLDL/WS7_Typography_Language.md) | Written communication and textual hierarchy |
-| WS8 | [Iconography Language](LLDL/WS8_Iconography_Language.md) | Symbolic communication and visual signs |
-| WS9 | [Accessibility Language](LLDL/WS9_Accessibility_Language.md) | Inclusive, readable, player-first design |
-| WS10 | [Design Tokens Language](LLDL/WS10_Design_Tokens_Language.md) | Semantic design decision systems |
-| WS11 | [Components Language](LLDL/WS11_Components_Language.md) | Reusable interface building blocks |
+| WS0 | [Design Philosophy](WS0_Design_Philosophy.md) | Foundational design intent |
+| WS1 | [Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) | Artistic identity |
+| WS2 | [Color Language](WS2_Color_Language.md) | Color meaning and application |
+| WS3 | [Environment Language](WS3_Environment_Language.md) | Environmental identity and world construction |
+| WS4 | [UI Language](WS4_UI_Language.md) | Interaction philosophy and interface identity |
+| WS5 | [Motion Language](WS5_Motion_Language.md) | Movement, transitions, and animation philosophy |
+| WS6 | [Audio Language](WS6_Audio_Language.md) | Music, ambience, sound design, and silence |
+| WS7 | [Typography Language](WS7_Typography_Language.md) | Written communication and textual hierarchy |
+| WS8 | [Iconography Language](WS8_Iconography_Language.md) | Symbolic communication and visual signs |
+| WS9 | [Accessibility Language](WS9_Accessibility_Language.md) | Inclusive, readable, player-first design |
+| WS10 | [Design Tokens Language](WS10_Design_Tokens_Language.md) | Semantic design decision systems |
+| WS11 | [Components Language](WS11_Components_Language.md) | Reusable interface building blocks |
 
 Every future design document must inherit from one or more of these authorities.
 
@@ -377,25 +377,25 @@ flowchart TB
 
 | Design Area | Governing Document |
 |-------------|-------------------|
-| Product intent | [Vision](../00_Project/Vision.md) |
+| Product intent | [Vision](../../00_Project/Vision.md) |
 | Design architecture & governance | **LLDL.md** (this document) |
-| Philosophy | [WS0 — Design Philosophy](LLDL/WS0_Design_Philosophy.md) |
-| Visual Identity | [WS1 — Visual Identity](LLDL/WS1_Visual_Identity_Artistic_Direction.md) |
-| Color | [WS2 — Color Language](LLDL/WS2_Color_Language.md) |
-| Environment | [WS3 — Environment Language](LLDL/WS3_Environment_Language.md) |
-| UI | [WS4 — UI Language](LLDL/WS4_UI_Language.md) |
-| Motion | [WS5 — Motion Language](LLDL/WS5_Motion_Language.md) |
-| Audio | [WS6 — Audio Language](LLDL/WS6_Audio_Language.md) |
-| Typography | [WS7 — Typography Language](LLDL/WS7_Typography_Language.md) |
-| Iconography | [WS8 — Iconography Language](LLDL/WS8_Iconography_Language.md) |
-| Accessibility | [WS9 — Accessibility Language](LLDL/WS9_Accessibility_Language.md) |
-| Design Tokens | [WS10 — Design Tokens Language](LLDL/WS10_Design_Tokens_Language.md) |
-| Components | [WS11 — Components Language](LLDL/WS11_Components_Language.md) |
-| Token values | [Design_Tokens](Design_Tokens.md) |
-| Component catalog | [Components](Components.md) |
-| Gameplay rules | [Gameplay](../01_Game_Design/Gameplay.md) |
+| Philosophy | [WS0 — Design Philosophy](WS0_Design_Philosophy.md) |
+| Visual Identity | [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) |
+| Color | [WS2 — Color Language](WS2_Color_Language.md) |
+| Environment | [WS3 — Environment Language](WS3_Environment_Language.md) |
+| UI | [WS4 — UI Language](WS4_UI_Language.md) |
+| Motion | [WS5 — Motion Language](WS5_Motion_Language.md) |
+| Audio | [WS6 — Audio Language](WS6_Audio_Language.md) |
+| Typography | [WS7 — Typography Language](WS7_Typography_Language.md) |
+| Iconography | [WS8 — Iconography Language](WS8_Iconography_Language.md) |
+| Accessibility | [WS9 — Accessibility Language](WS9_Accessibility_Language.md) |
+| Design Tokens | [WS10 — Design Tokens Language](WS10_Design_Tokens_Language.md) |
+| Components | [WS11 — Components Language](WS11_Components_Language.md) |
+| Token values | [Design_Tokens](../Design_Tokens.md) |
+| Component catalog | [Components](../Components.md) |
+| Gameplay rules | [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) |
 
-Within-channel conflicts resolve to the workshop listed above. Cross-channel conflicts resolve through WS0 philosophy and explicit [Decisions](../00_Project/Decisions.md) when required.
+Within-channel conflicts resolve to the workshop listed above. Cross-channel conflicts resolve through WS0 philosophy and explicit [Decisions](../../00_Project/Decisions.md) when required.
 
 ---
 
@@ -411,12 +411,12 @@ Permanent governance rules for the Labyrinth Legends Design Language.
 - **Gameplay wins on mechanical rules.** Presentation must support gameplay — never contradict outcome logic.
 - **WS0 wins on design philosophy.** Channel workshops express philosophy; they do not replace it.
 - **Channel workshops win within their domain.** Color meaning belongs to WS2; motion temperament belongs to WS5.
-- **Design Tokens cannot redefine Color Language.** [WS10](LLDL/WS10_Design_Tokens_Language.md) names and governs tokens; [WS2](LLDL/WS2_Color_Language.md) owns color meaning.
-- **Components cannot redefine Tokens.** [WS11](LLDL/WS11_Components_Language.md) composes tokens and channels; [WS10](LLDL/WS10_Design_Tokens_Language.md) owns token hierarchy.
+- **Design Tokens cannot redefine Color Language.** [WS10](WS10_Design_Tokens_Language.md) names and governs tokens; [WS2](WS2_Color_Language.md) owns color meaning.
+- **Components cannot redefine Tokens.** [WS11](WS11_Components_Language.md) composes tokens and channels; [WS10](WS10_Design_Tokens_Language.md) owns token hierarchy.
 - **Future design documents must inherit from approved workshops.** Screens, HUD specs, store UI, and character guides are applications — not parallel style systems.
 - **Architectural changes require formal review.** Amendments follow the architecture review process; they are not drive-by edits.
 - **Consistency is more important than individual preference.** Personal taste, mockup drift, and feature convenience do not override architecture.
-- **Exceptions require explicit recording.** Material deviations belong in [Decisions](../00_Project/Decisions.md) with Human approval.
+- **Exceptions require explicit recording.** Material deviations belong in [Decisions](../../00_Project/Decisions.md) with Human approval.
 
 ### Conflict protocol
 
@@ -439,13 +439,13 @@ Lower-level documents **extend** higher-level authorities. They may add specific
 
 | Document | Inherits from |
 |----------|---------------|
-| [Design_Tokens](Design_Tokens.md) | WS10 · WS2 · WS5 · WS7 · related channel workshops |
-| [Components](Components.md) | WS11 · WS4 · WS10 · channel workshops as needed |
+| [Design_Tokens](../Design_Tokens.md) | WS10 · WS2 · WS5 · WS7 · related channel workshops |
+| [Components](../Components.md) | WS11 · WS4 · WS10 · channel workshops as needed |
 | `docs/03_Screens/*` | WS4 · WS11 · relevant channel workshops |
-| [Typography](Typography.md) | WS7 · WS10 |
-| [Icons](Icons.md) | WS8 · WS10 |
-| [Animations](Animations.md) | WS5 · WS10 |
-| [Accessibility](Accessibility.md) | WS9 · WS10 · WS11 |
+| [Typography](../Typography.md) | WS7 · WS10 |
+| [Icons](../Icons.md) | WS8 · WS10 |
+| [Animations](../Animations.md) | WS5 · WS10 |
+| [Accessibility](../Accessibility.md) | WS9 · WS10 · WS11 |
 | `lib/design_system/` | Design_Tokens · Components · screen specs |
 
 ### Prohibited inheritance patterns
@@ -492,7 +492,7 @@ LOCKED
 
 Approved workshops become permanent design authorities. `LLDL.md` itself follows this process and remains locked after approval unless a workshop materially changes or Human Owner authorizes revision.
 
-Review packages live in [`docs/99_Reviews/`](../99_Reviews/README.md). See [Cursor Workflow](../05_AI/Cursor/Workflow.md) and [Codex Review Checklist](../05_AI/Codex/Review_Checklist.md).
+Review packages live in [`docs/99_Reviews/`](../../99_Reviews/README.md). See [Cursor Workflow](../../05_AI/Cursor/Workflow.md) and [Codex Review Checklist](../../05_AI/Codex/Review_Checklist.md).
 
 ---
 
@@ -539,11 +539,11 @@ Long-term consistency is an architectural obligation — not a polish pass.
 | Practice | Application |
 |----------|-------------|
 | **Start from the map** | Open `LLDL.md` to find the owning workshop before designing |
-| **Compose, don't invent** | Build from [Components](Components.md) and tokens — not raw widgets |
+| **Compose, don't invent** | Build from [Components](../Components.md) and tokens — not raw widgets |
 | **Channel fidelity** | Apply color, motion, type, and audio through their workshops |
 | **Cross-review gameplay alignment** | Confirm presentation supports GP6 feedback without deciding outcomes |
 | **Reject drift early** | Flag mockups and implementations that bypass workshops |
-| **Record material exceptions** | Use [Decisions](../00_Project/Decisions.md) — not silent overrides |
+| **Record material exceptions** | Use [Decisions](../../00_Project/Decisions.md) — not silent overrides |
 | **Review at integration boundaries** | New screens, store flows, and major features require architecture check |
 
 ### Anti-patterns (architectural)
@@ -583,22 +583,22 @@ This document is the primary entry point for every designer, artist, UI/UX desig
 
 | Document | ID | Authority Layer | Owns | Does Not Own |
 |----------|-----|-----------------|------|--------------|
-| [Vision.md](../00_Project/Vision.md) | — | Product | North star, pillars, player fantasy, premium positioning | Color roles, component APIs, movement rules |
+| [Vision.md](../../00_Project/Vision.md) | — | Product | North star, pillars, player fantasy, premium positioning | Color roles, component APIs, movement rules |
 | **LLDL.md** (this doc) | LLDL-INT | Integration | Architecture map, governance, workshop index, inheritance | Channel meaning, token values, screen layouts |
-| [WS0 — Design Philosophy](LLDL/WS0_Design_Philosophy.md) | WS0 | Workshop | Design philosophy and decision framework | Token hex values, component trees |
-| [WS1 — Visual Identity](LLDL/WS1_Visual_Identity_Artistic_Direction.md) | WS1 | Workshop | Artistic identity and visual direction | UI density rules, gameplay feedback |
-| [WS2 — Color Language](LLDL/WS2_Color_Language.md) | WS2 | Workshop | Color meaning and application | Token naming tables |
-| [WS3 — Environment Language](LLDL/WS3_Environment_Language.md) | WS3 | Workshop | Environmental construction language | Level puzzle composition |
-| [WS4 — UI Language](LLDL/WS4_UI_Language.md) | WS4 | Workshop | UI philosophy and interface identity | Per-screen layout |
-| [WS5 — Motion Language](LLDL/WS5_Motion_Language.md) | WS5 | Workshop | Motion and animation philosophy | Animation curve implementation |
-| [WS6 — Audio Language](LLDL/WS6_Audio_Language.md) | WS6 | Workshop | Audio identity and sound philosophy | Audio middleware configuration |
-| [WS7 — Typography Language](LLDL/WS7_Typography_Language.md) | WS7 | Workshop | Typographic hierarchy and roles | Font file licensing |
-| [WS8 — Iconography Language](LLDL/WS8_Iconography_Language.md) | WS8 | Workshop | Symbolic communication | Icon SVG assets |
-| [WS9 — Accessibility Language](LLDL/WS9_Accessibility_Language.md) | WS9 | Workshop | Accessibility philosophy and defaults | Platform accessibility API detail |
-| [WS10 — Design Tokens Language](LLDL/WS10_Design_Tokens_Language.md) | WS10 | Workshop | Token hierarchy and governance | Hex values |
-| [WS11 — Components Language](LLDL/WS11_Components_Language.md) | WS11 | Workshop | Component philosophy and governance | Widget implementation |
-| [Design_Tokens](Design_Tokens.md) | — | Implementation spec | Canonical token values | Color meaning redefinition |
-| [Components](Components.md) | — | Implementation spec | Component catalog and APIs | Component philosophy redefinition |
+| [WS0 — Design Philosophy](WS0_Design_Philosophy.md) | WS0 | Workshop | Design philosophy and decision framework | Token hex values, component trees |
+| [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) | WS1 | Workshop | Artistic identity and visual direction | UI density rules, gameplay feedback |
+| [WS2 — Color Language](WS2_Color_Language.md) | WS2 | Workshop | Color meaning and application | Token naming tables |
+| [WS3 — Environment Language](WS3_Environment_Language.md) | WS3 | Workshop | Environmental construction language | Level puzzle composition |
+| [WS4 — UI Language](WS4_UI_Language.md) | WS4 | Workshop | UI philosophy and interface identity | Per-screen layout |
+| [WS5 — Motion Language](WS5_Motion_Language.md) | WS5 | Workshop | Motion and animation philosophy | Animation curve implementation |
+| [WS6 — Audio Language](WS6_Audio_Language.md) | WS6 | Workshop | Audio identity and sound philosophy | Audio middleware configuration |
+| [WS7 — Typography Language](WS7_Typography_Language.md) | WS7 | Workshop | Typographic hierarchy and roles | Font file licensing |
+| [WS8 — Iconography Language](WS8_Iconography_Language.md) | WS8 | Workshop | Symbolic communication | Icon SVG assets |
+| [WS9 — Accessibility Language](WS9_Accessibility_Language.md) | WS9 | Workshop | Accessibility philosophy and defaults | Platform accessibility API detail |
+| [WS10 — Design Tokens Language](WS10_Design_Tokens_Language.md) | WS10 | Workshop | Token hierarchy and governance | Hex values |
+| [WS11 — Components Language](WS11_Components_Language.md) | WS11 | Workshop | Component philosophy and governance | Widget implementation |
+| [Design_Tokens](../Design_Tokens.md) | — | Implementation spec | Canonical token values | Color meaning redefinition |
+| [Components](../Components.md) | — | Implementation spec | Component catalog and APIs | Component philosophy redefinition |
 | `docs/03_Screens/*` | — | Applied spec | Per-screen layout and composition | New design language invention |
 
 ---
@@ -645,46 +645,46 @@ Use before approving new design documentation, major UI features, or architectur
 
 ### Product & gameplay
 
-- [Vision.md](../00_Project/Vision.md)
-- [Gameplay.md](../01_Game_Design/Gameplay.md)
-- [Game Loop.md](../01_Game_Design/Game_Loop.md)
-- [Game Bible.md](../01_Game_Design/Game_Bible.md)
+- [Vision.md](../../00_Project/Vision.md)
+- [Gameplay.md](../../01_Game_Design/Gameplay/Gameplay.md)
+- [Game Loop.md](../../01_Game_Design/Game_Loop/Game_Loop.md)
+- [Game Bible.md](../../01_Game_Design/Game_Bible.md)
 
 ### Design workshops (WS0–WS11)
 
-- [WS0 — Design Philosophy](LLDL/WS0_Design_Philosophy.md)
-- [WS1 — Visual Identity](LLDL/WS1_Visual_Identity_Artistic_Direction.md)
-- [WS2 — Color Language](LLDL/WS2_Color_Language.md)
-- [WS3 — Environment Language](LLDL/WS3_Environment_Language.md)
-- [WS4 — UI Language](LLDL/WS4_UI_Language.md)
-- [WS5 — Motion Language](LLDL/WS5_Motion_Language.md)
-- [WS6 — Audio Language](LLDL/WS6_Audio_Language.md)
-- [WS7 — Typography Language](LLDL/WS7_Typography_Language.md)
-- [WS8 — Iconography Language](LLDL/WS8_Iconography_Language.md)
-- [WS9 — Accessibility Language](LLDL/WS9_Accessibility_Language.md)
-- [WS10 — Design Tokens Language](LLDL/WS10_Design_Tokens_Language.md)
-- [WS11 — Components Language](LLDL/WS11_Components_Language.md)
+- [WS0 — Design Philosophy](WS0_Design_Philosophy.md)
+- [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md)
+- [WS2 — Color Language](WS2_Color_Language.md)
+- [WS3 — Environment Language](WS3_Environment_Language.md)
+- [WS4 — UI Language](WS4_UI_Language.md)
+- [WS5 — Motion Language](WS5_Motion_Language.md)
+- [WS6 — Audio Language](WS6_Audio_Language.md)
+- [WS7 — Typography Language](WS7_Typography_Language.md)
+- [WS8 — Iconography Language](WS8_Iconography_Language.md)
+- [WS9 — Accessibility Language](WS9_Accessibility_Language.md)
+- [WS10 — Design Tokens Language](WS10_Design_Tokens_Language.md)
+- [WS11 — Components Language](WS11_Components_Language.md)
 
 ### Implementation & applied specs
 
-- [Design_Tokens](Design_Tokens.md)
-- [Components](Components.md)
-- [Typography](Typography.md)
-- [Icons](Icons.md)
-- [Colors](Colors.md)
-- [Animations](Animations.md)
-- [Audio](Audio.md)
-- [Accessibility](Accessibility.md)
+- [Design_Tokens](../Design_Tokens.md)
+- [Components](../Components.md)
+- [Typography](../Typography.md)
+- [Icons](../Icons.md)
+- [Colors](../Colors.md)
+- [Animations](../Animations.md)
+- [Audio](../Audio.md)
+- [Accessibility](../Accessibility.md)
 - `docs/03_Screens/*`
 - `lib/design_system/`
 
 ### Governance
 
-- [Decisions.md](../00_Project/Decisions.md)
-- [Roadmap.md](../00_Project/Roadmap.md)
-- [99_Reviews](../99_Reviews/README.md)
-- [Cursor Workflow](../05_AI/Cursor/Workflow.md)
-- [Codex Review Checklist](../05_AI/Codex/Review_Checklist.md)
+- [Decisions.md](../../00_Project/Decisions.md)
+- [Roadmap.md](../../00_Project/Roadmap.md)
+- [99_Reviews](../../99_Reviews/README.md)
+- [Cursor Workflow](../../05_AI/Cursor/Workflow.md)
+- [Codex Review Checklist](../../05_AI/Codex/Review_Checklist.md)
 
 ---
 
@@ -729,4 +729,4 @@ Future design documents must inherit from LLDL.md and WS0–WS11, and must not c
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [Gameplay](../01_Game_Design/Gameplay.md) | [WS0 — Design Philosophy](LLDL/WS0_Design_Philosophy.md) | [Documentation Home](../README.md) · [Design System](#19-cross-references) |
+| [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) | [WS0 — Design Philosophy](WS0_Design_Philosophy.md) | [Documentation Home](../../README.md) · [Design System](#19-cross-references) |

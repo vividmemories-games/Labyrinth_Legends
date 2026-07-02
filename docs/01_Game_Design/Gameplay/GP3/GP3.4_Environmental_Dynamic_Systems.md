@@ -12,7 +12,7 @@
 | **Prepared By** | ChatGPT (specification) · Cursor (compiler) |
 | **Last Updated** | 2026-06-29 |
 | **Path** | `docs/01_Game_Design/Gameplay/GP3/GP3.4_Environmental_Dynamic_Systems.md` |
-| **Dependencies** | [Vision](../../../00_Project/Vision.md) · [Game Loop](../../Game_Loop.md) · [Player & Explorer](../Player_Explorer.md) · [Movement System](../Movement_System.md) · [GP3.1 — Puzzle Taxonomy](GP3.1_Puzzle_Taxonomy.md) · [GP3.2 — Static, Traversal & Collectible](GP3.2_Static_Traversal_Collectible_Elements.md) · [GP3.3 — Interactive](GP3.3_Interactive_Elements.md) |
+| **Dependencies** | [Vision](../../../00_Project/Vision.md) · [Game Loop](../../Game_Loop/Game_Loop.md) · [Player & Explorer](../GP1_Player_Explorer.md) · [Movement System](../GP2_Movement_System.md) · [GP3.1 — Puzzle Taxonomy](GP3.1_Puzzle_Taxonomy.md) · [GP3.2 — Static, Traversal & Collectible](GP3.2_Static_Traversal_Collectible_Elements.md) · [GP3.3 — Interactive](GP3.3_Interactive_Elements.md) |
 | **Related Documents** | [Gameplay Rules](../GP7_Gameplay_Rules.md) · [GP3.5 — Composition](GP3.5_Puzzle_Composition_Level_Design_Rules.md) · [Hazards_Failure](../GP4_Hazards_Failure.md) · [Puzzle Elements](../Puzzle_Elements.md) |
 
 ## Navigation
@@ -149,8 +149,8 @@ flowchart TB
 
 GP3.4 may extend environmental and dynamic behaviour. It may **not**:
 
-- Override [Movement System](../Movement_System.md) node-to-node or orthogonal rules
-- Override [Player & Explorer](../Player_Explorer.md) planning/execution model
+- Override [Movement System](../GP2_Movement_System.md) node-to-node or orthogonal rules
+- Override [Player & Explorer](../GP1_Player_Explorer.md) planning/execution model
 - Redefine interactive activation ([GP3.3](GP3.3_Interactive_Elements.md))
 - Assign rule precedence ([Gameplay Rules](../GP7_Gameplay_Rules.md))
 
@@ -183,7 +183,7 @@ flowchart LR
   PL --> E[Explorer executes under rule]
 ```
 
-> **No arbitrary concealment:** Hidden information is allowed only when deliberately designed, fair, and teachable ([GP1-L06](../Player_Explorer.md#15-locked-decisions)).
+> **No arbitrary concealment:** Hidden information is allowed only when deliberately designed, fair, and teachable ([GP1-L06](../GP1_Player_Explorer.md#15-locked-decisions)).
 
 ### Design Intent
 
@@ -363,7 +363,7 @@ Flow systems teach **indirect consequence** — the Player routes matter, not on
 | **Gust paths** | Timed or cyclic wind corridors (Dynamic overlap) |
 | **Push zones** | Area applies displacement on entry |
 | **Force beams** | Line-shaped push like light beams |
-| **Environmental displacement** | Moves Explorer per [Movement System](../Movement_System.md) §11 modifiers |
+| **Environmental displacement** | Moves Explorer per [Movement System](../GP2_Movement_System.md) §11 modifiers |
 
 ### Movement Relationship
 
@@ -697,7 +697,7 @@ For any Environmental or Dynamic System:
 | 2 | Is the **current state readable**? | |
 | 3 | Is the **next state predictable or learnable**? | |
 | 4 | Does it **support planning**? | |
-| 5 | Does it respect **[Movement System](../Movement_System.md)**? | |
+| 5 | Does it respect **[Movement System](../GP2_Movement_System.md)**? | |
 | 6 | Does it integrate with **interactive elements** cleanly? | |
 | 7 | Can **QA test all states**? | |
 | 8 | Does it create **depth without confusion**? | |
@@ -759,9 +759,9 @@ Locked decisions bind GP3.4 content. Resolve open questions before GP3.5 composi
 
 ## Cross References
 
-- Upstream: [GP3.1](GP3.1_Puzzle_Taxonomy.md), [GP3.2](GP3.2_Static_Traversal_Collectible_Elements.md), [GP3.3](GP3.3_Interactive_Elements.md), [GP1](../Player_Explorer.md), [GP2](../Movement_System.md)
+- Upstream: [GP3.1](GP3.1_Puzzle_Taxonomy.md), [GP3.2](GP3.2_Static_Traversal_Collectible_Elements.md), [GP3.3](GP3.3_Interactive_Elements.md), [GP1](../GP1_Player_Explorer.md), [GP2](../GP2_Movement_System.md)
 - Siblings: [GP3.5 Composition](GP3.5_Puzzle_Composition_Level_Design_Rules.md)
-- Downstream: [Puzzle_Elements.md](../Puzzle_Elements.md), [Hazards_Failure](../GP4_Hazards_Failure.md), [Gameplay.md](../../Gameplay.md)
+- Downstream: [Puzzle_Elements.md](../Puzzle_Elements.md), [Hazards_Failure](../GP4_Hazards_Failure.md), [Gameplay.md](../Gameplay.md)
 - Governance: [Decisions](../../../00_Project/Decisions.md)
 
 ---

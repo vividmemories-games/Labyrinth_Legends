@@ -15,7 +15,7 @@
 | **Path** | `docs/06_Asset_Bible/AB3_UI_Brand_Assets.md` |
 | **Parent** | [AB2 — Game Assets](AB2_Game_Assets.md) |
 | **Children** | AB4 · AB5 · AB6 *(downstream Asset Bible workshops — AB3 informs but does not govern)* |
-| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) · [AB2](AB2_Game_Assets.md) |
+| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) · [AB2](AB2_Game_Assets.md) |
 | **Related Documents** | [WS4 — UI Language](../02_Design_System/LLDL/WS4_UI_Language.md) · [Components](../02_Design_System/Components.md) · [WS8 — Iconography](../02_Design_System/LLDL/WS8_Iconography_Language.md) · [WS9 — Accessibility](../02_Design_System/LLDL/WS9_Accessibility_Language.md) · `docs/03_Screens/*` |
 
 ## Navigation
@@ -51,7 +51,7 @@
 | Conflict type | Authority |
 |---------------|-----------|
 | Product intent | [Vision](../00_Project/Vision.md) wins |
-| Mechanical meaning and gameplay flow | [Gameplay](../01_Game_Design/Gameplay.md) wins |
+| Mechanical meaning and gameplay flow | [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) wins |
 | UI philosophy, visual language, tokens, components | [LLDL](../02_Design_System/LLDL/LLDL.md) and WS workshops win |
 | Playable-world in-maze visuals | [AB2](AB2_Game_Assets.md) wins — AB3 does not govern |
 | Production philosophy and universal standards | [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) win |
@@ -148,7 +148,7 @@ AB4–AB6       — marketing, AI pipeline, lifecycle
 
 #### Gameplay
 
-[Gameplay](../01_Game_Design/Gameplay.md) centers planning before action. Interface experiences must support **study, commit, and learn** — especially the gameplay interface experience — without replacing mechanical truth.
+[Gameplay](../01_Game_Design/Gameplay/Gameplay.md) centers planning before action. Interface experiences must support **study, commit, and learn** — especially the gameplay interface experience — without replacing mechanical truth.
 
 #### LLDL
 
@@ -768,7 +768,7 @@ AB3 — UI & Brand Assets records the following workshop conclusions for review:
 ### Locked authorities
 
 - [Vision](../00_Project/Vision.md)
-- [Gameplay](../01_Game_Design/Gameplay.md)
+- [Gameplay](../01_Game_Design/Gameplay/Gameplay.md)
 - [LLDL](../02_Design_System/LLDL/LLDL.md)
 
 ### Asset Bible

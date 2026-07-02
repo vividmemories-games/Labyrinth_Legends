@@ -14,7 +14,7 @@
 | **Path** | `docs/06_Asset_Bible/Asset_Bible.md` |
 | **Parent** | [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) · [AB2](AB2_Game_Assets.md) · [AB3](AB3_UI_Brand_Assets.md) · [AB4](AB4_Marketing_Store_Assets.md) · [AB5](AB5_AI_Production_Pipeline.md) · [AB6](AB6_Review_Asset_Lifecycle.md) |
 | **Children** | [Technical Documentation](../04_Technical/Architecture.md) |
-| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · AB0–AB6 *(locked workshops)* |
+| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · AB0–AB6 *(locked workshops)* |
 | **Related Documents** | [Asset Bible README](README.md) · [AGENTS.md](../../AGENTS.md) · [99_Reviews](../99_Reviews/README.md) |
 
 ## Navigation
@@ -48,7 +48,7 @@
 | Conflict type | Authority |
 |---------------|-----------|
 | Product intent | [Vision](../00_Project/Vision.md) wins |
-| Mechanical meaning | [Gameplay](../01_Game_Design/Gameplay.md) wins |
+| Mechanical meaning | [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) wins |
 | Visual language | [LLDL](../02_Design_System/LLDL/LLDL.md) wins |
 | Workshop content (philosophy, standards, domains, collaboration, governance) | **AB0–AB6 win** — this document summarizes and links only |
 | Production knowledge integration and navigation | **Asset_Bible.md wins** |
@@ -77,7 +77,7 @@ This document **integrates** locked workshops. It does **not** extend, modify, o
 
 ### 1.1 What Is the Asset Bible?
 
-The **Asset Bible** is the production knowledge system for Labyrinth Legends — how visual, interface, marketing, and AI-assisted assets are conceived, produced, reviewed, and maintained in alignment with [Vision](../00_Project/Vision.md), [Gameplay](../01_Game_Design/Gameplay.md), and [LLDL](../02_Design_System/LLDL/LLDL.md).
+The **Asset Bible** is the production knowledge system for Labyrinth Legends — how visual, interface, marketing, and AI-assisted assets are conceived, produced, reviewed, and maintained in alignment with [Vision](../00_Project/Vision.md), [Gameplay](../01_Game_Design/Gameplay/Gameplay.md), and [LLDL](../02_Design_System/LLDL/LLDL.md).
 
 It is not a single monolithic specification. It is **seven locked workshops** (AB0–AB6) plus this **integration document** — compiled so every production decision traces to one authoritative source.
 
@@ -333,7 +333,7 @@ When you need an answer, go to the **owning document** — not this integration 
 | Question type | Read |
 |---------------|------|
 | Why does this game exist? Product pillars? | [Vision](../00_Project/Vision.md) |
-| How does Draw Your Fate work? Puzzle rules? | [Gameplay](../01_Game_Design/Gameplay.md) |
+| How does Draw Your Fate work? Puzzle rules? | [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) |
 | What color means gold vs cyan? UI tone? | [LLDL](../02_Design_System/LLDL/LLDL.md) |
 | Why is production disciplined? AI beliefs? | [AB0](AB0_Asset_Philosophy_Production_Principles.md) |
 | Universal approval, ownership, asset states? | [AB1](AB1_Production_Standards.md) |
@@ -482,7 +482,7 @@ The Asset Bible is complete when workshops are locked and this guide is approved
 
 - [Asset Bible README](README.md)
 - [Vision](../00_Project/Vision.md)
-- [Gameplay](../01_Game_Design/Gameplay.md)
+- [Gameplay](../01_Game_Design/Gameplay/Gameplay.md)
 - [LLDL](../02_Design_System/LLDL/LLDL.md)
 - [Architecture](../04_Technical/Architecture.md)
 - [AGENTS.md](../../AGENTS.md)

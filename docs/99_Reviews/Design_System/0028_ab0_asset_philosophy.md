@@ -70,7 +70,7 @@ docs/99_Reviews/README.md — index (via script)
 ### Depends On
 
 - [Vision.md](../../00_Project/Vision.md) — Approved — Locked
-- [Gameplay.md](../../01_Game_Design/Gameplay.md) — Approved — Locked
+- [Gameplay.md](../../01_Game_Design/Gameplay/Gameplay.md) — Approved — Locked
 - [LLDL.md](../../02_Design_System/LLDL/LLDL.md) — Approved
 - [0027_asset_bible_structure.md](0027_asset_bible_structure.md) — scaffold approved
 

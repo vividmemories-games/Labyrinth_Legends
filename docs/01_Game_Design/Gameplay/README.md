@@ -2,7 +2,7 @@
 
 Authoritative gameplay specifications under `docs/01_Game_Design/Gameplay/`.
 
-These documents sit between [Game Loop](../Game_Loop.md) (loop architecture) and [Gameplay.md](../Gameplay.md) (integration layer — **v2.1.0 Approved / Locked**).
+These documents sit between [Game Loop](../Game_Loop/Game_Loop.md) (loop architecture) and [Gameplay.md](Gameplay.md) (integration layer — **v2.1.0 Approved / Locked**).
 
 ## Authority
 
@@ -46,7 +46,7 @@ Index: [GP3/README.md](GP3/README.md)
 
 | ID | Document | Status | Scope |
 |----|----------|--------|-------|
-| GP3 Integration | [Puzzle_Elements.md](Puzzle_Elements.md) | Not started | Integrated puzzle catalogue (synthesizes GP3.1–GP3.5) |
+| GP3 Integration | [Puzzle_Elements.md](Puzzle_Elements.md) | Draft — Ready for Review | Integrated puzzle catalogue (synthesizes GP3.1–GP3.5) |
 | **GP4** | [GP4_Hazards_Failure.md](GP4_Hazards_Failure.md) | Approved / Locked | Hazards, failure modes, fairness, MVP scope |
 | **GP5** | [GP5_Objectives_Completion.md](GP5_Objectives_Completion.md) | Approved / Locked | Objectives, completion, mastery, seals |
 | **GP6** | [GP6_Gameplay_Feedback.md](GP6_Gameplay_Feedback.md) | Approved / Locked | Gameplay feedback, readability, hints |
@@ -65,4 +65,4 @@ Core specifications define foundations. GP3 defines puzzle elements. Feature spe
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [Game Loop](../Game_Loop.md) | [GP1 — Player & Explorer](GP1_Player_Explorer.md) | [LLDS Home](../../README.md) · [Gameplay Integration](../Gameplay.md) |
+| [Game Loop](../Game_Loop/Game_Loop.md) | [GP1 — Player & Explorer](GP1_Player_Explorer.md) | [LLDS Home](../../README.md) · [Gameplay Integration](Gameplay.md) · [Puzzle Elements](Puzzle_Elements.md) |

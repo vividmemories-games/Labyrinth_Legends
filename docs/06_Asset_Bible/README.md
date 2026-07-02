@@ -113,7 +113,7 @@ Each workshop document (AB0–AB6) is authored, reviewed, and locked before the 
 ### Depends on
 
 - [Vision.md](../00_Project/Vision.md)
-- [Gameplay.md](../01_Game_Design/Gameplay.md)
+- [Gameplay.md](../01_Game_Design/Gameplay/Gameplay.md)
 - [LLDL.md](../02_Design_System/LLDL/LLDL.md)
 - [Design_Tokens.md](../02_Design_System/Design_Tokens.md)
 - [Components.md](../02_Design_System/Components.md) — where relevant
@@ -173,7 +173,7 @@ Do not bypass this workflow. See [Cursor Workflow](../05_AI/Cursor/Workflow.md) 
 
 ## 9. Current Status
 
-Asset Bible workshops **AB0–AB6** and [Asset_Bible.md](Asset_Bible.md) integration are **Approved** (not Approved — Locked). Human lock pending for integration document.
+Asset Bible workshops **AB0–AB6** are **Approved — Locked**. [Asset_Bible.md](Asset_Bible.md) integration is **Approved**; human lock pending for the integration document.
 
 ---
 

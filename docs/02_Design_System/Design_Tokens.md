@@ -231,4 +231,4 @@ Screen-specific overrides live in `docs/03_Screens/*` as layout and density note
 - [Colors](Colors.md) — WS2 semantic color reference
 - [Typography](Typography.md) — WS7 typographic roles
 - [Animations](Animations.md) — WS5 motion reference (expand from stub)
-- [LLDL](LLDL.md) — design architecture integration
+- [LLDL](LLDL/LLDL.md) — design architecture integration

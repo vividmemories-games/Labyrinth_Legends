@@ -14,13 +14,13 @@
 | **Workshop** | WS4 — UI Language |
 | **Path** | `docs/02_Design_System/LLDL/WS4_UI_Language.md` |
 | **Dependencies** | [Vision](../../00_Project/Vision.md) · [WS0 — Design Philosophy](WS0_Design_Philosophy.md) · [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) · [WS2 — Color Language](WS2_Color_Language.md) · [WS3 — Environment Language](WS3_Environment_Language.md) |
-| **Related Documents** | [LLDL](../LLDL.md) · [Components](../Components.md) · [Typography](../Typography.md) · [Accessibility](../Accessibility.md) · `docs/03_Screens/*` |
+| **Related Documents** | [LLDL](LLDL.md) · [Components](../Components.md) · [Typography](../Typography.md) · [Accessibility](../Accessibility.md) · `docs/03_Screens/*` |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS3 — Environment Language](WS3_Environment_Language.md) | [WS5 — Motion Language](WS5_Motion_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS3 — Environment Language](WS3_Environment_Language.md) | [WS5 — Motion Language](WS5_Motion_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |
 
 ---
 
@@ -873,7 +873,7 @@ Freeze workshop outcomes before component catalog and screen specification autho
 
 - [WS4 — UI Language](WS4_UI_Language.md) — UI authority
 - [WS5 — Motion Language](WS5_Motion_Language.md) — Motion authority
-- [LLDL](../LLDL.md) — Design language specification
+- [LLDL](LLDL.md) — Design language specification
 - [Components](../Components.md) — Reusable UI catalog
 - [Typography](../Typography.md) · [Icons](../Icons.md) · [Animations](../Animations.md)
 - [Design_Tokens](../Design_Tokens.md) · [Accessibility](../Accessibility.md)
@@ -881,7 +881,7 @@ Freeze workshop outcomes before component catalog and screen specification autho
 
 ### Gameplay alignment
 
-- [Gameplay](../../01_Game_Design/Gameplay.md) · [GP6 Gameplay Feedback](../../01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md)
+- [Gameplay](../../01_Game_Design/Gameplay/Gameplay.md) · [GP6 Gameplay Feedback](../../01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md)
 
 ### Governance
 
@@ -894,4 +894,4 @@ Freeze workshop outcomes before component catalog and screen specification autho
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS3 — Environment Language](WS3_Environment_Language.md) | [WS5 — Motion Language](WS5_Motion_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS3 — Environment Language](WS3_Environment_Language.md) | [WS5 — Motion Language](WS5_Motion_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |

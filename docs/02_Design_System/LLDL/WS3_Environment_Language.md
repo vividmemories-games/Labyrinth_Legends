@@ -14,13 +14,13 @@
 | **Workshop** | WS3 — Environment Language |
 | **Path** | `docs/02_Design_System/LLDL/WS3_Environment_Language.md` |
 | **Dependencies** | [Vision](../../00_Project/Vision.md) · [WS0 — Design Philosophy](WS0_Design_Philosophy.md) · [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) · [WS2 — Color Language](WS2_Color_Language.md) |
-| **Related Documents** | [LLDL](../LLDL.md) · [Worlds](../../01_Game_Design/Worlds.md) · [Level Design](../../01_Game_Design/Level_Design.md) · [Game Bible](../../01_Game_Design/Game_Bible.md) |
+| **Related Documents** | [LLDL](LLDL.md) · [Worlds](../../01_Game_Design/Worlds.md) · [Level Design](../../01_Game_Design/Level_Design.md) · [Game Bible](../../01_Game_Design/Game_Bible.md) |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS3 — Environment Language](WS3_Environment_Language.md) | [WS4 — UI Language](WS4_UI_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS3 — Environment Language](WS3_Environment_Language.md) | [WS4 — UI Language](WS4_UI_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |
 
 ---
 
@@ -763,7 +763,7 @@ Freeze workshop outcomes before biome catalogues and environment production guid
 ### Downstream
 
 - [WS4 — UI Language](WS4_UI_Language.md) — UI authority
-- [LLDL](../LLDL.md) — Design language specification
+- [LLDL](LLDL.md) — Design language specification
 - [Worlds](../../01_Game_Design/Worlds.md) — World structure and biome framing
 - [Level Design](../../01_Game_Design/Level_Design.md) — Chamber authoring conventions
 - [Game Bible](../../01_Game_Design/Game_Bible.md) — Narrative world tone
@@ -779,4 +779,4 @@ Freeze workshop outcomes before biome catalogues and environment production guid
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS3 — Environment Language](WS3_Environment_Language.md) | [WS4 — UI Language](WS4_UI_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS3 — Environment Language](WS3_Environment_Language.md) | [WS4 — UI Language](WS4_UI_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |

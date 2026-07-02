@@ -15,7 +15,7 @@
 | **Status**             | Draft                                                                                               |
 | **Review Type**        | Design System                                                                                       |
 | **Template Version**   | v2                                                                                                  |
-| **Related Docs**       | `docs/02_Design_System/LLDL/WS7_Typography_Language.md` · WS0–WS6 · `docs/02_Design_System/LLDL.md` |
+| **Related Docs**       | `docs/02_Design_System/LLDL/WS7_Typography_Language.md` · WS0–WS6 · `docs/02_Design_System/LLDL/LLDL.md` |
 | **Related Screens**    | N/A — typography authority document                                                                 |
 | **Related Components** | N/A                                                                                                 |
 
@@ -42,7 +42,7 @@ docs/99_Reviews/Design_System/0018_ws7_typography_language.md
 ## Files Modified
 
 ```text
-docs/02_Design_System/LLDL.md — WS7 authority, stack, dependencies, typography section
+docs/02_Design_System/LLDL/LLDL.md — WS7 authority, stack, dependencies, typography section
 docs/02_Design_System/LLDL/WS6_Audio_Language.md — navigation Next → WS7
 docs/99_Reviews/README.md — index (via script)
 ```
@@ -123,7 +123,7 @@ docs/99_Reviews/README.md — index (via script)
 
 ```text
 docs/02_Design_System/LLDL/WS7_Typography_Language.md
-docs/02_Design_System/LLDL.md
+docs/02_Design_System/LLDL/LLDL.md
 docs/02_Design_System/LLDL/WS6_Audio_Language.md
 docs/99_Reviews/Design_System/0018_ws7_typography_language.md
 docs/99_Reviews/README.md

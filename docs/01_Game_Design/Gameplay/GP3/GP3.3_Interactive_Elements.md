@@ -12,7 +12,7 @@
 | **Prepared By** | ChatGPT (specification) · Cursor (compiler) |
 | **Last Updated** | 2026-06-29 |
 | **Path** | `docs/01_Game_Design/Gameplay/GP3/GP3.3_Interactive_Elements.md` |
-| **Dependencies** | [Vision](../../../00_Project/Vision.md) · [Game Loop](../../Game_Loop.md) · [Player & Explorer](../Player_Explorer.md) · [Movement System](../Movement_System.md) · [GP3.1 — Puzzle Taxonomy](GP3.1_Puzzle_Taxonomy.md) · [GP3.2 — Static, Traversal & Collectible](GP3.2_Static_Traversal_Collectible_Elements.md) |
+| **Dependencies** | [Vision](../../../00_Project/Vision.md) · [Game Loop](../../Game_Loop/Game_Loop.md) · [Player & Explorer](../GP1_Player_Explorer.md) · [Movement System](../GP2_Movement_System.md) · [GP3.1 — Puzzle Taxonomy](GP3.1_Puzzle_Taxonomy.md) · [GP3.2 — Static, Traversal & Collectible](GP3.2_Static_Traversal_Collectible_Elements.md) |
 | **Related Documents** | [Gameplay Rules](../GP7_Gameplay_Rules.md) · [GP3.4 — Environmental](GP3.4_Environmental_Dynamic_Systems.md) · [Puzzle Elements](../Puzzle_Elements.md) |
 
 ## Navigation
@@ -127,11 +127,11 @@ flowchart LR
 GP3.3 may specify **how** interactive elements activate, link, and resolve. It may **not**:
 
 - Redefine taxonomy categories ([GP3.1-L01](GP3.1_Puzzle_Taxonomy.md#11-locked-decisions))
-- Override [Movement System](../Movement_System.md) or [Player & Explorer](../Player_Explorer.md) planning/execution model
+- Override [Movement System](../GP2_Movement_System.md) or [Player & Explorer](../GP1_Player_Explorer.md) planning/execution model
 - Redefine key/collectible acquisition rules ([GP3.2 §4](GP3.2_Static_Traversal_Collectible_Elements.md#4-collectible-elements))
 - Assign rule precedence ([Gameplay Rules](../GP7_Gameplay_Rules.md))
 
-> **Activation model:** Interactive elements activate when the **Explorer traverses their node** (or holds position per element type) during execution — automatic resolution per [GP1-L05](../Player_Explorer.md#15-locked-decisions). The Player plans; the Explorer triggers.
+> **Activation model:** Interactive elements activate when the **Explorer traverses their node** (or holds position per element type) during execution — automatic resolution per [GP1-L05](../GP1_Player_Explorer.md#15-locked-decisions). The Player plans; the Explorer triggers.
 
 ### Design Intent
 
@@ -508,7 +508,7 @@ Links are **puzzle sentences** — subject (trigger), verb (activate), object (e
 
 Interactive Elements are **deterministic and readable**. Timing adds **ordering foresight**, not **reflex skill**.
 
-> **No reflex gameplay:** Player never mashes buttons or races execution timer for core puzzle resolution ([GP1](../Player_Explorer.md), [Vision](../../../00_Project/Vision.md)).
+> **No reflex gameplay:** Player never mashes buttons or races execution timer for core puzzle resolution ([GP1](../GP1_Player_Explorer.md), [Vision](../../../00_Project/Vision.md)).
 
 ### Timing Categories
 
@@ -583,7 +583,7 @@ Shared behaviour rules for all Interactive Elements:
 | **Discoverable links** | Linked elements learnable |
 | **Path validation sync** | State changes update legality for subsequent path steps |
 | **No invisible mandatory interaction** | Required triggers fairly findable |
-| **Automatic activation** | Explorer traversal triggers; no execution-time tapping ([GP1-L05](../Player_Explorer.md#15-locked-decisions)) |
+| **Automatic activation** | Explorer traversal triggers; no execution-time tapping ([GP1-L05](../GP1_Player_Explorer.md#15-locked-decisions)) |
 | **Lifecycle fit** | Follows [GP3.1 §4](GP3.1_Puzzle_Taxonomy.md#4-puzzle-element-lifecycle) within element state machines |
 
 ### Path Order Principle
@@ -689,7 +689,7 @@ For any Interactive Element:
 | 3 | Is activation **deterministic**? | |
 | 4 | Is the linked effect **visible or learnable**? | |
 | 5 | Does it **support planning** before Confirm? | |
-| 6 | Does it respect **[Movement System](../Movement_System.md)**? | |
+| 6 | Does it respect **[Movement System](../GP2_Movement_System.md)**? | |
 | 7 | Does it avoid **hidden rules**? | |
 | 8 | Can **QA test every state**? | |
 | 9 | Is **feedback** provided on activation? | |
@@ -750,9 +750,9 @@ Locked decisions bind GP3.3 content. Resolve open questions before composition g
 
 ## Cross References
 
-- Upstream: [GP3.1](GP3.1_Puzzle_Taxonomy.md), [GP3.2](GP3.2_Static_Traversal_Collectible_Elements.md), [GP1](../Player_Explorer.md), [GP2](../Movement_System.md)
+- Upstream: [GP3.1](GP3.1_Puzzle_Taxonomy.md), [GP3.2](GP3.2_Static_Traversal_Collectible_Elements.md), [GP1](../GP1_Player_Explorer.md), [GP2](../GP2_Movement_System.md)
 - Siblings: [GP3.4 Environmental](GP3.4_Environmental_Dynamic_Systems.md), [GP3.5 Composition](GP3.5_Puzzle_Composition_Level_Design_Rules.md)
-- Downstream: [Puzzle_Elements.md](../Puzzle_Elements.md), [Gameplay.md](../../Gameplay.md)
+- Downstream: [Puzzle_Elements.md](../Puzzle_Elements.md), [Gameplay.md](../Gameplay.md)
 - Governance: [Decisions](../../../00_Project/Decisions.md)
 
 ---

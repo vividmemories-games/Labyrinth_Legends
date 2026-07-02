@@ -74,7 +74,7 @@ docs/99_Reviews/README.md — index (via script)
 - [AB5](../../06_Asset_Bible/AB5_AI_Production_Pipeline.md) — Approved — Locked
 - [AB6](../../06_Asset_Bible/AB6_Review_Asset_Lifecycle.md) — Approved — Locked
 - [Vision.md](../../00_Project/Vision.md) — Approved — Locked
-- [Gameplay.md](../../01_Game_Design/Gameplay.md) — Approved — Locked
+- [Gameplay.md](../../01_Game_Design/Gameplay/Gameplay.md) — Approved — Locked
 - [LLDL.md](../../02_Design_System/LLDL/LLDL.md) — Approved
 
 ### Enables

@@ -11,13 +11,13 @@
 | **Prepared By** | ChatGPT (specification) · Cursor (compiler) |
 | **Last Updated** | 2026-06-28 |
 | **Dependencies** | None — root design document |
-| **Related Documents** | [Game Loop](../01_Game_Design/Game_Loop.md) · [WS1–WS5](../01_Game_Design/Game_Loop/README.md) · [Gameplay](../01_Game_Design/Gameplay.md) · [LLDL](../02_Design_System/LLDL.md) · [Game Bible](../01_Game_Design/Game_Bible.md) · [Decisions](Decisions.md) · [Roadmap](Roadmap.md) |
+| **Related Documents** | [Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md) · [WS1–WS5](../01_Game_Design/Game_Loop/README.md) · [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [Game Bible](../01_Game_Design/Game_Bible.md) · [Decisions](Decisions.md) · [Roadmap](Roadmap.md) |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| — | [Game Loop](../01_Game_Design/Game_Loop.md) · [WS1–WS5](../01_Game_Design/Game_Loop/README.md) | [LLDS Home](../README.md) |
+| — | [Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md) · [WS1–WS5](../01_Game_Design/Game_Loop/README.md) | [LLDS Home](../README.md) |
 
 ---
 
@@ -46,9 +46,9 @@
 | Conflict type | Authority |
 |---------------|-----------|
 | Product intent (why, pillars, audience, non-goals) | **Vision wins** |
-| Visual and UX execution | [LLDL](../02_Design_System/LLDL.md) wins |
-| Mechanical rules | [Gameplay](../01_Game_Design/Gameplay.md) wins (must align with Vision) |
-| Session structure | [Game Loop](../01_Game_Design/Game_Loop.md) wins (must align with Vision) |
+| Visual and UX execution | [LLDL](../02_Design_System/LLDL/LLDL.md) wins |
+| Mechanical rules | [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) wins (must align with Vision) |
+| Session structure | [Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md) wins (must align with Vision) |
 | Narrative and world detail | [Game Bible](../01_Game_Design/Game_Bible.md) wins (must align with Vision) |
 
 When any downstream document conflicts with Vision on **product intent**, Vision overrides until [Decisions](Decisions.md) records an explicit, Human-approved exception.
@@ -71,7 +71,7 @@ Vision explains *why*. It does not define *how*. Mechanics, flows, tokens, and a
 | Gameplay Programmers | Understand intent before implementing rules |
 | Flutter Developers | Align implementation priorities with product principles |
 | Level Designers | Frame puzzles within player fantasy and discovery philosophy |
-| UI/UX Designers | Express vision through [LLDL](../02_Design_System/LLDL.md) without contradicting tone |
+| UI/UX Designers | Express vision through [LLDL](../02_Design_System/LLDL/LLDL.md) without contradicting tone |
 | Artists | Ground visual direction in world and theme |
 | Audio Designers | Support atmosphere and emotional journey |
 | Producers | Scope work against success definition and non-goals |
@@ -492,7 +492,7 @@ Challenge scales through **composition and incomplete information**, not cheap f
 
 ### Craftsmanship
 
-Every screen, sound, and animation should reinforce the temple fantasy and planning contract. Prototype visuals do not ship as final. See [LLDL](../02_Design_System/LLDL.md).
+Every screen, sound, and animation should reinforce the temple fantasy and planning contract. Prototype visuals do not ship as final. See [LLDL](../02_Design_System/LLDL/LLDL.md).
 
 ### Replay Philosophy
 
@@ -544,7 +544,7 @@ Full narrative bible lives in [Game Bible](../01_Game_Design/Game_Bible.md).
 | Faux-depth spaces with readable boards | Cartoon slapstick fantasy |
 | Dark, premium atmospheres | Trend-chasing visual noise |
 
-Token-level rules: [LLDL](../02_Design_System/LLDL.md).
+Token-level rules: [LLDL](../02_Design_System/LLDL/LLDL.md).
 
 ### Audio Identity
 
@@ -815,7 +815,7 @@ Provide a reusable gate so agents and humans evaluate scope consistently.
 | **Mastery** | Deep understanding expressed through execution quality and optional standards |
 | **World** | A major themed region teaching compositional rules through its chambers |
 | **Relic** | A persistent discoverable tied to lore and optional revelation (detail downstream) |
-| **Core Loop** | Observe → plan → commit → resolve at vision level; see [Game Loop](../01_Game_Design/Game_Loop.md) |
+| **Core Loop** | Observe → plan → commit → resolve at vision level; see [Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md) |
 | **Completion** | Finishing a chamber's primary objective |
 | **Mastered Completion** | Completion plus optional excellence standards (efficiency, thorough discovery) |
 | **Draw Your Fate** | Approved product phrase for plan-then-commit play identity (see [Decisions](Decisions.md)) |
@@ -832,14 +832,14 @@ Stabilize vocabulary across disciplines and AI agents.
 
 | Document | Purpose | Relationship to Vision |
 |----------|---------|----------------------|
-| [Game Loop](../01_Game_Design/Game_Loop.md) | Session and meta flow across screens | Structures player time |
+| [Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md) | Session and meta flow across screens | Structures player time |
 | [WS1 — Core Loop](../01_Game_Design/Game_Loop/WS1_Core_Loop.md) | Locked core micro-loop workshop | Defines what player does every few seconds |
 | [WS2 — Session Loop](../01_Game_Design/Game_Loop/WS2_Session_Loop.md) | Locked session loop workshop | Defines how core loops compose a satisfying session |
 | [WS3 — Progression Loop](../01_Game_Design/Game_Loop/WS3_Progression_Loop.md) | Locked progression loop workshop | Defines long-term mastery and unlock philosophy |
 | [WS4 — Completion Loop](../01_Game_Design/Game_Loop/WS4_Completion_Loop.md) | Locked completion loop workshop | Defines milestone closure and optional mastery |
 | [WS5 — Retention Loop](../01_Game_Design/Game_Loop/WS5_Retention_Loop.md) | Locked retention loop workshop | Defines voluntary long-term return and player trust |
-| [Gameplay](../01_Game_Design/Gameplay.md) | Input, rules, win/lose, execution | Implements pillars mechanically |
-| [LLDL](../02_Design_System/LLDL.md) | Visual, typographic, motion rules | Expresses theme and readability |
+| [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) | Input, rules, win/lose, execution | Implements pillars mechanically |
+| [LLDL](../02_Design_System/LLDL/LLDL.md) | Visual, typographic, motion rules | Expresses theme and readability |
 | [Game Bible](../01_Game_Design/Game_Bible.md) | Narrative voice, faction tone, extended world detail | Expands [§7 World & Theme](#7-world--theme) |
 | [Mechanics](../01_Game_Design/Mechanics.md) | Cell and interaction definitions | Downstream of Gameplay |
 | [Decisions](Decisions.md) | Approved changes and exceptions | Governance log |
@@ -906,4 +906,4 @@ If a future decision cannot be explained in terms of planning, discovery, master
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| — | [Game Loop](../01_Game_Design/Game_Loop.md) · [WS1–WS5](../01_Game_Design/Game_Loop/README.md) | [LLDS Home](../README.md) |
+| — | [Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md) · [WS1–WS5](../01_Game_Design/Game_Loop/README.md) | [LLDS Home](../README.md) |

@@ -15,7 +15,7 @@
 | **Path** | `docs/06_Asset_Bible/AB4_Marketing_Store_Assets.md` |
 | **Parent** | [AB3 — UI & Brand Assets](AB3_UI_Brand_Assets.md) |
 | **Children** | AB5 · AB6 *(downstream Asset Bible workshops — AB4 informs but does not govern)* |
-| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) · [AB2](AB2_Game_Assets.md) · [AB3](AB3_UI_Brand_Assets.md) |
+| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) · [AB2](AB2_Game_Assets.md) · [AB3](AB3_UI_Brand_Assets.md) |
 | **Related Documents** | [WS1 — Visual Identity](../02_Design_System/LLDL/WS1_Visual_Identity_Artistic_Direction.md) · [WS2 — Color Language](../02_Design_System/LLDL/WS2_Color_Language.md) · [WS7 — Typography](../02_Design_System/LLDL/WS7_Typography_Language.md) · [Roadmap](../00_Project/Roadmap.md) |
 
 ## Navigation
@@ -51,7 +51,7 @@
 | Conflict type | Authority |
 |---------------|-----------|
 | Product intent | [Vision](../00_Project/Vision.md) wins |
-| Mechanical meaning and gameplay truth | [Gameplay](../01_Game_Design/Gameplay.md) wins |
+| Mechanical meaning and gameplay truth | [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) wins |
 | Visual language, emotional tone, design meaning | [LLDL](../02_Design_System/LLDL/LLDL.md) and WS workshops win |
 | Playable-world in-maze visuals | [AB2](AB2_Game_Assets.md) wins — AB4 does not govern |
 | In-product interface and brand experiences | [AB3](AB3_UI_Brand_Assets.md) wins — AB4 extends, does not replace |
@@ -148,7 +148,7 @@ AB5–AB6       — AI pipeline, lifecycle gates
 
 #### Gameplay
 
-[Gameplay](../01_Game_Design/Gameplay.md) centers **planning before action** — Draw Your Fate. Public assets must communicate study, commitment, and consequence — not real-time twitch action, combat spectacle, or mechanics the game does not deliver.
+[Gameplay](../01_Game_Design/Gameplay/Gameplay.md) centers **planning before action** — Draw Your Fate. Public assets must communicate study, commitment, and consequence — not real-time twitch action, combat spectacle, or mechanics the game does not deliver.
 
 #### LLDL
 
@@ -724,7 +724,7 @@ AB4 — Marketing & Store Assets records the following workshop conclusions for 
 ### Locked authorities
 
 - [Vision](../00_Project/Vision.md)
-- [Gameplay](../01_Game_Design/Gameplay.md)
+- [Gameplay](../01_Game_Design/Gameplay/Gameplay.md)
 - [LLDL](../02_Design_System/LLDL/LLDL.md)
 
 ### Asset Bible

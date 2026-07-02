@@ -11,7 +11,7 @@
 | **Owner**              | Cursor                                                                                                                                                                                                       |
 | **Status**             | Ready for Review                                                                                                                                                                                             |
 | **Review Type**        | Design System                                                                                                                                                                                                |
-| **Related Docs**       | `docs/02_Design_System/LLDL.md`, `Design_Tokens.md`, `Components.md`                                                                                                                                         |
+| **Related Docs**       | `docs/02_Design_System/LLDL/LLDL.md`, `Design_Tokens.md`, `Components.md`                                                                                                                                         |
 | **Related Screens**    | Home (consumer only)                                                                                                                                                                                         |
 | **Related Components** | LLButton, LLPanel, LLCard, LLTopBar, LLBottomBar, LLCurrencyChip, LLProgressBar, LLBadge, LLRewardCard, LLDialog, LLToast, LLLoadingIndicator, LLFloatingButton, LLIconButton, LLSection, LLScreenBackground |
 

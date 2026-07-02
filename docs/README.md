@@ -32,9 +32,9 @@ Develop in dependency order. **Do not substantially expand lower-priority docume
 | # | Document | Status |
 |---|----------|--------|
 | 1 | [Vision](00_Project/Vision.md) | Approved — Locked (v2.1.0) |
-| 2 | [Game Loop](01_Game_Design/Game_Loop.md) · [WS1–WS5](01_Game_Design/Game_Loop/README.md) | Approved — Locked (v2.1.0) |
-| 3 | [Gameplay](01_Game_Design/Gameplay.md) | Approved — Locked (v2.1.0) |
-| 4 | [LLDL](02_Design_System/LLDL.md) | Approved — Locked (v2.0.0) |
+| 2 | [Game Loop](01_Game_Design/Game_Loop/Game_Loop.md) · [WS1–WS5](01_Game_Design/Game_Loop/README.md) | Approved — Locked (v2.1.0) |
+| 3 | [Gameplay](01_Game_Design/Gameplay/Gameplay.md) | Approved — Locked (v2.1.0) |
+| 4 | [LLDL](02_Design_System/LLDL/LLDL.md) | Approved — Locked (v2.0.0) |
 | 5 | [Game Bible](01_Game_Design/Game_Bible.md) | Draft — Future document |
 
 ```mermaid
@@ -85,9 +85,9 @@ If a conflict exists, **preserve the higher-authority document and report the co
 | I need to… | Read |
 |------------|------|
 | Understand the game | [Vision](00_Project/Vision.md), [Game Bible](01_Game_Design/Game_Bible.md) |
-| Build UI | [LLDL](02_Design_System/LLDL.md), [Components](02_Design_System/Components.md), relevant `03_Screens/` |
-| Produce assets | [Asset Bible](06_Asset_Bible/Asset_Bible.md), [LLDL](02_Design_System/LLDL.md) |
-| Build engine | [Architecture](04_Technical/Architecture.md), [Gameplay](01_Game_Design/Gameplay.md), [Gameplay Specs (GP series)](01_Game_Design/Gameplay/README.md) |
+| Build UI | [LLDL](02_Design_System/LLDL/LLDL.md), [Components](02_Design_System/Components.md), relevant `03_Screens/` |
+| Produce assets | [Asset Bible](06_Asset_Bible/Asset_Bible.md), [LLDL](02_Design_System/LLDL/LLDL.md) |
+| Build engine | [Architecture](04_Technical/Architecture.md), [Gameplay](01_Game_Design/Gameplay/Gameplay.md), [Gameplay Specs (GP series)](01_Game_Design/Gameplay/README.md) |
 | Start a Cursor task | [Cursor Workflow](05_AI/Cursor/Workflow.md) |
 | Review a PR | [Codex Review Checklist](05_AI/Codex/Review_Checklist.md) |
 | Hand off a milestone | [99_Reviews](99_Reviews/README.md) |

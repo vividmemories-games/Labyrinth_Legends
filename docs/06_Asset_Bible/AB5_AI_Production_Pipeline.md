@@ -15,7 +15,7 @@
 | **Path** | `docs/06_Asset_Bible/AB5_AI_Production_Pipeline.md` |
 | **Parent** | [AB4 — Marketing & Store Assets](AB4_Marketing_Store_Assets.md) |
 | **Children** | AB6 *(downstream Asset Bible workshop — AB5 informs but does not govern)* |
-| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) · [AB2](AB2_Game_Assets.md) · [AB3](AB3_UI_Brand_Assets.md) · [AB4](AB4_Marketing_Store_Assets.md) |
+| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) · [AB2](AB2_Game_Assets.md) · [AB3](AB3_UI_Brand_Assets.md) · [AB4](AB4_Marketing_Store_Assets.md) |
 | **Related Documents** | [AGENTS.md](../../AGENTS.md) · [Cursor Workflow](../05_AI/Cursor/Workflow.md) · [Codex Review Checklist](../05_AI/Codex/Review_Checklist.md) · [99_Reviews](../99_Reviews/README.md) |
 
 ## Navigation
@@ -51,7 +51,7 @@
 | Conflict type | Authority |
 |---------------|-----------|
 | Product intent | [Vision](../00_Project/Vision.md) wins |
-| Mechanical meaning and gameplay truth | [Gameplay](../01_Game_Design/Gameplay.md) wins |
+| Mechanical meaning and gameplay truth | [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) wins |
 | Visual language, emotional tone, design meaning | [LLDL](../02_Design_System/LLDL/LLDL.md) and WS workshops win |
 | Asset production philosophy and AI posture | [AB0](AB0_Asset_Philosophy_Production_Principles.md) wins — AB5 extends, does not replace |
 | Universal production standards and governance culture | [AB1](AB1_Production_Standards.md) wins |
@@ -153,7 +153,7 @@ Asset_Bible.md — integrated production handbook
 
 #### Gameplay
 
-[Gameplay](../01_Game_Design/Gameplay.md) defines mechanical truth. AI must not invent rules, reinterpret precedence, or ship gameplay logic without human-authored specification and test validation.
+[Gameplay](../01_Game_Design/Gameplay/Gameplay.md) defines mechanical truth. AI must not invent rules, reinterpret precedence, or ship gameplay logic without human-authored specification and test validation.
 
 #### LLDL
 
@@ -756,7 +756,7 @@ AB5 — AI Production Pipeline records the following workshop conclusions for re
 ### Locked authorities
 
 - [Vision](../00_Project/Vision.md)
-- [Gameplay](../01_Game_Design/Gameplay.md)
+- [Gameplay](../01_Game_Design/Gameplay/Gameplay.md)
 - [LLDL](../02_Design_System/LLDL/LLDL.md)
 
 ### Asset Bible

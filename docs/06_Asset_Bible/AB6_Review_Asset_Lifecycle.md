@@ -15,7 +15,7 @@
 | **Path** | `docs/06_Asset_Bible/AB6_Review_Asset_Lifecycle.md` |
 | **Parent** | [AB5 — AI Production Pipeline](AB5_AI_Production_Pipeline.md) |
 | **Children** | [Asset Bible](Asset_Bible.md) *(integration document — AB6 governs workshops; integration compiles them)* |
-| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) · [AB2](AB2_Game_Assets.md) · [AB3](AB3_UI_Brand_Assets.md) · [AB4](AB4_Marketing_Store_Assets.md) · [AB5](AB5_AI_Production_Pipeline.md) |
+| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) · [AB2](AB2_Game_Assets.md) · [AB3](AB3_UI_Brand_Assets.md) · [AB4](AB4_Marketing_Store_Assets.md) · [AB5](AB5_AI_Production_Pipeline.md) |
 | **Related Documents** | [AGENTS.md](../../AGENTS.md) · [99_Reviews](../99_Reviews/README.md) · [Review Template](../99_Reviews/Review_Template.md) · [Decisions](../00_Project/Decisions.md) |
 
 ## Navigation
@@ -51,7 +51,7 @@
 | Conflict type | Authority |
 |---------------|-----------|
 | Product intent | [Vision](../00_Project/Vision.md) wins |
-| Mechanical meaning and gameplay truth | [Gameplay](../01_Game_Design/Gameplay.md) wins |
+| Mechanical meaning and gameplay truth | [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) wins |
 | Visual language, emotional tone, design meaning | [LLDL](../02_Design_System/LLDL/LLDL.md) and WS workshops win |
 | Production philosophy | [AB0](AB0_Asset_Philosophy_Production_Principles.md) wins |
 | Universal production standards and asset state model | [AB1](AB1_Production_Standards.md) wins — AB6 formalizes gates; does not replace |
@@ -149,7 +149,7 @@ Asset_Bible.md — integrated handbook (compilation — not governance redefinit
 
 #### Gameplay
 
-[Gameplay](../01_Game_Design/Gameplay.md) is mechanical truth. AB6 ensures **documentation changes that affect mechanical meaning** receive appropriate review — without AB6 redefining gameplay.
+[Gameplay](../01_Game_Design/Gameplay/Gameplay.md) is mechanical truth. AB6 ensures **documentation changes that affect mechanical meaning** receive appropriate review — without AB6 redefining gameplay.
 
 #### LLDL
 
@@ -719,7 +719,7 @@ AB6 — Review & Asset Lifecycle records the following workshop conclusions for 
 ### Locked authorities
 
 - [Vision](../00_Project/Vision.md)
-- [Gameplay](../01_Game_Design/Gameplay.md)
+- [Gameplay](../01_Game_Design/Gameplay/Gameplay.md)
 - [LLDL](../02_Design_System/LLDL/LLDL.md)
 
 ### Asset Bible

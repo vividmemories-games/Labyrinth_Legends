@@ -13,8 +13,8 @@
 | **Prepared By**       | ChatGPT (specification) · Cursor (compiler)                                                                                                                                                                                                                                                                                                                                                                                                   |
 | **Last Updated**      | 2026-06-29                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **Path**              | `docs/01_Game_Design/Gameplay/GP7_Gameplay_Rules.md`                                                                                                                                                                                                                                                                                                                                                                                          |
-| **Dependencies**      | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop.md) · [GP1 Player & Explorer](GP1_Player_Explorer.md) · [GP2 Movement System](GP2_Movement_System.md) · [GP3.1](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md) · [GP4 Hazards & Failure](GP4_Hazards_Failure.md) · [GP5 Objectives & Completion](GP5_Objectives_Completion.md) · [GP6 Gameplay Feedback](GP6_Gameplay_Feedback.md) |
-| **Related Documents** | [Puzzle Elements](Puzzle_Elements.md) · [Gameplay.md](../Gameplay.md)                                                                                                                                                                                                                                                                                                                                                                         |
+| **Dependencies**      | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop/Game_Loop.md) · [GP1 Player & Explorer](GP1_Player_Explorer.md) · [GP2 Movement System](GP2_Movement_System.md) · [GP3.1](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md) · [GP4 Hazards & Failure](GP4_Hazards_Failure.md) · [GP5 Objectives & Completion](GP5_Objectives_Completion.md) · [GP6 Gameplay Feedback](GP6_Gameplay_Feedback.md) |
+| **Related Documents** | [Puzzle Elements](Puzzle_Elements.md) · [Gameplay.md](Gameplay.md)                                                                                                                                                                                                                                                                                                                                                                         |
 
 
 ## Navigation
@@ -137,7 +137,7 @@ GP7 ensures every outcome is **predictable, fair, and testable** — from intent
 | Document                                                    | GP7 relationship                                   |
 | ----------------------------------------------------------- | -------------------------------------------------- |
 | [Vision](../../00_Project/Vision.md)                        | Premium puzzle-adventure; determinism serves trust |
-| [Game Loop](../Game_Loop.md)                                | Phases map to loop beats                           |
+| [Game Loop](../Game_Loop/Game_Loop.md)                                | Phases map to loop beats                           |
 | [GP1 Player & Explorer](GP1_Player_Explorer.md)             | Agency, commitment — GP7 does not override         |
 | [GP2 Movement System](GP2_Movement_System.md)               | Path validity — GP7 orders resolution around GP2   |
 | [GP3.1–GP3.5](GP3/GP3.1_Puzzle_Taxonomy.md)                 | Element behaviour — GP7 orders when they resolve   |
@@ -558,7 +558,7 @@ Randomness may **vary chambers** — never **resolve** them.
 | Document                                                    | Owns                                              |
 | ----------------------------------------------------------- | ------------------------------------------------- |
 | [Vision](../../00_Project/Vision.md)                        | Product identity, pillars                         |
-| [Game_Loop](../Game_Loop.md)                                | Loop architecture                                 |
+| [Game_Loop](../Game_Loop/Game_Loop.md)                                | Loop architecture                                 |
 | [GP1 Player & Explorer](GP1_Player_Explorer.md)             | Player agency, explorer identity, commitment      |
 | [GP2 Movement System](GP2_Movement_System.md)               | Path validity, movement execution                 |
 | **GP7 (this doc)**                                          | **Precedence, execution order, conflict routing** |
@@ -567,7 +567,7 @@ Randomness may **vary chambers** — never **resolve** them.
 | [GP5 Objectives & Completion](GP5_Objectives_Completion.md) | Objectives, completion, seals                     |
 | [GP6 Gameplay Feedback](GP6_Gameplay_Feedback.md)           | Feedback presentation — **not outcomes**          |
 | [Puzzle Elements](Puzzle_Elements.md)                       | Integration catalogue                             |
-| [Gameplay.md](../Gameplay.md)                               | Integration summary                               |
+| [Gameplay.md](Gameplay.md)                               | Integration summary                               |
 
 
 **GP7 routes conflicts** to the owning document. GP6 **never** changes GP7 outcomes.
@@ -879,7 +879,7 @@ GP7 **closes the gameplay spec stack** — engine implements this pipeline; inte
 - Core: [GP1 Player & Explorer](GP1_Player_Explorer.md) · [GP2 Movement System](GP2_Movement_System.md)
 - GP3: [GP3.1 Puzzle Taxonomy](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5 Puzzle Composition & Level Design Rules](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md)
 - Features: [GP4 Hazards & Failure](GP4_Hazards_Failure.md) · [GP5 Objectives & Completion](GP5_Objectives_Completion.md) · [GP6 Gameplay Feedback](GP6_Gameplay_Feedback.md)
-- Integration: [Puzzle_Elements](Puzzle_Elements.md) · [Gameplay.md](../Gameplay.md)
+- Integration: [Puzzle_Elements](Puzzle_Elements.md) · [Gameplay.md](Gameplay.md)
 - Governance: [Vision](../../00_Project/Vision.md) · [Decisions](../../00_Project/Decisions.md)
 
 ---

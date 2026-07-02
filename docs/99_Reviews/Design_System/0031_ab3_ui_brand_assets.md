@@ -73,7 +73,7 @@ docs/99_Reviews/README.md — index (via script)
 - [AB1](../../06_Asset_Bible/AB1_Production_Standards.md) — Approved
 - [AB2](../../06_Asset_Bible/AB2_Game_Assets.md) — Approved
 - [Vision.md](../../00_Project/Vision.md) — Approved — Locked
-- [Gameplay.md](../../01_Game_Design/Gameplay.md) — Approved — Locked
+- [Gameplay.md](../../01_Game_Design/Gameplay/Gameplay.md) — Approved — Locked
 - [LLDL.md](../../02_Design_System/LLDL/LLDL.md) — Approved
 - [WS4 — UI Language](../../02_Design_System/LLDL/WS4_UI_Language.md) — Approved
 

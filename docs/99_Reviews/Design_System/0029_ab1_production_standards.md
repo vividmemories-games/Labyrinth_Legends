@@ -72,7 +72,7 @@ docs/99_Reviews/Design_System/0029_ab1_production_standards.md — reviewer note
 
 - [AB0](../../06_Asset_Bible/AB0_Asset_Philosophy_Production_Principles.md) — Draft (review package `0028` Approved; Human lock pending)
 - [Vision.md](../../00_Project/Vision.md) — Approved — Locked
-- [Gameplay.md](../../01_Game_Design/Gameplay.md) — Approved — Locked
+- [Gameplay.md](../../01_Game_Design/Gameplay/Gameplay.md) — Approved — Locked
 - [LLDL.md](../../02_Design_System/LLDL/LLDL.md) — Approved
 
 ### Enables

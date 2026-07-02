@@ -14,13 +14,13 @@
 | **Workshop** | WS7 — Typography Language |
 | **Path** | `docs/02_Design_System/LLDL/WS7_Typography_Language.md` |
 | **Dependencies** | [Vision](../../00_Project/Vision.md) · [WS0 — Design Philosophy](WS0_Design_Philosophy.md) · [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) · [WS2 — Color Language](WS2_Color_Language.md) · [WS3 — Environment Language](WS3_Environment_Language.md) · [WS4 — UI Language](WS4_UI_Language.md) · [WS5 — Motion Language](WS5_Motion_Language.md) · [WS6 — Audio Language](WS6_Audio_Language.md) |
-| **Related Documents** | [LLDL](../LLDL.md) · [Typography](../Typography.md) · [Accessibility](../Accessibility.md) · `docs/03_Screens/*` |
+| **Related Documents** | [LLDL](LLDL.md) · [Typography](../Typography.md) · [Accessibility](../Accessibility.md) · `docs/03_Screens/*` |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS6 — Audio Language](WS6_Audio_Language.md) | [WS8 — Iconography Language](WS8_Iconography_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS6 — Audio Language](WS6_Audio_Language.md) | [WS8 — Iconography Language](WS8_Iconography_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |
 
 ---
 
@@ -857,7 +857,7 @@ Freeze workshop outcomes before type tokens, component text specs, and localizat
 
 - [WS7 — Typography Language](WS7_Typography_Language.md) — Typography authority
 - [WS8 — Iconography Language](WS8_Iconography_Language.md) — Iconography authority
-- [LLDL](../LLDL.md) — Design language specification
+- [LLDL](LLDL.md) — Design language specification
 - [Typography](../Typography.md) — Type scale and style guidance
 - [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md)
 - [Accessibility](../Accessibility.md)
@@ -874,4 +874,4 @@ Freeze workshop outcomes before type tokens, component text specs, and localizat
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS6 — Audio Language](WS6_Audio_Language.md) | [WS8 — Iconography Language](WS8_Iconography_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS6 — Audio Language](WS6_Audio_Language.md) | [WS8 — Iconography Language](WS8_Iconography_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |

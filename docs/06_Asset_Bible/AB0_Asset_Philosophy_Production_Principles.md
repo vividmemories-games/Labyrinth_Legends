@@ -16,7 +16,7 @@
 | **Path**              | `docs/06_Asset_Bible/AB0_Asset_Philosophy_Production_Principles.md`                                                                                                    |
 | **Parent**            | [LLDL](../02_Design_System/LLDL/LLDL.md)                                                                                                                               |
 | **Children**          | AB1 · AB2 · AB3 · AB4 · AB5 · AB6                                                                                                                                      |
-| **Dependencies**      | [Vision](../00_Project/Vision.md) · [Game Loop](../01_Game_Design/Game_Loop.md) · [Gameplay](../01_Game_Design/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) |
+| **Dependencies**      | [Vision](../00_Project/Vision.md) · [Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md) · [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) |
 | **Related Documents** | [Asset Bible README](README.md) · [WS0 — Design Philosophy](../02_Design_System/LLDL/WS0_Design_Philosophy.md) · [Decisions](../00_Project/Decisions.md)               |
 
 
@@ -58,7 +58,7 @@
 | Conflict type                                                                 | Authority                                                                                |
 | ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
 | Product intent (why, pillars, audience, non-goals)                            | [Vision](../00_Project/Vision.md) wins                                                   |
-| Mechanical meaning and gameplay readability requirements                      | [Gameplay](../01_Game_Design/Gameplay.md) wins                                           |
+| Mechanical meaning and gameplay readability requirements                      | [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) wins                                           |
 | Visual language, emotional tone, design meaning                               | [LLDL](../02_Design_System/LLDL/LLDL.md) and its workshops win                           |
 | Asset production philosophy (principles and beliefs — not detailed standards) | **AB0 wins**                                                                             |
 | Production standards, formats, naming, pipelines                              | AB1–AB6 and [Asset_Bible.md](Asset_Bible.md) — must align with AB0; AB0 does not define them |
@@ -164,13 +164,13 @@ Production therefore treats **player experience** as the first quality gate — 
 
 #### Game Loop
 
-[Game Loop](../01_Game_Design/Game_Loop.md) defines how play unfolds across moment, session, progression, completion, and return. Assets must support those rhythms. A collectible that reads beautifully in a marketing still but disappears during live play fails the loop it was meant to serve.
+[Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md) defines how play unfolds across moment, session, progression, completion, and return. Assets must support those rhythms. A collectible that reads beautifully in a marketing still but disappears during live play fails the loop it was meant to serve.
 
 Production respects **where** an asset appears in the player's journey and **how often** it is encountered.
 
 #### Gameplay
 
-[Gameplay](../01_Game_Design/Gameplay.md) defines mechanical meaning — planning before action, deterministic consequences, readable hazards, honest feedback. Assets are not decoration applied after rules exist. They are part of how players **learn**, **commit**, and **understand**.
+[Gameplay](../01_Game_Design/Gameplay/Gameplay.md) defines mechanical meaning — planning before action, deterministic consequences, readable hazards, honest feedback. Assets are not decoration applied after rules exist. They are part of how players **learn**, **commit**, and **understand**.
 
 An environment texture, hazard silhouette, or HUD element that obscures mechanical truth is a gameplay failure expressed through art. Production must protect mechanical readability without redefining rules.
 
@@ -223,7 +223,7 @@ The following principles are foundational. Each exists because undisciplined pro
 
 **Principle:** Mechanical readability precedes aesthetic embellishment.
 
-**Why:** [Gameplay](../01_Game_Design/Gameplay.md) treats planning, hazards, objectives, and feedback as a coherent system. Decoration that obscures traversable space, hazard state, or interactive affordances forces players to guess — violating fairness and trust.
+**Why:** [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) treats planning, hazards, objectives, and feedback as a coherent system. Decoration that obscures traversable space, hazard state, or interactive affordances forces players to guess — violating fairness and trust.
 
 **Implication:** Artists and designers collaborate early so beauty reinforces clarity. Ornament is applied **after** function is legible, not instead of it.
 
@@ -821,8 +821,8 @@ AB0 — Asset Philosophy & Production Principles records the following workshop 
 ### Locked authorities
 
 - [Vision](../00_Project/Vision.md)
-- [Game Loop](../01_Game_Design/Game_Loop.md)
-- [Gameplay](../01_Game_Design/Gameplay.md)
+- [Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md)
+- [Gameplay](../01_Game_Design/Gameplay/Gameplay.md)
 - [LLDL](../02_Design_System/LLDL/LLDL.md)
 
 ### Asset Bible

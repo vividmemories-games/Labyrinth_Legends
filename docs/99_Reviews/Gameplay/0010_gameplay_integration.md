@@ -14,7 +14,7 @@
 | **Status** | Draft — Ready for Review |
 | **Review Type** | Gameplay |
 | **Template Version** | v2 |
-| **Related Docs** | `docs/01_Game_Design/Gameplay.md` · GP1–GP7 · `docs/01_Game_Design/Gameplay/README.md` · `docs/README.md` |
+| **Related Docs** | `docs/01_Game_Design/Gameplay/Gameplay.md` · GP1–GP7 · `docs/01_Game_Design/Gameplay/README.md` · `docs/README.md` |
 | **Related Screens** | N/A (documentation only) |
 | **Related Components** | N/A |
 
@@ -39,7 +39,7 @@ docs/99_Reviews/Gameplay/0010_gameplay_integration.md
 ## Files Modified
 
 ```text
-docs/01_Game_Design/Gameplay.md — full v2.0.0 integration document (replaces v1.0.0 placeholder)
+docs/01_Game_Design/Gameplay/Gameplay.md — full v2.0.0 integration document (replaces v1.0.0 placeholder)
 docs/01_Game_Design/Gameplay/README.md — navigation link to Gameplay.md integration doc; GP1 path fix
 docs/README.md — Gameplay status updated to Draft for Review
 docs/99_Reviews/README.md — index updated by scaffold script
@@ -114,7 +114,7 @@ docs/99_Reviews/README.md — index updated by scaffold script
 ## Documentation Updated
 
 ```text
-docs/01_Game_Design/Gameplay.md
+docs/01_Game_Design/Gameplay/Gameplay.md
 docs/01_Game_Design/Gameplay/README.md
 docs/README.md
 docs/99_Reviews/Gameplay/0010_gameplay_integration.md

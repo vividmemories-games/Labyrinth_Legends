@@ -12,14 +12,14 @@
 | **Prepared By** | ChatGPT (specification) · Cursor (compiler) |
 | **Last Updated** | 2026-06-29 |
 | **Path** | `docs/01_Game_Design/Gameplay/Movement_System.md` |
-| **Dependencies** | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop.md) · [Player & Explorer](Player_Explorer.md) |
-| **Related Documents** | [GP3 — Puzzle Taxonomy](GP3/GP3.1_Puzzle_Taxonomy.md) · [Gameplay_Rules](GP7_Gameplay_Rules.md) · [Puzzle_Elements](Puzzle_Elements.md) · [Gameplay_Feedback](GP6_Gameplay_Feedback.md) · [Gameplay](../Gameplay.md) |
+| **Dependencies** | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop/Game_Loop.md) · [Player & Explorer](GP1_Player_Explorer.md) |
+| **Related Documents** | [GP3 — Puzzle Taxonomy](GP3/GP3.1_Puzzle_Taxonomy.md) · [Gameplay_Rules](GP7_Gameplay_Rules.md) · [Puzzle_Elements](Puzzle_Elements.md) · [Gameplay_Feedback](GP6_Gameplay_Feedback.md) · [Gameplay](Gameplay.md) |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [Player & Explorer](Player_Explorer.md) | [GP3 — Puzzle Taxonomy](GP3/GP3.1_Puzzle_Taxonomy.md) | [Gameplay Specs](README.md) · [LLDS Home](../../README.md) |
+| [Player & Explorer](GP1_Player_Explorer.md) | [GP3 — Puzzle Taxonomy](GP3/GP3.1_Puzzle_Taxonomy.md) | [Gameplay Specs](README.md) · [LLDS Home](../../README.md) |
 
 ---
 
@@ -48,7 +48,7 @@ This document is the **single source of truth** for:
 - Movement execution behaviour
 - Direction, timing, preview, collision responses, and interruptions
 
-It inherits the Player & Explorer contract from [Player_Explorer.md](Player_Explorer.md). Puzzle element behaviour, hazards, and UI implementation belong in downstream documents.
+It inherits the Player & Explorer contract from [Player_Explorer.md](GP1_Player_Explorer.md). Puzzle element behaviour, hazards, and UI implementation belong in downstream documents.
 
 ### Planning First, Execution Second
 
@@ -167,7 +167,7 @@ Node-to-node movement:
 
 ### How Players Create Paths
 
-During the **planning phase** only ([Player_Explorer](Player_Explorer.md) §4):
+During the **planning phase** only ([Player_Explorer](GP1_Player_Explorer.md) §4):
 
 | Action | Description |
 |--------|-------------|
@@ -270,7 +270,7 @@ When the Player confirms a valid path:
 | **Never optimise** | No auto-correction of Player mistakes |
 | **Never deviate** | No steering input accepted |
 
-Aligns with [GP1-L02](Player_Explorer.md#15-locked-decisions) and [GP1-L03](Player_Explorer.md#15-locked-decisions).
+Aligns with [GP1-L02](GP1_Player_Explorer.md#15-locked-decisions) and [GP1-L03](GP1_Player_Explorer.md#15-locked-decisions).
 
 ### Execution Lifecycle
 
@@ -400,7 +400,7 @@ Preview should communicate:
 
 ### Why Preview Builds Confidence
 
-Confirm is a **commitment** ([Player_Explorer](Player_Explorer.md) §8). Preview reduces mis-clicks and supports learning — it does not replace observation.
+Confirm is a **commitment** ([Player_Explorer](GP1_Player_Explorer.md) §8). Preview reduces mis-clicks and supports learning — it does not replace observation.
 
 Preview is **planning-phase only**. It does not execute the path or resolve outcomes.
 
@@ -539,7 +539,7 @@ Accessibility is presentation and input — not a separate ruleset that breaks d
 | MS-C08 | **Node-to-node**, **orthogonal** traversal only (core) |
 | MS-C09 | Explorer follows confirmed path **exactly** |
 | MS-C10 | **Speed is not character progression** |
-| MS-C11 | Inherits [Player_Explorer](Player_Explorer.md) commitment model |
+| MS-C11 | Inherits [Player_Explorer](GP1_Player_Explorer.md) commitment model |
 
 ---
 
@@ -567,7 +567,7 @@ Accessibility is presentation and input — not a separate ruleset that breaks d
 | Does **planning** remain valuable? | No execution-time correction |
 | Does movement increase **readability**? | Steps legible on grid |
 | Could this introduce **ambiguity**? | Reject if yes |
-| Does it respect **[Player_Explorer](Player_Explorer.md)**? | Planning/execution split intact |
+| Does it respect **[Player_Explorer](GP1_Player_Explorer.md)**? | Planning/execution split intact |
 | Is validation **transparent**? | Player knows why path fails |
 | Are modifiers **authored and learnable**? | No surprise physics |
 
@@ -614,7 +614,7 @@ Accessibility is presentation and input — not a separate ruleset that breaks d
 
 ## Cross References
 
-- Upstream: [Vision](../../00_Project/Vision.md), [Game Loop](../Game_Loop.md), [Player & Explorer](Player_Explorer.md)
+- Upstream: [Vision](../../00_Project/Vision.md), [Game Loop](../Game_Loop/Game_Loop.md), [Player & Explorer](GP1_Player_Explorer.md)
 - Siblings: [Gameplay_Rules](GP7_Gameplay_Rules.md)
 - Downstream: [Puzzle_Elements](Puzzle_Elements.md), [Hazards_Failure](GP4_Hazards_Failure.md), [Gameplay_Feedback](GP6_Gameplay_Feedback.md)
 - Governance: [Decisions](../../00_Project/Decisions.md)
@@ -625,4 +625,4 @@ Accessibility is presentation and input — not a separate ruleset that breaks d
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [Player & Explorer](Player_Explorer.md) | [GP3 — Puzzle Taxonomy](GP3/GP3.1_Puzzle_Taxonomy.md) | [Gameplay Specs](README.md) · [LLDS Home](../../README.md) |
+| [Player & Explorer](GP1_Player_Explorer.md) | [GP3 — Puzzle Taxonomy](GP3/GP3.1_Puzzle_Taxonomy.md) | [Gameplay Specs](README.md) · [LLDS Home](../../README.md) |

@@ -26,6 +26,6 @@ Unit tests required. No UI changes.
 ## Foundation Restart Check
 
 ```
-Verify task against docs/02_Design_System/LLDL.md.
+Verify task against docs/02_Design_System/LLDL/LLDL.md.
 Flag any hardcoded colors or Material defaults.
 ```

@@ -13,7 +13,7 @@
 | **Last Updated**      | 2026-06-29                                                                                                                                                                                                                                      |
 | **Workshop**          | WS2 — Session Loop                                                                                                                                                                                                                              |
 | **Dependencies**      | [Vision](../../00_Project/Vision.md) · [WS1 — Core Loop](WS1_Core_Loop.md)                                                                                                                                                                      |
-| **Related Documents** | [Game Loop](../Game_Loop.md) · [WS3 — Progression Loop](WS3_Progression_Loop.md) · [WS4 — Completion Loop](WS4_Completion_Loop.md) · [Gameplay](../Gameplay.md) · [Progression](../Progression.md) · [Decisions](../../00_Project/Decisions.md) |
+| **Related Documents** | [Game Loop](Game_Loop.md) · [WS3 — Progression Loop](WS3_Progression_Loop.md) · [WS4 — Completion Loop](WS4_Completion_Loop.md) · [Gameplay](../Gameplay/Gameplay.md) · [Progression](../Progression.md) · [Decisions](../../00_Project/Decisions.md) |
 
 
 ## Navigation
@@ -50,7 +50,7 @@ This document records the **approved decisions from WS2 — Session Loop Worksho
 
 [Vision](../../00_Project/Vision.md) explains *why* the game exists. **WS1 explains what the player does every few seconds.** **WS2 explains how those moments compose into a session the player remembers and chooses to return to.**
 
-Long-term progression is documented in [WS3 — Progression Loop](WS3_Progression_Loop.md). Mechanical rules belong in [Gameplay](../Gameplay.md). Screen flow belongs in [Game Loop](../Game_Loop.md).
+Long-term progression is documented in [WS3 — Progression Loop](WS3_Progression_Loop.md). Mechanical rules belong in [Gameplay](../Gameplay/Gameplay.md). Screen flow belongs in [Game Loop](Game_Loop.md).
 
 ## Intended Audience
 
@@ -495,9 +495,9 @@ Flag any milestone that increases these risks without documented mitigation — 
 | Long-term progression and retention | [WS3 — Progression Loop](WS3_Progression_Loop.md)           |
 | Macro economy and reward numbers    | [Economy](../Economy.md) · [Progression](../Progression.md) |
 | Daily challenge session fit         | [LiveOps](../LiveOps.md) — must not violate WS2-L05         |
-| Screen-level session UX             | [Game Loop](../Game_Loop.md) · `docs/03_Screens/`*          |
-| Interrupt and resume mid-session    | [Game Loop](../Game_Loop.md) §5                             |
-| Mechanics and tile interactions     | [Mechanics](../Mechanics.md) · [Gameplay](../Gameplay.md)   |
+| Screen-level session UX             | [Game Loop](Game_Loop.md) · `docs/03_Screens/`*          |
+| Interrupt and resume mid-session    | [Game Loop](Game_Loop.md) §5                             |
+| Mechanics and tile interactions     | [Mechanics](../Mechanics.md) · [Gameplay](../Gameplay/Gameplay.md)   |
 
 
 ### Open Questions
@@ -515,9 +515,9 @@ Flag any milestone that increases these risks without documented mitigation — 
 ## Cross References
 
 - Upstream: [Vision](../../00_Project/Vision.md), [WS1 — Core Loop](WS1_Core_Loop.md)
-- Parent: [Game Loop](../Game_Loop.md)
+- Parent: [Game Loop](Game_Loop.md)
 - Siblings: [WS3 — Progression Loop](WS3_Progression_Loop.md), [WS4 — Completion Loop](WS4_Completion_Loop.md), [WS5 — Retention Loop](WS5_Retention_Loop.md)
-- Downstream: [Progression](../Progression.md), [Gameplay](../Gameplay.md), `docs/03_Screens/*`
+- Downstream: [Progression](../Progression.md), [Gameplay](../Gameplay/Gameplay.md), `docs/03_Screens/*`
 - Governance: [Decisions](../../00_Project/Decisions.md)
 
 ---

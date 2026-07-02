@@ -15,7 +15,7 @@
 | **Path** | `docs/06_Asset_Bible/AB2_Game_Assets.md` |
 | **Parent** | [AB1 — Production Standards](AB1_Production_Standards.md) |
 | **Children** | AB3 · AB4 · AB5 · AB6 *(downstream Asset Bible workshops — AB2 informs but does not govern)* |
-| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) |
+| **Dependencies** | [Vision](../00_Project/Vision.md) · [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) · [AB1](AB1_Production_Standards.md) |
 | **Related Documents** | [WS3 — Environment Language](../02_Design_System/LLDL/WS3_Environment_Language.md) · [GP3 Series](../01_Game_Design/Gameplay/GP3/README.md) · [GP6 — Gameplay Feedback](../01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md) · [Asset Bible README](README.md) |
 
 ## Navigation
@@ -51,7 +51,7 @@
 | Conflict type | Authority |
 |---------------|-----------|
 | Product intent | [Vision](../00_Project/Vision.md) wins |
-| Mechanical meaning, puzzle behaviour, hazard logic | [Gameplay](../01_Game_Design/Gameplay.md) and GP series win |
+| Mechanical meaning, puzzle behaviour, hazard logic | [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) and GP series win |
 | Visual language, environment meaning, color roles | [LLDL](../02_Design_System/LLDL/LLDL.md) and WS workshops win |
 | Production philosophy | [AB0](AB0_Asset_Philosophy_Production_Principles.md) wins |
 | Universal production standards | [AB1](AB1_Production_Standards.md) wins |
@@ -150,7 +150,7 @@ Technical docs   — implementation
 
 #### Gameplay
 
-[Gameplay](../01_Game_Design/Gameplay.md) defines planning-before-action, deterministic consequences, and readable hazards. AB2 systems **support** mechanical communication through visuals — they do not define outcomes. Puzzle element behaviour lives in GP3; hazard meaning in GP4; feedback philosophy in GP6.
+[Gameplay](../01_Game_Design/Gameplay/Gameplay.md) defines planning-before-action, deterministic consequences, and readable hazards. AB2 systems **support** mechanical communication through visuals — they do not define outcomes. Puzzle element behaviour lives in GP3; hazard meaning in GP4; feedback philosophy in GP6.
 
 #### LLDL
 
@@ -645,7 +645,7 @@ No system may absorb another's primary question.
 
 ### 10.2 Gameplay Support
 
-AB2 systems exist so players can **study, commit, and learn** — the core loop from [Vision](../00_Project/Vision.md) and [Gameplay](../01_Game_Design/Gameplay.md). Every production decision should strengthen planning clarity, not reflex reaction.
+AB2 systems exist so players can **study, commit, and learn** — the core loop from [Vision](../00_Project/Vision.md) and [Gameplay](../01_Game_Design/Gameplay/Gameplay.md). Every production decision should strengthen planning clarity, not reflex reaction.
 
 ### 10.3 Inheritance Summary
 
@@ -731,7 +731,7 @@ AB2 — Game Assets records the following workshop conclusions for review:
 ### Locked authorities
 
 - [Vision](../00_Project/Vision.md)
-- [Gameplay](../01_Game_Design/Gameplay.md)
+- [Gameplay](../01_Game_Design/Gameplay/Gameplay.md)
 - [LLDL](../02_Design_System/LLDL/LLDL.md)
 
 ### Asset Bible

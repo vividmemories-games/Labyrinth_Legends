@@ -13,7 +13,7 @@
 | **Prepared By**       | ChatGPT (specification) · Cursor (compiler)                                                                                                                                                                                                                                                                             |
 | **Last Updated**      | 2026-06-29                                                                                                                                                                                                                                                                                                              |
 | **Path**              | `docs/01_Game_Design/Gameplay/GP4_Hazards_Failure.md`                                                                                                                                                                                                                                                                   |
-| **Dependencies**      | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop.md) · [GP1 Player & Explorer](GP1_Player_Explorer.md) · [GP2 Movement System](GP2_Movement_System.md) · [GP7 Gameplay Rules](GP7_Gameplay_Rules.md) · [GP3.1](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md) |
+| **Dependencies**      | [Vision](../../00_Project/Vision.md) · [Game Loop](../Game_Loop/Game_Loop.md) · [GP1 Player & Explorer](GP1_Player_Explorer.md) · [GP2 Movement System](GP2_Movement_System.md) · [GP7 Gameplay Rules](GP7_Gameplay_Rules.md) · [GP3.1](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md) |
 | **Related Documents** | [GP5 Objectives & Completion](GP5_Objectives_Completion.md) · [GP6 Gameplay Feedback](GP6_Gameplay_Feedback.md) · [Puzzle Elements](Puzzle_Elements.md) · [GP3.5 Composition](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md)                                                                                       |
 
 
@@ -131,7 +131,7 @@ Hazards exist so **committed decisions have consequences** — fair, readable, a
 | Document                                        | GP4 relationship                                                  |
 | ----------------------------------------------- | ----------------------------------------------------------------- |
 | [Vision](../../00_Project/Vision.md)            | Premium puzzle-adventure; hazards serve planning mastery          |
-| [Game Loop](../Game_Loop.md)                    | Failure feeds retry → replan loop                                 |
+| [Game Loop](../Game_Loop/Game_Loop.md)                    | Failure feeds retry → replan loop                                 |
 | [GP1 Player & Explorer](GP1_Player_Explorer.md) | Player plans; Explorer executes; failure is route consequence     |
 | [GP2 Movement System](GP2_Movement_System.md)   | Valid path rules; GP4 defines danger on valid committed paths     |
 | [GP7 Gameplay Rules](GP7_Gameplay_Rules.md)     | Execution order and precedence — GP4 does not override            |
@@ -708,7 +708,7 @@ Telegraphing converts **surprise** into **informed risk**.
 
 ### Design Intent
 
-Retry is **part of the loop** — friction kills learning ([Game Loop](../Game_Loop.md)).
+Retry is **part of the loop** — friction kills learning ([Game Loop](../Game_Loop/Game_Loop.md)).
 
 ---
 
@@ -941,7 +941,7 @@ GP4 locks **how danger works** — GP5/GP6/GP7 fill objectives, feedback, and pr
 
 - GP3: [GP3.1](GP3/GP3.1_Puzzle_Taxonomy.md)–[GP3.5](GP3/GP3.5_Puzzle_Composition_Level_Design_Rules.md)
 - Siblings: [GP5 Objectives & Completion](GP5_Objectives_Completion.md) · [GP6 Gameplay Feedback](GP6_Gameplay_Feedback.md)
-- Integration: [Puzzle_Elements](Puzzle_Elements.md) · [Gameplay.md](../Gameplay.md)
+- Integration: [Puzzle_Elements](Puzzle_Elements.md) · [Gameplay.md](Gameplay.md)
 - Governance: [Vision](../../00_Project/Vision.md) · [Decisions](../../00_Project/Decisions.md)
 
 ---

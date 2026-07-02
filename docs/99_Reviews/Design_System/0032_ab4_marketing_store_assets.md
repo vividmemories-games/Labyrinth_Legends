@@ -75,7 +75,7 @@ docs/99_Reviews/README.md — index (via script)
 - [AB2](../../06_Asset_Bible/AB2_Game_Assets.md) — Approved
 - [AB3](../../06_Asset_Bible/AB3_UI_Brand_Assets.md) — Approved
 - [Vision.md](../../00_Project/Vision.md) — Approved — Locked
-- [Gameplay.md](../../01_Game_Design/Gameplay.md) — Approved — Locked
+- [Gameplay.md](../../01_Game_Design/Gameplay/Gameplay.md) — Approved — Locked
 - [LLDL.md](../../02_Design_System/LLDL/LLDL.md) — Approved
 - [WS1 — Visual Identity](../../02_Design_System/LLDL/WS1_Visual_Identity_Artistic_Direction.md) — Approved
 

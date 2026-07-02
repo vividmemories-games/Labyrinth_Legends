@@ -16,7 +16,7 @@
 | **Path**              | `docs/06_Asset_Bible/AB1_Production_Standards.md`                                                                                                                                                                             |
 | **Parent**            | [AB0 — Asset Philosophy & Production Principles](AB0_Asset_Philosophy_Production_Principles.md)                                                                                                                               |
 | **Children**          | AB2 · AB3 · AB4 · AB5 · AB6                                                                                                                                                                                                   |
-| **Dependencies**      | [Vision](../00_Project/Vision.md) · [Game Loop](../01_Game_Design/Game_Loop.md) · [Gameplay](../01_Game_Design/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) |
+| **Dependencies**      | [Vision](../00_Project/Vision.md) · [Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md) · [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) · [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](AB0_Asset_Philosophy_Production_Principles.md) |
 | **Related Documents** | [Asset Bible README](README.md) · [Decisions](../00_Project/Decisions.md)                                                                                                                                                     |
 
 
@@ -60,7 +60,7 @@
 | Conflict type                                                                   | Authority                                                                             |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | Product intent                                                                  | [Vision](../00_Project/Vision.md) wins                                                |
-| Mechanical meaning and gameplay readability                                     | [Gameplay](../01_Game_Design/Gameplay.md) wins                                        |
+| Mechanical meaning and gameplay readability                                     | [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) wins                                        |
 | Visual language and design meaning                                              | [LLDL](../02_Design_System/LLDL/LLDL.md) wins                                         |
 | Production philosophy (beliefs and principles)                                  | [AB0](AB0_Asset_Philosophy_Production_Principles.md) wins                             |
 | Universal production standards (how production operates)                        | **AB1 wins**                                                                          |
@@ -166,7 +166,7 @@ Production assets   — must comply with the Asset Bible
 
 #### Gameplay
 
-[Gameplay](../01_Game_Design/Gameplay.md) requires readable mechanical communication. AB1 standards ensure assets arrive **integration-ready for clarity** — with ownership, validation, and documentation — without redefining rules.
+[Gameplay](../01_Game_Design/Gameplay/Gameplay.md) requires readable mechanical communication. AB1 standards ensure assets arrive **integration-ready for clarity** — with ownership, validation, and documentation — without redefining rules.
 
 #### LLDL
 
@@ -902,8 +902,8 @@ AB1 — Production Standards records the following workshop conclusions for revi
 ### Locked authorities
 
 - [Vision](../00_Project/Vision.md)
-- [Game Loop](../01_Game_Design/Game_Loop.md)
-- [Gameplay](../01_Game_Design/Gameplay.md)
+- [Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md)
+- [Gameplay](../01_Game_Design/Gameplay/Gameplay.md)
 - [LLDL](../02_Design_System/LLDL/LLDL.md)
 
 ### Asset Bible

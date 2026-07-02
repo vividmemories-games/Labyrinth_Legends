@@ -16,7 +16,7 @@
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [LLDL](../02_Design_System/LLDL.md) | — | [LLDS Home](../README.md) |
+| [LLDL](../02_Design_System/LLDL/LLDL.md) | — | [LLDS Home](../README.md) |
 
 ---
 
@@ -35,11 +35,11 @@ The **single narrative and design reference** for Labyrinth Legends gameplay ide
 
 ### Out of scope
 
-- Input rules and win conditions (see [Gameplay](Gameplay.md))
-- Screen-by-screen flow (see [Game Loop](Game_Loop.md))
+- Input rules and win conditions (see [Gameplay](Gameplay/Gameplay.md))
+- Screen-by-screen flow (see [Game Loop](Game_Loop/Game_Loop.md))
 - Cell types and interactions (see [Mechanics](Mechanics.md))
 - World/level data (see [Worlds](Worlds.md), [Level_Design](Level_Design.md))
-- Visual tokens (see [LLDL](../02_Design_System/LLDL.md))
+- Visual tokens (see [LLDL](../02_Design_System/LLDL/LLDL.md))
 
 ## Dependencies
 
@@ -49,8 +49,8 @@ The **single narrative and design reference** for Labyrinth Legends gameplay ide
 
 | Enables | Notes |
 |---------|-------|
-| [Gameplay](Gameplay.md) | Rules express pillars |
-| [Game Loop](Game_Loop.md) | Flow expresses session fantasy |
+| [Gameplay](Gameplay/Gameplay.md) | Rules express pillars |
+| [Game Loop](Game_Loop/Game_Loop.md) | Flow expresses session fantasy |
 | [Worlds](Worlds.md) | World tone and naming |
 | [Progression](Progression.md) | Meta progression framing |
 
@@ -59,10 +59,10 @@ The **single narrative and design reference** for Labyrinth Legends gameplay ide
 | Document | Relationship |
 |----------|--------------|
 | [Vision](../00_Project/Vision.md) | Parent product vision |
-| [Gameplay](Gameplay.md) | Mechanical expression of pillars |
-| [Game Loop](Game_Loop.md) | Session structure |
+| [Gameplay](Gameplay/Gameplay.md) | Mechanical expression of pillars |
+| [Game Loop](Game_Loop/Game_Loop.md) | Session structure |
 | [Mechanics](Mechanics.md) | Tile and interaction detail |
-| [LLDL](../02_Design_System/LLDL.md) | Visual expression of tone |
+| [LLDL](../02_Design_System/LLDL/LLDL.md) | Visual expression of tone |
 | [Worlds](Worlds.md) | World structure |
 
 ## Pillar Dependency
@@ -157,8 +157,8 @@ Narrative framing for how the player advances — not numeric curves (see [Progr
 ## Cross References
 
 - Upstream: [Vision](../00_Project/Vision.md)
-- Downstream: [Gameplay](Gameplay.md), [Game Loop](Game_Loop.md), [Mechanics](Mechanics.md), [Worlds](Worlds.md)
-- Visual: [LLDL](../02_Design_System/LLDL.md)
+- Downstream: [Gameplay](Gameplay/Gameplay.md), [Game Loop](Game_Loop/Game_Loop.md), [Mechanics](Mechanics.md), [Worlds](Worlds.md)
+- Visual: [LLDL](../02_Design_System/LLDL/LLDL.md)
 - Archive (non-authoritative): `docs/second-brain/01_Vision/`
 
 ## Version History
@@ -181,4 +181,4 @@ Narrative framing for how the player advances — not numeric curves (see [Progr
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [LLDL](../02_Design_System/LLDL.md) | — | [LLDS Home](../README.md) |
+| [LLDL](../02_Design_System/LLDL/LLDL.md) | — | [LLDS Home](../README.md) |

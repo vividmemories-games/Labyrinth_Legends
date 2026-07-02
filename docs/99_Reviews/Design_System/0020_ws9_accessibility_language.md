@@ -15,7 +15,7 @@
 | **Status**             | Draft                                                                                                  |
 | **Review Type**        | Design System                                                                                          |
 | **Template Version**   | v2                                                                                                     |
-| **Related Docs**       | `docs/02_Design_System/LLDL/WS9_Accessibility_Language.md` · WS0–WS8 · `docs/02_Design_System/LLDL.md` |
+| **Related Docs**       | `docs/02_Design_System/LLDL/WS9_Accessibility_Language.md` · WS0–WS8 · `docs/02_Design_System/LLDL/LLDL.md` |
 | **Related Screens**    | N/A — accessibility authority document                                                                 |
 | **Related Components** | N/A                                                                                                    |
 
@@ -42,7 +42,7 @@ docs/99_Reviews/Design_System/0020_ws9_accessibility_language.md
 ## Files Modified
 
 ```text
-docs/02_Design_System/LLDL.md — WS9 authority, stack (WS9 → LLDL), dependencies
+docs/02_Design_System/LLDL/LLDL.md — WS9 authority, stack (WS9 → LLDL), dependencies
 docs/02_Design_System/LLDL/WS8_Iconography_Language.md — navigation Next → WS9
 docs/99_Reviews/README.md — index (via script)
 ```
@@ -119,7 +119,7 @@ docs/99_Reviews/README.md — index (via script)
 
 ```text
 docs/02_Design_System/LLDL/WS9_Accessibility_Language.md
-docs/02_Design_System/LLDL.md
+docs/02_Design_System/LLDL/LLDL.md
 docs/02_Design_System/LLDL/WS8_Iconography_Language.md
 docs/99_Reviews/Design_System/0020_ws9_accessibility_language.md
 docs/99_Reviews/README.md

@@ -15,7 +15,7 @@
 | **Status**             | Draft                                                                                                 |
 | **Review Type**        | Design System                                                                                         |
 | **Template Version**   | v2                                                                                                    |
-| **Related Docs**       | `docs/02_Design_System/LLDL/WS11_Components_Language.md` · WS0–WS10 · `docs/02_Design_System/LLDL.md` |
+| **Related Docs**       | `docs/02_Design_System/LLDL/WS11_Components_Language.md` · WS0–WS10 · `docs/02_Design_System/LLDL/LLDL.md` |
 | **Related Screens**    | N/A — components authority document                                                                   |
 | **Related Components** | N/A — philosophy precedes catalog reconciliation                                                      |
 
@@ -42,7 +42,7 @@ docs/99_Reviews/Design_System/0022_ws11_components_language.md
 ## Files Modified
 
 ```text
-docs/02_Design_System/LLDL.md — WS11 authority, stack (WS11 → LLDL), dependencies, components section
+docs/02_Design_System/LLDL/LLDL.md — WS11 authority, stack (WS11 → LLDL), dependencies, components section
 docs/02_Design_System/LLDL/WS10_Design_Tokens_Language.md — navigation Next → WS11
 docs/99_Reviews/README.md — index (via script)
 ```
@@ -118,7 +118,7 @@ docs/99_Reviews/README.md — index (via script)
 
 ```text
 docs/02_Design_System/LLDL/WS11_Components_Language.md
-docs/02_Design_System/LLDL.md
+docs/02_Design_System/LLDL/LLDL.md
 docs/02_Design_System/LLDL/WS10_Design_Tokens_Language.md
 docs/99_Reviews/Design_System/0022_ws11_components_language.md
 docs/99_Reviews/README.md

@@ -14,13 +14,13 @@
 | **Workshop** | WS10 — Design Tokens Language |
 | **Path** | `docs/02_Design_System/LLDL/WS10_Design_Tokens_Language.md` |
 | **Dependencies** | [Vision](../../00_Project/Vision.md) · [WS0 — Design Philosophy](WS0_Design_Philosophy.md) · [WS1 — Visual Identity](WS1_Visual_Identity_Artistic_Direction.md) · [WS2 — Color Language](WS2_Color_Language.md) · [WS3 — Environment Language](WS3_Environment_Language.md) · [WS4 — UI Language](WS4_UI_Language.md) · [WS5 — Motion Language](WS5_Motion_Language.md) · [WS6 — Audio Language](WS6_Audio_Language.md) · [WS7 — Typography Language](WS7_Typography_Language.md) · [WS8 — Iconography Language](WS8_Iconography_Language.md) · [WS9 — Accessibility Language](WS9_Accessibility_Language.md) |
-| **Related Documents** | [LLDL](../LLDL.md) · [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md) |
+| **Related Documents** | [LLDL](LLDL.md) · [Design_Tokens](../Design_Tokens.md) · [Components](../Components.md) |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS9 — Accessibility Language](WS9_Accessibility_Language.md) | [WS11 — Components Language](WS11_Components_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS9 — Accessibility Language](WS9_Accessibility_Language.md) | [WS11 — Components Language](WS11_Components_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |
 
 ---
 
@@ -182,7 +182,7 @@ Freeze token thinking before value catalogs are expanded or refactored.
 Every semantic token should trace to at least one of:
 
 - A workshop authority (WS0–WS9)
-- [LLDL](../LLDL.md) execution principle
+- [LLDL](LLDL.md) execution principle
 - A recorded [Decisions](../../00_Project/Decisions.md) entry for material exceptions
 
 ### Token Justification Test
@@ -750,7 +750,7 @@ Freeze token governance before Design_Tokens.md reconciliation with WS0–WS10 s
 ### Downstream
 
 - [WS11 — Components Language](WS11_Components_Language.md) — Components authority
-- [LLDL](../LLDL.md) — Design language specification
+- [LLDL](LLDL.md) — Design language specification
 - [Design_Tokens](../Design_Tokens.md) — Canonical token values
 - [Components](../Components.md) · [Typography](../Typography.md) · [Icons](../Icons.md) · [Animations](../Animations.md) · [Audio](../Audio.md)
 - [Accessibility](../Accessibility.md)
@@ -768,4 +768,4 @@ Freeze token governance before Design_Tokens.md reconciliation with WS0–WS10 s
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [WS9 — Accessibility Language](WS9_Accessibility_Language.md) | [WS11 — Components Language](WS11_Components_Language.md) | [Documentation Home](../../README.md) · [LLDL](../LLDL.md) |
+| [WS9 — Accessibility Language](WS9_Accessibility_Language.md) | [WS11 — Components Language](WS11_Components_Language.md) | [Documentation Home](../../README.md) · [LLDL](LLDL.md) |

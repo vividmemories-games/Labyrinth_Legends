@@ -5,7 +5,7 @@
 | **Project** | Labyrinth Legends |
 | **Document Name** | Game Loop |
 | **Document ID** | LLDS-DOC-01-GL-001 |
-| **Path** | `docs/01_Game_Design/Game_Loop.md` |
+| **Path** | `docs/01_Game_Design/Game_Loop/Game_Loop.md` |
 | **Version** | 2.1.0 |
 | **Status** | Approved — Locked |
 | **Owner** | Apoorv |
@@ -13,14 +13,14 @@
 | **Last Updated** | 2026-06-29 |
 | **Phase** | Documentation Phase 1 — Knowledge Base |
 | **Priority** | 2 of 5 (authoritative writing order) |
-| **Dependencies** | [Vision](../00_Project/Vision.md) · [WS1–WS5](Game_Loop/README.md) |
-| **Related Documents** | [Gameplay Specs](Gameplay/README.md) · [GP1](Gameplay/Player_Explorer.md) · [GP2](Gameplay/Movement_System.md) · [GP3.1 Taxonomy](Gameplay/GP3/GP3.1_Puzzle_Taxonomy.md) · [Gameplay](Gameplay.md) · [Progression](Progression.md) · [Decisions](../00_Project/Decisions.md) |
+| **Dependencies** | [Vision](../../00_Project/Vision.md) · [WS1–WS5](README.md) |
+| **Related Documents** | [Gameplay Specs](../Gameplay/README.md) · [GP1](../Gameplay/GP1_Player_Explorer.md) · [GP2](../Gameplay/GP2_Movement_System.md) · [GP3.1 Taxonomy](../Gameplay/GP3/GP3.1_Puzzle_Taxonomy.md) · [Gameplay](../Gameplay/Gameplay.md) · [Progression](../Progression.md) · [Decisions](../../00_Project/Decisions.md) |
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [Vision](../00_Project/Vision.md) | [Gameplay](Gameplay.md) | [LLDS Home](../README.md) · [Workshops WS1–WS5](Game_Loop/README.md) |
+| [Vision](../../00_Project/Vision.md) | [Gameplay](../Gameplay/Gameplay.md) | [LLDS Home](../../README.md) · [Workshops WS1–WS5](README.md) |
 
 ---
 
@@ -48,14 +48,14 @@ This document is the **primary reference for player flow** in Labyrinth Legends.
 
 | Document | Role |
 |----------|------|
-| [WS1 — Core Loop](Game_Loop/WS1_Core_Loop.md) | Workshop record — moment-to-moment play |
-| [WS2 — Session Loop](Game_Loop/WS2_Session_Loop.md) | Workshop record — single sitting |
-| [WS3 — Progression Loop](Game_Loop/WS3_Progression_Loop.md) | Workshop record — long-term growth |
-| [WS4 — Completion Loop](Game_Loop/WS4_Completion_Loop.md) | Workshop record — milestone closure |
-| [WS5 — Retention Loop](Game_Loop/WS5_Retention_Loop.md) | Workshop record — voluntary return |
+| [WS1 — Core Loop](WS1_Core_Loop.md) | Workshop record — moment-to-moment play |
+| [WS2 — Session Loop](WS2_Session_Loop.md) | Workshop record — single sitting |
+| [WS3 — Progression Loop](WS3_Progression_Loop.md) | Workshop record — long-term growth |
+| [WS4 — Completion Loop](WS4_Completion_Loop.md) | Workshop record — milestone closure |
+| [WS5 — Retention Loop](WS5_Retention_Loop.md) | Workshop record — voluntary return |
 | **Game_Loop.md (this document)** | **Architecture synthesis — how all five connect** |
 
-**Game_Loop.md** bridges [Vision](../00_Project/Vision.md) (philosophy) and [Gameplay](Gameplay.md) (mechanical rules). It does not redefine workshop content, mechanics, economy, story, UI, or implementation.
+**Game_Loop.md** bridges [Vision](../../00_Project/Vision.md) (philosophy) and [Gameplay](../Gameplay/Gameplay.md) (mechanical rules). It does not redefine workshop content, mechanics, economy, story, UI, or implementation.
 
 ## Intended Audience
 
@@ -102,7 +102,7 @@ Labyrinth Legends is not one loop — it is **five nested loops** operating simu
 | Confuses puzzle quality with retention hacks | Separates craft from coercion |
 | Collapses pacing | Each scale has its own design contract |
 
-Without multiple loops, session design bleeds into core puzzle design, or retention systems compensate for weak moments — both violate [Vision](../00_Project/Vision.md).
+Without multiple loops, session design bleeds into core puzzle design, or retention systems compensate for weak moments — both violate [Vision](../../00_Project/Vision.md).
 
 ### Simultaneous Operation Across Time Scales
 
@@ -148,7 +148,7 @@ flowchart TB
 
 | Layer | Depends on | Provides to next layer |
 |-------|------------|------------------------|
-| **Core** | [Vision](../00_Project/Vision.md) pillars | Repeatable satisfying moments |
+| **Core** | [Vision](../../00_Project/Vision.md) pillars | Repeatable satisfying moments |
 | **Session** | Core moments that work | Composed sittings with pacing |
 | **Progression** | Sessions that feel complete | Accumulated knowledge and access |
 | **Completion** | Progress that matters | Emotional closure at milestones |
@@ -162,8 +162,8 @@ Each layer **fails** if the layer below is weak. Retention cannot fix a broken c
 |----------|---------------------|
 | Loop philosophy and locked decisions | WS1–WS5 workshop documents |
 | How loops connect (this document) | **Game_Loop.md** |
-| Mechanical rules | [Gameplay](Gameplay.md) |
-| Screen presentation | [LLDL](../02_Design_System/LLDL.md) · `docs/03_Screens/*` |
+| Mechanical rules | [Gameplay](../Gameplay/Gameplay.md) |
+| Screen presentation | [LLDL](../../02_Design_System/LLDL/LLDL.md) · `docs/03_Screens/*` |
 
 ### Design Intent
 
@@ -173,7 +173,7 @@ Provide the **single hierarchy diagram** every team references before adding sco
 
 ## 3. Core Loop Summary
 
-> **Full specification:** [WS1 — Core Loop](Game_Loop/WS1_Core_Loop.md)
+> **Full specification:** [WS1 — Core Loop](WS1_Core_Loop.md)
 
 ### Purpose
 
@@ -181,11 +181,11 @@ The atomic experience: **observe → plan → draw → confirm → execute → w
 
 ### Player Decisions
 
-Meaningful route choices inside one labyrinth — priority, risk, optional treasure, path economy. Decisions matter more than rule count ([WS1-L04](Game_Loop/WS1_Core_Loop.md#10-workshop-conclusions)).
+Meaningful route choices inside one labyrinth — priority, risk, optional treasure, path economy. Decisions matter more than rule count ([WS1-L04](WS1_Core_Loop.md#10-workshop-conclusions)).
 
 ### Strategic Planning
 
-Draw-and-confirm separates planning from outcome. No real-time steering in core puzzles ([WS1-L02](Game_Loop/WS1_Core_Loop.md#10-workshop-conclusions)). Failure instructs; it does not punish ([WS1-L03](Game_Loop/WS1_Core_Loop.md#10-workshop-conclusions)).
+Draw-and-confirm separates planning from outcome. No real-time steering in core puzzles ([WS1-L02](WS1_Core_Loop.md#10-workshop-conclusions)). Failure instructs; it does not punish ([WS1-L03](WS1_Core_Loop.md#10-workshop-conclusions)).
 
 ### At a Glance
 
@@ -203,23 +203,23 @@ Core loop quality is **non-negotiable**. If this layer fails, no larger loop can
 
 ## 4. Session Loop Summary
 
-> **Full specification:** [WS2 — Session Loop](Game_Loop/WS2_Session_Loop.md)
+> **Full specification:** [WS2 — Session Loop](WS2_Session_Loop.md)
 
 ### Session Pacing
 
-Easy opening → increasing complexity → mental breaks → peak challenge → relaxed ending ([WS2-L04](Game_Loop/WS2_Session_Loop.md#10-workshop-conclusions)). No artificial difficulty spikes.
+Easy opening → increasing complexity → mental breaks → peak challenge → relaxed ending ([WS2-L04](WS2_Session_Loop.md#10-workshop-conclusions)). No artificial difficulty spikes.
 
 ### Session Rhythm
 
-Typical flow: launch → continue → solve labyrinths → collect rewards → unlock progress → review → choose to continue or exit satisfied ([WS2-L03](Game_Loop/WS2_Session_Loop.md#10-workshop-conclusions)).
+Typical flow: launch → continue → solve labyrinths → collect rewards → unlock progress → review → choose to continue or exit satisfied ([WS2-L03](WS2_Session_Loop.md#10-workshop-conclusions)).
 
 ### Session Motivation
 
-Continuation from curiosity — one more puzzle, next labyrinth, optional mastery — **not** timers, energy, daily obligation, or FOMO ([WS2-L05](Game_Loop/WS2_Session_Loop.md#10-workshop-conclusions)).
+Continuation from curiosity — one more puzzle, next labyrinth, optional mastery — **not** timers, energy, daily obligation, or FOMO ([WS2-L05](WS2_Session_Loop.md#10-workshop-conclusions)).
 
 ### Session Duration
 
-A **10–15 minute** session should feel complete ([WS2-L02](Game_Loop/WS2_Session_Loop.md#10-workshop-conclusions)). Longer play is player choice.
+A **10–15 minute** session should feel complete ([WS2-L02](WS2_Session_Loop.md#10-workshop-conclusions)). Longer play is player choice.
 
 ### Design Intent
 
@@ -229,19 +229,19 @@ Sessions bundle Core loops into **satisfying arcs** with natural stopping points
 
 ## 5. Progression Loop Summary
 
-> **Full specification:** [WS3 — Progression Loop](Game_Loop/WS3_Progression_Loop.md)
+> **Full specification:** [WS3 — Progression Loop](WS3_Progression_Loop.md)
 
 ### Long-Term Mastery
 
-Mastery is the true progression system — better planning, exploration, optional excellence ([WS3-L09](Game_Loop/WS3_Progression_Loop.md#10-workshop-conclusions)). Not power inflation.
+Mastery is the true progression system — better planning, exploration, optional excellence ([WS3-L09](WS3_Progression_Loop.md#10-workshop-conclusions)). Not power inflation.
 
 ### Knowledge Progression
 
-**Knowledge is the primary form of progression** ([WS3-L02](Game_Loop/WS3_Progression_Loop.md#10-workshop-conclusions)). Players grow as ruin-readers: New Player → Learner → Explorer → Puzzle Solver → Master Explorer → Completionist (behavioral stages).
+**Knowledge is the primary form of progression** ([WS3-L02](WS3_Progression_Loop.md#10-workshop-conclusions)). Players grow as ruin-readers: New Player → Learner → Explorer → Puzzle Solver → Master Explorer → Completionist (behavioral stages).
 
 ### Unlock Philosophy
 
-Unlocks expand **possibility and ideas** — not power ([WS3-L08](Game_Loop/WS3_Progression_Loop.md#10-workshop-conclusions)). Pacing over raw content quantity ([WS3-L07](Game_Loop/WS3_Progression_Loop.md#10-workshop-conclusions)).
+Unlocks expand **possibility and ideas** — not power ([WS3-L08](WS3_Progression_Loop.md#10-workshop-conclusions)). Pacing over raw content quantity ([WS3-L07](WS3_Progression_Loop.md#10-workshop-conclusions)).
 
 ### Design Intent
 
@@ -251,19 +251,19 @@ Progression measures **what the player understands**, not what the player accumu
 
 ## 6. Completion Loop Summary
 
-> **Full specification:** [WS4 — Completion Loop](Game_Loop/WS4_Completion_Loop.md)
+> **Full specification:** [WS4 — Completion Loop](WS4_Completion_Loop.md)
 
 ### Completion Philosophy
 
-Completion means achievement, understanding, closure, satisfaction — **not checklist ticking** ([WS4-L02](Game_Loop/WS4_Completion_Loop.md#9-workshop-conclusions)). Emotional completion beats numerical completion ([WS4-L03](Game_Loop/WS4_Completion_Loop.md#9-workshop-conclusions)).
+Completion means achievement, understanding, closure, satisfaction — **not checklist ticking** ([WS4-L02](WS4_Completion_Loop.md#9-workshop-conclusions)). Emotional completion beats numerical completion ([WS4-L03](WS4_Completion_Loop.md#9-workshop-conclusions)).
 
 ### Achievement and Closure
 
-Nested layers from puzzle solve through full adventure ([WS4-L04](Game_Loop/WS4_Completion_Loop.md#9-workshop-conclusions)). Each layer valid on its own — higher layers invite, they do not gate.
+Nested layers from puzzle solve through full adventure ([WS4-L04](WS4_Completion_Loop.md#9-workshop-conclusions)). Each layer valid on its own — higher layers invite, they do not gate.
 
 ### Optional Mastery
 
-Optional content rewards curiosity; never punishes skipping ([WS4-L07](Game_Loop/WS4_Completion_Loop.md#9-workshop-conclusions)). End-of-world: continuation, not exhaustion ([WS4-L08](Game_Loop/WS4_Completion_Loop.md#9-workshop-conclusions)).
+Optional content rewards curiosity; never punishes skipping ([WS4-L07](WS4_Completion_Loop.md#9-workshop-conclusions)). End-of-world: continuation, not exhaustion ([WS4-L08](WS4_Completion_Loop.md#9-workshop-conclusions)).
 
 ### Design Intent
 
@@ -273,19 +273,19 @@ Milestones must **land emotionally** before extrinsic rewards amplify them.
 
 ## 7. Retention Loop Summary
 
-> **Full specification:** [WS5 — Retention Loop](Game_Loop/WS5_Retention_Loop.md)
+> **Full specification:** [WS5 — Retention Loop](WS5_Retention_Loop.md)
 
 ### Long-Term Engagement
 
-Phases over weeks/months: learning → exploring → mastering → completion → new handcrafted content ([WS5-L07](Game_Loop/WS5_Retention_Loop.md#9-workshop-conclusions)). Meaningful content outperforms artificial systems ([WS5-L08](Game_Loop/WS5_Retention_Loop.md#9-workshop-conclusions)).
+Phases over weeks/months: learning → exploring → mastering → completion → new handcrafted content ([WS5-L07](WS5_Retention_Loop.md#9-workshop-conclusions)). Meaningful content outperforms artificial systems ([WS5-L08](WS5_Retention_Loop.md#9-workshop-conclusions)).
 
 ### Player Trust
 
-**Player trust is more valuable than artificial engagement** ([WS5-L09](Game_Loop/WS5_Retention_Loop.md#9-workshop-conclusions)). Return because they want to — never because they feel forced ([WS5-L02](Game_Loop/WS5_Retention_Loop.md#9-workshop-conclusions)).
+**Player trust is more valuable than artificial engagement** ([WS5-L09](WS5_Retention_Loop.md#9-workshop-conclusions)). Return because they want to — never because they feel forced ([WS5-L02](WS5_Retention_Loop.md#9-workshop-conclusions)).
 
 ### Curiosity and Meaningful Return
 
-Drivers: curiosity, discovery, mastery, anticipation, exploration ([WS5-L03](Game_Loop/WS5_Retention_Loop.md#9-workshop-conclusions)). Post-completion retention extends from satisfaction ([WS5-L11](Game_Loop/WS5_Retention_Loop.md#9-workshop-conclusions)).
+Drivers: curiosity, discovery, mastery, anticipation, exploration ([WS5-L03](WS5_Retention_Loop.md#9-workshop-conclusions)). Post-completion retention extends from satisfaction ([WS5-L11](WS5_Retention_Loop.md#9-workshop-conclusions)).
 
 ### Design Intent
 
@@ -338,11 +338,11 @@ Feature reviews must trace **vertical slice** through all affected layers.
 
 | Loop | Typical duration | Player focus | Workshop | Primary question |
 |------|------------------|--------------|----------|------------------|
-| **Core** | Seconds to minutes | Decisions | [WS1](Game_Loop/WS1_Core_Loop.md) | What is my next plan? |
-| **Session** | 10–30+ minutes | Enjoyment | [WS2](Game_Loop/WS2_Session_Loop.md) | Is this sitting satisfying? |
-| **Progression** | Hours to weeks | Mastery | [WS3](Game_Loop/WS3_Progression_Loop.md) | Am I becoming a better ruin-reader? |
-| **Completion** | Milestones | Achievement | [WS4](Game_Loop/WS4_Completion_Loop.md) | Did this chapter land emotionally? |
-| **Retention** | Weeks to months | Long-term relationship | [WS5](Game_Loop/WS5_Retention_Loop.md) | Do I freely choose to return? |
+| **Core** | Seconds to minutes | Decisions | [WS1](WS1_Core_Loop.md) | What is my next plan? |
+| **Session** | 10–30+ minutes | Enjoyment | [WS2](WS2_Session_Loop.md) | Is this sitting satisfying? |
+| **Progression** | Hours to weeks | Mastery | [WS3](WS3_Progression_Loop.md) | Am I becoming a better ruin-reader? |
+| **Completion** | Milestones | Achievement | [WS4](WS4_Completion_Loop.md) | Did this chapter land emotionally? |
+| **Retention** | Weeks to months | Long-term relationship | [WS5](WS5_Retention_Loop.md) | Do I freely choose to return? |
 
 ### Why Each Layer Exists
 
@@ -362,7 +362,7 @@ Use this table in planning meetings to **label which loop** a proposal affects.
 
 ## 10. Loop Design Principles
 
-Overarching principles binding all five workshops to [Vision](../00_Project/Vision.md):
+Overarching principles binding all five workshops to [Vision](../../00_Project/Vision.md):
 
 | Principle | Application |
 |-----------|-------------|
@@ -410,7 +410,7 @@ Architectural failures and how Labyrinth Legends philosophy avoids them:
 1. Identify affected loop layer(s)
 2. Check relevant WS locked decisions
 3. Run against [§10](#10-loop-design-principles) principles
-4. Escalate conflicts to Apoorv via [Decisions](../00_Project/Decisions.md)
+4. Escalate conflicts to Apoorv via [Decisions](../../00_Project/Decisions.md)
 
 ---
 
@@ -418,7 +418,7 @@ Architectural failures and how Labyrinth Legends philosophy avoids them:
 
 ### Final Architecture
 
-Labyrinth Legends player experience is **five nested gameplay loops** — Core, Session, Progression, Completion, Retention — consolidated from workshops WS1–WS5 and unified under [Vision](../00_Project/Vision.md).
+Labyrinth Legends player experience is **five nested gameplay loops** — Core, Session, Progression, Completion, Retention — consolidated from workshops WS1–WS5 and unified under [Vision](../../00_Project/Vision.md).
 
 ```mermaid
 flowchart TB
@@ -451,21 +451,21 @@ flowchart TB
 
 | Workshop | Document | Scope |
 |----------|----------|-------|
-| WS1 | [WS1_Core_Loop.md](Game_Loop/WS1_Core_Loop.md) | Moment-to-moment |
-| WS2 | [WS2_Session_Loop.md](Game_Loop/WS2_Session_Loop.md) | Single sitting |
-| WS3 | [WS3_Progression_Loop.md](Game_Loop/WS3_Progression_Loop.md) | Long-term growth |
-| WS4 | [WS4_Completion_Loop.md](Game_Loop/WS4_Completion_Loop.md) | Milestone closure |
-| WS5 | [WS5_Retention_Loop.md](Game_Loop/WS5_Retention_Loop.md) | Voluntary return |
-| Index | [Game_Loop/README.md](Game_Loop/README.md) | Workshop series overview |
+| WS1 | [WS1_Core_Loop.md](WS1_Core_Loop.md) | Moment-to-moment |
+| WS2 | [WS2_Session_Loop.md](WS2_Session_Loop.md) | Single sitting |
+| WS3 | [WS3_Progression_Loop.md](WS3_Progression_Loop.md) | Long-term growth |
+| WS4 | [WS4_Completion_Loop.md](WS4_Completion_Loop.md) | Milestone closure |
+| WS5 | [WS5_Retention_Loop.md](WS5_Retention_Loop.md) | Voluntary return |
+| Index | [Game_Loop/README.md](README.md) | Workshop series overview |
 
 ### Downstream Documents
 
 | Document | Receives from Game Loop |
 |----------|-------------------------|
-| [Gameplay](Gameplay.md) | Core loop mechanical implementation |
-| [Progression](Progression.md) | Progression and completion hooks |
-| [Level Design](Level_Design.md) | Multi-loop pacing per chamber |
-| [LiveOps](LiveOps.md) | WS5 compliance requirement |
+| [Gameplay](../Gameplay/Gameplay.md) | Core loop mechanical implementation |
+| [Progression](../Progression.md) | Progression and completion hooks |
+| [Level Design](../Level_Design.md) | Multi-loop pacing per chamber |
+| [LiveOps](../LiveOps.md) | WS5 compliance requirement |
 | `docs/03_Screens/*` | Session and completion presentation |
 
 Every future gameplay system should be explainable in terms of **one or more loops** defined here and in WS1–WS5.
@@ -476,4 +476,4 @@ Every future gameplay system should be explainable in terms of **one or more loo
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [Vision](../00_Project/Vision.md) | [Gameplay](Gameplay.md) | [LLDS Home](../README.md) · [Workshops WS1–WS5](Game_Loop/README.md) |
+| [Vision](../../00_Project/Vision.md) | [Gameplay](../Gameplay/Gameplay.md) | [LLDS Home](../../README.md) · [Workshops WS1–WS5](README.md) |

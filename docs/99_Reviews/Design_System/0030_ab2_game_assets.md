@@ -72,7 +72,7 @@ docs/99_Reviews/README.md — index (via script)
 - [AB0](../../06_Asset_Bible/AB0_Asset_Philosophy_Production_Principles.md) — Approved
 - [AB1](../../06_Asset_Bible/AB1_Production_Standards.md) — Approved
 - [Vision.md](../../00_Project/Vision.md) — Approved — Locked
-- [Gameplay.md](../../01_Game_Design/Gameplay.md) — Approved — Locked
+- [Gameplay.md](../../01_Game_Design/Gameplay/Gameplay.md) — Approved — Locked
 - [LLDL.md](../../02_Design_System/LLDL/LLDL.md) — Approved
 
 ### Enables

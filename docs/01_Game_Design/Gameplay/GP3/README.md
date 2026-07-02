@@ -30,10 +30,10 @@ Gameplay.md
 | **GP3.4** | [GP3.4_Environmental_Dynamic_Systems.md](GP3.4_Environmental_Dynamic_Systems.md) | Approved / Locked | Environmental & dynamic systems |
 | **GP3.5** | [GP3.5_Puzzle_Composition_Level_Design_Rules.md](GP3.5_Puzzle_Composition_Level_Design_Rules.md) | Approved / Locked | Puzzle composition & level design rules |
 
-Downstream integration: [`Puzzle_Elements.md`](../Puzzle_Elements.md) (when authored)
+Downstream integration: [Puzzle_Elements.md](../Puzzle_Elements.md) — GP3 integration catalogue (**v1.0.0 Draft — Ready for Review**)
 
 ## Navigation
 
 | ← Previous | Next → | Index |
 |------------|--------|-------|
-| [GP2 Movement System](../GP2_Movement_System.md) | [GP3.1 — Taxonomy](GP3.1_Puzzle_Taxonomy.md) | [Gameplay Specs](../README.md) · [LLDS Home](../../../README.md) |
+| [GP2 Movement System](../GP2_Movement_System.md) | [GP3.1 — Taxonomy](GP3.1_Puzzle_Taxonomy.md) | [Gameplay Specs](../README.md) · [Puzzle Elements](../Puzzle_Elements.md) · [LLDS Home](../../../README.md) |
