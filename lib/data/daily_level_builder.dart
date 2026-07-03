@@ -6,11 +6,16 @@ import 'package:labyrinth_legends/game_engine/models/level_definition.dart';
 LevelDefinition buildDailyLevel(int seed) {
   final grid = MazeGenerator().generate(width: 11, height: 11, seed: seed);
   return LevelDefinition(
+    schemaVersion: 1,
     id: 'daily_$seed',
     name: 'Daily Labyrinth',
     worldId: 'daily',
     grid: grid,
-    objectives: const LevelObjectives(reachExit: true),
+    objectives: const LevelObjectives(
+      reachExit: true,
+      collectAllGems: false,
+      minGems: 0,
+    ),
     discoveryMode: DiscoveryMode.full,
     starThresholds: const StarThresholds(
       threeStars: 28,

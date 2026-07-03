@@ -1,54 +1,44 @@
-import 'package:labyrinth_legends/game_engine/models/level_definition.dart';
+import 'package:labyrinth_legends/game_engine/models/gameplay_phase.dart';
+import 'package:labyrinth_legends/game_engine/rewards/reward_result.dart';
+import 'package:labyrinth_legends/game_engine/session/gameplay_session_state.dart';
 
-class RewardCalculationResult {
-  const RewardCalculationResult({
-    required this.stars,
-    required this.gemsCollected,
-    required this.pathLength,
-    required this.gemBonusApplied,
-  });
-
-  final int stars;
-  final int gemsCollected;
-  final int pathLength;
-  final bool gemBonusApplied;
-}
-
+/// Evaluates star outcome from terminal won session state per [Level_Format.md] §14.
+///
+/// Stars are derived exclusively from [confirmedPath] node count vs `starThresholds`.
+/// Stateless — consumes session facts only; does not evaluate objectives.
 class RewardCalculator {
-  const RewardCalculator({this.gemStarBonus = 1});
+  const RewardCalculator();
 
-  /// Extra star tiers granted when all gems are collected.
-  final int gemStarBonus;
+  /// Derives rewards from a terminal [GameplayPhase.won] session snapshot.
+  RewardResult calculateFromTerminalSession(GameplaySessionState session) {
+    if (session.phase != GameplayPhase.won) {
+      throw ArgumentError(
+        'Reward calculation requires phase won, got ${session.phase.name}',
+      );
+    }
 
-  RewardCalculationResult calculate({
-    required LevelDefinition level,
-    required int pathLength,
-    required int gemsCollected,
-    required int totalGems,
-  }) {
-    final thresholds = level.starThresholds;
+    final confirmedPath = session.confirmedPath;
+    if (confirmedPath == null || confirmedPath.isEmpty) {
+      throw ArgumentError('Reward calculation requires a confirmed path');
+    }
+
+    final pathNodeCount = confirmedPath.length;
+    final gemsCollected = session.attemptContext.gemsCollected;
+    final thresholds = session.level.starThresholds;
+
     var stars = 0;
-
-    if (pathLength <= thresholds.threeStars) {
+    if (pathNodeCount <= thresholds.threeStars) {
       stars = 3;
-    } else if (pathLength <= thresholds.twoStars) {
+    } else if (pathNodeCount <= thresholds.twoStars) {
       stars = 2;
-    } else if (pathLength <= thresholds.oneStar) {
+    } else if (pathNodeCount <= thresholds.oneStar) {
       stars = 1;
     }
 
-    final allGemsCollected = totalGems > 0 && gemsCollected >= totalGems;
-    var gemBonusApplied = false;
-    if (allGemsCollected && stars < 3) {
-      stars = (stars + gemStarBonus).clamp(0, 3);
-      gemBonusApplied = true;
-    }
-
-    return RewardCalculationResult(
+    return RewardResult(
       stars: stars,
       gemsCollected: gemsCollected,
-      pathLength: pathLength,
-      gemBonusApplied: gemBonusApplied,
+      pathNodeCount: pathNodeCount,
     );
   }
 }

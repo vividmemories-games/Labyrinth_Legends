@@ -1,11 +1,12 @@
 import 'package:labyrinth_legends/game_engine/models/discovery_mode.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
+import 'package:labyrinth_legends/game_engine/models/tutorial_metadata.dart';
 
 class LevelObjectives {
   const LevelObjectives({
-    this.reachExit = true,
-    this.collectAllGems = false,
-    this.minGems = 0,
+    required this.reachExit,
+    required this.collectAllGems,
+    required this.minGems,
   });
 
   final bool reachExit;
@@ -20,9 +21,9 @@ class LevelObjectives {
 
   factory LevelObjectives.fromJson(Map<String, dynamic> json) {
     return LevelObjectives(
-      reachExit: json['reachExit'] as bool? ?? true,
-      collectAllGems: json['collectAllGems'] as bool? ?? false,
-      minGems: json['minGems'] as int? ?? 0,
+      reachExit: json['reachExit'] as bool,
+      collectAllGems: json['collectAllGems'] as bool,
+      minGems: json['minGems'] as int,
     );
   }
 }
@@ -34,7 +35,7 @@ class StarThresholds {
     required this.oneStar,
   });
 
-  /// Maximum path length (inclusive) for each star tier. Lower is better.
+  /// Inclusive upper bounds on path node count per [Level_Format.md] §14.
   final int threeStars;
   final int twoStars;
   final int oneStar;
@@ -54,8 +55,13 @@ class StarThresholds {
   }
 }
 
+/// Immutable level definition parsed from schema version 1 JSON.
+///
+/// Call [LevelFormatValidator.parse] — not [fromJson] directly — for authored
+/// level files so structural rules in [Level_Format.md] §16 are enforced.
 class LevelDefinition {
   const LevelDefinition({
+    required this.schemaVersion,
     required this.id,
     required this.name,
     required this.worldId,
@@ -64,8 +70,10 @@ class LevelDefinition {
     required this.discoveryMode,
     required this.starThresholds,
     this.moveLimit,
+    this.tutorial,
   });
 
+  final int schemaVersion;
   final String id;
   final String name;
   final String worldId;
@@ -74,20 +82,24 @@ class LevelDefinition {
   final DiscoveryMode discoveryMode;
   final StarThresholds starThresholds;
   final int? moveLimit;
+  final TutorialMetadata? tutorial;
 
   Map<String, dynamic> toJson() => {
+        'schemaVersion': schemaVersion,
         'id': id,
         'name': name,
         'worldId': worldId,
-        'grid': grid.toJson(),
-        'objectives': objectives.toJson(),
         'discoveryMode': discoveryMode.toJson(),
+        'moveLimit': moveLimit,
+        'objectives': objectives.toJson(),
         'starThresholds': starThresholds.toJson(),
-        if (moveLimit != null) 'moveLimit': moveLimit,
+        if (tutorial != null) 'tutorial': tutorial!.toJson(),
+        'grid': grid.toJson(),
       };
 
   factory LevelDefinition.fromJson(Map<String, dynamic> json) {
     return LevelDefinition(
+      schemaVersion: json['schemaVersion'] as int,
       id: json['id'] as String,
       name: json['name'] as String,
       worldId: json['worldId'] as String,
@@ -95,13 +107,16 @@ class LevelDefinition {
       objectives: LevelObjectives.fromJson(
         json['objectives'] as Map<String, dynamic>,
       ),
-      discoveryMode: DiscoveryMode.fromJson(
-        json['discoveryMode'] as String? ?? 'full',
-      ),
+      discoveryMode: DiscoveryMode.fromJson(json['discoveryMode'] as String),
       starThresholds: StarThresholds.fromJson(
         json['starThresholds'] as Map<String, dynamic>,
       ),
       moveLimit: json['moveLimit'] as int?,
+      tutorial: json['tutorial'] == null
+          ? null
+          : TutorialMetadata.fromJson(
+              json['tutorial'] as Map<String, dynamic>,
+            ),
     );
   }
 }

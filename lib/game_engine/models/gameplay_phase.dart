@@ -1,5 +1,6 @@
+/// Lifecycle phase for one level attempt per [Engine_Architecture.md] EA-002.
 enum GameplayPhase {
-  planning,
+  drawing,
   executing,
   won,
   lost;

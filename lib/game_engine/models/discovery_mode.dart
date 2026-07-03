@@ -4,10 +4,12 @@ enum DiscoveryMode {
   relicGated;
 
   static DiscoveryMode fromJson(String value) {
-    return DiscoveryMode.values.firstWhere(
-      (mode) => mode.name == value,
-      orElse: () => DiscoveryMode.full,
-    );
+    return switch (value) {
+      'full' => DiscoveryMode.full,
+      'fog' => DiscoveryMode.fog,
+      'relicGated' => DiscoveryMode.relicGated,
+      _ => throw FormatException('Unknown discovery mode: $value'),
+    };
   }
 
   String toJson() => name;

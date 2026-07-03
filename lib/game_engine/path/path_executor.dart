@@ -1,91 +1,50 @@
-import 'package:labyrinth_legends/game_engine/mechanics/mechanic_context.dart';
-import 'package:labyrinth_legends/game_engine/mechanics/exit_mechanic.dart';
-import 'package:labyrinth_legends/game_engine/mechanics/gem_mechanic.dart';
-import 'package:labyrinth_legends/game_engine/mechanics/key_mechanic.dart';
-import 'package:labyrinth_legends/game_engine/mechanics/lock_mechanic.dart';
-import 'package:labyrinth_legends/game_engine/mechanics/relic_mechanic.dart';
-import 'package:labyrinth_legends/game_engine/mechanics/tile_mechanic.dart';
 import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
+import 'package:labyrinth_legends/game_engine/path/path_execution_step_result.dart';
+import 'package:labyrinth_legends/game_engine/session/gameplay_attempt_context.dart';
+import 'package:labyrinth_legends/game_engine/session/step_resolver.dart';
 
-class PathExecutionResult {
-  const PathExecutionResult({
-    required this.context,
-    required this.finalGrid,
-    required this.stepsTaken,
-  });
-
-  final MechanicContext context;
-  final MazeGrid finalGrid;
-  final int stepsTaken;
-}
-
+/// Advances execution one tile along a confirmed path per [Engine_Architecture.md] EA-007.
+///
+/// Owns movement between path nodes; delegates destination resolution to [StepResolver].
 class PathExecutor {
-  PathExecutor({
-    GemMechanic? gemMechanic,
-    KeyMechanic? keyMechanic,
-    LockMechanic? lockMechanic,
-    RelicMechanic? relicMechanic,
-    ExitMechanic? exitMechanic,
-  })  : _mechanics = [
-          gemMechanic ?? GemMechanic(),
-          keyMechanic ?? KeyMechanic(),
-          lockMechanic ?? LockMechanic(),
-          relicMechanic ?? RelicMechanic(),
-          exitMechanic ?? ExitMechanic(),
-        ];
+  const PathExecutor({StepResolver? stepResolver})
+      : _stepResolver = stepResolver ?? const StepResolver();
 
-  final List<TileMechanic> _mechanics;
+  final StepResolver _stepResolver;
 
-  PathExecutionResult execute({
+  /// Advances exactly one tile from [currentPathIndex] on [path].
+  ///
+  /// Returns [PathExecutionStepResult.pathComplete] when [currentPathIndex] is
+  /// already the final node — no movement occurs.
+  PathExecutionStepResult executeStep({
     required MazeGrid grid,
     required List<GridPosition> path,
-    MechanicContext? initialContext,
-    void Function(int stepIndex, MechanicContext context)? onStep,
+    required int currentPathIndex,
+    required GameplayAttemptContext attemptContext,
   }) {
-    var context = initialContext ?? MechanicContext();
-    var currentGrid = grid;
-    var stepsTaken = 0;
+    final currentPosition = path[currentPathIndex];
 
-    for (var index = 0; index < path.length; index++) {
-      if (context.failed) {
-        break;
-      }
-
-      final position = path[index];
-      final cell = currentGrid.cellAt(position);
-
-      for (final mechanic in _mechanics) {
-        context = mechanic.apply(
-          context: context,
-          grid: currentGrid,
-          position: position,
-          cell: cell,
-        );
-        if (context.failed) {
-          break;
-        }
-      }
-
-      if (cell.hasGem && context.collectedGemPositions.contains(position)) {
-        currentGrid = currentGrid.withCellAt(
-          position,
-          cell.copyWith(hasGem: false),
-        );
-      }
-
-      stepsTaken++;
-      onStep?.call(index, context);
-
-      if (context.failed) {
-        break;
-      }
+    if (currentPathIndex >= path.length - 1) {
+      return PathExecutionStepResult.pathComplete(
+        pathIndex: currentPathIndex,
+        position: currentPosition,
+      );
     }
 
-    return PathExecutionResult(
-      context: context,
-      finalGrid: currentGrid,
-      stepsTaken: stepsTaken,
+    final nextIndex = currentPathIndex + 1;
+    final destination = path[nextIndex];
+    final resolution = _stepResolver.resolve(
+      grid: grid,
+      position: destination,
+      attemptContext: attemptContext,
+    );
+
+    return PathExecutionStepResult.moved(
+      from: currentPosition,
+      to: destination,
+      pathIndex: nextIndex,
+      resolution: resolution,
     );
   }
 }
