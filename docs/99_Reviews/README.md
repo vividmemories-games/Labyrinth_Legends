@@ -181,8 +181,9 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0046 | [Releases/0046_m1_4_execution_pipeline.md](Releases/0046_m1_4_execution_pipeline.md) | Draft |
 | 0047 | [Releases/0047_m1_5_objective_evaluation.md](Releases/0047_m1_5_objective_evaluation.md) | Draft |
 | 0048 | [Releases/0048_m1_6_engine_integration_rewards.md](Releases/0048_m1_6_engine_integration_rewards.md) | Draft |
+| 0049 | [Releases/0049_m1_7_engine_debug_sandbox.md](Releases/0049_m1_7_engine_debug_sandbox.md) | Draft |
 
-**Next ID:** 0049
+**Next ID:** 0050
 
 ## Related Docs
 
