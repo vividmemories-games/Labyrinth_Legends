@@ -22,6 +22,8 @@
 
 ## Phase 2 — Game Engine Core
 
+**Status:** M1 engine core complete — approved and locked through review packages `0043`–`0049` on 2026-07-03.
+
 - Testable `game_engine/` (grid, path validation, execution, discovery)
 - JSON level format + handcrafted tutorial levels 1–5
 - Unit tests before UI wiring

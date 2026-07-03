@@ -11,7 +11,7 @@
 | **Date** | 2026-06-29 |
 | **Phase** | Phase 2 — Gameplay Specifications |
 | **Owner** | Cursor |
-| **Status** | Ready for Review |
+| **Status** | Approved & Locked |
 | **Review Type** | Gameplay |
 | **Template Version** | v2 |
 | **Related Docs** | `docs/01_Game_Design/Gameplay/GP4_Hazards_Failure.md` · GP3.1–GP3.5 · GP1 · GP2 · GP7 |
@@ -184,7 +184,7 @@ Author **GP5 Objectives_Completion.md** or **GP7 Gameplay_Rules.md** to resolve 
 
 - [x] Codex Engineering Review
 - [x] ChatGPT Product Review
-- [ ] Human Approval
+- [x] Human Approval
 
 ---
 
@@ -209,6 +209,6 @@ Author **GP5 Objectives_Completion.md** or **GP7 Gameplay_Rules.md** to resolve 
 
 ### Human Approval
 
-- **Date:**
-- **Verdict:**
-- **Notes:**
+- **Date:** 2026-07-03
+- **Verdict:** Approved & Locked
+- **Notes:** Legacy review package status normalized after M1 completion. Underlying GP4 gameplay document is approved/locked; no content changes made.

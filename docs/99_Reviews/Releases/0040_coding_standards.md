@@ -11,7 +11,7 @@
 | **Date** | 2026-07-02 |
 | **Phase** | M0.2 — Coding Standards (Technical Prerequisites) |
 | **Owner** | Cursor |
-| **Status** | Ready for Review |
+| **Status** | Approved & Locked |
 | **Review Type** | Release |
 | **Template Version** | v2 |
 | **Related Docs** | `docs/04_Technical/Coding_Standards.md` · `docs/04_Technical/Technical_Implementation_Plan.md` · `docs/04_Technical/Architecture.md` · `docs/04_Technical/Level_Format.md` · `AGENTS.md` |

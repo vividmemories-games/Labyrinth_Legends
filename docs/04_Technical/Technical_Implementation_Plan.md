@@ -835,6 +835,8 @@ The following must be expanded **before** their dependent implementation phase b
 
 **Objective:** Pure Dart engine loads `level_001.json`, validates a player path, executes deterministically, and awards exit completion with star calculation — **with unit tests and no UI**.
 
+**Status:** Complete — approved and locked through review packages `0043`–`0049` on 2026-07-03.
+
 ### Why this milestone first
 
 | Reason | Detail |
@@ -861,22 +863,22 @@ test/game_engine/level_001_test.dart       — draw path → execute → win
 
 ### M1 acceptance criteria
 
-- [ ] `Level_Format.md` approved and level_001.json validates against schema v1
-- [ ] Invalid path cannot be confirmed (GP2)
-- [ ] Valid path executes node-by-node deterministically (GP2)
-- [ ] Reaching exit marks objective complete (GP5 primary)
-- [ ] Stars computed from path node count vs starThresholds
-- [ ] All tests pass: `fvm flutter test test/game_engine/`
-- [ ] No Flutter UI imports in `game_engine/`
-- [ ] Review package: `docs/99_Reviews/Releases/` for technical phase gates, unless the change is gameplay-spec related.
+- [x] `Level_Format.md` approved and level_001.json validates against schema v1
+- [x] Invalid path cannot be confirmed (GP2)
+- [x] Valid path executes node-by-node deterministically (GP2)
+- [x] Reaching exit marks objective complete (GP5 primary)
+- [x] Stars computed from path node count vs starThresholds
+- [x] All tests pass: `fvm flutter test test/game_engine/`
+- [x] No Flutter UI imports in `game_engine/`
+- [x] Review package: `docs/99_Reviews/Releases/` for technical phase gates, unless the change is gameplay-spec related.
 
 ### After M1
 
 ```text
-M2 — LevelRepository + LocalProgressStore (Phase 3)
-M3 — Home + Level Select shells (Phase 4)
-M4 — Gameplay screen wired to engine (Phase 5)
-M5 — Victory + save + full loop (Phase 5)
+M2 — Production Gameplay UI Integration
+M3 — LevelRepository + LocalProgressStore production loop
+M4 — Victory + save + full vertical slice
+M5 — Tutorial content expansion and polish
 ```
 
 ---
