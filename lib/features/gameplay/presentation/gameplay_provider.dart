@@ -6,8 +6,9 @@ import 'package:labyrinth_legends/data/providers.dart';
 import 'package:labyrinth_legends/game_engine/hints/hint_solver.dart';
 import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
 import 'package:labyrinth_legends/game_engine/models/level_definition.dart';
-import 'package:labyrinth_legends/game_engine/rewards/reward_calculator.dart';
+import 'package:labyrinth_legends/game_engine/rewards/reward_result.dart';
 import 'package:labyrinth_legends/game_engine/session/gameplay_session.dart';
+import 'package:labyrinth_legends/game_engine/session/gameplay_session_exception.dart';
 
 enum GameplayUiPhase { drawing, executing, paused, won, lost }
 
@@ -22,7 +23,7 @@ class GameplayUiState {
   final GameplaySession session;
   final GameplayUiPhase uiPhase;
   final int executionIndex;
-  final RewardCalculationResult? lastReward;
+  final RewardResult? lastReward;
 
   LevelDefinition get level => session.level;
   List<GridPosition> get path => session.path;
@@ -41,7 +42,7 @@ class GameplayUiState {
     GameplaySession? session,
     GameplayUiPhase? uiPhase,
     int? executionIndex,
-    RewardCalculationResult? lastReward,
+    RewardResult? lastReward,
   }) {
     return GameplayUiState(
       session: session ?? this.session,
@@ -61,7 +62,6 @@ class GameplayController extends StateNotifier<GameplayUiState> {
   final Ref _ref;
   Timer? _stepTimer;
   final _hintSolver = HintSolver();
-  final _rewardCalculator = const RewardCalculator();
 
   @override
   void dispose() {
@@ -72,22 +72,34 @@ class GameplayController extends StateNotifier<GameplayUiState> {
   void addPathPoint(GridPosition position) {
     if (state.uiPhase != GameplayUiPhase.drawing) return;
     final session = state.session;
-    session.tryAddToPath(position);
-    state = state.copyWith(session: session);
+    try {
+      session.appendDraftPosition(position);
+      state = state.copyWith(session: session);
+    } on GameplaySessionException {
+      // Path validation deferred to M1.3+; lifecycle errors are ignored in prototype UI.
+    }
   }
 
   void undo() {
     if (state.uiPhase != GameplayUiPhase.drawing) return;
     final session = state.session;
-    session.undo();
-    state = state.copyWith(session: session);
+    try {
+      session.undoDraftPath();
+      state = state.copyWith(session: session);
+    } on GameplaySessionException {
+      // Invalid phase — no-op.
+    }
   }
 
   void erase() {
     if (state.uiPhase != GameplayUiPhase.drawing) return;
     final session = state.session;
-    session.erase();
-    state = state.copyWith(session: session);
+    try {
+      session.resetDraftPath();
+      state = state.copyWith(session: session);
+    } on GameplaySessionException {
+      // Invalid phase — no-op.
+    }
   }
 
   Future<void> useHint() async {
@@ -106,7 +118,7 @@ class GameplayController extends StateNotifier<GameplayUiState> {
     final used = await _ref.read(playerProgressProvider.notifier).useHint();
     if (!used) return;
 
-    session.tryAddToPath(solution[nextIndex]);
+    session.appendDraftPosition(solution[nextIndex]);
     state = state.copyWith(session: session);
   }
 
@@ -114,8 +126,9 @@ class GameplayController extends StateNotifier<GameplayUiState> {
     if (state.uiPhase != GameplayUiPhase.drawing) return;
 
     final session = state.session;
-    final validation = session.validatePath(requireExit: true);
-    if (!validation.isValid) {
+    try {
+      session.confirmPath();
+    } on GameplaySessionException {
       state = state.copyWith(session: session);
       return;
     }
@@ -147,22 +160,9 @@ class GameplayController extends StateNotifier<GameplayUiState> {
   }
 
   void _finishExecution() {
-    final session = state.session;
-    final won = session.go();
-    final reward = won
-        ? _rewardCalculator.calculate(
-            level: session.level,
-            pathLength: session.path.length,
-            gemsCollected: session.context.gemsCollected,
-            totalGems: session.level.grid.countGems(),
-          )
-        : null;
-
-    state = state.copyWith(
-      session: session,
-      uiPhase: won ? GameplayUiPhase.won : GameplayUiPhase.lost,
-      lastReward: reward,
-    );
+    // M1.2: engine execution not implemented — UI animation completes without outcome.
+    state = state.copyWith(uiPhase: GameplayUiPhase.drawing);
+    state.session.restart();
   }
 
   void pause() {
@@ -188,7 +188,7 @@ class GameplayController extends StateNotifier<GameplayUiState> {
     state = GameplayUiState(session: GameplaySession(level: state.level));
   }
 
-  RewardCalculationResult? get lastReward => state.lastReward;
+  RewardResult? get lastReward => state.lastReward;
 }
 
 final gameplayControllerProvider = StateNotifierProvider.autoDispose

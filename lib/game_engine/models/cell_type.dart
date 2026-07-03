@@ -9,7 +9,7 @@ enum CellType {
   static CellType fromJson(String value) {
     return CellType.values.firstWhere(
       (type) => type.name == value,
-      orElse: () => CellType.floor,
+      orElse: () => throw FormatException('Unknown cell type: $value'),
     );
   }
 

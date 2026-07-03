@@ -1,206 +1,256 @@
-import 'package:labyrinth_legends/game_engine/discovery/discovery_engine.dart';
-import 'package:labyrinth_legends/game_engine/mechanics/mechanic_context.dart';
 import 'package:labyrinth_legends/game_engine/models/gameplay_phase.dart';
 import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
 import 'package:labyrinth_legends/game_engine/models/level_definition.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
+import 'package:labyrinth_legends/game_engine/objectives/objective_evaluator.dart';
+import 'package:labyrinth_legends/game_engine/objectives/objective_outcome.dart';
 import 'package:labyrinth_legends/game_engine/path/path_executor.dart';
 import 'package:labyrinth_legends/game_engine/path/path_validation_result.dart';
 import 'package:labyrinth_legends/game_engine/path/path_validator.dart';
+import 'package:labyrinth_legends/game_engine/rewards/reward_calculator.dart';
+import 'package:labyrinth_legends/game_engine/rewards/reward_result.dart';
+import 'package:labyrinth_legends/game_engine/session/gameplay_attempt_context.dart';
+import 'package:labyrinth_legends/game_engine/session/gameplay_session_exception.dart';
+import 'package:labyrinth_legends/game_engine/session/gameplay_session_state.dart';
+import 'package:labyrinth_legends/game_engine/session/step_result.dart';
 
+/// Single public gameplay engine API for one level attempt per EA-001.
 class GameplaySession {
   GameplaySession({
     required LevelDefinition level,
     PathValidator? pathValidator,
     PathExecutor? pathExecutor,
-    DiscoveryEngine? discoveryEngine,
-  })  : level = level,
-        _pathValidator = pathValidator ?? PathValidator(),
-        _pathExecutor = pathExecutor ?? PathExecutor(),
-        _discoveryEngine = discoveryEngine ??
-            DiscoveryEngine(discoveryMode: level.discoveryMode),
-        _grid = (discoveryEngine ??
-                DiscoveryEngine(discoveryMode: level.discoveryMode))
-            .applyInitialVisibility(level.grid),
-        _phase = GameplayPhase.planning,
-        _path = [],
-        _context = MechanicContext();
+    ObjectiveEvaluator? objectiveEvaluator,
+    RewardCalculator? rewardCalculator,
+  })  : _pathValidator = pathValidator ?? const PathValidator(),
+        _pathExecutor = pathExecutor ?? const PathExecutor(),
+        _objectiveEvaluator = objectiveEvaluator ?? const ObjectiveEvaluator(),
+        _rewardCalculator = rewardCalculator ?? const RewardCalculator(),
+        _state = GameplaySessionState.initial(level);
 
-  final LevelDefinition level;
   final PathValidator _pathValidator;
   final PathExecutor _pathExecutor;
-  final DiscoveryEngine _discoveryEngine;
+  final ObjectiveEvaluator _objectiveEvaluator;
+  final RewardCalculator _rewardCalculator;
+  GameplaySessionState _state;
 
-  MazeGrid _grid;
-  GameplayPhase _phase;
-  List<GridPosition> _path;
-  MechanicContext _context;
-  String? _statusMessage;
+  /// Current immutable session snapshot.
+  GameplaySessionState get state => _state;
 
-  MazeGrid get grid => _grid;
-  GameplayPhase get phase => _phase;
-  List<GridPosition> get path => List<GridPosition>.unmodifiable(_path);
-  MechanicContext get context => _context;
-  String? get statusMessage => _statusMessage;
+  LevelDefinition get level => _state.level;
+  MazeGrid get grid => _state.grid;
+  GameplayPhase get phase => _state.phase;
+  List<GridPosition> get draftPath => _state.draftPath;
+  List<GridPosition>? get confirmedPath => _state.confirmedPath;
+  List<GridPosition> get path => _state.displayPath;
+  GameplayAttemptContext get context => _state.attemptContext;
+  String? get statusMessage => _state.lifecycleMessage;
+  int get executionPathIndex => _state.executionPathIndex;
+  bool get executionComplete => _state.executionComplete;
+  GridPosition? get currentPosition => _state.currentExecutionPosition;
+  RewardResult? get reward => _state.rewardResult;
 
-  bool get canDraw => _phase == GameplayPhase.planning;
-  bool get canUndo => canDraw && _path.isNotEmpty;
-  bool get canErase => canDraw && _path.isNotEmpty;
-  bool get canGo => canDraw && _path.isNotEmpty;
+  bool get canUpdateDraftPath => _state.isDrawing;
 
-  PathValidationResult validatePath({bool requireExit = false}) {
+  /// True when a non-empty draft exists in drawing phase.
+  ///
+  /// Does not imply the draft passes [validateDraftPath] — use that for Go-button
+  /// readiness or GP6 live feedback.
+  bool get canConfirmPath =>
+      _state.isDrawing && _state.draftPath.isNotEmpty && !_state.hasConfirmedPath;
+
+  /// Validates the current draft path without changing phase.
+  PathValidationResult validateDraftPath() {
     return _pathValidator.validate(
-      grid: _grid,
-      path: _path,
-      requireExit: requireExit,
+      grid: _state.level.grid,
+      path: _state.draftPath,
+      requireExit: _state.level.objectives.reachExit,
     );
   }
 
-  bool tryAddToPath(GridPosition position) {
-    if (!canDraw) {
-      return false;
-    }
-
-    if (_path.isEmpty) {
-      final start = _grid.findStart();
-      if (start == null || position != start) {
-        _statusMessage = 'Path must begin at the start tile';
-        return false;
-      }
-      _path = [position];
-      _refreshDiscovery();
-      _statusMessage = null;
-      return true;
-    }
-
-    final last = _path.last;
-    if (!last.isAdjacentTo(position)) {
-      _statusMessage = 'Next cell must be adjacent';
-      return false;
-    }
-
-    if (_path.contains(position)) {
-      _statusMessage = 'Cannot revisit a cell';
-      return false;
-    }
-
-    final cell = _grid.cellAtOrNull(position);
-    if (cell == null || !cell.isWalkable) {
-      _statusMessage = 'Cannot move through walls';
-      return false;
-    }
-
-    final tentativePath = [..._path, position];
-    final validation = _pathValidator.validate(grid: _grid, path: tentativePath);
-    if (!validation.isValid) {
-      _statusMessage = validation.message;
-      return false;
-    }
-
-    _path = tentativePath;
-    _refreshDiscovery();
-    _statusMessage = null;
-    return true;
+  /// Replaces the entire draft path. Only valid in [GameplayPhase.drawing].
+  void updateDraftPath(List<GridPosition> path) {
+    _assertDrawing(GameplaySessionExceptionCode.updateDraftPath);
+    _state = _state.copyWith(
+      draftPath: List<GridPosition>.of(path),
+      clearLifecycleMessage: true,
+    );
   }
 
-  void undo() {
-    if (!canUndo) {
+  /// Clears the draft path. Only valid in [GameplayPhase.drawing].
+  void resetDraftPath() {
+    _assertDrawing(GameplaySessionExceptionCode.resetDraftPath);
+    _state = _state.copyWith(
+      draftPath: const [],
+      clearLifecycleMessage: true,
+    );
+  }
+
+  /// Appends one position to the draft path without path validation.
+  void appendDraftPosition(GridPosition position) {
+    _assertDrawing(GameplaySessionExceptionCode.appendDraftPath);
+    _state = _state.copyWith(
+      draftPath: [..._state.draftPath, position],
+      clearLifecycleMessage: true,
+    );
+  }
+
+  /// Removes the last draft position. No-op when draft is empty.
+  void undoDraftPath() {
+    _assertDrawing(GameplaySessionExceptionCode.undoDraftPath);
+    if (_state.draftPath.isEmpty) {
       return;
     }
-    _path = _path.sublist(0, _path.length - 1);
-    _refreshDiscovery();
-    _statusMessage = null;
+    _state = _state.copyWith(
+      draftPath: _state.draftPath.sublist(0, _state.draftPath.length - 1),
+      clearLifecycleMessage: true,
+    );
   }
 
-  void erase() {
-    if (!canErase) {
-      return;
-    }
-    _path = [];
-    _refreshDiscovery();
-    _statusMessage = null;
-  }
+  /// Validates via [PathValidator] then commits the draft path.
+  ///
+  /// On validation failure: remains in [GameplayPhase.drawing], sets
+  /// [GameplaySessionState.lifecycleMessage], and throws [GameplaySessionException].
+  void confirmPath() {
+    _assertDrawing(GameplaySessionExceptionCode.confirmPath);
 
-  bool go() {
-    if (!canGo) {
-      return false;
-    }
-
-    final validation = validatePath(requireExit: level.objectives.reachExit);
+    final validation = validateDraftPath();
     if (!validation.isValid) {
-      _statusMessage = validation.message;
-      return false;
+      final message = validation.message ?? 'Path validation failed';
+      _state = _state.copyWith(lifecycleMessage: message);
+      throw GameplaySessionException(
+        message,
+        code: GameplaySessionExceptionCode.confirmPath,
+      );
     }
 
-    if (level.moveLimit != null && _path.length > level.moveLimit!) {
-      _phase = GameplayPhase.lost;
-      _statusMessage = 'Exceeded move limit';
-      return false;
+    final committed = List<GridPosition>.of(_state.draftPath);
+    _state = _state.copyWith(
+      phase: GameplayPhase.executing,
+      confirmedPath: committed,
+      draftPath: const [],
+      clearLifecycleMessage: true,
+      executionPathIndex: 0,
+      runtimeGrid: _state.level.grid,
+      executionComplete: false,
+    );
+  }
+
+  /// Advances execution by exactly one tile along the confirmed path.
+  ///
+  /// Returns factual [StepResult]. Invokes [ObjectiveEvaluator] after each step
+  /// per GP5/GP7; [GameplaySession] applies won/lost lifecycle transitions.
+  StepResult executeNextStep() {
+    if (_state.phase != GameplayPhase.executing) {
+      throw GameplaySessionException.invalidPhase(
+        operation: GameplaySessionExceptionCode.executeNextStep,
+        currentPhase: _state.phase.name,
+      );
     }
 
-    _phase = GameplayPhase.executing;
+    final path = _state.confirmedPath!;
+    final context = _state.attemptContext;
 
-    final result = _pathExecutor.execute(
-      grid: _grid,
-      path: _path,
-      onStep: (_, context) {
-        _context = context;
-        _grid = _discoveryEngine.revealAfterRelicCollection(
-          _grid,
-          context.collectedRelics,
+    if (_state.executionComplete) {
+      return _finalizeExecution(
+        pathIndex: _state.executionPathIndex,
+        position: path[_state.executionPathIndex],
+        attemptContext: context,
+      );
+    }
+
+    final step = _pathExecutor.executeStep(
+      grid: _state.grid,
+      path: path,
+      currentPathIndex: _state.executionPathIndex,
+      attemptContext: context,
+    );
+
+    if (step.pathComplete) {
+      _state = _state.copyWith(executionComplete: true);
+      return _finalizeExecution(
+        pathIndex: step.pathIndex,
+        position: step.position,
+        attemptContext: context,
+      );
+    }
+
+    final resolution = step.resolution!;
+    final atPathEnd = step.pathIndex == path.length - 1;
+    _state = _state.copyWith(
+      executionPathIndex: step.pathIndex,
+      attemptContext: resolution.attemptContext,
+      runtimeGrid: resolution.grid,
+      executionComplete: atPathEnd,
+    );
+
+    _applyObjectiveEvaluation();
+
+    if (_state.phase != GameplayPhase.executing) {
+      return StepResult.moved(
+        from: step.from!,
+        to: step.position,
+        pathIndex: step.pathIndex,
+        attemptContext: _state.attemptContext,
+        pathComplete: atPathEnd,
+      );
+    }
+
+    return StepResult.moved(
+      from: step.from!,
+      to: step.position,
+      pathIndex: step.pathIndex,
+      attemptContext: resolution.attemptContext,
+      pathComplete: atPathEnd,
+    );
+  }
+
+  StepResult _finalizeExecution({
+    required int pathIndex,
+    required GridPosition position,
+    required GameplayAttemptContext attemptContext,
+  }) {
+    _applyObjectiveEvaluation();
+    return StepResult.pathComplete(
+      pathIndex: pathIndex,
+      position: position,
+      attemptContext: _state.attemptContext,
+    );
+  }
+
+  void _applyObjectiveEvaluation() {
+    final evaluation = _objectiveEvaluator.evaluate(
+      level: _state.level,
+      attemptContext: _state.attemptContext,
+      executionComplete: _state.executionComplete,
+    );
+
+    switch (evaluation.outcome) {
+      case ObjectiveOutcome.continueExecution:
+        return;
+      case ObjectiveOutcome.won:
+        final wonState = _state.copyWith(phase: GameplayPhase.won);
+        final reward = _rewardCalculator.calculateFromTerminalSession(wonState);
+        _state = wonState.copyWith(rewardResult: reward);
+      case ObjectiveOutcome.lost:
+        _state = _state.copyWith(
+          phase: GameplayPhase.lost,
+          lifecycleMessage: evaluation.reason,
         );
-      },
-    );
-
-    _context = result.context;
-    _grid = result.finalGrid;
-
-    if (_context.failed) {
-      _phase = GameplayPhase.lost;
-      _statusMessage = _context.failureReason;
-      return false;
     }
-
-    final won = _evaluateWin();
-    _phase = won ? GameplayPhase.won : GameplayPhase.lost;
-    if (!won) {
-      _statusMessage ??= 'Level objectives not met';
-    } else {
-      _statusMessage = null;
-    }
-    return won;
   }
 
-  void reset() {
-    _grid = _discoveryEngine.applyInitialVisibility(level.grid);
-    _phase = GameplayPhase.planning;
-    _path = [];
-    _context = MechanicContext();
-    _statusMessage = null;
+  /// Starts a new attempt for the same level.
+  void restart() {
+    _state = GameplaySessionState.initial(_state.level);
   }
 
-  void _refreshDiscovery() {
-    _grid = _discoveryEngine.revealFromPath(_grid, _path);
-  }
-
-  bool _evaluateWin() {
-    final objectives = level.objectives;
-
-    if (objectives.reachExit && !_context.reachedExit) {
-      return false;
+  void _assertDrawing(GameplaySessionExceptionCode operation) {
+    if (!_state.isDrawing) {
+      throw GameplaySessionException.invalidPhase(
+        operation: operation,
+        currentPhase: _state.phase.name,
+      );
     }
-
-    if (objectives.collectAllGems) {
-      final totalGems = level.grid.countGems();
-      if (_context.gemsCollected < totalGems) {
-        return false;
-      }
-    }
-
-    if (_context.gemsCollected < objectives.minGems) {
-      return false;
-    }
-
-    return true;
   }
 }

@@ -175,8 +175,14 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0040 | [Releases/0040_coding_standards.md](Releases/0040_coding_standards.md) | Ready for Review |
 | 0041 | [Releases/0041_agents_governance_refinement.md](Releases/0041_agents_governance_refinement.md) | Draft |
 | 0042 | [Releases/0042_engine_architecture.md](Releases/0042_engine_architecture.md) | Draft |
+| 0043 | [Releases/0043_m1_1_level_format_validation.md](Releases/0043_m1_1_level_format_validation.md) | Draft |
+| 0044 | [Releases/0044_m1_2_gameplay_session_skeleton.md](Releases/0044_m1_2_gameplay_session_skeleton.md) | Draft |
+| 0045 | [Releases/0045_m1_3_path_validation.md](Releases/0045_m1_3_path_validation.md) | Draft |
+| 0046 | [Releases/0046_m1_4_execution_pipeline.md](Releases/0046_m1_4_execution_pipeline.md) | Draft |
+| 0047 | [Releases/0047_m1_5_objective_evaluation.md](Releases/0047_m1_5_objective_evaluation.md) | Draft |
+| 0048 | [Releases/0048_m1_6_engine_integration_rewards.md](Releases/0048_m1_6_engine_integration_rewards.md) | Draft |
 
-**Next ID:** 0043
+**Next ID:** 0049
 
 ## Related Docs
 

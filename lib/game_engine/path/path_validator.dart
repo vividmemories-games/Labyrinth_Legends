@@ -1,38 +1,51 @@
 import 'package:labyrinth_legends/game_engine/models/cell_visibility.dart';
 import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
+import 'package:labyrinth_legends/game_engine/path/path_validation_error.dart';
 import 'package:labyrinth_legends/game_engine/path/path_validation_result.dart';
 
+/// Stateless GP2 path legality checks per [GP2_Movement_System.md] §4.
+///
+/// Revisits are permitted when explicitly included in the path (GP2-L09).
 class PathValidator {
+  const PathValidator();
+
   PathValidationResult validate({
     required MazeGrid grid,
     required List<GridPosition> path,
     bool requireExit = false,
   }) {
     if (path.isEmpty) {
-      return const PathValidationResult(
-        isValid: false,
-        message: 'Path cannot be empty',
+      return PathValidationResult.failure(
+        const PathValidationError(
+          code: PathValidationErrorCode.emptyPath,
+          message: 'Path cannot be empty',
+          stepIndex: 0,
+        ),
       );
     }
 
     final start = grid.findStart();
     if (start == null) {
-      return const PathValidationResult(
-        isValid: false,
-        message: 'Level has no start tile',
+      return PathValidationResult.failure(
+        const PathValidationError(
+          code: PathValidationErrorCode.missingStartCell,
+          message: 'Level has no start tile',
+        ),
       );
     }
 
     if (path.first != start) {
-      return const PathValidationResult(
-        isValid: false,
-        message: 'Path must begin at the start tile',
-        invalidIndex: 0,
+      return PathValidationResult.failure(
+        PathValidationError(
+          code: PathValidationErrorCode.notAtStart,
+          message: 'Path must begin at the start tile',
+          stepIndex: 0,
+          position: path.first,
+        ),
       );
     }
 
-    final visited = <GridPosition>{};
     final keys = <String>{};
 
     for (var index = 0; index < path.length; index++) {
@@ -40,43 +53,46 @@ class PathValidator {
       final cell = grid.cellAtOrNull(position);
 
       if (cell == null) {
-        return PathValidationResult(
-          isValid: false,
-          message: 'Path leaves the maze at step $index',
-          invalidIndex: index,
+        return PathValidationResult.failure(
+          PathValidationError(
+            code: PathValidationErrorCode.outOfBounds,
+            message: 'Path leaves the maze at step $index',
+            stepIndex: index,
+            position: position,
+          ),
         );
       }
 
       if (!cell.isWalkable) {
-        return PathValidationResult(
-          isValid: false,
-          message: 'Path crosses a wall at step $index',
-          invalidIndex: index,
+        return PathValidationResult.failure(
+          PathValidationError(
+            code: PathValidationErrorCode.notWalkable,
+            message: 'Path crosses a wall at step $index',
+            stepIndex: index,
+            position: position,
+          ),
         );
       }
 
       if (cell.visibility == CellVisibility.hidden) {
-        return PathValidationResult(
-          isValid: false,
-          message: 'Path crosses a hidden cell at step $index',
-          invalidIndex: index,
+        return PathValidationResult.failure(
+          PathValidationError(
+            code: PathValidationErrorCode.hiddenCell,
+            message: 'Path crosses a hidden cell at step $index',
+            stepIndex: index,
+            position: position,
+          ),
         );
       }
-
-      if (visited.contains(position)) {
-        return PathValidationResult(
-          isValid: false,
-          message: 'Path revisits a cell at step $index',
-          invalidIndex: index,
-        );
-      }
-      visited.add(position);
 
       if (index > 0 && !path[index - 1].isAdjacentTo(position)) {
-        return PathValidationResult(
-          isValid: false,
-          message: 'Path must move to adjacent cells at step $index',
-          invalidIndex: index,
+        return PathValidationResult.failure(
+          PathValidationError(
+            code: PathValidationErrorCode.notAdjacent,
+            message: 'Path must move to orthogonally adjacent cells at step $index',
+            stepIndex: index,
+            position: position,
+          ),
         );
       }
 
@@ -87,10 +103,13 @@ class PathValidator {
 
       final lockId = cell.lockId;
       if (lockId != null && !keys.contains(lockId)) {
-        return PathValidationResult(
-          isValid: false,
-          message: 'Path crosses locked gate without key at step $index',
-          invalidIndex: index,
+        return PathValidationResult.failure(
+          PathValidationError(
+            code: PathValidationErrorCode.lockedWithoutKey,
+            message: 'Path crosses locked gate without key at step $index',
+            stepIndex: index,
+            position: position,
+          ),
         );
       }
     }
@@ -98,16 +117,21 @@ class PathValidator {
     if (requireExit) {
       final exit = grid.findExit();
       if (exit == null) {
-        return const PathValidationResult(
-          isValid: false,
-          message: 'Level has no exit tile',
+        return PathValidationResult.failure(
+          const PathValidationError(
+            code: PathValidationErrorCode.missingExitCell,
+            message: 'Level has no exit tile',
+          ),
         );
       }
       if (path.last != exit) {
-        return PathValidationResult(
-          isValid: false,
-          message: 'Path must end at the exit',
-          invalidIndex: path.length - 1,
+        return PathValidationResult.failure(
+          PathValidationError(
+            code: PathValidationErrorCode.notAtExit,
+            message: 'Path must end at the exit',
+            stepIndex: path.length - 1,
+            position: path.last,
+          ),
         );
       }
     }

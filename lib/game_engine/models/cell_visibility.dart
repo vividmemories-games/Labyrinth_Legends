@@ -6,7 +6,7 @@ enum CellVisibility {
   static CellVisibility fromJson(String value) {
     return CellVisibility.values.firstWhere(
       (visibility) => visibility.name == value,
-      orElse: () => CellVisibility.visible,
+      orElse: () => throw FormatException('Unknown cell visibility: $value'),
     );
   }
 

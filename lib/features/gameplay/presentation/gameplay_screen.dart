@@ -58,9 +58,8 @@ class GameplayScreen extends ConsumerWidget {
                     coinsEarned: GameConstants.baseCoinsPerLevel +
                         rewardCalc.stars * 10,
                     gemsCollected: rewardCalc.gemsCollected,
-                    pathLength: rewardCalc.pathLength,
+                    pathLength: rewardCalc.pathNodeCount,
                     relicId: relicId,
-                    gemBonusApplied: rewardCalc.gemBonusApplied,
                   ),
                 );
             if (context.mounted) {
