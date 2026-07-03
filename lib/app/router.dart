@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:labyrinth_legends/core/env/app_env.dart';
 import 'package:labyrinth_legends/design_system/showcase/design_system_showcase_screen.dart';
 import 'package:labyrinth_legends/features/daily_challenge/presentation/daily_challenge_screen.dart';
+import 'package:labyrinth_legends/features/engine_debug_sandbox/presentation/engine_debug_sandbox_screen.dart';
 import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_screen.dart';
 import 'package:labyrinth_legends/features/home/presentation/home_screen.dart';
 import 'package:labyrinth_legends/features/level_complete/presentation/level_complete_screen.dart';
@@ -23,6 +24,12 @@ final appRouter = GoRouter(
         path: '/dev/design-system',
         name: 'designSystemShowcase',
         builder: (context, state) => const DesignSystemShowcaseScreen(),
+      ),
+    if (AppEnv.enableDebugOverlays)
+      GoRoute(
+        path: '/dev/engine-sandbox',
+        name: 'engineDebugSandbox',
+        builder: (context, state) => const EngineDebugSandboxScreen(),
       ),
     GoRoute(
       path: '/worlds',

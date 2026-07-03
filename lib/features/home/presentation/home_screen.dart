@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         heroImageAsset: HomeMockData.heroImageAsset,
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(LLSpacing.screenPadding),
+            padding: const EdgeInsets.all(LLSpacing.screenPadding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
@@ -28,7 +28,7 @@ class HomeScreen extends StatelessWidget {
                       amount: HomeMockData.coins,
                       compact: true,
                     ),
-                    SizedBox(width: LLSpacing.sm),
+                    const SizedBox(width: LLSpacing.sm),
                     LLCurrencyChip(
                       type: LLCurrencyType.gems,
                       amount: HomeMockData.gems,
@@ -38,13 +38,25 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
                 if (AppEnv.enableDebugOverlays) ...[
-                  SizedBox(height: LLSpacing.sm),
+                  const SizedBox(height: LLSpacing.sm),
                   Align(
                     alignment: Alignment.centerRight,
-                    child: LLButton(
-                      label: 'Design System',
-                      variant: LLButtonVariant.ghost,
-                      onPressed: () => context.push('/dev/design-system'),
+                    child: Wrap(
+                      spacing: LLSpacing.sm,
+                      runSpacing: LLSpacing.sm,
+                      alignment: WrapAlignment.end,
+                      children: [
+                        LLButton(
+                          label: 'Design System',
+                          variant: LLButtonVariant.ghost,
+                          onPressed: () => context.push('/dev/design-system'),
+                        ),
+                        LLButton(
+                          label: 'Engine Sandbox',
+                          variant: LLButtonVariant.ghost,
+                          onPressed: () => context.push('/dev/engine-sandbox'),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -54,7 +66,7 @@ class HomeScreen extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: LLTextStyle.h1,
                 ),
-                SizedBox(height: LLSpacing.sm + LLSpacing.xs),
+                const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
                 Text(
                   HomeMockData.tagline,
                   textAlign: TextAlign.center,
@@ -67,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                   expanded: true,
                   onPressed: () => context.push('/worlds'),
                 ),
-                SizedBox(height: LLSpacing.sm + LLSpacing.xs),
+                const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
                 LLButton(
                   label: 'Daily Challenge',
                   icon: Icons.calendar_today_outlined,
@@ -75,7 +87,7 @@ class HomeScreen extends StatelessWidget {
                   expanded: true,
                   onPressed: () => context.push('/daily'),
                 ),
-                SizedBox(height: LLSpacing.sm + LLSpacing.xs),
+                const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
                 Row(
                   children: [
                     Expanded(
@@ -87,7 +99,7 @@ class HomeScreen extends StatelessWidget {
                         onPressed: () => context.push('/shop'),
                       ),
                     ),
-                    SizedBox(width: LLSpacing.sm + LLSpacing.xs),
+                    const SizedBox(width: LLSpacing.sm + LLSpacing.xs),
                     Expanded(
                       child: LLButton(
                         label: 'Settings',
@@ -99,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: LLSpacing.md),
+                const SizedBox(height: LLSpacing.md),
               ],
             ),
           ),
