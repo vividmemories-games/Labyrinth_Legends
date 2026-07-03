@@ -1,5 +1,10 @@
 # Milestones
 
+> Hygiene note (2026-07-03): active implementation milestone naming now follows
+> [Technical_Implementation_Plan.md](../04_Technical/Technical_Implementation_Plan.md).
+> M1 Engine Core is complete and approved through review packages `0043`–`0049`.
+> The older product milestone labels below are retained as high-level release gates.
+
 ## M0 — Documentation Foundation
 
 | Gate | Criteria |

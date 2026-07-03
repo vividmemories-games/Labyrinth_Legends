@@ -11,7 +11,7 @@
 | **Date** | 2026-06-29 |
 | **Phase** | Documentation Phase 1 — Gameplay Integration |
 | **Owner** | Cursor |
-| **Status** | Draft — Ready for Review |
+| **Status** | Approved & Locked |
 | **Review Type** | Gameplay |
 | **Template Version** | v2 |
 | **Related Docs** | `docs/01_Game_Design/Gameplay/Gameplay.md` · GP1–GP7 · `docs/01_Game_Design/Gameplay/README.md` · `docs/README.md` |
@@ -215,6 +215,6 @@ No new open questions introduced. Gameplay.md §18 consolidates existing cross-g
 
 ### Human Approval
 
-- **Date:**
-- **Verdict:**
-- **Notes:**
+- **Date:** 2026-07-03
+- **Verdict:** Approved & Locked
+- **Notes:** Legacy review package status normalized after M1 completion. Underlying Gameplay integration document is approved/locked; no content changes made.

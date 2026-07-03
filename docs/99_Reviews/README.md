@@ -138,11 +138,11 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0003 | [Releases/0003_review_package_workflow.md](Releases/0003_review_package_workflow.md) | Ready for Review |
 | 0004 | [Releases/0004_review_package_stop_hook.md](Releases/0004_review_package_stop_hook.md) | Ready for Review |
 | 0005 | [Releases/0005_review_package_v2_template.md](Releases/0005_review_package_v2_template.md) | Ready for Review |
-| 0006 | [Gameplay/0006_gp4_hazards_failure.md](Gameplay/0006_gp4_hazards_failure.md) | Ready for Review |
-| 0007 | [Gameplay/0007_gp5_objectives_completion.md](Gameplay/0007_gp5_objectives_completion.md) | Ready for Review |
-| 0008 | [Gameplay/0008_gp6_gameplay_feedback.md](Gameplay/0008_gp6_gameplay_feedback.md) | Ready for Review |
-| 0009 | [Gameplay/0009_gp7_gameplay_rules.md](Gameplay/0009_gp7_gameplay_rules.md) | Ready for Review |
-| 0010 | [Gameplay/0010_gameplay_integration.md](Gameplay/0010_gameplay_integration.md) | Ready for Review |
+| 0006 | [Gameplay/0006_gp4_hazards_failure.md](Gameplay/0006_gp4_hazards_failure.md) | Approved & Locked |
+| 0007 | [Gameplay/0007_gp5_objectives_completion.md](Gameplay/0007_gp5_objectives_completion.md) | Approved & Locked |
+| 0008 | [Gameplay/0008_gp6_gameplay_feedback.md](Gameplay/0008_gp6_gameplay_feedback.md) | Approved & Locked |
+| 0009 | [Gameplay/0009_gp7_gameplay_rules.md](Gameplay/0009_gp7_gameplay_rules.md) | Approved & Locked |
+| 0010 | [Gameplay/0010_gameplay_integration.md](Gameplay/0010_gameplay_integration.md) | Approved & Locked |
 | 0011 | [Design_System/0011_ws0_design_philosophy.md](Design_System/0011_ws0_design_philosophy.md) | Approved |
 | 0012 | [Design_System/0012_ws1_visual_identity.md](Design_System/0012_ws1_visual_identity.md) | Draft |
 | 0013 | [Design_System/0013_ws2_color_language.md](Design_System/0013_ws2_color_language.md) | Draft |
@@ -171,19 +171,21 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0036 | [Releases/0036_docs_hygiene_audit.md](Releases/0036_docs_hygiene_audit.md) | Approved |
 | 0037 | [Gameplay/0037_puzzle_elements_integration.md](Gameplay/0037_puzzle_elements_integration.md) | Ready for Review |
 | 0038 | [Releases/0038_technical_implementation_plan.md](Releases/0038_technical_implementation_plan.md) | Approved |
-| 0039 | [Releases/0039_level_format.md](Releases/0039_level_format.md) | Ready for Review |
-| 0040 | [Releases/0040_coding_standards.md](Releases/0040_coding_standards.md) | Ready for Review |
-| 0041 | [Releases/0041_agents_governance_refinement.md](Releases/0041_agents_governance_refinement.md) | Draft |
-| 0042 | [Releases/0042_engine_architecture.md](Releases/0042_engine_architecture.md) | Draft |
-| 0043 | [Releases/0043_m1_1_level_format_validation.md](Releases/0043_m1_1_level_format_validation.md) | Draft |
-| 0044 | [Releases/0044_m1_2_gameplay_session_skeleton.md](Releases/0044_m1_2_gameplay_session_skeleton.md) | Draft |
-| 0045 | [Releases/0045_m1_3_path_validation.md](Releases/0045_m1_3_path_validation.md) | Draft |
-| 0046 | [Releases/0046_m1_4_execution_pipeline.md](Releases/0046_m1_4_execution_pipeline.md) | Draft |
-| 0047 | [Releases/0047_m1_5_objective_evaluation.md](Releases/0047_m1_5_objective_evaluation.md) | Draft |
-| 0048 | [Releases/0048_m1_6_engine_integration_rewards.md](Releases/0048_m1_6_engine_integration_rewards.md) | Draft |
-| 0049 | [Releases/0049_m1_7_engine_debug_sandbox.md](Releases/0049_m1_7_engine_debug_sandbox.md) | Draft |
+| 0039 | [Releases/0039_level_format.md](Releases/0039_level_format.md) | Approved & Locked |
+| 0040 | [Releases/0040_coding_standards.md](Releases/0040_coding_standards.md) | Approved & Locked |
+| 0041 | [Releases/0041_agents_governance_refinement.md](Releases/0041_agents_governance_refinement.md) | Approved & Locked |
+| 0042 | [Releases/0042_engine_architecture.md](Releases/0042_engine_architecture.md) | Approved & Locked |
+| 0043 | [Releases/0043_m1_1_level_format_validation.md](Releases/0043_m1_1_level_format_validation.md) | Approved & Locked |
+| 0044 | [Releases/0044_m1_2_gameplay_session_skeleton.md](Releases/0044_m1_2_gameplay_session_skeleton.md) | Approved & Locked |
+| 0045 | [Releases/0045_m1_3_path_validation.md](Releases/0045_m1_3_path_validation.md) | Approved & Locked |
+| 0046 | [Releases/0046_m1_4_execution_pipeline.md](Releases/0046_m1_4_execution_pipeline.md) | Approved & Locked |
+| 0047 | [Releases/0047_m1_5_objective_evaluation.md](Releases/0047_m1_5_objective_evaluation.md) | Approved & Locked |
+| 0048 | [Releases/0048_m1_6_engine_integration_rewards.md](Releases/0048_m1_6_engine_integration_rewards.md) | Approved & Locked |
+| 0049 | [Releases/0049_m1_7_engine_debug_sandbox.md](Releases/0049_m1_7_engine_debug_sandbox.md) | Approved & Locked |
+| 0050 | [Releases/0050_m1_completion_docs_hygiene.md](Releases/0050_m1_completion_docs_hygiene.md) | Approved & Locked |
+| 0051 | [Releases/0051_non_m1_review_status_hygiene.md](Releases/0051_non_m1_review_status_hygiene.md) | Codex Approved — Ready for ChatGPT / Human Review |
 
-**Next ID:** 0050
+**Next ID:** 0052
 
 ## Related Docs
 
