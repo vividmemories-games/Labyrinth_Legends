@@ -1,6 +1,6 @@
 # Labyrinth Legends Documentation System (LLDS)
 
-**Source of truth** for Labyrinth Legends design, screens, and technical architecture.
+**Source of truth** for Labyrinth Legends product, gameplay, design language, UI architecture, and technical architecture.
 
 > **Documentation Phase 1** — Foundation complete. Governance, review workflow, and AI workflow are frozen as **Version 1**. From this point, ChatGPT is the authoritative source for game design; Cursor compiles specifications into production documentation.
 
@@ -45,6 +45,8 @@ flowchart LR
   LLDL --> GB[5 Game Bible]
 ```
 
+Downstream documentation areas such as `docs/04_Technical/`, `docs/06_Asset_Bible/`, and `docs/07_UI/` extend these approved foundations once their upstream authority is established.
+
 ## Documentation Priority (conflict resolution)
 
 Authority follows the model defined in [`AGENTS.md`](../AGENTS.md) §6. When documents conflict, the **higher-authority document wins:**
@@ -64,7 +66,13 @@ Gameplay.md
     ↓
 LLDL.md
     ↓
-Technical Documentation
+Asset Bible
+    ↓
+Engineering Architecture / Technical Contracts
+    ↓
+UI Architecture Documents (`docs/07_UI/`)
+    ↓
+UI Specification Documents (`docs/07_UI/`)
     ↓
 Implementation
 ```
@@ -76,6 +84,9 @@ Lower-level documents may **extend** higher-level documents but may **never rede
 | Product intent | **Vision** wins |
 | Mechanical rules | **Gameplay** wins |
 | Design language / visual expression | **LLDL** wins |
+| Asset production / lifecycle | **Asset Bible** wins |
+| UI-specific architecture and implementation-facing UI specs | **`docs/07_UI/` wins** once approved |
+| Runtime architecture / engineering boundaries | **Engineering Architecture / Technical Contracts** win |
 | Repository governance | **AGENTS.md** defines it |
 
 If a conflict exists, **preserve the higher-authority document and report the conflict** — do not silently reinterpret the design.
@@ -85,7 +96,7 @@ If a conflict exists, **preserve the higher-authority document and report the co
 | I need to… | Read |
 |------------|------|
 | Understand the game | [Vision](00_Project/Vision.md), [Game Bible](01_Game_Design/Game_Bible.md) |
-| Build UI | [LLDL](02_Design_System/LLDL/LLDL.md), [Components](02_Design_System/Components.md), relevant `03_Screens/` |
+| Build UI | [LLDL](02_Design_System/LLDL/LLDL.md), [UI Docs](07_UI/README.md), [Components](02_Design_System/Components.md), relevant `03_Screens/` |
 | Produce assets | [Asset Bible](06_Asset_Bible/Asset_Bible.md), [LLDL](02_Design_System/LLDL/LLDL.md) |
 | Build engine | [Architecture](04_Technical/Architecture.md), [Gameplay](01_Game_Design/Gameplay/Gameplay.md), [Gameplay Specs (GP series)](01_Game_Design/Gameplay/README.md) |
 | Start a Cursor task | [Cursor Workflow](05_AI/Cursor/Workflow.md) |
@@ -99,13 +110,30 @@ docs/
 ├── 00_Project/       Vision, roadmap, decisions
 ├── 01_Game_Design/   Rules, economy, worlds, Gameplay/ (GP1–GP2, GP3/, GP4–GP7)
 ├── 02_Design_System/ LLDL, tokens, components
-├── 03_Screens/       Per-screen specs
+├── 03_Screens/       Existing per-screen specs
 ├── 04_Technical/     Architecture, Firebase, save
 ├── 05_AI/            Cursor + Codex workflows
 ├── 06_Asset_Bible/   Asset production standards, AI pipeline, store/marketing assets
+├── 07_UI/            UI architecture, UI principles, layout rules, component and screen specifications
 ├── 99_Reviews/       Milestone review packages (handoff artifacts)
 └── assets/           Mockups and references (not Flutter bundles)
 ```
+
+## UI Documentation Area
+
+`docs/07_UI/` is the authoritative documentation area for **UI architecture**, **UI principles**, **UI design-system application**, **UI layout rules**, **UI component specifications**, **screen specifications**, **animation guidelines**, **responsive behavior**, and **UI asset usage**.
+
+Its authority is:
+
+```text
+Vision / Gameplay / LLDL / Asset Bible / Engineering Architecture
+    ↓
+docs/07_UI/
+    ↓
+Flutter UI implementation
+```
+
+LLDL remains the authoritative **design architecture** reference. `docs/07_UI/` governs **UI-specific architecture** and **implementation-facing UI specifications** that apply LLDL, Asset Bible guidance, and engineering boundaries to Flutter UI work.
 
 ## Document Standards
 

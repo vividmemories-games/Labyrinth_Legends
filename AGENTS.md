@@ -28,6 +28,8 @@ If a change affects gameplay, architecture, scope, product direction, monetizati
 
 ---
 
+
+
 # 2. Documentation Philosophy
 
 **LLDS is the project's single source of truth.**
@@ -41,11 +43,15 @@ If a change affects gameplay, architecture, scope, product direction, monetizati
 | **No silent overrides**             | Lower-level documents may **never** redefine higher-level documents                |
 
 
+
+
 ### When conflicts occur
 
 1. **Preserve** the higher-level document
 2. **Report** the conflict (review package, task summary, or Human escalation)
 3. **Never** silently reinterpret the design
+
+
 
 ### What belongs in LLDS
 
@@ -55,7 +61,7 @@ Update the appropriate LLDS folder when changing:
 | Domain               | Primary locations                                                                                      |
 | -------------------- | ------------------------------------------------------------------------------------------------------ |
 | Game design          | `docs/01_Game_Design/` · `[Game_Loop.md](docs/01_Game_Design/Game_Loop/Game_Loop.md)` · gameplay specs |
-| Visual / UX          | `docs/02_Design_System/` · `docs/03_Screens/`                                                          |
+| Visual / UX          | `docs/02_Design_System/` · `docs/03_Screens/` · `docs/07_UI/`                                          |
 | Technical            | `docs/04_Technical/`                                                                                   |
 | Product / governance | `docs/00_Project/` (`Decisions.md`, `Roadmap.md`)                                                      |
 | AI workflow          | `docs/05_AI/`                                                                                          |
@@ -66,7 +72,11 @@ Avoid duplicate prose — **link** to authoritative documents.
 
 ---
 
+
+
 # 3. Agent Roles
+
+
 
 ## Cursor — Builder / Implementer
 
@@ -76,11 +86,15 @@ Avoid duplicate prose — **link** to authoritative documents.
 - Must update LLDS when implementation changes behavior or design
 - **Must generate a review package after every major task** (see §4)
 
+
+
 ## Codex — Engineering Reviewer
 
 - Reviews architecture, maintainability, performance, scalability, tests, and Flutter quality
 - Reads the relevant review package **first**, then verifies claims against the codebase
 - Does **not** judge product feel unless explicitly asked
+
+
 
 ## ChatGPT — Creative Director / Product Architect
 
@@ -89,12 +103,16 @@ Avoid duplicate prose — **link** to authoritative documents.
 - Reviews based on review packages, screenshots, summaries, and selected files
 - Does not require continuous local repo access
 
+
+
 ## Human Owner — Final Approval Authority
 
 - Makes product and business decisions
 - Approves or rejects review packages before the next phase begins
 
 ---
+
+
 
 # 4. Mandatory Review Packages
 
@@ -119,6 +137,8 @@ See `[docs/99_Reviews/README.md](docs/99_Reviews/README.md)` for folder structur
 
 ---
 
+
+
 # 5. Required Reading Before Work
 
 Read **only what the task requires**, but always start from the general list.
@@ -131,6 +151,8 @@ docs/00_Project/Vision.md
 docs/01_Game_Design/Game_Loop/Game_Loop.md
 docs/00_Project/Decisions.md
 ```
+
+
 
 ## Gameplay Work
 
@@ -193,9 +215,10 @@ Key entries: `[docs/04_Technical/Architecture.md](docs/04_Technical/Architecture
 ```text
 docs/02_Design_System/
 docs/03_Screens/
+docs/07_UI/
 ```
 
-Key entry: `[docs/02_Design_System/LLDL/LLDL.md](docs/02_Design_System/LLDL/LLDL.md)`
+Key entries: `[docs/02_Design_System/LLDL/LLDL.md](docs/02_Design_System/LLDL/LLDL.md)` · `[docs/07_UI/README.md](docs/07_UI/README.md)`
 
 ## AI Workflow
 
@@ -206,6 +229,8 @@ docs/05_AI/
 Key entries: `[docs/05_AI/Cursor/Workflow.md](docs/05_AI/Cursor/Workflow.md)` · `[docs/05_AI/Codex/Review_Checklist.md](docs/05_AI/Codex/Review_Checklist.md)`
 
 ---
+
+
 
 # 6. Documentation Authority
 
@@ -230,24 +255,35 @@ Gameplay.md
     ↓
 LLDL.md
     ↓
-Technical Documentation
+Asset Bible
+    ↓
+Engineering Architecture / Technical Contracts
+    ↓
+07_UI Architecture Documents
+    ↓
+07_UI Specification Documents
     ↓
 Implementation (lib/, test/)
 ```
 
 
-| Level                     | Path                                                                                                              |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| Vision                    | `docs/00_Project/Vision.md`                                                                                       |
-| Game Loop                 | `docs/01_Game_Design/Game_Loop/Game_Loop.md` · WS1–WS5 workshops                                                  |
-| Gameplay Core             | `Gameplay/GP1_Player_Explorer.md` (GP1) · `GP2_Movement_System.md` (GP2) · `GP7_Gameplay_Rules.md` (GP7)          |
-| GP3 Puzzle Element Series | `Gameplay/GP3/` (GP3.1–GP3.5)                                                                                     |
-| GP3 Integration           | `Gameplay/Puzzle_Elements.md` — integrates GP3.1–GP3.5; does not override them                                    |
-| Gameplay Features         | `Gameplay/GP4_Hazards_Failure.md` (GP4) · `GP5_Objectives_Completion.md` (GP5) · `GP6_Gameplay_Feedback.md` (GP6) |
-| Gameplay integration      | `docs/01_Game_Design/Gameplay/Gameplay.md`                                                                        |
-| Design system             | `docs/02_Design_System/LLDL/LLDL.md` · `Design_Tokens.md` · `Components.md`                                       |
-| Screens                   | `docs/03_Screens/*`                                                                                               |
-| Technical                 | `docs/04_Technical/*`                                                                                             |
+| Level                                  | Path                                                                                                              |
+| -------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| Vision                                 | `docs/00_Project/Vision.md`                                                                                       |
+| Game Loop                              | `docs/01_Game_Design/Game_Loop/Game_Loop.md` · WS1–WS5 workshops                                                  |
+| Gameplay Core                          | `Gameplay/GP1_Player_Explorer.md` (GP1) · `GP2_Movement_System.md` (GP2) · `GP7_Gameplay_Rules.md` (GP7)          |
+| GP3 Puzzle Element Series              | `Gameplay/GP3/` (GP3.1–GP3.5)                                                                                     |
+| GP3 Integration                        | `Gameplay/Puzzle_Elements.md` — integrates GP3.1–GP3.5; does not override them                                    |
+| Gameplay Features                      | `Gameplay/GP4_Hazards_Failure.md` (GP4) · `GP5_Objectives_Completion.md` (GP5) · `GP6_Gameplay_Feedback.md` (GP6) |
+| Gameplay integration                   | `docs/01_Game_Design/Gameplay/Gameplay.md`                                                                        |
+| Design system                          | `docs/02_Design_System/LLDL/LLDL.md` · `Design_Tokens.md` · `Components.md`                                       |
+| Asset production                       | `docs/06_Asset_Bible/*`                                                                                           |
+| Engineering architecture               | `docs/04_Technical/Architecture.md` · `Engine_Architecture.md` · technical contracts                              |
+| UI architecture                        | `docs/07_UI/*`                                                                                                    |
+| Screens / existing applied screen refs | `docs/03_Screens/*`                                                                                               |
+| Technical                              | `docs/04_Technical/*`                                                                                             |
+
+
 
 
 ### Conflict protocol
@@ -262,6 +298,8 @@ If a lower-level document appears to contradict a higher-level document:
 Record material decisions and exceptions in `[docs/00_Project/Decisions.md](docs/00_Project/Decisions.md)`.
 
 ---
+
+
 
 # 7. Gameplay Documentation Authority
 
@@ -337,6 +375,8 @@ No gameplay document may redefine [Vision](docs/00_Project/Vision.md) or [Game L
 
 ---
 
+
+
 # 8. Governance Records
 
 Log governance in LLDS — not in legacy folders.
@@ -353,6 +393,8 @@ Log governance in LLDS — not in legacy folders.
 Do not silently make product or architecture decisions without recording them.
 
 ---
+
+
 
 # 9. Legacy Documentation
 
@@ -371,6 +413,8 @@ All new documentation belongs inside LLDS (`docs/` per `[docs/README.md](docs/RE
 See `[docs/second-brain/README.md](docs/second-brain/README.md)` for the supersession map.
 
 ---
+
+
 
 # 10. Architecture Rules
 
@@ -391,6 +435,8 @@ All agents must follow these architecture rules:
 - Flutter owns timing
 - Engine owns deterministic execution
 
+
+
 ### Architecture Freeze Rule
 
 Engine architecture is frozen for the current milestone once M0 is complete. Do not redesign layer boundaries, dependency direction, or the `GameplaySession` public API during implementation without Human approval and a review package.
@@ -398,6 +444,8 @@ Engine architecture is frozen for the current milestone once M0 is complete. Do 
 Full detail: `[docs/04_Technical/Architecture.md](docs/04_Technical/Architecture.md)` · `[docs/04_Technical/Engine_Architecture.md](docs/04_Technical/Engine_Architecture.md)`
 
 ---
+
+
 
 # 11. MVP Protection Rule
 
@@ -419,6 +467,8 @@ Document non-MVP ideas in `[docs/00_Project/Decisions.md](docs/00_Project/Decisi
 
 ---
 
+
+
 # 12. Documentation Commit Requirement
 
 Any pull request or major AI-generated change should include:
@@ -437,6 +487,8 @@ and does not affect design, architecture, product direction, roadmap, or decisio
 Minor fixes may skip a review package; major milestones may not.
 
 ---
+
+
 
 # 13. Required End-of-Task Summary
 
@@ -467,6 +519,8 @@ Tests added/updated:
 
 ---
 
+
+
 # 14. Definition of Done
 
 A task is complete only when:
@@ -483,3 +537,164 @@ A task is complete only when:
 - No unrelated scope is introduced
 
 If documentation or the review package is missing for a major task, the task is **not done**.
+
+---
+
+
+
+# 15. Documentation Standards
+
+All new architecture and governance documentation must use:
+
+`docs/templates/Architecture_Document_Template.md`
+
+unless an approved specialized template exists.
+
+## Architecture document scope
+
+Architecture and governance documents include, but are not limited to:
+
+- Vision
+- Gameplay Architecture
+- Engine Architecture
+- UI Architecture
+- LiveOps
+- Backend
+- Analytics
+- Monetization
+- Repository Governance
+
+
+
+## Specialized specification templates
+
+Specification documents may use specialized templates when appropriate.
+
+Examples include:
+
+- Gameplay Specifications
+- Component Specifications
+- Screen Specifications
+- Design Tokens
+
+
+
+## Required architecture document content
+
+Architecture documents should define:
+
+- Principles
+- Scope
+- Governance
+- Authority
+- Dependencies
+
+Architecture documents should not contain implementation details unless implementation detail is explicitly part of the document's intended purpose.
+
+## Required authority framing
+
+Every architecture document should clearly define:
+
+- What it governs
+- What it does not govern
+- Upstream dependencies
+- Downstream documents
+- Conflict resolution
+
+
+
+## Documentation hierarchy
+
+Repository documentation must remain hierarchical.
+
+Architecture and governance documents must follow the precedence model already defined in this file and in `docs/README.md`.
+
+For architecture-oriented documentation, the practical precedence model is:
+
+```text
+AGENTS.md
+    ↓
+docs/README.md
+    ↓
+Vision
+    ↓
+Gameplay
+    ↓
+LLDL
+    ↓
+Asset Bible
+    ↓
+Engineering Architecture
+    ↓
+07_UI architecture documents
+    ↓
+07_UI specification documents
+    ↓
+Implementation
+```
+
+This section clarifies how architecture documents fit inside the existing LLDS hierarchy. It does not override the established authority model for gameplay, design language, or repository governance already defined elsewhere in this file and in `docs/README.md`.
+
+If a lower-level document conflicts with a higher-level document:
+
+1. Preserve the higher-level document
+2. Report the conflict
+3. Do not silently reinterpret intent
+
+
+
+## UI documentation authority
+
+`docs/07_UI/` is an authoritative documentation area for UI architecture and implementation-facing UI specifications.
+
+Once UI documents are approved or locked, UI implementation must follow `docs/07_UI/`.
+
+UI documents must not contradict:
+
+- Vision
+- Gameplay
+- LLDL
+- Asset Bible
+- Engineering Architecture
+
+If conflicts exist, precedence is:
+
+```text
+AGENTS.md
+    ↓
+docs/README.md
+    ↓
+Vision
+    ↓
+Gameplay
+    ↓
+LLDL
+    ↓
+Asset Bible
+    ↓
+Engineering Architecture
+    ↓
+07_UI architecture documents
+    ↓
+07_UI specification documents
+    ↓
+Implementation
+```
+
+New UI patterns, layouts, components, animations, or interaction rules require corresponding `docs/07_UI/` updates before implementation.
+
+Cursor must not invent UI architecture during implementation when an approved UI document already exists.
+
+Review packages for documents authored under `docs/07_UI/` require **ChatGPT review** and **Human approval**. A separate **Codex review section is not required** for the `docs/07_UI/` document family unless explicitly requested.
+
+## Backwards compatibility
+
+Documentation changes should preserve backwards compatibility whenever practical.
+
+When structure changes are necessary, migration guidance should be recorded so older references do not become ambiguous.
+
+## Approval and locking
+
+Architecture documents become authoritative once approved and locked.
+
+Any material change to an approved architecture or governance document requires architectural review before implementation proceeds.

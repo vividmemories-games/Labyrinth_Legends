@@ -37,6 +37,8 @@ Human approves
     → Next phase may begin
 ```
 
+Exception: review packages for documents authored under `docs/07_UI/` use **ChatGPT + Human** review only unless Codex review is explicitly requested.
+
 **Do not start the next major phase until the review package is approved** (or explicitly waived by Human).
 
 ## Folder Structure
@@ -118,6 +120,8 @@ Reload Cursor (or save `hooks.json`) after changes. Check the **Hooks** output c
 | **ChatGPT** | UX, LLDL compliance, gameplay feel, monetization, player experience, polish |
 | **Human** | Final product/business approval |
 
+For the `docs/07_UI/` document family, **ChatGPT** is the default external reviewer and **Human** remains the approval authority. **Codex** is optional for those UI-document review packages unless explicitly requested.
+
 ## Sharing Without Repo Access
 
 Share with reviewers:
@@ -183,9 +187,18 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0048 | [Releases/0048_m1_6_engine_integration_rewards.md](Releases/0048_m1_6_engine_integration_rewards.md) | Approved & Locked |
 | 0049 | [Releases/0049_m1_7_engine_debug_sandbox.md](Releases/0049_m1_7_engine_debug_sandbox.md) | Approved & Locked |
 | 0050 | [Releases/0050_m1_completion_docs_hygiene.md](Releases/0050_m1_completion_docs_hygiene.md) | Approved & Locked |
-| 0051 | [Releases/0051_non_m1_review_status_hygiene.md](Releases/0051_non_m1_review_status_hygiene.md) | Codex Approved — Ready for ChatGPT / Human Review |
+| 0051 | [Releases/0051_non_m1_review_status_hygiene.md](Releases/0051_non_m1_review_status_hygiene.md) | Approved & Locked |
+| 0052 | [Releases/0052_documentation_template_standards.md](Releases/0052_documentation_template_standards.md) | Ready for Review |
+| 0053 | [Releases/0053_ui_documentation_governance_alignment.md](Releases/0053_ui_documentation_governance_alignment.md) | Approved |
+| 0054 | [Architecture/0054_ui_01_ui_philosophy.md](Architecture/0054_ui_01_ui_philosophy.md) | Approved |
+| 0055 | [Architecture/0055_ui_02_layout_system.md](Architecture/0055_ui_02_layout_system.md) | Approved |
+| 0056 | [Architecture/0056_ui_03_gameplay_screen_specification.md](Architecture/0056_ui_03_gameplay_screen_specification.md) | Approved |
+| 0057 | [Architecture/0057_ui_04_design_tokens.md](Architecture/0057_ui_04_design_tokens.md) | Approved |
+| 0058 | [Architecture/0058_ui_05_component_library.md](Architecture/0058_ui_05_component_library.md) | Approved |
+| 0059 | [Architecture/0059_ui_behavior_layer.md](Architecture/0059_ui_behavior_layer.md) | Approved |
+| 0060 | [Releases/0060_docs_hygiene_ui_architecture_status_alignment.md](Releases/0060_docs_hygiene_ui_architecture_status_alignment.md) | Codex Approved — Ready for ChatGPT / Human Review |
 
-**Next ID:** 0052
+**Next ID:** 0061
 
 ## Related Docs
 

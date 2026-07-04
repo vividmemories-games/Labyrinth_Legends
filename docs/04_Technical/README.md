@@ -9,7 +9,7 @@
 
 ## Purpose
 
-Technical documentation defines **how approved design is built and shipped** in Flutter. It extends — but never redefines — [Gameplay](../01_Game_Design/Gameplay/Gameplay.md), [LLDL](../02_Design_System/LLDL/LLDL.md), and [Asset Bible](../06_Asset_Bible/Asset_Bible.md).
+Technical documentation defines **how approved design is built and shipped** in Flutter. It extends — but never redefines — [Gameplay](../01_Game_Design/Gameplay/Gameplay.md), [LLDL](../02_Design_System/LLDL/LLDL.md), and [Asset Bible](../06_Asset_Bible/Asset_Bible.md). Approved UI implementation-facing specifications in [docs/07_UI/](../07_UI/README.md) must also align with these engineering boundaries.
 
 ## Start Here
 
@@ -66,7 +66,7 @@ Do **not** depend on these for implementation guidance until expanded:
 ## Authority Hierarchy
 
 ```text
-Vision → Game Loop → Gameplay → LLDL → Asset Bible → Screen Specs → Technical Docs → Code
+Vision → Game Loop → Gameplay → LLDL → Asset Bible → Engineering Architecture / Technical Contracts → docs/07_UI/ → UI implementation code
 ```
 
 When technical docs conflict with gameplay or design authority, **preserve the higher document** and report the conflict.
@@ -74,6 +74,7 @@ When technical docs conflict with gameplay or design authority, **preserve the h
 ## Related
 
 - [LLDS Home](../README.md)
+- [UI Documentation](../07_UI/README.md)
 - [Roadmap](../00_Project/Roadmap.md)
 - [Prototype Status](../00_Project/Prototype_Status.md)
 - [Review Packages](../99_Reviews/README.md)

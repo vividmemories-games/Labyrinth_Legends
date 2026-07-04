@@ -8,21 +8,22 @@
 
 ## Documentation Priority
 
-When documents conflict, **higher wins:**
+When documents conflict, follow the repository hierarchy in `AGENTS.md` and `docs/README.md`.
+
+For UI work, read in this order:
 
 1. `docs/02_Design_System/LLDL/LLDL.md`
-2. `docs/02_Design_System/Design_Tokens.md`
-3. `docs/03_Screens/*`
-4. `docs/01_Game_Design/*`
-5. `docs/04_Technical/*`
-6. `.cursor/rules/labyrinth-legends.mdc`
-7. Current task prompt
+2. `docs/07_UI/README.md` and relevant `docs/07_UI/*`
+3. Relevant `docs/03_Screens/*` where existing screen references apply
+4. `docs/04_Technical/*`
+5. `.cursor/rules/labyrinth-legends.mdc`
+6. Current task prompt
 
 ## Task Types
 
 | Type | Read first |
 |------|------------|
-| UI / screen | LLDL, screen spec, Components |
+| UI / screen | LLDL, `docs/07_UI/`, screen spec, Components |
 | Gameplay | Gameplay.md, Mechanics.md, Architecture.md |
 | New mechanic | Mechanics.md → update → then engine |
 | Service integration | Architecture.md, Firebase.md |
