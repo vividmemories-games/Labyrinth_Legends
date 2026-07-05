@@ -218,7 +218,7 @@ docs/03_Screens/
 docs/07_UI/
 ```
 
-Key entries: `[docs/02_Design_System/LLDL/LLDL.md](docs/02_Design_System/LLDL/LLDL.md)` · `[docs/07_UI/README.md](docs/07_UI/README.md)`
+Key entries: `[docs/02_Design_System/LLDL/LLDL.md](docs/02_Design_System/LLDL/LLDL.md)` · `[docs/07_UI/UI.md](docs/07_UI/UI.md)` · `[docs/07_UI/README.md](docs/07_UI/README.md)`
 
 ## AI Workflow
 

@@ -2,6 +2,8 @@
 
 Authoritative documentation area for Labyrinth Legends UI architecture and implementation-facing UI specifications.
 
+**Chapter entry point:** [UI.md](UI.md) — M1.9 integration document for the complete `UI_00`–`UI_08` stack.
+
 ---
 
 ## Purpose
@@ -45,7 +47,9 @@ Asset Bible
     ↓
 Engineering Architecture
     ↓
-docs/07_UI/
+docs/07_UI/ (UI_00–UI_08)
+    ↓
+UI.md (chapter integration)
     ↓
 Flutter UI implementation
 ```
@@ -105,7 +109,8 @@ Implementation must:
 
 | Document | Status | Purpose |
 |----------|--------|---------|
-| [UI_00_Design_Principles.md](UI_00_Design_Principles.md) | Draft | Foundational UI design principles and decision framework |
+| [UI.md](UI.md) | Approved — Pending Human Lock | **Chapter integration** — entry point, authority map, M2 readiness (M1.9) |
+| [UI_00_Design_Principles.md](UI_00_Design_Principles.md) | Approved | Foundational UI design principles and decision framework |
 | [UI_01_UI_Philosophy.md](UI_01_UI_Philosophy.md) | Approved | Player-facing UI philosophy, attention model, and information behavior |
 | [UI_02_Layout_System.md](UI_02_Layout_System.md) | Approved | Spatial layout philosophy, zoning, gameplay dominance, and overlay structure |
 | [UI_03_Gameplay_Screen_Specification.md](UI_03_Gameplay_Screen_Specification.md) | Approved | Canonical gameplay-screen behavior, state, hierarchy, and modal specification |

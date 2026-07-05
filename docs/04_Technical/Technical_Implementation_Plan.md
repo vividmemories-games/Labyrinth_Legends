@@ -116,6 +116,10 @@ Asset Bible (AB0–AB6) + Asset_Bible.md
     ↓
 Screen specs — docs/03_Screens/*
     ↓
+UI Architecture — docs/07_UI/UI_00–UI_08
+    ↓
+UI Chapter Integration — docs/07_UI/UI.md
+    ↓
 Technical Documentation — docs/04_Technical/*
     ↓
 Technical_Implementation_Plan.md (this document)
@@ -129,7 +133,8 @@ Implementation — lib/, test/, assets/
 | Player flow across time scales | [Game Loop](../01_Game_Design/Game_Loop/Game_Loop.md) |
 | Mechanical rules, precedence, movement | [Gameplay](../01_Game_Design/Gameplay/Gameplay.md) + GP1–GP7 |
 | Visual identity, tokens, components | [LLDL](../02_Design_System/LLDL/LLDL.md) + [Design_Tokens](../02_Design_System/Design_Tokens.md) + [Components](../02_Design_System/Components.md) |
-| Screen layout and UX composition | `docs/03_Screens/*` |
+| UI architecture and gameplay-screen authority | [UI.md](../07_UI/UI.md) + `docs/07_UI/UI_00`–`UI_08` |
+| Screen layout and UX composition | `docs/07_UI/UI_03` (gameplay) · `docs/03_Screens/*` (transitional applied refs) |
 | Asset production standards | [Asset Bible](../06_Asset_Bible/Asset_Bible.md) |
 | Engineering structure, persistence, state | `docs/04_Technical/*` |
 | **Build order and slice scope** | **This document** |

@@ -84,11 +84,13 @@ This document does **not** define engine asset loading implementation, texture c
 
 ## Downstream Documents
 
+- [UI.md](UI.md) — chapter integration and M2 entry point (M1.9)
 - Future implementation-facing UI asset and presentation work in `lib/design_system/` and feature presentation layers
 - Future screen refinements that must preserve governed asset roles and layering
 
 ## Related Documents
 
+- `docs/07_UI/UI.md`
 - `docs/07_UI/README.md`
 - `docs/07_UI/UI_03_Gameplay_Screen_Specification.md`
 - `docs/07_UI/UI_04_Design_Tokens.md`
