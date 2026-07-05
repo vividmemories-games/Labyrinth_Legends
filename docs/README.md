@@ -96,7 +96,7 @@ If a conflict exists, **preserve the higher-authority document and report the co
 | I need to… | Read |
 |------------|------|
 | Understand the game | [Vision](00_Project/Vision.md), [Game Bible](01_Game_Design/Game_Bible.md) |
-| Build UI | [LLDL](02_Design_System/LLDL/LLDL.md), [UI Docs](07_UI/README.md), [Components](02_Design_System/Components.md), relevant `03_Screens/` |
+| Build UI | [UI.md](07_UI/UI.md), [07_UI README](07_UI/README.md), [LLDL](02_Design_System/LLDL/LLDL.md), [Components](02_Design_System/Components.md), relevant `03_Screens/` |
 | Produce assets | [Asset Bible](06_Asset_Bible/Asset_Bible.md), [LLDL](02_Design_System/LLDL/LLDL.md) |
 | Build engine | [Architecture](04_Technical/Architecture.md), [Gameplay](01_Game_Design/Gameplay/Gameplay.md), [Gameplay Specs (GP series)](01_Game_Design/Gameplay/README.md) |
 | Start a Cursor task | [Cursor Workflow](05_AI/Cursor/Workflow.md) |
@@ -128,12 +128,14 @@ Its authority is:
 ```text
 Vision / Gameplay / LLDL / Asset Bible / Engineering Architecture
     ↓
-docs/07_UI/
+docs/07_UI/ (UI_00–UI_08)
+    ↓
+UI.md (chapter integration)
     ↓
 Flutter UI implementation
 ```
 
-LLDL remains the authoritative **design architecture** reference. `docs/07_UI/` governs **UI-specific architecture** and **implementation-facing UI specifications** that apply LLDL, Asset Bible guidance, and engineering boundaries to Flutter UI work.
+LLDL remains the authoritative **design architecture** reference. `docs/07_UI/` governs **UI-specific architecture** and **implementation-facing UI specifications** that apply LLDL, Asset Bible guidance, and engineering boundaries to Flutter UI work. Start with [UI.md](07_UI/UI.md) for chapter orientation and M2 readiness.
 
 ## Document Standards
 

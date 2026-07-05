@@ -25,3 +25,6 @@ flutter:
   assets:
     - assets/levels/world_1/
     - assets/images/
+    - assets/images/icons/
+    - assets/images/illustrations/
+    - assets/images/backgrounds/

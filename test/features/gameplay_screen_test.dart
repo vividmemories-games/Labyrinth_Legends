@@ -3,17 +3,41 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labyrinth_legends/data/daily_level_builder.dart';
 import 'package:labyrinth_legends/data/providers.dart';
-import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_provider.dart';
+import 'package:labyrinth_legends/design_system/theme/app_theme.dart';
+import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_controller.dart';
 import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_screen.dart';
+import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_shell_state.dart';
 import 'package:labyrinth_legends/game_engine/session/gameplay_session.dart';
 
 void main() {
-  testWidgets('GameplayScreen hides control bar during execution', (tester) async {
+  testWidgets('GameplayScreen renders production shell layout', (tester) async {
     final level = buildDailyLevel(42);
-    final executingState = GameplayUiState(
+
+    await tester.pumpWidget(
+      ProviderScope(
+        overrides: [
+          levelByIdProvider('daily_42').overrideWith((ref) async => level),
+        ],
+        child: MaterialApp(
+          theme: buildLLAppTheme(),
+          home: const GameplayScreen(levelId: 'daily_42'),
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+
+    expect(find.text('Draw'), findsOneWidget);
+    expect(find.text('Path drawing arrives in M2.2'), findsOneWidget);
+    expect(find.byIcon(Icons.grid_view_rounded), findsOneWidget);
+  });
+
+  testWidgets('GameplayScreen hides primary action bar cue when paused overlay shown',
+      (tester) async {
+    final level = buildDailyLevel(42);
+    final pausedState = GameplayShellState(
       session: GameplaySession(level: level),
-      uiPhase: GameplayUiPhase.executing,
-      executionIndex: 0,
+      phase: GameplayShellPhase.paused,
+      isPausedOverlayVisible: true,
     );
 
     await tester.pumpWidget(
@@ -21,43 +45,24 @@ void main() {
         overrides: [
           levelByIdProvider('daily_42').overrideWith((ref) async => level),
           gameplayControllerProvider(level).overrideWith(
-            (ref) => _FixedGameplayController(ref, executingState),
+            (ref) => _FixedGameplayController(level, pausedState),
           ),
         ],
-        child: const MaterialApp(
-          home: GameplayScreen(levelId: 'daily_42'),
+        child: MaterialApp(
+          theme: buildLLAppTheme(),
+          home: const GameplayScreen(levelId: 'daily_42'),
         ),
       ),
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('Undo'), findsNothing);
-    expect(find.text('Go'), findsNothing);
-  });
-
-  testWidgets('GameplayScreen shows control bar while drawing', (tester) async {
-    final level = buildDailyLevel(42);
-
-    await tester.pumpWidget(
-      ProviderScope(
-        overrides: [
-          levelByIdProvider('daily_42').overrideWith((ref) async => level),
-        ],
-        child: const MaterialApp(
-          home: GameplayScreen(levelId: 'daily_42'),
-        ),
-      ),
-    );
-    await tester.pumpAndSettle();
-
-    expect(find.text('Undo'), findsOneWidget);
-    expect(find.text('Go'), findsOneWidget);
+    expect(find.text('Paused'), findsOneWidget);
+    expect(find.text('Resume'), findsOneWidget);
   });
 }
 
 class _FixedGameplayController extends GameplayController {
-  _FixedGameplayController(Ref ref, GameplayUiState initial)
-      : super(ref, initial.level) {
+  _FixedGameplayController(super.level, GameplayShellState initial) {
     state = initial;
   }
 }

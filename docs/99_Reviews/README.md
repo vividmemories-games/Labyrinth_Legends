@@ -197,8 +197,10 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0058 | [Architecture/0058_ui_05_component_library.md](Architecture/0058_ui_05_component_library.md) | Approved |
 | 0059 | [Architecture/0059_ui_behavior_layer.md](Architecture/0059_ui_behavior_layer.md) | Approved |
 | 0060 | [Releases/0060_docs_hygiene_ui_architecture_status_alignment.md](Releases/0060_docs_hygiene_ui_architecture_status_alignment.md) | Codex Approved — Ready for ChatGPT / Human Review |
+| 0061 | [Architecture/0061_ui_chapter_integration.md](Architecture/0061_ui_chapter_integration.md) | Draft |
+| 0062 | [Screens/0062_m2_1_production_ui_foundation.md](Screens/0062_m2_1_production_ui_foundation.md) | Draft |
 
-**Next ID:** 0061
+**Next ID:** 0063
 
 ## Related Docs
 

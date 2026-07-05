@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:labyrinth_legends/app/routes.dart';
 import 'package:labyrinth_legends/core/env/app_env.dart';
 import 'package:labyrinth_legends/design_system/showcase/design_system_showcase_screen.dart';
 import 'package:labyrinth_legends/features/daily_challenge/presentation/daily_challenge_screen.dart';
@@ -9,35 +10,41 @@ import 'package:labyrinth_legends/features/level_complete/presentation/level_com
 import 'package:labyrinth_legends/features/level_select/presentation/level_select_screen.dart';
 import 'package:labyrinth_legends/features/settings/presentation/settings_screen.dart';
 import 'package:labyrinth_legends/features/shop/presentation/shop_screen.dart';
+import 'package:labyrinth_legends/features/splash/presentation/splash_screen.dart';
 import 'package:labyrinth_legends/features/worlds/presentation/worlds_screen.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/',
+  initialLocation: AppRoutes.splash,
   routes: [
     GoRoute(
-      path: '/',
+      path: AppRoutes.splash,
+      name: 'splash',
+      builder: (context, state) => const SplashScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.home,
       name: 'home',
       builder: (context, state) => const HomeScreen(),
     ),
     if (AppEnv.enableDebugOverlays)
       GoRoute(
-        path: '/dev/design-system',
+        path: AppRoutes.designSystemShowcase,
         name: 'designSystemShowcase',
         builder: (context, state) => const DesignSystemShowcaseScreen(),
       ),
     if (AppEnv.enableDebugOverlays)
       GoRoute(
-        path: '/dev/engine-sandbox',
+        path: AppRoutes.engineDebugSandbox,
         name: 'engineDebugSandbox',
         builder: (context, state) => const EngineDebugSandboxScreen(),
       ),
     GoRoute(
-      path: '/worlds',
+      path: AppRoutes.worlds,
       name: 'worlds',
       builder: (context, state) => const WorldsScreen(),
     ),
     GoRoute(
-      path: '/worlds/:worldId/levels',
+      path: AppRoutes.levelSelect,
       name: 'levelSelect',
       builder: (context, state) {
         final worldId = state.pathParameters['worldId']!;
@@ -45,7 +52,7 @@ final appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/play/:levelId',
+      path: AppRoutes.gameplay,
       name: 'play',
       builder: (context, state) {
         final levelId = state.pathParameters['levelId']!;
@@ -53,7 +60,7 @@ final appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/complete/:levelId',
+      path: AppRoutes.complete,
       name: 'complete',
       builder: (context, state) {
         final levelId = state.pathParameters['levelId']!;
@@ -61,17 +68,17 @@ final appRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/shop',
+      path: AppRoutes.shop,
       name: 'shop',
       builder: (context, state) => const ShopScreen(),
     ),
     GoRoute(
-      path: '/settings',
+      path: AppRoutes.settings,
       name: 'settings',
       builder: (context, state) => const SettingsScreen(),
     ),
     GoRoute(
-      path: '/daily',
+      path: AppRoutes.daily,
       name: 'daily',
       builder: (context, state) => const DailyChallengeScreen(),
     ),
