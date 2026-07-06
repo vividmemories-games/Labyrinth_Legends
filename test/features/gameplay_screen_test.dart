@@ -10,7 +10,7 @@ import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_shell_
 import 'package:labyrinth_legends/game_engine/session/gameplay_session.dart';
 
 void main() {
-  testWidgets('GameplayScreen renders production shell layout', (tester) async {
+  testWidgets('GameplayScreen renders board and draft path controls', (tester) async {
     final level = buildDailyLevel(42);
 
     await tester.pumpWidget(
@@ -26,13 +26,12 @@ void main() {
     );
     await tester.pumpAndSettle();
 
-    expect(find.text('Draw'), findsOneWidget);
-    expect(find.text('Path drawing arrives in M2.2'), findsOneWidget);
-    expect(find.byIcon(Icons.grid_view_rounded), findsOneWidget);
+    expect(find.text('Draw Path'), findsOneWidget);
+    expect(find.textContaining('Tap or drag from the explorer'), findsOneWidget);
+    expect(find.byKey(const Key('explorer_marker')), findsOneWidget);
   });
 
-  testWidgets('GameplayScreen hides primary action bar cue when paused overlay shown',
-      (tester) async {
+  testWidgets('GameplayScreen shows paused overlay when shell is paused', (tester) async {
     final level = buildDailyLevel(42);
     final pausedState = GameplayShellState(
       session: GameplaySession(level: level),

@@ -2,6 +2,7 @@
 
 **Route:** `/play/:levelId`  
 **Authority:** [WS4 — UI Language](../02_Design_System/LLDL/WS4_UI_Language.md) (progressive HUD)  
+**MVP visual authority:** [MVP_Visual_Target.md](../06_Asset_Bible/MVP_Visual_Target.md)  
 **Mockup ref:** Center gameplay panel in `docs/assets/mockups/ui_board_master.png`
 
 ## Purpose
@@ -19,7 +20,7 @@ Scaffold (LLColor.templeBlack)
 ├─ LLTopBar or minimal chrome: back, level name, pause (LLIconButton)
 ├─ [Phase-aware HUD band — see below]
 ├─ LLPanel (maze frame, gold border)
-│   └─ MazeBoard (painter — LLMazeTile planned)
+│   └─ MazeBoard (sprite tiles + path overlay painter)
 ├─ [Phase-aware status line]
 └─ [Phase-aware control bar — drawing only]
 ```

@@ -7,9 +7,9 @@ abstract final class LLGradient {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      LLColor.ancientGoldLight,
-      LLColor.ancientGold,
       LLColor.ancientGoldDark,
+      LLColor.bronzeRust,
+      LLColor.oxidizedBronze,
     ],
   );
 
@@ -17,8 +17,8 @@ abstract final class LLGradient {
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
     colors: [
-      LLColor.tealDeep,
-      LLColor.stoneMid,
+      LLColor.stoneEdge,
+      LLColor.weatheredStone,
       LLColor.tealShadow,
     ],
   );
@@ -45,15 +45,18 @@ abstract final class LLGradient {
   static LinearGradient screenVeil({
     AlignmentGeometry begin = Alignment.topCenter,
     AlignmentGeometry end = Alignment.bottomCenter,
-  }) =>
-      LinearGradient(
-        begin: begin,
-        end: end,
-        stops: const [0.0, 0.45, 1.0],
-        colors: [
-          LLColor.templeBlack.withValues(alpha: LLColor.veilTopAlpha),
-          LLColor.templeBlack.withValues(alpha: LLColor.veilMidAlpha),
-          LLColor.templeBlack.withValues(alpha: LLColor.veilBottomAlpha),
-        ],
-      );
+    double strength = 1.0,
+  }) {
+    final clamped = strength.clamp(0.0, 1.0);
+    return LinearGradient(
+      begin: begin,
+      end: end,
+      stops: const [0.0, 0.45, 1.0],
+      colors: [
+        LLColor.templeBlack.withValues(alpha: LLColor.veilTopAlpha * clamped),
+        LLColor.templeBlack.withValues(alpha: LLColor.veilMidAlpha * clamped),
+        LLColor.templeBlack.withValues(alpha: LLColor.veilBottomAlpha * clamped),
+      ],
+    );
+  }
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:labyrinth_legends/design_system/assets/ll_gameplay_assets.dart';
+import 'package:labyrinth_legends/design_system/components/gameplay/ll_hud_icon.dart';
 import 'package:labyrinth_legends/design_system/theme/ll_theme_extension.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
 
@@ -43,10 +45,12 @@ class PauseButton extends StatelessWidget {
               color: theme.surfaceElevated.withValues(alpha: 0.88),
               border: Border.all(color: theme.borderSubtle, width: LLSize.borderWidth),
             ),
-            child: Icon(
-              Icons.pause,
-              color: enabled ? theme.actionPrimary : theme.textSecondary,
-              size: LLSize.iconMd,
+            child: Center(
+              child: LLHudIcon(
+                kind: GameplayHudIconKind.pause,
+                size: LLSize.iconMd,
+                color: enabled ? theme.actionPrimary : theme.textSecondary,
+              ),
             ),
           ),
         ),

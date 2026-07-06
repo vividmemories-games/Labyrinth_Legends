@@ -198,9 +198,28 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0059 | [Architecture/0059_ui_behavior_layer.md](Architecture/0059_ui_behavior_layer.md) | Approved |
 | 0060 | [Releases/0060_docs_hygiene_ui_architecture_status_alignment.md](Releases/0060_docs_hygiene_ui_architecture_status_alignment.md) | Codex Approved — Ready for ChatGPT / Human Review |
 | 0061 | [Architecture/0061_ui_chapter_integration.md](Architecture/0061_ui_chapter_integration.md) | Draft |
-| 0062 | [Screens/0062_m2_1_production_ui_foundation.md](Screens/0062_m2_1_production_ui_foundation.md) | Draft |
+| 0062 | [Screens/0062_m2_1_production_ui_foundation.md](Screens/0062_m2_1_production_ui_foundation.md) | Approved |
+| 0063 | [Screens/0063_m2_2_gameplay_board_rendering_path_drawing.md](Screens/0063_m2_2_gameplay_board_rendering_path_drawing.md) | Codex Approved — Ready for Human Approval |
+| 0064 | [Screens/0064_m2_3_path_execution_explorer_movement.md](Screens/0064_m2_3_path_execution_explorer_movement.md) | Codex Approved — Ready for Human Approval |
+| 0065 | [Screens/0065_m2_4_world_state_objective_feedback.md](Screens/0065_m2_4_world_state_objective_feedback.md) | Codex Approved — Ready for ChatGPT / Human Review |
+| 0066 | [Screens/0066_m2_5_terminal_outcome_retry_flow.md](Screens/0066_m2_5_terminal_outcome_retry_flow.md) | Codex Approved — Ready for ChatGPT / Human Review |
+| 0067 | [Implementation/0067_m2_6_gameplay_feedback_interaction_polish.md](Implementation/0067_m2_6_gameplay_feedback_interaction_polish.md) | Ready for ChatGPT Review |
+| 0068 | [Implementation/0068_m2_7_premium_visual_foundation.md](Implementation/0068_m2_7_premium_visual_foundation.md) | Ready for Review |
+| 0069 | [Releases/0069_world_01_phase1_visual_language_study.md](Releases/0069_world_01_phase1_visual_language_study.md) | Draft |
+| 0070 | [Screens/0070_world_01_phase3_simulator_prototype_v2.md](Screens/0070_world_01_phase3_simulator_prototype_v2.md) | Ready for Review |
+| 0071 | [Releases/0071_mvp_visual_pivot_back_to_basics.md](Releases/0071_mvp_visual_pivot_back_to_basics.md) | Ready for Review |
+| 0072 | [Screens/0072_m2_8_home_mockup_visual_pass.md](Screens/0072_m2_8_home_mockup_visual_pass.md) | Draft |
+| 0073 | [Design_System/0073_weathered_button_tokens.md](Design_System/0073_weathered_button_tokens.md) | Draft |
+| 0074 | [Screens/0074_m2_8_home_button_visual_polish.md](Screens/0074_m2_8_home_button_visual_polish.md) | Draft |
+| 0075 | [Design_System/0075_button_typography_tokens.md](Design_System/0075_button_typography_tokens.md) | Draft |
+| 0076 | [Screens/0076_m2_8_home_layout_button_polish.md](Screens/0076_m2_8_home_layout_button_polish.md) | Draft |
+| 0077 | [Design_System/0077_primary_button_corner_fix.md](Design_System/0077_primary_button_corner_fix.md) | Draft |
+| 0078 | [Screens/0078_home_logo_asset_restore.md](Screens/0078_home_logo_asset_restore.md) | Draft |
+| 0079 | [Screens/0079_home_background_asset_swap.md](Screens/0079_home_background_asset_swap.md) | Draft |
+| 0080 | [Screens/0080_home_logo_layout_pin.md](Screens/0080_home_logo_layout_pin.md) | Draft |
+| 0081 | [Screens/0081_home_currency_removal_logo_top.md](Screens/0081_home_currency_removal_logo_top.md) | Draft |
 
-**Next ID:** 0063
+**Next ID:** 0082
 
 ## Related Docs
 

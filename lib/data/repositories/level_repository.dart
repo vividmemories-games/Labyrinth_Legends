@@ -39,11 +39,11 @@ class LevelRepository {
   }
 
   Future<List<LevelDefinition>> loadWorld(String worldId) async {
-    final manifest = await _bundle.loadString('AssetManifest.json');
-    final assets = jsonDecode(manifest) as Map<String, dynamic>;
+    final manifest = await AssetManifest.loadFromAssetBundle(_bundle);
     final prefix = 'assets/levels/$worldId/';
 
-    final levelPaths = assets.keys
+    final levelPaths = manifest
+        .listAssets()
         .where((key) => key.startsWith(prefix) && key.endsWith('.json'))
         .where((key) {
           final levelId = key.split('/').last.replaceAll('.json', '');

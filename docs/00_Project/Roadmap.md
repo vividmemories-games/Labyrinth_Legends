@@ -30,8 +30,11 @@
 
 ## Phase 3 — Vertical Slice
 
+**Visual target:** [MVP_Visual_Target.md](06_Asset_Bible/MVP_Visual_Target.md) — master mockup (`docs/assets/mockups/ui_board_master.png`)
+
 - Home → Level Select → Gameplay → Victory flow
 - One world, 5 tutorial levels, local save
+- Static 2D sprite assets (painter fallback until PNGs ship)
 - Mock services (ads, IAP, analytics)
 
 ## Phase 4 — Content & Polish

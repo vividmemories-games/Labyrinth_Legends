@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:labyrinth_legends/design_system/assets/ll_asset_paths.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
 
-/// Circular floating action button with gold portal styling.
+/// Circular floating action button with weathered gold plate styling.
 class LLFloatingButton extends StatelessWidget {
   const LLFloatingButton({
     super.key,
@@ -27,13 +28,19 @@ class LLFloatingButton extends StatelessWidget {
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             gradient: LLGradient.goldButton,
+            image: DecorationImage(
+              image: AssetImage(LLAssetPaths.buttonPrimaryWeathered),
+              fit: BoxFit.cover,
+            ),
             border: Border.all(
-              color: LLColor.ancientGoldLight.withValues(alpha: 0.9),
+              color: LLColor.ancientGold.withValues(
+                alpha: LLColor.borderWeatheredGoldAlpha,
+              ),
               width: LLSize.borderWidth,
             ),
-            boxShadow: LLShadow.goldGlow,
+            boxShadow: LLShadow.weatheredPlate,
           ),
-          child: Icon(icon, color: LLColor.templeBlack, size: LLSize.iconLg),
+          child: Icon(icon, color: LLColor.textPrimary, size: LLSize.iconLg),
         ),
       ),
     );

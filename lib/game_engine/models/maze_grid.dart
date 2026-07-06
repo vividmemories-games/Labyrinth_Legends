@@ -70,6 +70,18 @@ class MazeGrid {
     return count;
   }
 
+  int countKeys() {
+    var count = 0;
+    for (final row in cells) {
+      for (final cell in row) {
+        if (cell.keyId != null) {
+          count++;
+        }
+      }
+    }
+    return count;
+  }
+
   MazeGrid withCellAt(GridPosition position, MazeCell cell) {
     final updated = [
       for (final row in cells) [...row],

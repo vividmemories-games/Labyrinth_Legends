@@ -131,7 +131,7 @@ All interactive components must support perceptible multichannel states per WS11
 | **Domain** | Shared shell |
 | **Tier** | Functional |
 | **Purpose** | Full-screen temple backdrop with optional hero image and veil |
-| **API** | `child`, `heroImageAsset?`, `heroAlignment` |
+| **API** | `child`, `heroImageAsset?`, `heroAlignment`, `veilStrength` (default `1.0`), `heroScale` (default `1.0`) |
 | **States** | Static |
 | **Tokens** | `LLColor.templeBlack`, `LLGradient.screenVeil` |
 | **Used by** | Home, Showcase |
@@ -146,11 +146,12 @@ All interactive components must support perceptible multichannel states per WS11
 |-------|-------|
 | **Domain** | Shared (gameplay + meta-game) |
 | **Tier** | Functional; ceremonial accent only on reward flows |
-| **Purpose** | Mechanism of commitment — engraved plate actions |
-| **Variants** | `primary` (gold), `secondary` (cyan energy), `ghost`, `danger` |
+| **Purpose** | Mechanism of commitment — weathered engraved bronze / stone plates |
+| **Variants** | `primary` (weathered bronze), `secondary` (cracked stone + cyan edge), `ghost`, `danger` |
 | **API** | `label`, `onPressed?`, `icon?`, `variant`, `expanded`, `enabled` |
-| **States** | Default, pressed, disabled (opacity + no glow), focus (ink splash) |
-| **Tokens** | `LLGradient.goldButton`, `LLShadow.goldGlow`, `LLTextStyle.button` |
+| **States** | Default, pressed, disabled (opacity + darken texture), focus (ink splash) |
+| **Plate rendering** | `ClipRRect` → gradient underlay → optional weathered texture (`BoxFit.cover`, primary uses slight center scale to clip ornate corner frame) → label |
+| **Tokens** | `LLGradient.goldButton`, `LLGradient.secondaryButton`, `LLShadow.weatheredPlate`, texture assets in `LLAssetPaths`, `LLTextStyle.buttonPrimary` / `buttonSecondary` |
 | **Rules** | One primary gold CTA per surface; cyan = secondary/magical only |
 | **Used by** | Home, Showcase, LLDialog, future Gameplay controls |
 | **Accessibility** | `Semantics` label; min height via padding + `LLSize.touchTarget` |

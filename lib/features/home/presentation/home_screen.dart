@@ -5,7 +5,7 @@ import 'package:labyrinth_legends/design_system/components/components.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
 import 'package:labyrinth_legends/features/home/presentation/home_mock_data.dart';
 
-/// Static home hub — docs/03_Screens/Home.md (Phase 1 shell).
+/// Home hub — docs/03_Screens/Home.md · MVP mockup panel 1 (Splash/Home).
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -14,109 +14,159 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: LLScreenBackground(
         heroImageAsset: HomeMockData.heroImageAsset,
+        heroAlignment: const Alignment(0, 0.02),
+        heroScale: 1.04,
+        veilStrength: 0.38,
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(LLSpacing.screenPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    const LLCurrencyChip(
-                      type: LLCurrencyType.coins,
-                      amount: HomeMockData.coins,
-                      compact: true,
-                    ),
-                    const SizedBox(width: LLSpacing.sm),
-                    LLCurrencyChip(
-                      type: LLCurrencyType.gems,
-                      amount: HomeMockData.gems,
-                      compact: true,
-                      onTap: () => context.push('/shop'),
-                    ),
-                  ],
-                ),
-                if (AppEnv.enableDebugOverlays) ...[
-                  const SizedBox(height: LLSpacing.sm),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Wrap(
-                      spacing: LLSpacing.sm,
-                      runSpacing: LLSpacing.sm,
-                      alignment: WrapAlignment.end,
-                      children: [
-                        LLButton(
-                          label: 'Design System',
-                          variant: LLButtonVariant.ghost,
-                          onPressed: () => context.push('/dev/design-system'),
-                        ),
-                        LLButton(
-                          label: 'Engine Sandbox',
-                          variant: LLButtonVariant.ghost,
-                          onPressed: () => context.push('/dev/engine-sandbox'),
-                        ),
-                      ],
+          child: Stack(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Transform.translate(
+                    offset: const Offset(0, -LLSpacing.xxl),
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: LLSpacing.sm),
+                      child: _HomeTitle(),
                     ),
                   ),
-                ],
-                const Spacer(flex: 2),
-                Text(
-                  HomeMockData.title,
-                  textAlign: TextAlign.center,
-                  style: LLTextStyle.h1,
-                ),
-                const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
-                Text(
-                  HomeMockData.tagline,
-                  textAlign: TextAlign.center,
-                  style: LLTextStyle.body,
-                ),
                 const Spacer(),
-                LLButton(
-                  label: 'Play',
-                  icon: Icons.play_arrow,
-                  expanded: true,
-                  onPressed: () => context.push('/worlds'),
-                ),
-                const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
-                LLButton(
-                  label: 'Daily Challenge',
-                  icon: Icons.calendar_today_outlined,
-                  variant: LLButtonVariant.secondary,
-                  expanded: true,
-                  onPressed: () => context.push('/daily'),
-                ),
-                const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
-                Row(
-                  children: [
-                    Expanded(
-                      child: LLButton(
-                        label: 'Shop',
-                        icon: Icons.storefront_outlined,
-                        variant: LLButtonVariant.ghost,
+                Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: LLSpacing.screenPadding,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      LLButton(
+                        label: 'PLAY',
+                        expanded: true,
+                        onPressed: () => context.push('/worlds'),
+                      ),
+                      const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
+                      LLButton(
+                        label: 'DAILY CHALLENGE',
+                        variant: LLButtonVariant.secondary,
+                        expanded: true,
+                        onPressed: () => context.push('/daily'),
+                      ),
+                      const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
+                      LLButton(
+                        label: 'SHOP',
+                        variant: LLButtonVariant.secondary,
                         expanded: true,
                         onPressed: () => context.push('/shop'),
                       ),
-                    ),
-                    const SizedBox(width: LLSpacing.sm + LLSpacing.xs),
-                    Expanded(
-                      child: LLButton(
-                        label: 'Settings',
-                        icon: Icons.settings_outlined,
-                        variant: LLButtonVariant.ghost,
-                        expanded: true,
-                        onPressed: () => context.push('/settings'),
+                      const SizedBox(height: LLSpacing.xxl),
+                      _HomeDock(
+                        onSettings: () => context.push('/settings'),
                       ),
-                    ),
-                  ],
+                      const SizedBox(height: LLSpacing.sm),
+                    ],
+                  ),
                 ),
-                const SizedBox(height: LLSpacing.md),
               ],
             ),
+            if (AppEnv.enableDebugOverlays)
+              const Positioned(
+                top: 0,
+                right: LLSpacing.screenPadding,
+                child: _DevToolsMenu(),
+              ),
+            ],
           ),
         ),
       ),
+    );
+  }
+}
+
+class _HomeTitle extends StatelessWidget {
+  const _HomeTitle();
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      label: 'Labyrinth Legends',
+      child: Image.asset(
+        HomeMockData.logoImageAsset,
+        width: double.infinity,
+        fit: BoxFit.contain,
+      ),
+    );
+  }
+}
+
+class _DevToolsMenu extends StatelessWidget {
+  const _DevToolsMenu();
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<_DevRoute>(
+      tooltip: 'Developer tools',
+      icon: Icon(
+        Icons.code_outlined,
+        color: LLColor.textSecondary.withValues(alpha: 0.7),
+        size: LLSize.iconMd,
+      ),
+      color: LLColor.stoneDark,
+      shape: RoundedRectangleBorder(
+        borderRadius: LLRadius.mdBorder,
+        side: BorderSide(
+          color: LLColor.ancientGold.withValues(alpha: LLColor.borderGoldAlpha),
+        ),
+      ),
+      onSelected: (route) => context.push(route.path),
+      itemBuilder: (context) => [
+        const PopupMenuItem(
+          value: _DevRoute.designSystem,
+          child: Text('Design System'),
+        ),
+        const PopupMenuItem(
+          value: _DevRoute.engineSandbox,
+          child: Text('Engine Sandbox'),
+        ),
+      ],
+    );
+  }
+}
+
+enum _DevRoute {
+  designSystem('/dev/design-system'),
+  engineSandbox('/dev/engine-sandbox');
+
+  const _DevRoute(this.path);
+  final String path;
+}
+
+class _HomeDock extends StatelessWidget {
+  const _HomeDock({required this.onSettings});
+
+  final VoidCallback onSettings;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        LLIconButton(
+          icon: Icons.settings_outlined,
+          tooltip: 'Settings',
+          onPressed: onSettings,
+        ),
+        const SizedBox(width: LLSpacing.lg),
+        const LLIconButton(
+          icon: Icons.emoji_events_outlined,
+          tooltip: 'Leaderboards',
+          enabled: false,
+        ),
+        const SizedBox(width: LLSpacing.lg),
+        const LLIconButton(
+          icon: Icons.lock_outline,
+          tooltip: 'Coming soon',
+          enabled: false,
+        ),
+      ],
     );
   }
 }

@@ -288,7 +288,8 @@ class DesignSystemShowcaseScreen extends StatelessWidget {
       child: ClipRRect(
         borderRadius: LLRadius.panelBorder,
         child: const LLScreenBackground(
-          heroImageAsset: 'assets/images/ui_mockup.png',
+          heroImageAsset:
+              'assets/images/backgrounds/home_forgotten_citadel.png',
           child: Center(
             child: Text(
               'LLScreenBackground',

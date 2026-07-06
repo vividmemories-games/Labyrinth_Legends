@@ -41,10 +41,22 @@ abstract final class LLTextStyle {
         color: LLColor.textSecondary,
       );
 
-  static TextStyle get button => GoogleFonts.exo2(
-        fontSize: 15,
+  static TextStyle get button => buttonPrimary;
+
+  /// Primary engraved plate — short CTAs (PLAY, NEXT, RESUME).
+  static TextStyle get buttonPrimary => GoogleFonts.exo2(
+        fontSize: 17,
+        fontWeight: FontWeight.w700,
+        letterSpacing: 1.4,
+        height: 1.1,
+      );
+
+  /// Secondary stone plate — longer labels (DAILY CHALLENGE, SHOP).
+  static TextStyle get buttonSecondary => GoogleFonts.exo2(
+        fontSize: 14,
         fontWeight: FontWeight.w600,
-        letterSpacing: 0.8,
+        letterSpacing: 0.5,
+        height: 1.15,
       );
 
   static TextStyle get currencyValue => GoogleFonts.exo2(

@@ -5,7 +5,7 @@ import 'package:labyrinth_legends/design_system/components/ll_loading_indicator.
 import 'package:labyrinth_legends/design_system/components/ll_screen_background.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
 
-/// Branded splash — transitions into the production gameplay shell.
+/// Branded splash — transitions into the home shell.
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -17,12 +17,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future<void>.delayed(const Duration(milliseconds: 1200), _enterGameplay);
+    Future<void>.delayed(const Duration(milliseconds: 1200), _enterHome);
   }
 
-  void _enterGameplay() {
+  void _enterHome() {
     if (!mounted) return;
-    context.go(AppRoutes.gameplayDefault);
+    context.go(AppRoutes.home);
   }
 
   @override
@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
               style: LLTextStyle.display,
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: LLSpacing.lg),
+            const SizedBox(height: LLSpacing.lg),
             const LLLoadingIndicator(message: 'Awakening the temple…'),
           ],
         ),

@@ -28,3 +28,6 @@ flutter:
     - assets/images/icons/
     - assets/images/illustrations/
     - assets/images/backgrounds/
+    - assets/images/gameplay/
+    - assets/images/icons/gameplay/
+    - assets/images/ui/

@@ -98,7 +98,10 @@ Role-based tokens features and components should consume by default.
 |---------------|-------|-----|-------------|
 | Primary action | `ancientGold` | `#D4A63A` | Commitment, authority |
 | Primary action (highlight) | `ancientGoldLight` | `#E8C56A` | Gradient top, border emphasis |
-| Primary action (shadow) | `ancientGoldDark` | `#9A7424` | Gradient bottom |
+| Primary action (shadow) | `ancientGoldDark` | `#9A7424` | Gradient top on weathered plates |
+| Weathered bronze | `bronzeRust` | `#7A4F2A` | Oxidized primary button mid-tone |
+| Weathered bronze (deep) | `oxidizedBronze` | `#4A3520` | Primary button shadow stop |
+| Weathered stone slab | `weatheredStone` | `#151A24` | Secondary button mid-tone |
 | Path / rune energy | `energyCyan` | `#00D9FF` | Drawn path, active runes |
 | Portal core | `portalBlue` | `#00AEEF` | Exits, loading pulse |
 | Collectible gem | `crystalPurple` | `#8A5CFF` | Gems, crystals |
@@ -110,7 +113,7 @@ Role-based tokens features and components should consume by default.
 
 **Aliases:** `dangerEmber` → `emberRed` · `successJade` → `successGreen`
 
-**Opacity helpers (internal):** `borderGoldAlpha`, `borderCyanAlpha`, `veilTopAlpha`, `veilMidAlpha`, `veilBottomAlpha`, `overlayVeilAlpha`
+**Opacity helpers (internal):** `borderGoldAlpha`, `borderWeatheredGoldAlpha`, `borderCyanAlpha`, `borderWeatheredCyanAlpha`, `veilTopAlpha`, `veilMidAlpha`, `veilBottomAlpha`, `overlayVeilAlpha`
 
 ### Typography roles (`LLTextStyle`)
 
@@ -120,7 +123,8 @@ Role-based tokens features and components should consume by default.
 | Screen title | `h1` | Cinzel | 32 | 700 |
 | Section header | `h2` | Cinzel | 20 | 600 |
 | Body copy | `body` / `bodyPrimary` | Exo 2 | 16 | 400 |
-| Control label | `button` | Exo 2 | 15 | 600 |
+| Control label (primary) | `button` / `buttonPrimary` | Exo 2 | 17 | 700 |
+| Control label (secondary) | `buttonSecondary` | Exo 2 | 14 | 600 |
 | Caption / hint | `caption` | Exo 2 | 12 | 400 |
 | Currency value | `currencyValue` | Exo 2 | 15 | 700 |
 
@@ -134,6 +138,7 @@ Role-based tokens features and components should consume by default.
 | Stack / inset | `md` | 16 |
 | Section gap | `lg`, `xl` | 24, 32 |
 | Screen margin | `screenPadding` | 24 |
+| CTA horizontal inset | `buttonHorizontalInset` | 16 |
 | Hero spacing | `xxl` | 48 |
 
 ### Motion roles (`LLAnimation`)
@@ -158,11 +163,14 @@ Role-based tokens features and components should consume by default.
 |---------------|-------|-----|
 | Soft elevation | `soft` | Cards, chips |
 | Carved slab | `panel` | Stone panels |
-| Primary emphasis | `goldGlow` | Gold CTAs |
+| Primary emphasis | `goldGlow` | Ceremonial gold bloom (titles, FAB accent) |
+| Weathered plate | `weatheredPlate` | Primary button depth |
+| Weathered plate (secondary) | `weatheredPlateSecondary` | Stone button depth |
 | Energy emphasis | `cyanGlow` | Secondary magical actions |
 | Portal emphasis | `portalGlow` | Loader, exit |
 | Danger emphasis | `dangerGlow` | Destructive actions |
 | Title emphasis | `titleGold` | Ceremonial headings |
+| Button plate legibility | `buttonPlate` | CTA labels on weathered textures |
 
 ### Icon & touch roles (`LLSize`)
 
@@ -186,8 +194,8 @@ Composed token sets for reusable UI families defined in [Components](Components.
 
 | Component family | Token | Composes |
 |------------------|-------|----------|
-| Primary button | `goldButton` | `ancientGoldLight` → `ancientGoldDark` |
-| Secondary button | `secondaryButton` | `tealDeep` → `tealShadow` |
+| Primary button | `goldButton` | `ancientGoldDark` → `bronzeRust` → `oxidizedBronze` + `button_primary_weathered.png` |
+| Secondary button | `secondaryButton` | `stoneEdge` → `weatheredStone` → `tealShadow` + `button_secondary_weathered.png` |
 | Stone panel | `stonePanel` | `stoneDark` → `stoneMid` |
 | Portal aura | `portalAura` | `portalBlue` + `energyCyan` |
 | Screen veil | `screenVeil` | `templeBlack` opacity ramp |

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:labyrinth_legends/design_system/assets/ll_gameplay_assets.dart';
+import 'package:labyrinth_legends/design_system/components/gameplay/ll_hud_icon.dart';
 import 'package:labyrinth_legends/design_system/components/ll_button.dart';
 import 'package:labyrinth_legends/design_system/theme/ll_theme_extension.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
@@ -19,6 +21,8 @@ class PrimaryActionBar extends StatelessWidget {
     required this.primaryLabel,
     this.secondaryLabel,
     this.statusCue,
+    this.statusHudIconKind,
+    this.statusIconColor,
     this.onPrimaryPressed,
     this.onSecondaryPressed,
     this.state = PrimaryActionBarState.idle,
@@ -27,6 +31,8 @@ class PrimaryActionBar extends StatelessWidget {
   final String primaryLabel;
   final String? secondaryLabel;
   final String? statusCue;
+  final GameplayHudIconKind? statusHudIconKind;
+  final Color? statusIconColor;
   final VoidCallback? onPrimaryPressed;
   final VoidCallback? onSecondaryPressed;
   final PrimaryActionBarState state;
@@ -61,10 +67,27 @@ class PrimaryActionBar extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             if (statusCue != null) ...[
-              Text(
-                statusCue!,
-                textAlign: TextAlign.center,
-                style: LLTextStyle.caption.copyWith(color: theme.textSecondary),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (statusHudIconKind != null) ...[
+                    LLHudIcon(
+                      kind: statusHudIconKind!,
+                      size: LLSize.iconSm,
+                      color: statusIconColor ?? theme.textSecondary,
+                    ),
+                    const SizedBox(width: LLSpacing.sm),
+                  ],
+                  Flexible(
+                    child: Text(
+                      statusCue!,
+                      textAlign: TextAlign.center,
+                      style: LLTextStyle.caption.copyWith(
+                        color: theme.textSecondary,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(height: theme.spacingHudInset),
             ],
