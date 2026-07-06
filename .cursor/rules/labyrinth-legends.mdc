@@ -68,7 +68,7 @@ No joystick. No real-time movement control.
 
 ## Mandatory Review Package
 
-After every **major task**, create a review package in `docs/99_Reviews/`. Review packages are the **official handoff artifact** for Codex, ChatGPT, and Human approval. Cursor must **not** mark a major task complete until the review package exists.
+After every **major task**, create a review package in `docs/99_Reviews/`. Review packages are the **official handoff artifact** for **Codex** and **Human** approval. Cursor must **not** mark a major task complete until the review package exists.
 
 All packages must use the **v2 template** (motivation, risk, dependencies, product impact, future debt, recommended next task, standardized reviewer notes).
 

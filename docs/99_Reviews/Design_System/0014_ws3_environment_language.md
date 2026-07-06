@@ -210,13 +210,6 @@ docs/99_Reviews/README.md
 
 ### ChatGPT Product Review
 
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
-
 ### Human Approval
 
 - **Date:**

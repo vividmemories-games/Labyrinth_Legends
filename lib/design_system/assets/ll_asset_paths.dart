@@ -17,4 +17,12 @@ abstract final class LLAssetPaths {
       '${illustrationsRoot}logo_labyrinth_legends.png';
   static const String homeScreenBackground =
       '${backgroundsRoot}home_screen.png';
+  static const String levelSelectBackground =
+      '${backgroundsRoot}level_select.png';
+  static const String world01CardBackground =
+      '${backgroundsRoot}world_01_crumbling_temple_card.png';
+  static const String world02CardBackground =
+      '${backgroundsRoot}world_02_forgotten_ruins_card.png';
+  static const String world03CardBackground =
+      '${backgroundsRoot}world_03_lost_mechanisms_card.png';
 }

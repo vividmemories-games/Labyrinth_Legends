@@ -173,7 +173,6 @@ Human Home sign-off → Level Select shell against mockup panel 2.
 ## Ready For
 
 - [x] Codex Engineering Review
-- [x] ChatGPT Product Review
 - [ ] Human Approval
 
 ---
@@ -188,14 +187,6 @@ Human Home sign-off → Level Select shell against mockup panel 2.
 - **Blocking Issues:**
 - **Recommendations:**
 
-### ChatGPT Product Review
-
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
 
 ### Human Approval
 

@@ -4,6 +4,18 @@ Log material decisions here. Format: date, decision, reason, status.
 
 ---
 
+## 2026-07-06 — Review workflow: Codex + Human only
+
+**Decision:** Remove ChatGPT from the mandatory review package workflow. Pending and future review packages require **Codex engineering review** and **Human approval** only.
+
+**Reason:** Streamline handoff; Codex covers technical quality and implementation compliance. Human retains final product authority.
+
+**Impact:** `Review_Template.md`, `docs/99_Reviews/README.md`, `AGENTS.md`, and Cursor workflow updated. Historical approved packages may retain ChatGPT reviewer notes for audit.
+
+**Status:** Accepted
+
+---
+
 ## 2026-06-28 — Project restart: LLDS as source of truth
 
 **Decision:** Restart implementation direction. Documentation system (LLDS) must exist before new gameplay/UI code.

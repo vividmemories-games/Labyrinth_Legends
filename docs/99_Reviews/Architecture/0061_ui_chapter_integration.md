@@ -11,7 +11,7 @@
 | **Date** | 2026-07-05 |
 | **Phase** | M1.9 — Architecture Integration & Readiness |
 | **Owner** | Cursor |
-| **Status** | Ready for ChatGPT / Human Review |
+| **Status** | Ready for Review |
 | **Review Type** | Architecture |
 | **Template Version** | v2 |
 | **Related Docs** | `docs/07_UI/UI.md` · `docs/07_UI/README.md` · `docs/07_UI/UI_00_Design_Principles.md`–`UI_08_Asset_Integration.md` · `docs/README.md` · `AGENTS.md` · `docs/04_Technical/Technical_Implementation_Plan.md` |
@@ -189,8 +189,7 @@ Begin M2 gameplay-screen Flutter implementation using the consumption order in `
 
 ## Ready For
 
-- [ ] Codex Engineering Review — optional for `docs/07_UI/` family
-- [x] ChatGPT Product Review
+- [ ] Codex Engineering Review
 - [ ] Human Approval
 
 ---
@@ -199,14 +198,13 @@ Begin M2 gameplay-screen Flutter implementation using the consumption order in `
 
 ### Codex Engineering Review
 
-- **Date:** N/A — not required for `docs/07_UI/` family unless requested
-- **Verdict:** Skipped by policy
-- **Score:** N/A
-- **Blocking Issues:** None
-- **Recommendations:** Verify `Technical_Implementation_Plan.md` authority table remains aligned if UI hierarchy evolves
+- **Date:**
+- **Verdict:**
+- **Score:**
+- **Blocking Issues:**
+- **Recommendations:**
 
-### ChatGPT Product Review
-
+### Archived Product Review (pre-2026-07-06 governance)
 - **Date:** 2026-07-05
 - **Verdict:** 🟢 Approved
 - **Score:** 10 / 10

@@ -116,7 +116,7 @@ Avoid duplicate prose — **link** to authoritative documents.
 
 # 4. Mandatory Review Packages
 
-After every **major task**, Cursor must create a review package in `docs/99_Reviews/`. Review packages are the **official handoff artifact** for Codex, ChatGPT, and Human approval.
+After every **major task**, Cursor must create a review package in `docs/99_Reviews/`. Review packages are the **official handoff artifact** for **Codex** and **Human** approval.
 
 **Cursor must not mark a major task complete until the review package exists.**
 
@@ -124,7 +124,7 @@ All review packages must use the **v2 template** (`[docs/99_Reviews/Review_Templ
 
 - Motivation, risk assessment, dependencies, product impact
 - Future technical debt and recommended next task
-- Standardized reviewer notes (Codex, ChatGPT, Human)
+- Standardized reviewer notes (Codex, Human)
 
 1. Run `./scripts/new_review_package.sh <Category> <topic_slug> --update-index`
 2. Fill all v2 sections per the template
@@ -685,7 +685,7 @@ New UI patterns, layouts, components, animations, or interaction rules require c
 
 Cursor must not invent UI architecture during implementation when an approved UI document already exists.
 
-Review packages for documents authored under `docs/07_UI/` require **ChatGPT review** and **Human approval**. A separate **Codex review section is not required** for the `docs/07_UI/` document family unless explicitly requested.
+Review packages for documents authored under `docs/07_UI/` require **Codex engineering review** and **Human approval** (same as all other review packages; see `Decisions.md` — 2026-07-06).
 
 ## Backwards compatibility
 

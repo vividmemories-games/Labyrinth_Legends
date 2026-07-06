@@ -176,7 +176,6 @@ Human visual sign-off on Home CTAs; then Level Select shell against mockup.
 ## Ready For
 
 - [x] Codex Engineering Review
-- [x] ChatGPT Product Review
 - [ ] Human Approval
 
 ---
@@ -191,14 +190,6 @@ Human visual sign-off on Home CTAs; then Level Select shell against mockup.
 - **Blocking Issues:**
 - **Recommendations:**
 
-### ChatGPT Product Review
-
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
 
 ### Human Approval
 

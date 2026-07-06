@@ -244,7 +244,6 @@ flutter test
 ## Ready For
 
 - [x] Codex Engineering Review
-- [x] ChatGPT Product Review
 - [ ] Human Approval
 
 ---

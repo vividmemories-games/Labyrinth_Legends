@@ -264,7 +264,6 @@ test/features/gameplay_controller_test.dart
 ## Ready For
 
 - [x] Codex Engineering Review
-- [x] ChatGPT Product Review
 - [ ] Human Approval
 
 ---

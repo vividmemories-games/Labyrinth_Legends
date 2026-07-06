@@ -66,7 +66,7 @@ docs/99_Reviews/README.md — index updated by scaffold script
 ### Depends On
 
 - Ten reference boards in `docs/06_Asset_Bible/World_01_Forgotten_Citadel/`
-- [LLDL](../02_Design_System/LLDL/LLDL.md) · [AB0](../06_Asset_Bible/AB0_Asset_Philosophy_Production_Principles.md)
+- [LLDL](../../02_Design_System/LLDL/LLDL.md) · [AB0](../../06_Asset_Bible/AB0_Asset_Philosophy_Production_Principles.md)
 - Phase 1 study conversation and prototype evaluation
 
 ### Enables
@@ -131,7 +131,7 @@ docs/06_Asset_Bible/README.md (World 01 index)
 | Screen | Path or description |
 |--------|---------------------|
 | Reference boards | `docs/06_Asset_Bible/World_01_Forgotten_Citadel/*.png` |
-| North Star | [10_North_Star.png](../06_Asset_Bible/World_01_Forgotten_Citadel/10_North_Star.png) |
+| North Star | [10_North_Star.png](../../06_Asset_Bible/World_01_Forgotten_Citadel/archive/post_mvp_environment/10_North_Star.png) |
 
 ## Commands Run
 
@@ -188,7 +188,6 @@ fvm flutter analyze --no-fatal-infos
 ## Ready For
 
 - [ ] Codex Engineering Review (optional — docs-only; no code)
-- [x] ChatGPT Product Review
 - [x] Human Approval
 
 ---
@@ -203,14 +202,6 @@ fvm flutter analyze --no-fatal-infos
 - **Blocking Issues:**
 - **Recommendations:**
 
-### ChatGPT Product Review
-
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
 
 ### Human Approval
 

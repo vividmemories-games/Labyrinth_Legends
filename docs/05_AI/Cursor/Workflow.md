@@ -30,7 +30,7 @@ For UI work, read in this order:
 
 ## End of Every Major Task — Review Package
 
-**Every major task requires a review package.** Review packages are the **official handoff artifact** for Codex, ChatGPT, and Human approval. Cursor must **not** mark a major task complete until the review package exists.
+**Every major task requires a review package.** Review packages are the **official handoff artifact** for **Codex** and **Human** approval. Cursor must **not** mark a major task complete until the review package exists.
 
 All review packages must use the **v2 template** (`docs/99_Reviews/Review_Template.md`), including motivation, risk assessment, dependencies, product impact, future technical debt, recommended next task, and standardized reviewer notes.
 
@@ -44,7 +44,7 @@ All review packages must use the **v2 template** (`docs/99_Reviews/Review_Templa
 3. Add screenshots if UI changed
 4. Mark **Ready For** when complete
 
-**Do not proceed to the next phase until review is approved** (Codex + ChatGPT + Human, or Human waiver).
+**Do not proceed to the next phase until review is approved** (Codex + Human, or Human waiver).
 
 See `docs/99_Reviews/README.md` for naming and folder rules.
 
