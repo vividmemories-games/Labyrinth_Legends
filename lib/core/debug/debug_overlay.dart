@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:labyrinth_legends/app/routes.dart';
 import 'package:labyrinth_legends/core/debug/debug_config.dart';
 import 'package:labyrinth_legends/design_system/theme/ll_theme_extension.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
@@ -92,6 +94,19 @@ class _DebugPanel extends StatelessWidget {
               ),
               child: Text(
                 'Grid: ${DebugConfig.showGrid ? 'ON' : 'OFF'}',
+                style: LLTextStyle.caption.copyWith(color: theme.actionPrimary),
+              ),
+            ),
+            const SizedBox(height: LLSpacing.xs),
+            TextButton(
+              onPressed: () => context.push(AppRoutes.mazeRenderPoc),
+              style: TextButton.styleFrom(
+                minimumSize: Size.zero,
+                padding: EdgeInsets.zero,
+                tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+              ),
+              child: Text(
+                'Maze POC',
                 style: LLTextStyle.caption.copyWith(color: theme.actionPrimary),
               ),
             ),
