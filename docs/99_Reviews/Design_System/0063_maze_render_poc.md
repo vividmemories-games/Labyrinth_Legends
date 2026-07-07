@@ -32,6 +32,7 @@ Human Owner reported that the tile-image approach to maze rendering was failing:
 
 ```text
 lib/features/maze_render_poc/rendering/wall_shape_builder.dart
+lib/features/maze_render_poc/rendering/wall_edge_builder.dart
 lib/features/maze_render_poc/rendering/maze_theme.dart
 lib/features/maze_render_poc/rendering/maze_painter.dart
 lib/features/maze_render_poc/rendering/maze_texture_loader.dart
@@ -138,10 +139,13 @@ docs/99_Reviews/README.md (index)
 | level_010, Ancient Ruins theme, ridge wall style | `docs/assets/maze_render_poc/maze_poc_ancient_ruins.png` |
 | level_010, Amazon Jungle theme, ridge wall style (same geometry, swapped skin) | `docs/assets/maze_render_poc/maze_poc_amazon_jungle.png` |
 
-Per Human Owner feedback (2026-07-07), the default wall style is `ridge`:
-thin raised edges along the wall skeleton with floor and grout visible
-around them, matching the ancient-ruins design reference. The original
-full-cell `block` style remains available via the screen toggle.
+Per Human Owner feedback (2026-07-07), the default wall style is `edge`:
+raised edges drawn on tile boundaries wherever a walkable tile borders a
+wall cell (`WallEdgeBuilder`), so walls are sides of tiles rather than
+occupants of tiles, matching the ancient-ruins design reference. Wall-cell
+regions render as slightly darkened fenced-off floor — natural anchor
+spots for future decoration props. The original full-cell `block` style
+remains available via the screen toggle.
 
 > Renders produced through `MazePainter` off-screen at 700×700; identical code path to the dev screen.
 

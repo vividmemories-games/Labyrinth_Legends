@@ -2,6 +2,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:labyrinth_legends/features/maze_render_poc/rendering/maze_theme.dart';
+import 'package:labyrinth_legends/features/maze_render_poc/rendering/wall_edge_builder.dart';
 import 'package:labyrinth_legends/features/maze_render_poc/rendering/wall_shape_builder.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_type.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
@@ -11,9 +12,10 @@ enum MazeWallStyle {
   /// Full-cell extruded blocks (hedge/fortress look).
   block,
 
-  /// Thin raised ridges along the wall-cell skeleton, floor visible around
-  /// them (ancient-ruins look, per design reference).
-  ridge,
+  /// Raised edges on tile boundaries: an edge is drawn wherever a walkable
+  /// tile borders a wall cell, so walls sit on the sides of tiles instead
+  /// of occupying tiles (ancient-ruins look, per design reference).
+  edge,
 }
 
 /// Renders a [MazeGrid] as one merged vector shape with a themed skin.
@@ -36,8 +38,9 @@ class MazePainter extends CustomPainter {
     required this.theme,
     this.textures = MazeThemeTextures.none,
     this.showTextures = true,
-    this.wallStyle = MazeWallStyle.ridge,
-  }) : _geometries = WallShapeBuilder.build(grid);
+    this.wallStyle = MazeWallStyle.edge,
+  })  : _geometries = WallShapeBuilder.build(grid),
+        _edges = WallEdgeBuilder.build(grid);
 
   final MazeGrid grid;
   final MazeTheme theme;
@@ -46,32 +49,49 @@ class MazePainter extends CustomPainter {
   final MazeWallStyle wallStyle;
 
   final List<WallCellGeometry> _geometries;
+  final List<MazeEdge> _edges;
 
   static const double _cornerRadiusFactor = 0.30;
   static const double _blockExtrusionFactor = 0.14;
-  static const double _ridgeExtrusionFactor = 0.09;
+  static const double _edgeExtrusionFactor = 0.07;
 
-  /// Ridge width as a fraction of the cell (thin raised edge, not a block).
-  static const double _ridgeThicknessFactor = 0.34;
+  /// Raised edge thickness as a fraction of the cell.
+  static const double _edgeThicknessFactor = 0.16;
 
   @override
   void paint(Canvas canvas, Size size) {
     final cell = size.width / grid.width;
     final boardRect = Offset.zero & size;
-    final isRidge = wallStyle == MazeWallStyle.ridge;
+    final isEdge = wallStyle == MazeWallStyle.edge;
     final depth =
-        cell * (isRidge ? _ridgeExtrusionFactor : _blockExtrusionFactor);
+        cell * (isEdge ? _edgeExtrusionFactor : _blockExtrusionFactor);
 
     _paintBackground(canvas, boardRect);
     _paintFloor(canvas, boardRect, cell);
+    if (isEdge) {
+      _paintDeadRegions(canvas, cell);
+    }
 
-    final wallPath = isRidge ? _buildRidgePath(cell) : _buildBlockPath(cell);
+    final wallPath = isEdge ? _buildEdgePath(cell) : _buildBlockPath(cell);
 
     _paintWallShadow(canvas, wallPath, depth);
     _paintWallSide(canvas, wallPath, depth);
     _paintWallTop(canvas, wallPath, boardRect);
     _paintWallRim(canvas, wallPath, cell);
     _paintMarkers(canvas, cell);
+  }
+
+  /// In edge mode wall cells are ordinary floor, just fenced off. A subtle
+  /// darkening keeps the playable corridors readable (and marks where
+  /// decoration props like statues would sit).
+  void _paintDeadRegions(Canvas canvas, double cell) {
+    final paint = Paint()..color = Colors.black.withValues(alpha: 0.18);
+    for (final g in _geometries) {
+      canvas.drawRect(
+        Rect.fromLTWH(g.col * cell, g.row * cell, cell, cell),
+        paint,
+      );
+    }
   }
 
   void _paintBackground(Canvas canvas, Rect rect) {
@@ -192,48 +212,29 @@ class MazePainter extends CustomPainter {
     return merged;
   }
 
-  /// Thin ridge skeleton: a node at each wall cell's center plus connector
-  /// bars toward east/south wall neighbors (west/north are covered by the
-  /// neighbor's own bars). End caps and outer corners round via the same
-  /// neighbor data as the block style.
-  Path _buildRidgePath(double cell) {
-    final t = cell * _ridgeThicknessFactor;
-    final cap = Radius.circular(t * 0.5);
+  /// Raised edges on tile boundaries. Each edge is a thin bar centered on
+  /// the shared border between two cells, extended half a thickness past
+  /// both ends so meeting edges fuse into clean corners and junctions.
+  Path _buildEdgePath(double cell) {
+    final t = cell * _edgeThicknessFactor;
     var merged = Path();
 
-    for (final g in _geometries) {
-      final cx = (g.col + 0.5) * cell;
-      final cy = (g.row + 0.5) * cell;
-
-      final node = RRect.fromRectAndCorners(
-        Rect.fromCenter(center: Offset(cx, cy), width: t, height: t),
-        topLeft: g.roundNorthWest ? cap : Radius.zero,
-        topRight: g.roundNorthEast ? cap : Radius.zero,
-        bottomRight: g.roundSouthEast ? cap : Radius.zero,
-        bottomLeft: g.roundSouthWest ? cap : Radius.zero,
-      );
+    for (final e in _edges) {
+      final Rect rect;
+      if (e.isVertical) {
+        final x = (e.col + 1) * cell;
+        final y = e.row * cell;
+        rect = Rect.fromLTRB(x - t / 2, y - t / 2, x + t / 2, y + cell + t / 2);
+      } else {
+        final x = e.col * cell;
+        final y = (e.row + 1) * cell;
+        rect = Rect.fromLTRB(x - t / 2, y - t / 2, x + cell + t / 2, y + t / 2);
+      }
       merged = Path.combine(
         PathOperation.union,
         merged,
-        Path()..addRRect(node),
+        Path()..addRRect(RRect.fromRectAndRadius(rect, Radius.circular(t / 4))),
       );
-
-      if (g.wallEast) {
-        merged = Path.combine(
-          PathOperation.union,
-          merged,
-          Path()
-            ..addRect(Rect.fromLTWH(cx, cy - t / 2, cell, t)),
-        );
-      }
-      if (g.wallSouth) {
-        merged = Path.combine(
-          PathOperation.union,
-          merged,
-          Path()
-            ..addRect(Rect.fromLTWH(cx - t / 2, cy, t, cell)),
-        );
-      }
     }
     return merged;
   }

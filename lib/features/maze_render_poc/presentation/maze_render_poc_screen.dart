@@ -32,7 +32,7 @@ class _MazeRenderPocScreenState extends ConsumerState<MazeRenderPocScreen> {
   MazeTheme _theme = MazeTheme.ancientRuins;
   MazeThemeTextures _textures = MazeThemeTextures.none;
   bool _showTextures = true;
-  MazeWallStyle _wallStyle = MazeWallStyle.ridge;
+  MazeWallStyle _wallStyle = MazeWallStyle.edge;
   String _levelId = _levelIds.first;
 
   @override
@@ -114,14 +114,14 @@ class _MazeRenderPocScreenState extends ConsumerState<MazeRenderPocScreen> {
                         ),
                         LLButton(
                           key: const Key('mazePocWallStyleToggle'),
-                          label: _wallStyle == MazeWallStyle.ridge
+                          label: _wallStyle == MazeWallStyle.edge
                               ? 'Walls: Raised Edges'
                               : 'Walls: Solid Blocks',
                           variant: LLButtonVariant.ghost,
                           onPressed: () => setState(() {
-                            _wallStyle = _wallStyle == MazeWallStyle.ridge
+                            _wallStyle = _wallStyle == MazeWallStyle.edge
                                 ? MazeWallStyle.block
-                                : MazeWallStyle.ridge;
+                                : MazeWallStyle.edge;
                           }),
                         ),
                       ],
