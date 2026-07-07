@@ -4,6 +4,18 @@ Log material decisions here. Format: date, decision, reason, status.
 
 ---
 
+## 2026-07-06 — Edge-based maze model (schema v2)
+
+**Decision:** Migrate gameplay grid from impassable `wall` cells to **blocked edges on walkable cells** (schema v2). Rendering uses layered `tile_floor` + `edge_*` overlays. Architecture freeze exception approved for M2.7 visual foundation.
+
+**Reason:** Combined autotile PNGs (`tile_n`, `wall_fill`) produced visible seams and inconsistent floor textures. Edge-blockage matches the design intent: raised sides on walkable tiles, not separate wall blocks.
+
+**Impact:** `Level_Format.md` schema v2; `MazeGrid.canTraverse()`; `PathValidator` edge checks; `CellEdgeMask` rendering; `level_001`–`level_010` edge-test band; supersedes review packages 0087/0088.
+
+**Status:** Accepted
+
+---
+
 ## 2026-07-06 — Review workflow: Codex + Human only
 
 **Decision:** Remove ChatGPT from the mandatory review package workflow. Pending and future review packages require **Codex engineering review** and **Human approval** only.

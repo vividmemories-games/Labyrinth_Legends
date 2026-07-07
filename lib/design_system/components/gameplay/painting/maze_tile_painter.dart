@@ -82,8 +82,12 @@ class MazeTilePainter extends CustomPainter {
 
   void _paintBevel(Canvas canvas, Rect rect, {required bool highlight}) {
     final stroke = math.max(0.75, rect.shortestSide * 0.025);
-    final topLeft = highlight ? LLColor.stoneEdge.withValues(alpha: 0.45) : LLColor.templeBlack.withValues(alpha: 0.35);
-    final bottomRight = highlight ? LLColor.templeBlack.withValues(alpha: 0.35) : LLColor.templeBlack.withValues(alpha: 0.65);
+    final topLeft = highlight
+        ? LLColor.stoneEdge.withValues(alpha: 0.45)
+        : LLColor.templeBlack.withValues(alpha: 0.35);
+    final bottomRight = highlight
+        ? LLColor.templeBlack.withValues(alpha: 0.35)
+        : LLColor.templeBlack.withValues(alpha: 0.65);
 
     canvas.drawLine(
       rect.topLeft,

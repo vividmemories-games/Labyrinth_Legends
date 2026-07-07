@@ -43,7 +43,8 @@ class PauseButton extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: theme.radiusButton,
               color: theme.surfaceElevated.withValues(alpha: 0.88),
-              border: Border.all(color: theme.borderSubtle, width: LLSize.borderWidth),
+              border: Border.all(
+                  color: theme.borderSubtle, width: LLSize.borderWidth),
             ),
             child: Center(
               child: LLHudIcon(

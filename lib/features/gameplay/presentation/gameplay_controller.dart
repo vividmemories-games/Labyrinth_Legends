@@ -102,6 +102,11 @@ class GameplayController extends StateNotifier<GameplayShellState> {
       return;
     }
 
+    if (!grid.canTraverse(last, position)) {
+      _rejectInput('That path is blocked', position);
+      return;
+    }
+
     _appendPosition(position);
   }
 
@@ -186,7 +191,8 @@ class GameplayController extends StateNotifier<GameplayShellState> {
     session.executeNextStep();
     state = state.copyWith(session: session);
 
-    if (session.phase == GameplayPhase.executing && !session.executionComplete) {
+    if (session.phase == GameplayPhase.executing &&
+        !session.executionComplete) {
       _scheduleNextExecutionStep();
       return;
     }
@@ -228,8 +234,7 @@ class GameplayController extends StateNotifier<GameplayShellState> {
     );
   }
 
-  String? get nextLevelId =>
-      LevelNavigator.nextLevelIdAfter(state.level.id);
+  String? get nextLevelId => LevelNavigator.nextLevelIdAfter(state.level.id);
 
   bool get hasNextLevel => nextLevelId != null;
 
@@ -263,8 +268,7 @@ class GameplayController extends StateNotifier<GameplayShellState> {
       GameplayShellPhase.observation => 'Ready · $sessionPhase',
       GameplayShellPhase.planning => 'Planning · $sessionPhase',
       GameplayShellPhase.executing => 'Executing · $sessionPhase',
-      GameplayShellPhase.executionComplete =>
-        'Evaluating · $sessionPhase',
+      GameplayShellPhase.executionComplete => 'Evaluating · $sessionPhase',
       GameplayShellPhase.terminalWon => 'Won · $sessionPhase',
       GameplayShellPhase.terminalLost => 'Lost · $sessionPhase',
       GameplayShellPhase.paused => 'Paused · $sessionPhase',

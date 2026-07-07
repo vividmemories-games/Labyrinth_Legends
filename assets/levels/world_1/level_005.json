@@ -1,13 +1,14 @@
 {
+  "schemaVersion": 2,
   "id": "level_005",
-  "name": "Ancient Lens",
+  "name": "T Junction",
   "worldId": "world_1",
-  "discoveryMode": "relicGated",
+  "discoveryMode": "full",
   "moveLimit": null,
   "starThresholds": {
-    "threeStars": 18,
-    "twoStars": 22,
-    "oneStar": 28
+    "threeStars": 12,
+    "twoStars": 16,
+    "oneStar": 20
   },
   "objectives": {
     "reachExit": true,
@@ -15,29 +16,46 @@
     "minGems": 0
   },
   "grid": {
-    "width": 7,
-    "height": 7,
+    "width": 3,
+    "height": 3,
     "cells": [
       [
-        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+        {
+          "type": "start"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        }
       ],
       [
-        {"type": "wall"}, {"type": "start"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor", "hasRelic": true, "relicId": "ancient_lens"}, {"type": "floor"}, {"type": "wall"}
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true
+          }
+        },
+        {
+          "type": "floor"
+        }
       ],
       [
-        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "floor", "hiddenUntilRelicId": "ancient_lens", "visibility": "hidden"}, {"type": "floor", "hiddenUntilRelicId": "ancient_lens", "visibility": "hidden"}, {"type": "floor", "hiddenUntilRelicId": "ancient_lens", "visibility": "hidden"}, {"type": "floor"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor", "hiddenUntilRelicId": "ancient_lens", "visibility": "hidden"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "exit", "hiddenUntilRelicId": "ancient_lens", "visibility": "hidden"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "exit"
+        }
       ]
     ]
   }

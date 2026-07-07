@@ -22,39 +22,42 @@ class ExplorerMarker extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.llTheme;
     final center = geometry.cellCenter(position);
-    final iconSize = geometry.cellSize * 0.42;
-    final ringSize = geometry.cellSize * 0.88;
+    final cellSize = geometry.cellSize;
+    const explorerVisualScale = 1.08;
 
     return Positioned(
       key: const Key('explorer_marker'),
-      left: center.dx - ringSize / 2,
-      top: center.dy - ringSize / 2,
-      width: ringSize,
-      height: ringSize,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          if (isExecuting)
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
-              curve: Curves.easeOut,
-              width: ringSize,
-              height: ringSize,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  color: theme.pathEnergy.withValues(alpha: 0.65),
-                  width: 2,
+      left: center.dx - cellSize / 2,
+      top: center.dy - cellSize / 2,
+      width: cellSize,
+      height: cellSize,
+      child: ClipRect(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            if (isExecuting)
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeOut,
+                width: cellSize,
+                height: cellSize,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: theme.pathEnergy.withValues(alpha: 0.65),
+                    width: 2,
+                  ),
                 ),
               ),
+            LLGameplayAsset(
+              kind: GameplayAssetKind.explorer,
+              size: cellSize,
+              fit: BoxFit.cover,
+              visualScale: explorerVisualScale,
+              semanticLabel: 'Explorer',
             ),
-          LLGameplayAsset(
-            kind: GameplayAssetKind.explorer,
-            size: iconSize,
-            tint: theme.pathEnergy,
-            semanticLabel: 'Explorer',
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -44,8 +44,8 @@ class PrimaryActionBar extends StatelessWidget {
     }
 
     final theme = context.llTheme;
-    final primaryEnabled = state != PrimaryActionBarState.disabled &&
-        onPrimaryPressed != null;
+    final primaryEnabled =
+        state != PrimaryActionBarState.disabled && onPrimaryPressed != null;
 
     return DecoratedBox(
       decoration: BoxDecoration(

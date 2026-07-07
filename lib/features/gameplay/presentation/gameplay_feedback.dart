@@ -125,7 +125,8 @@ extension GameplayShellFeedback on GameplayShellState {
   /// Status icon for actionable draft validation, when [draftPathValidationMessage] is set.
   GameplayHudIconKind? get draftPathValidationIcon {
     return switch (draftPathActionableValidationCode) {
-      PathValidationErrorCode.lockedWithoutKey => GameplayHudIconKind.statusLock,
+      PathValidationErrorCode.lockedWithoutKey =>
+        GameplayHudIconKind.statusLock,
       null => null,
       _ => GameplayHudIconKind.statusBlock,
     };
@@ -156,6 +157,7 @@ extension GameplayShellFeedback on GameplayShellState {
     for (final neighbor in path.last.orthogonalNeighbors()) {
       if (!grid.isInBounds(neighbor)) continue;
       if (!grid.cellAt(neighbor).isWalkable) continue;
+      if (!grid.canTraverse(path.last, neighbor)) continue;
       if (isLockBlockedAt(neighbor)) continue;
       hints.add(neighbor);
     }
@@ -188,8 +190,8 @@ extension GameplayShellFeedback on GameplayShellState {
       GameplayShellPhase.executing ||
       GameplayShellPhase.executionComplete =>
         ObjectiveCardState.updating,
-      GameplayShellPhase.planning || GameplayShellPhase.observation
-          when hasDraftPath =>
+      GameplayShellPhase.planning ||
+      GameplayShellPhase.observation when hasDraftPath =>
         ObjectiveCardState.focused,
       _ => ObjectiveCardState.idle,
     };

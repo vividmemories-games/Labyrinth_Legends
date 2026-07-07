@@ -1,3 +1,8 @@
+export 'gameplay/gameplay_control_bar.dart';
+export 'gameplay/gameplay_header_icon_button.dart';
+export 'gameplay/gameplay_round_action_button.dart';
+export 'gameplay/gameplay_stat_column.dart';
+export 'gameplay/gameplay_top_bar.dart';
 export 'gameplay/ll_gameplay_asset.dart';
 export 'gameplay/ll_hud_icon.dart';
 export 'gameplay/objective_card.dart';

@@ -43,6 +43,10 @@ class HintSolver {
           continue;
         }
 
+        if (!grid.canTraverse(current, neighbor)) {
+          continue;
+        }
+
         if (!_canTraversePath(path, grid, neighbor)) {
           continue;
         }

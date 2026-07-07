@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:labyrinth_legends/core/debug/debug_overlay.dart';
 import 'package:labyrinth_legends/data/providers.dart';
+import 'package:labyrinth_legends/design_system/assets/ll_asset_paths.dart';
 import 'package:labyrinth_legends/design_system/components/overlays/loading_overlay.dart';
 import 'package:labyrinth_legends/design_system/components/overlays/toast_container.dart';
 import 'package:labyrinth_legends/features/gameplay/level_navigator.dart';
@@ -12,7 +12,7 @@ import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_layout
 import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_shell_state.dart';
 import 'package:labyrinth_legends/game_engine/models/level_definition.dart';
 
-/// Production gameplay screen — feedback-polished gameplay loop (M2.6).
+/// Production gameplay screen — MVP mockup visual pass (M2.8).
 class GameplayScreen extends ConsumerWidget {
   const GameplayScreen({super.key, required this.levelId});
 
@@ -44,86 +44,79 @@ class GameplayScreen extends ConsumerWidget {
   }
 }
 
-class _GameplayLoadedView extends ConsumerStatefulWidget {
+class _GameplayLoadedView extends ConsumerWidget {
   const _GameplayLoadedView({required this.level});
 
   final LevelDefinition level;
 
   @override
-  ConsumerState<_GameplayLoadedView> createState() =>
-      _GameplayLoadedViewState();
-}
-
-class _GameplayLoadedViewState extends ConsumerState<_GameplayLoadedView> {
-  var _showDebugGrid = false;
-
-  void _goToNextLevel() {
-    final nextId = LevelNavigator.nextLevelIdAfter(widget.level.id);
-    if (nextId == null) return;
-    context.go('/play/$nextId');
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final shellState = ref.watch(gameplayControllerProvider(widget.level));
-    final controller =
-        ref.read(gameplayControllerProvider(widget.level).notifier);
-    final objectives = widget.level.objectives;
-    final showResourceDisplay = shellState.initialGemCount > 0 ||
-        objectives.minGems > 0 ||
-        objectives.collectAllGems;
-    final showKeyDisplay = shellState.initialKeyCount > 0;
+  Widget build(BuildContext context, WidgetRef ref) {
+    final shellState = ref.watch(gameplayControllerProvider(level));
+    final controller = ref.read(gameplayControllerProvider(level).notifier);
+    final showGems = shellState.initialGemCount > 0 ||
+        level.objectives.minGems > 0 ||
+        level.objectives.collectAllGems;
+    final showKeys = shellState.initialKeyCount > 0;
     final hasNextLevel = controller.hasNextLevel;
     final isExecuting = shellState.phase == GameplayShellPhase.executing;
+    final progressStoreReady = ref.watch(localProgressStoreProvider).hasValue;
+    final stars = progressStoreReady
+        ? (ref.watch(levelStarsProvider(level.id)).value ?? 0)
+        : 0;
+    final hintsRemaining =
+        ref.watch(playerProgressProvider).value?.hintsRemaining ?? 3;
 
-    return DebugOverlay(
-      engineStatus: controller.engineStatusLabel,
-      debugDetails: controller.debugDetailsLabel,
-      showDebugGrid: _showDebugGrid,
-      onToggleDebugGrid: (value) => setState(() => _showDebugGrid = value),
-      child: GameplayLayout(
-        levelName: widget.level.name,
-        objectiveTitle: objectiveLabelForLevel(widget.level),
-        objectiveProgress: shellState.objectiveProgressLabel,
-        objectiveCardState: shellState.objectiveCardState,
-        resourceDisplayState: shellState.resourceDisplayState,
-        completionStatusCue:
-            shellState.completionStatusCue(hasNextLevel: hasNextLevel),
-        showResourceDisplay: showResourceDisplay,
-        resourceValue:
-            '${shellState.collectedGemCount} / ${shellState.initialGemCount}',
-        showKeyDisplay: showKeyDisplay,
-        keyResourceValue: showKeyDisplay
-            ? '${shellState.effectiveKeyIds.length} / ${shellState.initialKeyCount}'
-            : null,
-        draftPathValidationMessage: shellState.draftPathValidationMessage,
-        draftPathValidationIcon: shellState.draftPathValidationIcon,
-        grid: shellState.session.grid,
-        visualPath: shellState.visualPath,
-        explorerPosition: shellState.explorerPosition,
-        selectedTile: shellState.selectedTile,
-        planningExtensionHints: shellState.planningExtensionHints,
-        traversedPathPositions: shellState.traversedPathPositions,
-        isExecuting: isExecuting,
-        shellPhase: shellState.phase,
-        canConfirmDraft: shellState.canConfirmDraft,
-        hasNextLevel: hasNextLevel,
-        onTileInteraction: controller.handleTileInteraction,
-        onClearDraft: controller.clearDraftPath,
-        onPrimaryAction: controller.onPrimaryAction,
-        onTryAgain: controller.tryAgain,
-        onNextLevel: hasNextLevel ? _goToNextLevel : null,
-        onPause: controller.pause,
-        onResume: controller.resume,
-        isPausedOverlayVisible: shellState.isPausedOverlayVisible,
-        showDebugGrid: _showDebugGrid,
-        invalidTarget: shellState.invalidTarget,
-        feedbackMessage: shellState.invalidInputMessage,
-        primaryStatusMessage: shellState.primaryStatusMessage,
-        inputEnabled: shellState.phase != GameplayShellPhase.paused,
-        isInteractionLocked: shellState.isInteractionLocked,
-        effectiveKeyIds: shellState.effectiveKeyIds,
-      ),
+    return GameplayLayout(
+      levelLabel: formatGameplayLevelLabel(level.id),
+      starCount: stars,
+      backgroundAsset: LLAssetPaths.gameplayScreenBackground,
+      grid: shellState.session.grid,
+      visualPath: shellState.visualPath,
+      explorerPosition: shellState.explorerPosition,
+      selectedTile: shellState.selectedTile,
+      planningExtensionHints: shellState.planningExtensionHints,
+      traversedPathPositions: shellState.traversedPathPositions,
+      isExecuting: isExecuting,
+      shellPhase: shellState.phase,
+      canConfirmDraft: shellState.canConfirmDraft,
+      hasNextLevel: hasNextLevel,
+      showGems: showGems,
+      gemsValue:
+          '${shellState.collectedGemCount}/${shellState.initialGemCount}',
+      showKeys: showKeys,
+      keysValue: showKeys
+          ? '${shellState.effectiveKeyIds.length}/${shellState.initialKeyCount}'
+          : null,
+      hintBadge: hintsRemaining > 0 ? '$hintsRemaining' : null,
+      completionStatusCue:
+          shellState.completionStatusCue(hasNextLevel: hasNextLevel),
+      draftPathValidationMessage: shellState.draftPathValidationMessage,
+      draftPathValidationIcon: shellState.draftPathValidationIcon,
+      onTileInteraction: controller.handleTileInteraction,
+      onUndo: controller.undoDraftPath,
+      onErase: controller.clearDraftPath,
+      onHint: () {
+        // Hint solver wiring is post-MVP; surface affordance per mockup.
+      },
+      onPrimaryAction: controller.onPrimaryAction,
+      onBack: () => context.pop(),
+      onTryAgain: controller.tryAgain,
+      onNextLevel: hasNextLevel
+          ? () {
+              final nextId = LevelNavigator.nextLevelIdAfter(level.id);
+              if (nextId != null) context.go('/play/$nextId');
+            }
+          : null,
+      onPause: controller.pause,
+      onResume: controller.resume,
+      isPausedOverlayVisible: shellState.isPausedOverlayVisible,
+      showDebugGrid: false,
+      invalidTarget: shellState.invalidTarget,
+      feedbackMessage: shellState.invalidInputMessage,
+      primaryStatusMessage: shellState.primaryStatusMessage,
+      inputEnabled: shellState.phase != GameplayShellPhase.paused,
+      isInteractionLocked: shellState.isInteractionLocked,
+      effectiveKeyIds: shellState.effectiveKeyIds,
     );
   }
 }

@@ -10,29 +10,44 @@ class LLHudIcon extends StatelessWidget {
     required this.size,
     this.color,
     this.semanticLabel,
+    this.fit = BoxFit.contain,
+    this.visualScale = 1,
   });
 
   final GameplayHudIconKind kind;
   final double size;
   final Color? color;
   final String? semanticLabel;
+  final BoxFit fit;
+
+  /// Multiplier applied to [size] so trimmed PNGs with canvas padding read larger.
+  final double visualScale;
 
   @override
   Widget build(BuildContext context) {
+    final renderSize = size * visualScale;
+
     return Semantics(
       label: semanticLabel,
       child: RepaintBoundary(
-        child: Image.asset(
-          LLGameplayAssets.hudIconPath(kind),
+        child: SizedBox(
           width: size,
           height: size,
-          fit: BoxFit.contain,
-          color: color,
-          gaplessPlayback: true,
-          errorBuilder: (_, __, ___) => _FallbackHudIcon(
-            kind: kind,
-            size: size,
-            color: color,
+          child: Center(
+            child: Image.asset(
+              LLGameplayAssets.hudIconPath(kind),
+              width: renderSize,
+              height: renderSize,
+              fit: fit,
+              color: color,
+              gaplessPlayback: true,
+              filterQuality: FilterQuality.medium,
+              errorBuilder: (_, __, ___) => _FallbackHudIcon(
+                kind: kind,
+                size: renderSize,
+                color: color,
+              ),
+            ),
           ),
         ),
       ),
@@ -83,6 +98,11 @@ class _FallbackHudIcon extends StatelessWidget {
         GameplayHudIconKind.statusCheck => Icons.check,
         GameplayHudIconKind.statusRefresh => Icons.refresh,
         GameplayHudIconKind.statusClear => Icons.clear_all,
+        GameplayHudIconKind.undo => Icons.undo_rounded,
+        GameplayHudIconKind.erase => Icons.auto_fix_off_outlined,
+        GameplayHudIconKind.hint => Icons.lightbulb_outline,
+        GameplayHudIconKind.back => Icons.arrow_back_ios_new,
+        GameplayHudIconKind.settings => Icons.settings_outlined,
         _ => Icons.circle_outlined,
       };
 }

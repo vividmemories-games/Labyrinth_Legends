@@ -32,7 +32,8 @@ class ResourceDisplay extends StatelessWidget {
     final borderColor = switch (state) {
       ResourceDisplayState.emphasized => theme.actionPrimary,
       ResourceDisplayState.updating => theme.pathEnergy.withValues(alpha: 0.7),
-      ResourceDisplayState.depleted => theme.feedbackDanger.withValues(alpha: 0.5),
+      ResourceDisplayState.depleted =>
+        theme.feedbackDanger.withValues(alpha: 0.5),
       _ => null,
     };
 
@@ -53,9 +54,6 @@ class ResourceDisplay extends StatelessWidget {
               LLHudIcon(
                 kind: iconKind,
                 size: LLSize.iconSm,
-                color: state == ResourceDisplayState.updating
-                    ? theme.pathEnergy
-                    : theme.actionPrimary,
               ),
               const SizedBox(width: LLSpacing.sm),
               AnimatedSwitcher(

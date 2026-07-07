@@ -25,4 +25,6 @@ abstract final class LLAssetPaths {
       '${backgroundsRoot}world_02_forgotten_ruins_card.png';
   static const String world03CardBackground =
       '${backgroundsRoot}world_03_lost_mechanisms_card.png';
+  static const String gameplayScreenBackground =
+      '${backgroundsRoot}gameplay_screen.png';
 }

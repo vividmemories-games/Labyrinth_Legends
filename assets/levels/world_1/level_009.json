@@ -1,182 +1,221 @@
 {
+  "schemaVersion": 2,
   "id": "level_009",
-  "name": "Chamber 9",
+  "name": "Shimmering Stones",
   "worldId": "world_1",
   "discoveryMode": "full",
   "moveLimit": null,
   "starThresholds": {
-    "threeStars": 19,
-    "twoStars": 23,
-    "oneStar": 29
+    "threeStars": 14,
+    "twoStars": 18,
+    "oneStar": 24
   },
   "objectives": {
     "reachExit": true,
-    "collectAllGems": false,
+    "collectAllGems": true,
     "minGems": 0
   },
   "grid": {
-    "width": 7,
-    "height": 7,
+    "width": 5,
+    "height": 5,
     "cells": [
       [
         {
-          "type": "wall"
+          "type": "start",
+          "edges": {
+            "east": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "hasGem": true,
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "hasGem": true,
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "south": true,
+            "west": true
+          }
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "start"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "hasGem": true,
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "west": true
+          }
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "hasGem": true,
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "wall"
-        }
-      ],
-      [
-        {
-          "type": "wall"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "exit"
-        },
-        {
-          "type": "wall"
-        }
-      ],
-      [
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
+          "type": "exit",
+          "edges": {
+            "north": true,
+            "west": true
+          }
         }
       ]
     ]

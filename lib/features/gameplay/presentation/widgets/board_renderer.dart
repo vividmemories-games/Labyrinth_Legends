@@ -59,8 +59,7 @@ class _BoardRendererState extends State<BoardRenderer> {
   void didUpdateWidget(covariant BoardRenderer oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.visualPath.length < oldWidget.visualPath.length) {
-      _lastDragTile =
-          widget.visualPath.isEmpty ? null : widget.visualPath.last;
+      _lastDragTile = widget.visualPath.isEmpty ? null : widget.visualPath.last;
     }
   }
 
@@ -89,10 +88,8 @@ class _BoardRendererState extends State<BoardRenderer> {
   @override
   Widget build(BuildContext context) {
     final theme = context.llTheme;
-    final start = widget.grid.findStart();
     final explorer = widget.explorerPosition;
-    final hideStartMarker =
-        explorer != null && start != null && explorer != start;
+    final hideStartMarker = explorer != null;
 
     return LayoutBuilder(
       builder: (context, constraints) {
@@ -145,6 +142,8 @@ class _BoardRendererState extends State<BoardRenderer> {
 
                                   return TileView(
                                     cell: cell,
+                                    position: position,
+                                    grid: widget.grid,
                                     size: geometry.cellSize,
                                     isPathTile: isOnPath,
                                     isPathEndpoint: isEndpoint,
@@ -152,8 +151,7 @@ class _BoardRendererState extends State<BoardRenderer> {
                                         widget.invalidTarget == position,
                                     hideStartMarker: hideStartMarker,
                                     effectiveKeyIds: widget.effectiveKeyIds,
-                                    isSelected:
-                                        widget.selectedTile == position,
+                                    isSelected: widget.selectedTile == position,
                                     isExtensionHint: widget
                                             .planningExtensionHints
                                             .contains(position) &&

@@ -15,10 +15,8 @@ class LevelRepository {
   ///
   /// Levels 004+ may remain bundled but are excluded from runtime world loading
   /// until they pass structural validation (e.g. `schemaVersion` alignment).
-  static const Set<String> m1ValidatedLevelIds = {
-    'level_001',
-    'level_002',
-    'level_003',
+  static final Set<String> m1ValidatedLevelIds = {
+    for (var i = 1; i <= 10; i++) 'level_${i.toString().padLeft(3, '0')}',
   };
 
   final AssetBundle _bundle;

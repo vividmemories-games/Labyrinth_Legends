@@ -1,3 +1,4 @@
+import 'package:labyrinth_legends/game_engine/models/cell_edges.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_type.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_cell.dart';
 import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
@@ -88,6 +89,50 @@ class MazeGrid {
     ];
     updated[position.row][position.col] = cell;
     return MazeGrid(width: width, height: height, cells: updated);
+  }
+
+  /// Resolved edges including implicit perimeter blocking (schema v2).
+  CellEdges resolvedEdgesAt(GridPosition position) {
+    final stored = cellAt(position).blockedEdges;
+    return CellEdges(
+      north: position.row == 0 || stored.north,
+      south: position.row == height - 1 || stored.south,
+      west: position.col == 0 || stored.west,
+      east: position.col == width - 1 || stored.east,
+    );
+  }
+
+  /// Whether movement between adjacent in-bounds cells is allowed (GP2 edge model).
+  bool canTraverse(GridPosition from, GridPosition to) {
+    if (!isInBounds(from) || !isInBounds(to)) {
+      return false;
+    }
+    if (!from.isAdjacentTo(to)) {
+      return false;
+    }
+
+    final fromCell = cellAt(from);
+    final toCell = cellAt(to);
+    if (!fromCell.isWalkable || !toCell.isWalkable) {
+      return false;
+    }
+
+    final deltaRow = to.row - from.row;
+    final deltaCol = to.col - from.col;
+
+    if (deltaRow == -1) {
+      return !resolvedEdgesAt(from).north && !resolvedEdgesAt(to).south;
+    }
+    if (deltaRow == 1) {
+      return !resolvedEdgesAt(from).south && !resolvedEdgesAt(to).north;
+    }
+    if (deltaCol == -1) {
+      return !resolvedEdgesAt(from).west && !resolvedEdgesAt(to).east;
+    }
+    if (deltaCol == 1) {
+      return !resolvedEdgesAt(from).east && !resolvedEdgesAt(to).west;
+    }
+    return false;
   }
 
   Map<String, dynamic> toJson() {

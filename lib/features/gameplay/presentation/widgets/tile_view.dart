@@ -4,15 +4,20 @@ import 'package:labyrinth_legends/design_system/components/gameplay/ll_gameplay_
 import 'package:labyrinth_legends/design_system/components/gameplay/painting/maze_tile_painter.dart';
 import 'package:labyrinth_legends/design_system/theme/ll_theme_extension.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
+import 'package:labyrinth_legends/features/gameplay/presentation/board/cell_edge_mask.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_type.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_visibility.dart';
+import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_cell.dart';
+import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
 
-/// Single maze cell tile — sprite-first with painter fallback until PNGs ship.
+/// Single maze cell tile — authored autotile PNGs; sprite-first objects.
 class TileView extends StatelessWidget {
   const TileView({
     super.key,
     required this.cell,
+    required this.position,
+    required this.grid,
     required this.size,
     this.isPathTile = false,
     this.isPathEndpoint = false,
@@ -27,6 +32,8 @@ class TileView extends StatelessWidget {
   });
 
   final MazeCell cell;
+  final GridPosition position;
+  final MazeGrid grid;
   final double size;
   final bool isPathTile;
   final bool isPathEndpoint;
@@ -39,19 +46,54 @@ class TileView extends StatelessWidget {
   final bool isExecutionFocus;
   final bool isPressed;
 
+  static const double _objectVisualScale = 1.08;
+
   @override
   Widget build(BuildContext context) {
     final theme = context.llTheme;
     final isLockedGate =
         cell.lockId != null && !effectiveKeyIds.contains(cell.lockId);
-    final objectSize = size * 0.42;
 
-    Widget sprite(GameplayAssetKind kind, {double? spriteSize, Color? tint, String? label}) {
+    Widget sprite(GameplayAssetKind kind, {String? label}) {
       return LLGameplayAsset(
         kind: kind,
-        size: spriteSize ?? objectSize,
-        tint: tint,
+        size: size,
+        fit: BoxFit.cover,
+        visualScale: _objectVisualScale,
         semanticLabel: label,
+      );
+    }
+
+    Widget objectLayer(GameplayAssetKind kind, {String? label}) {
+      return Positioned.fill(child: sprite(kind, label: label));
+    }
+
+    Widget tileBase() {
+      final mask = CellEdgeMask.forCell(grid, position);
+      return Stack(
+        fit: StackFit.expand,
+        children: [
+          LLGameplayAsset(
+            kind: GameplayAssetKind.tileFloor,
+            size: size,
+            fit: BoxFit.cover,
+            fallback: CustomPaint(
+              size: Size.square(size),
+              painter: MazeTilePainter(
+                cellType: cell.type,
+                isWalkable: true,
+              ),
+            ),
+          ),
+          for (final overlay in mask.layeredOverlays)
+            Positioned.fill(
+              child: LLGameplayAsset(
+                kind: overlay,
+                size: size,
+                fit: BoxFit.cover,
+              ),
+            ),
+        ],
       );
     }
 
@@ -62,14 +104,10 @@ class TileView extends StatelessWidget {
       height: size,
       child: RepaintBoundary(
         child: Stack(
+          clipBehavior: Clip.hardEdge,
           fit: StackFit.expand,
           children: [
-            CustomPaint(
-              painter: MazeTilePainter(
-                cellType: cell.type,
-                isWalkable: cell.isWalkable,
-              ),
-            ),
+            tileBase(),
             if (_overlayColor(theme: theme, isLockedGate: isLockedGate)
                 case final color?)
               ColoredBox(color: color),
@@ -83,42 +121,16 @@ class TileView extends StatelessWidget {
                 ),
               ),
             if (isExtensionHint && !isPathTile && !isInvalidTarget)
-              Center(
-                child: sprite(
-                  GameplayAssetKind.extensionHint,
-                  spriteSize: size * 0.28,
-                  tint: theme.pathEnergy,
-                ),
-              ),
-            if (cell.hasGem)
-              Center(child: sprite(GameplayAssetKind.gem, label: 'Gem')),
+              objectLayer(GameplayAssetKind.extensionHint),
+            if (cell.hasGem) objectLayer(GameplayAssetKind.gem, label: 'Gem'),
             if (cell.keyId != null && !effectiveKeyIds.contains(cell.keyId))
-              Align(
-                alignment: Alignment.topRight,
-                child: Padding(
-                  padding: EdgeInsets.all(size * 0.08),
-                  child: sprite(
-                    GameplayAssetKind.key,
-                    spriteSize: size * 0.32,
-                    tint: theme.actionPrimary,
-                    label: 'Key',
-                  ),
-                ),
-              ),
+              objectLayer(GameplayAssetKind.key, label: 'Key'),
             if (isLockedGate)
-              Center(child: sprite(GameplayAssetKind.lockClosed, label: 'Locked gate')),
-            if (cell.type == CellType.start && !hideStartMarker)
-              Center(child: sprite(GameplayAssetKind.explorer, label: 'Explorer start')),
+              objectLayer(GameplayAssetKind.lockClosed, label: 'Locked gate'),
             if (cell.type == CellType.exit)
-              Center(child: sprite(GameplayAssetKind.exitPortal, label: 'Exit portal')),
+              objectLayer(GameplayAssetKind.exitPortal, label: 'Exit portal'),
             if (isInvalidTarget)
-              Center(
-                child: sprite(
-                  GameplayAssetKind.invalidBlock,
-                  spriteSize: size * 0.34,
-                  label: 'Invalid tile',
-                ),
-              ),
+              objectLayer(GameplayAssetKind.invalidBlock, label: 'Invalid tile'),
           ],
         ),
       ),
@@ -129,7 +141,7 @@ class TileView extends StatelessWidget {
     required LLThemeExtension theme,
     required bool isLockedGate,
   }) {
-    final pathFillAlpha = isTraversed ? 0.06 : 0.14;
+    final pathFillAlpha = isTraversed ? 0.04 : 0.08;
     if (isInvalidTarget) {
       return theme.feedbackDanger.withValues(alpha: 0.28);
     }

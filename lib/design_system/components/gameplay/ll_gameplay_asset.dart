@@ -12,29 +12,47 @@ class LLGameplayAsset extends StatelessWidget {
     required this.size,
     this.tint,
     this.semanticLabel,
+    this.fit = BoxFit.contain,
+    this.visualScale = 1,
+    this.fallback,
   });
 
   final GameplayAssetKind kind;
   final double size;
   final Color? tint;
   final String? semanticLabel;
+  final BoxFit fit;
+
+  /// Multiplier applied to [size] so trimmed PNGs with canvas padding read larger.
+  final double visualScale;
+  final Widget? fallback;
 
   @override
   Widget build(BuildContext context) {
-    final dimension = Size.square(size);
+    final renderSize = size * visualScale;
+    final dimension = Size.square(renderSize);
 
     return Semantics(
       label: semanticLabel,
       child: RepaintBoundary(
-        child: Image.asset(
-          LLGameplayAssets.path(kind),
+        child: SizedBox(
           width: size,
           height: size,
-          fit: BoxFit.contain,
-          gaplessPlayback: true,
-          errorBuilder: (_, __, ___) => CustomPaint(
-            size: dimension,
-            painter: GameplayObjectPainter(kind: kind, tint: tint),
+          child: Center(
+            child: Image.asset(
+              LLGameplayAssets.path(kind),
+              width: renderSize,
+              height: renderSize,
+              fit: fit,
+              gaplessPlayback: true,
+              filterQuality: FilterQuality.medium,
+              errorBuilder: (_, __, ___) =>
+                  fallback ??
+                  CustomPaint(
+                    size: dimension,
+                    painter: GameplayObjectPainter(kind: kind, tint: tint),
+                  ),
+            ),
           ),
         ),
       ),

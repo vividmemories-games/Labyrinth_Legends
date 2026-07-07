@@ -9,13 +9,16 @@ void main() {
       final repository = LevelRepository();
       final levels = await repository.loadWorld('world_1');
 
-      expect(levels, hasLength(3));
+      expect(levels, hasLength(10));
       expect(
         levels.map((level) => level.id).toList(),
-        ['level_001', 'level_002', 'level_003'],
+        [
+          for (var i = 1; i <= 10; i++)
+            'level_${i.toString().padLeft(3, '0')}',
+        ],
       );
       for (final level in levels) {
-        expect(level.schemaVersion, 1);
+        expect(level.schemaVersion, 2);
       }
     });
 

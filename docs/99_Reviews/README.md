@@ -218,8 +218,13 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0082 | [Screens/0082_level_select_winding_map.md](Screens/0082_level_select_winding_map.md) | Approved |
 | 0083 | [Screens/0083_worlds_chapter_backgrounds.md](Screens/0083_worlds_chapter_backgrounds.md) | Approved |
 | 0084 | [Releases/0084_review_hygiene_p1_p3.md](Releases/0084_review_hygiene_p1_p3.md) | Approved |
+| 0085 | [Screens/0085_m2_8_gameplay_mockup_visual_pass.md](Screens/0085_m2_8_gameplay_mockup_visual_pass.md) | Ready for Review |
+| 0086 | [Screens/0086_gameplay_board_sprite_wiring.md](Screens/0086_gameplay_board_sprite_wiring.md) | Ready for Review |
+| 0087 | [Screens/0087_gameplay_wall_autotiling_procedural_assets.md](Screens/0087_gameplay_wall_autotiling_procedural_assets.md) | Ready for Review |
+| 0088 | [Screens/0088_gameplay_authored_autotile_pngs.md](Screens/0088_gameplay_authored_autotile_pngs.md) | Ready for Review |
+| 0089 | [Architecture/0089_edge_based_maze_authored_tiles.md](Architecture/0089_edge_based_maze_authored_tiles.md) | Ready for Review |
 
-**Next ID:** 0085
+**Next ID:** 0090
 
 ## Related Docs
 

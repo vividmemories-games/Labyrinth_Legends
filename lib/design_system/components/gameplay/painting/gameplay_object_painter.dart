@@ -36,7 +36,18 @@ class GameplayObjectPainter extends CustomPainter {
       case GameplayAssetKind.switchOff:
         _paintSwitch(canvas, size);
       case GameplayAssetKind.tileFloor:
-      case GameplayAssetKind.tileWall:
+      case GameplayAssetKind.edgeNorth:
+      case GameplayAssetKind.edgeEast:
+      case GameplayAssetKind.edgeSouth:
+      case GameplayAssetKind.edgeWest:
+      case GameplayAssetKind.edgeCornerNorthEast:
+      case GameplayAssetKind.edgeCornerNorthWest:
+      case GameplayAssetKind.edgeCornerSouthEast:
+      case GameplayAssetKind.edgeCornerSouthWest:
+      case GameplayAssetKind.edgeInnerNorthEast:
+      case GameplayAssetKind.edgeInnerNorthWest:
+      case GameplayAssetKind.edgeInnerSouthEast:
+      case GameplayAssetKind.edgeInnerSouthWest:
         break;
     }
   }
@@ -96,7 +107,8 @@ class GameplayObjectPainter extends CustomPainter {
             LLColor.crystalPurple.withValues(alpha: 0.95),
             LLColor.crystalPurple.withValues(alpha: 0.55),
           ],
-        ).createShader(Rect.fromCenter(center: center, width: w * 2, height: h * 2)),
+        ).createShader(
+            Rect.fromCenter(center: center, width: w * 2, height: h * 2)),
     );
     canvas.drawPath(
       path,

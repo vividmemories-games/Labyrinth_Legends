@@ -65,11 +65,11 @@ void main() {
       final start = level.grid.findStart()!;
       controller.handleTileInteraction(start);
 
-      controller.handleTileInteraction(const GridPosition(row: 1, col: 4));
+      controller.handleTileInteraction(const GridPosition(row: 2, col: 0));
 
       expect(controller.state.draftPath, [start]);
       expect(controller.state.invalidInputMessage, isNotNull);
-      expect(controller.state.invalidTarget, const GridPosition(row: 1, col: 4));
+      expect(controller.state.invalidTarget, const GridPosition(row: 2, col: 0));
     });
 
     test('backtracks when dragging to previous tile', () {
@@ -331,8 +331,8 @@ void main() {
     test('hasNextLevel is false for final validated level', () {
       final rawLevel = LevelDefinition.fromJson({
         'schemaVersion': 1,
-        'id': 'level_003',
-        'name': 'Third',
+        'id': 'level_010',
+        'name': 'Tenth',
         'worldId': 'world_1',
         'discoveryMode': 'full',
         'moveLimit': null,

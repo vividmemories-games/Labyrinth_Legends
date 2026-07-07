@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:labyrinth_legends/game_engine/migration/level_v1_to_v2_converter.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_type.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_visibility.dart';
 import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
@@ -11,26 +12,28 @@ void main() {
   const validator = PathValidator();
 
   MazeGrid buildKeyLockGrid() {
-    return MazeGrid(
-      width: 3,
-      height: 3,
-      cells: [
-        [
-          const MazeCell(type: CellType.start),
-          const MazeCell(type: CellType.floor, keyId: 'key_a'),
-          const MazeCell(type: CellType.floor),
+    return const LevelV1ToV2Converter().convertGrid(
+      MazeGrid(
+        width: 3,
+        height: 3,
+        cells: [
+          [
+            const MazeCell(type: CellType.start),
+            const MazeCell(type: CellType.floor, keyId: 'key_a'),
+            const MazeCell(type: CellType.floor),
+          ],
+          [
+            const MazeCell(type: CellType.floor),
+            const MazeCell(type: CellType.wall),
+            const MazeCell(type: CellType.floor, lockId: 'key_a'),
+          ],
+          [
+            const MazeCell(type: CellType.floor),
+            const MazeCell(type: CellType.floor),
+            const MazeCell(type: CellType.exit),
+          ],
         ],
-        [
-          const MazeCell(type: CellType.floor),
-          const MazeCell(type: CellType.wall),
-          const MazeCell(type: CellType.floor, lockId: 'key_a'),
-        ],
-        [
-          const MazeCell(type: CellType.floor),
-          const MazeCell(type: CellType.floor),
-          const MazeCell(type: CellType.exit),
-        ],
-      ],
+      ),
     );
   }
 
@@ -188,6 +191,7 @@ void main() {
         grid: grid,
         path: [
           const GridPosition(row: 0, col: 0),
+          const GridPosition(row: 0, col: 1),
           const GridPosition(row: 1, col: 1),
         ],
       );
@@ -242,10 +246,11 @@ void main() {
   });
 
   group('PV-06 walls and hidden', () {
-    test('rejects crossing walls', () {
+    test('rejects crossing blocked edges', () {
       final grid = buildKeyLockGrid();
       final path = [
         const GridPosition(row: 0, col: 0),
+        const GridPosition(row: 0, col: 1),
         const GridPosition(row: 1, col: 1),
       ];
 
@@ -254,7 +259,7 @@ void main() {
       expect(result.isValid, isFalse);
       expect(result.firstError?.ruleId, 'PV-06');
       expect(result.errorCode, PathValidationErrorCode.notWalkable);
-      expect(result.message, contains('wall'));
+      expect(result.message, contains('blocked edge'));
     });
 
     test('rejects hidden cells', () {

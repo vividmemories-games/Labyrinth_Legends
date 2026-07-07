@@ -60,14 +60,19 @@ class GameplayBoardContainer extends StatelessWidget {
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: theme.radiusPanel,
-          gradient: LLGradient.stonePanel,
+          color: LLColor.templeBlack.withValues(alpha: 0.45),
           border: Border.all(
-            color: theme.actionPrimary.withValues(alpha: LLColor.borderGoldAlpha),
-            width: LLSize.borderWidth * 1.2,
+            color:
+                theme.actionPrimary.withValues(alpha: LLColor.borderGoldAlpha),
+            width: LLSize.borderWidth * 2,
           ),
           boxShadow: [
             ...LLShadow.panel,
-            ...LLShadow.soft,
+            BoxShadow(
+              color: theme.actionPrimary.withValues(alpha: 0.12),
+              blurRadius: 18,
+              spreadRadius: 1,
+            ),
           ],
         ),
         child: ClipRRect(

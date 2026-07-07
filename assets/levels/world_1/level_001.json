@@ -1,7 +1,7 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "level_001",
-  "name": "First Steps",
+  "name": "Open Chamber",
   "worldId": "world_1",
   "discoveryMode": "full",
   "moveLimit": null,
@@ -16,29 +16,41 @@
     "minGems": 0
   },
   "grid": {
-    "width": 7,
-    "height": 7,
+    "width": 3,
+    "height": 3,
     "cells": [
       [
-        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+        {
+          "type": "start"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        }
       ],
       [
-        {"type": "wall"}, {"type": "start"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "wall"}
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        }
       ],
       [
-        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "exit"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "exit"
+        }
       ]
     ]
   }
