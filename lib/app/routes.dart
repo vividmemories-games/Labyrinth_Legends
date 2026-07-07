@@ -13,4 +13,5 @@ abstract final class AppRoutes {
   static const String daily = '/daily';
   static const String designSystemShowcase = '/dev/design-system';
   static const String engineDebugSandbox = '/dev/engine-sandbox';
+  static const String mazeRenderPoc = '/dev/maze-render-poc';
 }

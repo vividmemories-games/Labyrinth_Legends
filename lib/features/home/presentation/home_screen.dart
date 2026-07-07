@@ -56,6 +56,12 @@ class HomeScreen extends StatelessWidget {
                           variant: LLButtonVariant.ghost,
                           onPressed: () => context.push('/dev/engine-sandbox'),
                         ),
+                        LLButton(
+                          label: 'Maze Render POC',
+                          variant: LLButtonVariant.ghost,
+                          onPressed: () =>
+                              context.push('/dev/maze-render-poc'),
+                        ),
                       ],
                     ),
                   ),
