@@ -22,8 +22,8 @@ class MazeTheme {
     required this.accent,
     this.wallTexturePath,
     this.floorTexturePath,
-    this.wallTextureOpacity = 0.55,
-    this.floorTextureOpacity = 0.35,
+    this.wallTextureOpacity = 0.90,
+    this.floorTextureOpacity = 0.45,
   });
 
   final String id;

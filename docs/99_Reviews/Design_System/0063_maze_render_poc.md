@@ -147,6 +147,12 @@ regions render as slightly darkened fenced-off floor — natural anchor
 spots for future decoration props. The original full-cell `block` style
 remains available via the screen toggle.
 
+Second feedback round (2026-07-07): edges are rendered as individual
+jittered stone blocks (deterministic per-stone length/thickness/offset
+variation, ~12% damaged stones with corner-safe length bites) with the
+wall texture applied near-full-strength plus a per-theme multiply tint,
+so walls read as old rugged masonry rather than clean vector bars.
+
 > Renders produced through `MazePainter` off-screen at 700×700; identical code path to the dev screen.
 
 ## Commands Run

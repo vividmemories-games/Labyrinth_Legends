@@ -53,10 +53,10 @@ class MazePainter extends CustomPainter {
 
   static const double _cornerRadiusFactor = 0.30;
   static const double _blockExtrusionFactor = 0.14;
-  static const double _edgeExtrusionFactor = 0.07;
+  static const double _edgeExtrusionFactor = 0.08;
 
   /// Raised edge thickness as a fraction of the cell.
-  static const double _edgeThicknessFactor = 0.16;
+  static const double _edgeThicknessFactor = 0.18;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -68,17 +68,188 @@ class MazePainter extends CustomPainter {
 
     _paintBackground(canvas, boardRect);
     _paintFloor(canvas, boardRect, cell);
+
     if (isEdge) {
       _paintDeadRegions(canvas, cell);
+      _paintStoneWalls(canvas, boardRect, cell, depth);
+    } else {
+      final wallPath = _buildBlockPath(cell);
+      _paintWallShadow(canvas, wallPath, depth);
+      _paintWallSide(canvas, wallPath, depth);
+      _paintWallTop(canvas, wallPath, boardRect);
+      _paintWallRim(canvas, wallPath, cell);
+    }
+    _paintMarkers(canvas, cell);
+  }
+
+  // --- Stone-wall rendering (edge style) ------------------------------
+
+  /// Walls are laid as individual stone blocks along each tile boundary,
+  /// with deterministic jitter in length, thickness, and offset, plus
+  /// occasional damaged (crumbled) stones — old, rugged masonry instead of
+  /// a clean vector bar. Texture is applied near-full-strength so the PNG
+  /// carries the surface detail; the geometry carries the brokenness.
+  void _paintStoneWalls(
+    Canvas canvas,
+    Rect boardRect,
+    double cell,
+    double depth,
+  ) {
+    final stones = _buildStones(cell);
+
+    final shadowPaint = Paint()
+      ..color = Colors.black.withValues(alpha: 0.40)
+      ..maskFilter = MaskFilter.blur(BlurStyle.normal, depth * 0.9);
+    for (final s in stones) {
+      canvas.drawRRect(s.rrect.shift(Offset(0, depth * 1.6)), shadowPaint);
     }
 
-    final wallPath = isEdge ? _buildEdgePath(cell) : _buildBlockPath(cell);
+    for (final s in stones) {
+      final sideDepth = s.damaged ? depth * 0.45 : depth;
+      canvas.drawRRect(
+        s.rrect.shift(Offset(0, sideDepth)),
+        Paint()..color = theme.wallSide,
+      );
+    }
 
-    _paintWallShadow(canvas, wallPath, depth);
-    _paintWallSide(canvas, wallPath, depth);
-    _paintWallTop(canvas, wallPath, boardRect);
-    _paintWallRim(canvas, wallPath, cell);
-    _paintMarkers(canvas, cell);
+    for (final s in stones) {
+      canvas.drawRRect(s.rrect, Paint()..color = theme.wallTop);
+    }
+
+    final wallTexture = textures.wall;
+    if (showTextures && wallTexture != null) {
+      var union = Path();
+      for (final s in stones) {
+        union = Path.combine(
+          PathOperation.union,
+          union,
+          Path()..addRRect(s.rrect),
+        );
+      }
+      canvas.save();
+      canvas.clipPath(union);
+      // Near-full-strength texture: the PNG provides the stone surface.
+      final scale = (cell * 2.2) / wallTexture.width;
+      final matrix = Matrix4.diagonal3Values(scale, scale, 1).storage;
+      canvas.drawRect(
+        boardRect,
+        Paint()
+          ..shader = ui.ImageShader(
+            wallTexture,
+            TileMode.mirror,
+            TileMode.mirror,
+            matrix,
+          )
+          ..color = Colors.white.withValues(alpha: theme.wallTextureOpacity),
+      );
+      // Theme tint so the same texture grades differently per world.
+      canvas.drawRect(
+        boardRect,
+        Paint()
+          ..color = theme.wallTop.withValues(alpha: 0.30)
+          ..blendMode = BlendMode.multiply,
+      );
+      canvas.restore();
+    }
+
+    // Per-stone definition: dark outline (mortar), light catch on top edge,
+    // extra darkening on damaged stones.
+    final outlinePaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = cell * 0.014
+      ..color = Colors.black.withValues(alpha: 0.35);
+    final highlightPaint = Paint()
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = cell * 0.012
+      ..color = theme.wallEdgeHighlight.withValues(alpha: 0.55);
+    for (final s in stones) {
+      canvas.drawRRect(s.rrect, outlinePaint);
+      final r = s.rrect.outerRect;
+      canvas.drawLine(
+        Offset(r.left + r.width * 0.12, r.top),
+        Offset(r.right - r.width * 0.12, r.top),
+        highlightPaint,
+      );
+      if (s.damaged) {
+        canvas.drawRRect(
+          s.rrect,
+          Paint()..color = Colors.black.withValues(alpha: 0.22),
+        );
+      }
+    }
+  }
+
+  /// Splits every boundary edge into 2-3 jittered stone blocks.
+  List<_Stone> _buildStones(double cell) {
+    final t = cell * _edgeThicknessFactor;
+    final stones = <_Stone>[];
+
+    for (final e in _edges) {
+      final seedA = e.row * 31 + (e.isVertical ? 17 : 0);
+      final seedB = e.col * 13 + 5;
+      final h0 = _hash(seedA, seedB);
+      final count = 2 + (h0 % 2);
+
+      // The edge spans one cell plus half a thickness overhang on both
+      // ends so perpendicular walls meet in covered corners.
+      final start = -t / 2;
+      final length = cell + t;
+      final gap = t * 0.14;
+
+      for (var i = 0; i < count; i++) {
+        final h = _hash(h0 + i * 97, seedB + i * 61);
+        final r1 = (h & 0xFF) / 255.0;
+        final r2 = ((h >> 8) & 0xFF) / 255.0;
+        final r3 = ((h >> 16) & 0xFF) / 255.0;
+
+        final s0 = start + length * i / count + (i == 0 ? 0 : gap / 2);
+        final s1 = start + length * (i + 1) / count - gap / 2;
+        final thickness = t * (0.82 + 0.36 * r1);
+        final offset = t * 0.22 * (r2 - 0.5);
+        final damaged = (h % 100) < 12;
+        // Damaged stones lose a chunk of their length — always from their
+        // interior end so wall corners and junctions stay closed.
+        var sStart = s0;
+        var sEnd = s1;
+        if (damaged) {
+          final bite = (s1 - s0) * 0.28 * r3;
+          if (i == count - 1) {
+            sStart += bite;
+          } else {
+            sEnd -= bite;
+          }
+        }
+
+        final Rect rect;
+        if (e.isVertical) {
+          final x = (e.col + 1) * cell + offset;
+          rect = Rect.fromLTRB(
+            x - thickness / 2,
+            e.row * cell + sStart,
+            x + thickness / 2,
+            e.row * cell + sEnd,
+          );
+        } else {
+          final y = (e.row + 1) * cell + offset;
+          rect = Rect.fromLTRB(
+            e.col * cell + sStart,
+            y - thickness / 2,
+            e.col * cell + sEnd,
+            y + thickness / 2,
+          );
+        }
+        stones.add(
+          _Stone(
+            rrect: RRect.fromRectAndRadius(
+              rect,
+              Radius.circular(t * 0.22),
+            ),
+            damaged: damaged,
+          ),
+        );
+      }
+    }
+    return stones;
   }
 
   /// In edge mode wall cells are ordinary floor, just fenced off. A subtle
@@ -212,32 +383,6 @@ class MazePainter extends CustomPainter {
     return merged;
   }
 
-  /// Raised edges on tile boundaries. Each edge is a thin bar centered on
-  /// the shared border between two cells, extended half a thickness past
-  /// both ends so meeting edges fuse into clean corners and junctions.
-  Path _buildEdgePath(double cell) {
-    final t = cell * _edgeThicknessFactor;
-    var merged = Path();
-
-    for (final e in _edges) {
-      final Rect rect;
-      if (e.isVertical) {
-        final x = (e.col + 1) * cell;
-        final y = e.row * cell;
-        rect = Rect.fromLTRB(x - t / 2, y - t / 2, x + t / 2, y + cell + t / 2);
-      } else {
-        final x = e.col * cell;
-        final y = (e.row + 1) * cell;
-        rect = Rect.fromLTRB(x - t / 2, y - t / 2, x + cell + t / 2, y + t / 2);
-      }
-      merged = Path.combine(
-        PathOperation.union,
-        merged,
-        Path()..addRRect(RRect.fromRectAndRadius(rect, Radius.circular(t / 4))),
-      );
-    }
-    return merged;
-  }
 
   void _paintWallShadow(Canvas canvas, Path wallPath, double depth) {
     canvas.drawPath(
@@ -388,4 +533,11 @@ class MazePainter extends CustomPainter {
         oldDelegate.showTextures != showTextures ||
         oldDelegate.wallStyle != wallStyle;
   }
+}
+
+class _Stone {
+  const _Stone({required this.rrect, required this.damaged});
+
+  final RRect rrect;
+  final bool damaged;
 }
