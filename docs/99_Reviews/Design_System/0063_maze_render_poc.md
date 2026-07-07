@@ -135,8 +135,13 @@ docs/99_Reviews/README.md (index)
 
 | Screen | Path or description |
 |--------|---------------------|
-| level_010, Ancient Ruins theme | `docs/assets/maze_render_poc/maze_poc_ancient_ruins.png` |
-| level_010, Amazon Jungle theme (same geometry, swapped skin) | `docs/assets/maze_render_poc/maze_poc_amazon_jungle.png` |
+| level_010, Ancient Ruins theme, ridge wall style | `docs/assets/maze_render_poc/maze_poc_ancient_ruins.png` |
+| level_010, Amazon Jungle theme, ridge wall style (same geometry, swapped skin) | `docs/assets/maze_render_poc/maze_poc_amazon_jungle.png` |
+
+Per Human Owner feedback (2026-07-07), the default wall style is `ridge`:
+thin raised edges along the wall skeleton with floor and grout visible
+around them, matching the ancient-ruins design reference. The original
+full-cell `block` style remains available via the screen toggle.
 
 > Renders produced through `MazePainter` off-screen at 700×700; identical code path to the dev screen.
 

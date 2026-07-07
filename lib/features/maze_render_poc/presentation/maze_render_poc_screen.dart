@@ -32,6 +32,7 @@ class _MazeRenderPocScreenState extends ConsumerState<MazeRenderPocScreen> {
   MazeTheme _theme = MazeTheme.ancientRuins;
   MazeThemeTextures _textures = MazeThemeTextures.none;
   bool _showTextures = true;
+  MazeWallStyle _wallStyle = MazeWallStyle.ridge;
   String _levelId = _levelIds.first;
 
   @override
@@ -111,6 +112,18 @@ class _MazeRenderPocScreenState extends ConsumerState<MazeRenderPocScreen> {
                           onPressed: () =>
                               setState(() => _showTextures = !_showTextures),
                         ),
+                        LLButton(
+                          key: const Key('mazePocWallStyleToggle'),
+                          label: _wallStyle == MazeWallStyle.ridge
+                              ? 'Walls: Raised Edges'
+                              : 'Walls: Solid Blocks',
+                          variant: LLButtonVariant.ghost,
+                          onPressed: () => setState(() {
+                            _wallStyle = _wallStyle == MazeWallStyle.ridge
+                                ? MazeWallStyle.block
+                                : MazeWallStyle.ridge;
+                          }),
+                        ),
                       ],
                     ),
                   ),
@@ -149,6 +162,7 @@ class _MazeRenderPocScreenState extends ConsumerState<MazeRenderPocScreen> {
                           theme: _theme,
                           textures: _textures,
                           showTextures: _showTextures,
+                          wallStyle: _wallStyle,
                         ),
                       AsyncError(:final error) => Padding(
                           padding: const EdgeInsets.all(LLSpacing.md),
@@ -180,12 +194,14 @@ class _Board extends StatelessWidget {
     required this.theme,
     required this.textures,
     required this.showTextures,
+    required this.wallStyle,
   });
 
   final LevelDefinition level;
   final MazeTheme theme;
   final MazeThemeTextures textures;
   final bool showTextures;
+  final MazeWallStyle wallStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -201,6 +217,7 @@ class _Board extends StatelessWidget {
             theme: theme,
             textures: textures,
             showTextures: showTextures,
+            wallStyle: wallStyle,
           ),
         ),
       ),

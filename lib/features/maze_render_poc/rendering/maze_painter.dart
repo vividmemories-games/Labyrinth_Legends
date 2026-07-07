@@ -6,6 +6,16 @@ import 'package:labyrinth_legends/features/maze_render_poc/rendering/wall_shape_
 import 'package:labyrinth_legends/game_engine/models/cell_type.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
 
+/// How wall cells are turned into geometry.
+enum MazeWallStyle {
+  /// Full-cell extruded blocks (hedge/fortress look).
+  block,
+
+  /// Thin raised ridges along the wall-cell skeleton, floor visible around
+  /// them (ancient-ruins look, per design reference).
+  ridge,
+}
+
 /// Renders a [MazeGrid] as one merged vector shape with a themed skin.
 ///
 /// Rendering passes:
@@ -26,28 +36,36 @@ class MazePainter extends CustomPainter {
     required this.theme,
     this.textures = MazeThemeTextures.none,
     this.showTextures = true,
+    this.wallStyle = MazeWallStyle.ridge,
   }) : _geometries = WallShapeBuilder.build(grid);
 
   final MazeGrid grid;
   final MazeTheme theme;
   final MazeThemeTextures textures;
   final bool showTextures;
+  final MazeWallStyle wallStyle;
 
   final List<WallCellGeometry> _geometries;
 
   static const double _cornerRadiusFactor = 0.30;
-  static const double _extrusionFactor = 0.14;
+  static const double _blockExtrusionFactor = 0.14;
+  static const double _ridgeExtrusionFactor = 0.09;
+
+  /// Ridge width as a fraction of the cell (thin raised edge, not a block).
+  static const double _ridgeThicknessFactor = 0.34;
 
   @override
   void paint(Canvas canvas, Size size) {
     final cell = size.width / grid.width;
     final boardRect = Offset.zero & size;
-    final depth = cell * _extrusionFactor;
+    final isRidge = wallStyle == MazeWallStyle.ridge;
+    final depth =
+        cell * (isRidge ? _ridgeExtrusionFactor : _blockExtrusionFactor);
 
     _paintBackground(canvas, boardRect);
     _paintFloor(canvas, boardRect, cell);
 
-    final wallPath = _buildWallPath(cell);
+    final wallPath = isRidge ? _buildRidgePath(cell) : _buildBlockPath(cell);
 
     _paintWallShadow(canvas, wallPath, depth);
     _paintWallSide(canvas, wallPath, depth);
@@ -82,14 +100,48 @@ class MazePainter extends CustomPainter {
       );
     }
 
-    // Deterministic speckle noise keeps floors alive when no texture asset
-    // is present (and adds grain on top of textures).
-    final specklePaint = Paint()..color = theme.floorSpeckle;
+    // Per-tile brightness variation: hand-laid stone slabs, not a uniform
+    // surface. Deterministic per cell so it is stable across frames.
     for (var row = 0; row < grid.height; row++) {
       for (var col = 0; col < grid.width; col++) {
-        if (grid.cells[row][col].type == CellType.wall) {
-          continue;
-        }
+        final hash = _hash(row * 7 + 3, col * 13 + 5);
+        final delta = ((hash & 0xFF) / 255.0 - 0.5) * 0.10;
+        final tile = Rect.fromLTWH(col * cell, row * cell, cell, cell);
+        canvas.drawRect(
+          tile,
+          Paint()
+            ..color = delta >= 0
+                ? Colors.white.withValues(alpha: delta)
+                : Colors.black.withValues(alpha: -delta),
+        );
+      }
+    }
+
+    // Grout lines between tiles.
+    final groutPaint = Paint()
+      ..color = Colors.black.withValues(alpha: 0.30)
+      ..strokeWidth = cell * 0.022;
+    for (var col = 1; col < grid.width; col++) {
+      canvas.drawLine(
+        Offset(col * cell, 0),
+        Offset(col * cell, boardRect.height),
+        groutPaint,
+      );
+    }
+    for (var row = 1; row < grid.height; row++) {
+      canvas.drawLine(
+        Offset(0, row * cell),
+        Offset(boardRect.width, row * cell),
+        groutPaint,
+      );
+    }
+
+    // Deterministic speckle noise keeps floors alive when no texture asset
+    // is present (and adds grain on top of textures).
+    final specklePaint =
+        Paint()..color = theme.floorSpeckle.withValues(alpha: 0.5);
+    for (var row = 0; row < grid.height; row++) {
+      for (var col = 0; col < grid.width; col++) {
         for (var i = 0; i < 3; i++) {
           final hash = _hash(row * 31 + i, col * 17 + i);
           final dx = (hash & 0xFF) / 255.0;
@@ -119,7 +171,7 @@ class MazePainter extends CustomPainter {
     );
   }
 
-  Path _buildWallPath(double cell) {
+  Path _buildBlockPath(double cell) {
     final radius = Radius.circular(cell * _cornerRadiusFactor);
     var merged = Path();
     for (final g in _geometries) {
@@ -136,6 +188,52 @@ class MazePainter extends CustomPainter {
         merged,
         Path()..addRRect(rrect),
       );
+    }
+    return merged;
+  }
+
+  /// Thin ridge skeleton: a node at each wall cell's center plus connector
+  /// bars toward east/south wall neighbors (west/north are covered by the
+  /// neighbor's own bars). End caps and outer corners round via the same
+  /// neighbor data as the block style.
+  Path _buildRidgePath(double cell) {
+    final t = cell * _ridgeThicknessFactor;
+    final cap = Radius.circular(t * 0.5);
+    var merged = Path();
+
+    for (final g in _geometries) {
+      final cx = (g.col + 0.5) * cell;
+      final cy = (g.row + 0.5) * cell;
+
+      final node = RRect.fromRectAndCorners(
+        Rect.fromCenter(center: Offset(cx, cy), width: t, height: t),
+        topLeft: g.roundNorthWest ? cap : Radius.zero,
+        topRight: g.roundNorthEast ? cap : Radius.zero,
+        bottomRight: g.roundSouthEast ? cap : Radius.zero,
+        bottomLeft: g.roundSouthWest ? cap : Radius.zero,
+      );
+      merged = Path.combine(
+        PathOperation.union,
+        merged,
+        Path()..addRRect(node),
+      );
+
+      if (g.wallEast) {
+        merged = Path.combine(
+          PathOperation.union,
+          merged,
+          Path()
+            ..addRect(Rect.fromLTWH(cx, cy - t / 2, cell, t)),
+        );
+      }
+      if (g.wallSouth) {
+        merged = Path.combine(
+          PathOperation.union,
+          merged,
+          Path()
+            ..addRect(Rect.fromLTWH(cx - t / 2, cy, t, cell)),
+        );
+      }
     }
     return merged;
   }
@@ -286,6 +384,7 @@ class MazePainter extends CustomPainter {
     return oldDelegate.grid != grid ||
         oldDelegate.theme != theme ||
         oldDelegate.textures != textures ||
-        oldDelegate.showTextures != showTextures;
+        oldDelegate.showTextures != showTextures ||
+        oldDelegate.wallStyle != wallStyle;
   }
 }
