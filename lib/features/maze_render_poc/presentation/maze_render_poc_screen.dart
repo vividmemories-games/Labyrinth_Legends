@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:labyrinth_legends/data/providers.dart';
 import 'package:labyrinth_legends/design_system/design_system.dart';
+import 'package:labyrinth_legends/features/maze_render_poc/data/poc_level_provider.dart';
 import 'package:labyrinth_legends/features/maze_render_poc/rendering/maze_painter.dart';
 import 'package:labyrinth_legends/features/maze_render_poc/rendering/maze_texture_loader.dart';
 import 'package:labyrinth_legends/features/maze_render_poc/rendering/maze_theme.dart';
@@ -58,7 +58,7 @@ class _MazeRenderPocScreenState extends ConsumerState<MazeRenderPocScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final levelAsync = ref.watch(levelByIdProvider(_levelId));
+    final levelAsync = ref.watch(pocLevelProvider(_levelId));
 
     return Scaffold(
       backgroundColor: LLColor.templeBlack,
@@ -182,24 +182,14 @@ class _Board extends StatelessWidget {
     required this.showTextures,
   });
 
-  final LevelDefinition? level;
+  final LevelDefinition level;
   final MazeTheme theme;
   final MazeThemeTextures textures;
   final bool showTextures;
 
   @override
   Widget build(BuildContext context) {
-    final currentLevel = level;
-    if (currentLevel == null) {
-      return SizedBox(
-        height: 240,
-        child: Center(
-          child: Text('Level not found.', style: LLTextStyle.body),
-        ),
-      );
-    }
-
-    final grid = currentLevel.grid;
+    final grid = level.grid;
     return ClipRRect(
       borderRadius: BorderRadius.circular(12),
       child: AspectRatio(
