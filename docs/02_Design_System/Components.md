@@ -238,7 +238,7 @@ All interactive components must support perceptible multichannel states per WS11
 | **Purpose** | Header (back, level + stars, settings/pause); rustic 52px header icon plates; bottom UNDO/ERASE/HINT row with PNG icons; MOVES/GEMS/KEYS stats; GO CTA; tile/object sprites with painter fallback |
 | **Implementation** | `lib/design_system/components/gameplay/` · `ll_gameplay_assets.dart` |
 | **Rules** | Control bar hidden during execution; stats conditional per level; hint badge from player progress; HUD PNG icons untinted; header back/settings transparent icon-only (~88% + 1.2× visual scale); round actions 64px plate with ~84% + 1.22× visual scale |
-| **Used by** | `GameplayLayout`, `TileView`, `docs/03_Screens/Gameplay.md` |
+| **Used by** | `GameplayLayout`, `BoardRenderer`, `CellOverlay`, `docs/03_Screens/Gameplay.md` |
 
 #### LLProgressBar
 

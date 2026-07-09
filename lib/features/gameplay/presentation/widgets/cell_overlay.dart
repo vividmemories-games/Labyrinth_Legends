@@ -1,28 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:labyrinth_legends/design_system/assets/ll_gameplay_assets.dart';
 import 'package:labyrinth_legends/design_system/components/gameplay/ll_gameplay_asset.dart';
-import 'package:labyrinth_legends/design_system/components/gameplay/painting/maze_tile_painter.dart';
 import 'package:labyrinth_legends/design_system/theme/ll_theme_extension.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
-import 'package:labyrinth_legends/features/gameplay/presentation/board/cell_edge_mask.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_type.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_visibility.dart';
-import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_cell.dart';
-import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
 
-/// Single maze cell tile — authored autotile PNGs; sprite-first objects.
-class TileView extends StatelessWidget {
-  const TileView({
+/// Per-cell interaction overlays and in-maze object sprites.
+///
+/// Maze structure (floor + walls) is drawn by [MazePainter] underneath.
+class CellOverlay extends StatelessWidget {
+  const CellOverlay({
     super.key,
     required this.cell,
-    required this.position,
-    required this.grid,
     required this.size,
     this.isPathTile = false,
     this.isPathEndpoint = false,
     this.isInvalidTarget = false,
-    this.hideStartMarker = false,
     this.effectiveKeyIds = const {},
     this.isSelected = false,
     this.isExtensionHint = false,
@@ -32,13 +27,10 @@ class TileView extends StatelessWidget {
   });
 
   final MazeCell cell;
-  final GridPosition position;
-  final MazeGrid grid;
   final double size;
   final bool isPathTile;
   final bool isPathEndpoint;
   final bool isInvalidTarget;
-  final bool hideStartMarker;
   final Set<String> effectiveKeyIds;
   final bool isSelected;
   final bool isExtensionHint;
@@ -54,46 +46,15 @@ class TileView extends StatelessWidget {
     final isLockedGate =
         cell.lockId != null && !effectiveKeyIds.contains(cell.lockId);
 
-    Widget sprite(GameplayAssetKind kind, {String? label}) {
-      return LLGameplayAsset(
-        kind: kind,
-        size: size,
-        fit: BoxFit.cover,
-        visualScale: _objectVisualScale,
-        semanticLabel: label,
-      );
-    }
-
     Widget objectLayer(GameplayAssetKind kind, {String? label}) {
-      return Positioned.fill(child: sprite(kind, label: label));
-    }
-
-    Widget tileBase() {
-      final mask = CellEdgeMask.forCell(grid, position);
-      return Stack(
-        fit: StackFit.expand,
-        children: [
-          LLGameplayAsset(
-            kind: GameplayAssetKind.tileFloor,
-            size: size,
-            fit: BoxFit.cover,
-            fallback: CustomPaint(
-              size: Size.square(size),
-              painter: MazeTilePainter(
-                cellType: cell.type,
-                isWalkable: true,
-              ),
-            ),
-          ),
-          for (final overlay in mask.layeredOverlays)
-            Positioned.fill(
-              child: LLGameplayAsset(
-                kind: overlay,
-                size: size,
-                fit: BoxFit.cover,
-              ),
-            ),
-        ],
+      return Positioned.fill(
+        child: LLGameplayAsset(
+          kind: kind,
+          size: size,
+          fit: BoxFit.cover,
+          visualScale: _objectVisualScale,
+          semanticLabel: label,
+        ),
       );
     }
 
@@ -107,7 +68,6 @@ class TileView extends StatelessWidget {
           clipBehavior: Clip.hardEdge,
           fit: StackFit.expand,
           children: [
-            tileBase(),
             if (_overlayColor(theme: theme, isLockedGate: isLockedGate)
                 case final color?)
               ColoredBox(color: color),

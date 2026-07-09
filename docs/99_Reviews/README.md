@@ -223,8 +223,10 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0087 | [Screens/0087_gameplay_wall_autotiling_procedural_assets.md](Screens/0087_gameplay_wall_autotiling_procedural_assets.md) | Ready for Review |
 | 0088 | [Screens/0088_gameplay_authored_autotile_pngs.md](Screens/0088_gameplay_authored_autotile_pngs.md) | Ready for Review |
 | 0089 | [Architecture/0089_edge_based_maze_authored_tiles.md](Architecture/0089_edge_based_maze_authored_tiles.md) | Ready for Review |
+| 0090 | [Screens/0090_gameplay_maze_poc_renderer.md](Screens/0090_gameplay_maze_poc_renderer.md) | Draft |
+| 0091 | [Screens/0091_gameplay_floor_tile_variation.md](Screens/0091_gameplay_floor_tile_variation.md) | Ready for Review |
 
-**Next ID:** 0090
+**Next ID:** 0092
 
 ## Related Docs
 

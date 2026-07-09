@@ -51,6 +51,7 @@ class GameplayLayout extends StatelessWidget {
     this.keysValue,
     this.hintBadge,
     this.backgroundAsset,
+    this.floorLayoutSeed = 0,
   });
 
   final String levelLabel;
@@ -92,6 +93,7 @@ class GameplayLayout extends StatelessWidget {
   final String? keysValue;
   final String? hintBadge;
   final String? backgroundAsset;
+  final int floorLayoutSeed;
 
   @override
   Widget build(BuildContext context) {
@@ -208,6 +210,7 @@ class GameplayLayout extends StatelessWidget {
                           showDebugGrid: showDebugGrid,
                           inputEnabled: inputEnabled && !isInteractionLocked,
                           effectiveKeyIds: effectiveKeyIds,
+                          floorLayoutSeed: floorLayoutSeed,
                         ),
                       ),
                     ),

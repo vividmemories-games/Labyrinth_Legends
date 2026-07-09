@@ -19,7 +19,7 @@ The gameplay HUD is **not a persistent dashboard**. It surfaces only what the cu
 LLScreenBackground (optional gameplay_screen.png when bundled)
 ├─ GameplayTopBar: back · LEVEL N + stars · settings (pause)
 ├─ GameplayBoardContainer (gold-bordered maze frame)
-│   └─ BoardRenderer (tile sprites + path overlay + explorer)
+│   └─ BoardRenderer (MazePainter + cell overlays + path + explorer)
 └─ GameplayControlBar (drawing phase only)
     ├─ UNDO · ERASE · HINT (round stone buttons)
     ├─ MOVES · GEMS · KEYS stat row (conditional)
@@ -82,17 +82,20 @@ Hidden during `executing`, `paused`, `won`, `lost`.
 
 | Element | Token / note |
 |---------|--------------|
-| Floor base | `tile_floor.png` on **every** walkable cell (identical stone slab) |
-| Raised walls | Transparent edge overlays: `edge_n/e/s/w`, `edge_ne/nw/se/sw`, `edge_inner_*` stacked via `CellEdgeMask.layeredOverlays` |
-| Path model | No `wall` cell type in schema v2 — impassability is **blocked edges** on walkable cells + implicit perimeter |
+| Floor slabs | `tile_floor_1`–`tile_floor_4` per cell (random per level attempt) + `tile_floor.png` fallback; 0–270° rotation |
+| Raised walls | Same variant + rotation as the adjacent walkable floor cell |
+| Board presentation | Subtle perspective tilt (~6°) on `BoardRenderer` stack |
+| Theme | `MazeTheme.ancientRuins` for World 01 |
+| Path model | Schema v2 — impassability is **blocked edges** on walkable cells + implicit perimeter |
+| Interaction overlays | `CellOverlay` — path tint, selection, fog, invalid target (transparent; no tile PNGs) |
 | Path stroke | `LLColor.energyCyan` glow (`PremiumPathOverlayPainter`) |
 | Portal exit | `LLGameplayAsset` exit portal + painter fallback |
-| Gems / keys / locks | Full-cell sprites |
+| Gems / keys / locks | Full-cell sprites (`LLGameplayAsset`) |
 | Character | `explorer_idle.png` — full cell |
-| Board frame | `GameplayBoardContainer` gold border; dark translucent inner |
+| Board frame | `GameplayBoardContainer` — dark translucent panel, no gold border |
 | Screen backdrop | `gameplay_screen.png` via `LLScreenBackground` |
 
-Environment tiles are **authored PNGs** (not procedurally painted). Layer order per cell: `tile_floor` base, then edge overlay stack. Regenerate via image pipeline documented in `docs/06_Asset_Bible/AB2_Game_Assets.md`.
+Maze structure is **not** authored as per-cell floor/wall PNGs. Re-theming a world swaps `MazeTheme` colors/textures only. Collectibles and HUD icons remain AB2/AB3 PNG sprites.
 
 ---
 

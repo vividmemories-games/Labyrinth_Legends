@@ -4,15 +4,39 @@ Log material decisions here. Format: date, decision, reason, status.
 
 ---
 
+## 2026-07-09 — Gameplay floor tile variation (per-attempt shuffle)
+
+**Decision:** Floor slabs use a **four-variant PNG pool** (`tile_floor_1`–`tile_floor_4`) with `tile_floor.png` as fallback. Each walkable cell gets a random variant and 0/90/180/270° rotation per level attempt. Seed = `Object.hash(levelId, retryCount)` so layout reshuffles on Try Again but stays stable during play. Raised wall stones reuse the adjacent walkable cell's placement.
+
+**Reason:** Single-texture floors felt repetitive on the 0090 renderer. Human-authored variants preserve art direction while breaking visual monotony without per-level tile maps.
+
+**Impact:** `FloorTileLayout`, `MazePainter`, `MazeTheme`/`MazeTextureLoader`, `BoardRenderer` seed wiring; `Gameplay.md` updated. Engine/schema unchanged.
+
+**Status:** Accepted (pending Human visual QA — review package 0091)
+
+---
+
+## 2026-07-09 — Production maze rendering: code-drawn POC (not PNG tileset)
+
+**Decision:** Replace authored `tile_floor` + `edge_*` PNG maze rendering with the **code-drawn `MazePainter`** from the maze-render POC. Production `BoardRenderer` stacks `MazePainter` (floor + raised stone walls) under `CellOverlay` (interaction tints + collectible sprites). Remove edge/tile floor asset kinds and bundled edge PNGs.
+
+**Reason:** Authored edge overlay PNGs failed visual QA (opaque seams, inconsistent floors). The POC renderer produces seamless raised-edge walls at any resolution and re-themes via `MazeTheme` without a per-world tileset.
+
+**Impact:** `BoardRenderer`, `CellOverlay` (replaces `TileView`); `lib/features/gameplay/presentation/rendering/`; `LLGameplayAssets` trimmed; `edge_*.png` / `tile_floor.png` removed; `Gameplay.md` updated. Schema v2 engine unchanged. Supersedes PNG rendering portion of 2026-07-06 edge-tile decision and review package 0089.
+
+**Status:** Accepted
+
+---
+
 ## 2026-07-06 — Edge-based maze model (schema v2)
 
-**Decision:** Migrate gameplay grid from impassable `wall` cells to **blocked edges on walkable cells** (schema v2). Rendering uses layered `tile_floor` + `edge_*` overlays. Architecture freeze exception approved for M2.7 visual foundation.
+**Decision:** Migrate gameplay grid from impassable `wall` cells to **blocked edges on walkable cells** (schema v2). ~~Rendering uses layered `tile_floor` + `edge_*` overlays.~~ **Rendering:** superseded 2026-07-09 by code-drawn `MazePainter`. Architecture freeze exception approved for M2.7 visual foundation.
 
 **Reason:** Combined autotile PNGs (`tile_n`, `wall_fill`) produced visible seams and inconsistent floor textures. Edge-blockage matches the design intent: raised sides on walkable tiles, not separate wall blocks.
 
-**Impact:** `Level_Format.md` schema v2; `MazeGrid.canTraverse()`; `PathValidator` edge checks; `CellEdgeMask` rendering; `level_001`–`level_010` edge-test band; supersedes review packages 0087/0088.
+**Impact:** `Level_Format.md` schema v2; `MazeGrid.canTraverse()`; `PathValidator` edge checks; ~~`CellEdgeMask` rendering~~; `level_001`–`level_010` edge-test band; supersedes review packages 0087/0088.
 
-**Status:** Accepted
+**Status:** Accepted (engine); rendering superseded 2026-07-09
 
 ---
 

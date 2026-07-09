@@ -35,20 +35,6 @@ class GameplayObjectPainter extends CustomPainter {
         _paintInvalidBlock(canvas, size);
       case GameplayAssetKind.switchOff:
         _paintSwitch(canvas, size);
-      case GameplayAssetKind.tileFloor:
-      case GameplayAssetKind.edgeNorth:
-      case GameplayAssetKind.edgeEast:
-      case GameplayAssetKind.edgeSouth:
-      case GameplayAssetKind.edgeWest:
-      case GameplayAssetKind.edgeCornerNorthEast:
-      case GameplayAssetKind.edgeCornerNorthWest:
-      case GameplayAssetKind.edgeCornerSouthEast:
-      case GameplayAssetKind.edgeCornerSouthWest:
-      case GameplayAssetKind.edgeInnerNorthEast:
-      case GameplayAssetKind.edgeInnerNorthWest:
-      case GameplayAssetKind.edgeInnerSouthEast:
-      case GameplayAssetKind.edgeInnerSouthWest:
-        break;
     }
   }
 

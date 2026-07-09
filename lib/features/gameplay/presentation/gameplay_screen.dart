@@ -10,6 +10,7 @@ import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_contro
 import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_feedback.dart';
 import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_layout.dart';
 import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_shell_state.dart';
+import 'package:labyrinth_legends/features/gameplay/presentation/rendering/floor_tile_layout.dart';
 import 'package:labyrinth_legends/game_engine/models/level_definition.dart';
 
 /// Production gameplay screen — MVP mockup visual pass (M2.8).
@@ -117,6 +118,10 @@ class _GameplayLoadedView extends ConsumerWidget {
       inputEnabled: shellState.phase != GameplayShellPhase.paused,
       isInteractionLocked: shellState.isInteractionLocked,
       effectiveKeyIds: shellState.effectiveKeyIds,
+      floorLayoutSeed: floorLayoutSeedFor(
+        levelId: level.id,
+        retryCount: shellState.retryCount,
+      ),
     );
   }
 }

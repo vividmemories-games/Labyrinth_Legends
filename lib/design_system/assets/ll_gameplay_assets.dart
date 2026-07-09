@@ -1,22 +1,8 @@
 import 'package:labyrinth_legends/design_system/assets/ll_asset_paths.dart';
-import 'package:labyrinth_legends/design_system/assets/ll_gameplay_assets.dart';
 
-/// AB2 in-maze asset identifiers — paths only; rendering falls back to
+/// AB2 in-maze asset identifiers
 /// programmatic LLDL placeholders when files are not yet bundled (M2.7).
 enum GameplayAssetKind {
-  tileFloor,
-  edgeNorth,
-  edgeEast,
-  edgeSouth,
-  edgeWest,
-  edgeCornerNorthEast,
-  edgeCornerNorthWest,
-  edgeCornerSouthEast,
-  edgeCornerSouthWest,
-  edgeInnerNorthEast,
-  edgeInnerNorthWest,
-  edgeInnerSouthEast,
-  edgeInnerSouthWest,
   explorer,
   gem,
   key,
@@ -51,32 +37,6 @@ enum GameplayHudIconKind {
 /// Canonical gameplay-world and HUD icon paths per UI_08 / Asset Bible AB2–AB3.
 abstract final class LLGameplayAssets {
   static String path(GameplayAssetKind kind) => switch (kind) {
-        GameplayAssetKind.tileFloor =>
-          '${LLAssetPaths.gameplayRoot}environment/tile_floor.png',
-        GameplayAssetKind.edgeNorth =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_n.png',
-        GameplayAssetKind.edgeEast =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_e.png',
-        GameplayAssetKind.edgeSouth =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_s.png',
-        GameplayAssetKind.edgeWest =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_w.png',
-        GameplayAssetKind.edgeCornerNorthEast =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_ne.png',
-        GameplayAssetKind.edgeCornerNorthWest =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_nw.png',
-        GameplayAssetKind.edgeCornerSouthEast =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_se.png',
-        GameplayAssetKind.edgeCornerSouthWest =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_sw.png',
-        GameplayAssetKind.edgeInnerNorthEast =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_inner_ne.png',
-        GameplayAssetKind.edgeInnerNorthWest =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_inner_nw.png',
-        GameplayAssetKind.edgeInnerSouthEast =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_inner_se.png',
-        GameplayAssetKind.edgeInnerSouthWest =>
-          '${LLAssetPaths.gameplayRoot}environment/edge_inner_sw.png',
         GameplayAssetKind.explorer =>
           '${LLAssetPaths.gameplayRoot}explorer/explorer_idle.png',
         GameplayAssetKind.gem =>

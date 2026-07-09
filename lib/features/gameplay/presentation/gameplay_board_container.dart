@@ -21,6 +21,7 @@ class GameplayBoardContainer extends StatelessWidget {
     this.showDebugGrid = false,
     this.inputEnabled = true,
     this.effectiveKeyIds = const {},
+    this.floorLayoutSeed = 0,
   });
 
   final MazeGrid grid;
@@ -35,6 +36,7 @@ class GameplayBoardContainer extends StatelessWidget {
   final bool showDebugGrid;
   final bool inputEnabled;
   final Set<String> effectiveKeyIds;
+  final int floorLayoutSeed;
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +55,7 @@ class GameplayBoardContainer extends StatelessWidget {
       showDebugGrid: showDebugGrid,
       enabled: inputEnabled,
       effectiveKeyIds: effectiveKeyIds,
+      floorLayoutSeed: floorLayoutSeed,
     );
 
     return Padding(
@@ -61,11 +64,6 @@ class GameplayBoardContainer extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: theme.radiusPanel,
           color: LLColor.templeBlack.withValues(alpha: 0.45),
-          border: Border.all(
-            color:
-                theme.actionPrimary.withValues(alpha: LLColor.borderGoldAlpha),
-            width: LLSize.borderWidth * 2,
-          ),
           boxShadow: [
             ...LLShadow.panel,
             BoxShadow(
