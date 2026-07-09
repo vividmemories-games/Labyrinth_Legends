@@ -4,6 +4,18 @@ Log material decisions here. Format: date, decision, reason, status.
 
 ---
 
+## 2026-07-09 — Keep code-drawn maze render POC alongside production PNG edges
+
+**Decision:** Retain the `maze_render_poc` code-drawn wall renderer (jittered stone edges + `MazeTheme` skins) on branch `cursor/maze-render-poc` after merging `main`. Production Gameplay continues to use authored layered PNG edges (`TileView` / `edge_*.png`) until an explicit swap is approved.
+
+**Reason:** Human evaluated the POC as the preferred visual direction for walls. Main’s schema-v2 edge engine remains correct for gameplay rules; the POC is the preferred *visual* expression of those edges, not a competing engine model.
+
+**Impact:** Dual pipelines coexist (dev POC vs production PNGs). `WallEdgeBuilder` reads both legacy wall cells and schema-v2 `blockedEdges`. Review package 0090 (POC) + 0091 (merge keep). Follow-up: optional production swap of board rendering to `MazePainter`.
+
+**Status:** Accepted
+
+---
+
 ## 2026-07-06 — Edge-based maze model (schema v2)
 
 **Decision:** Migrate gameplay grid from impassable `wall` cells to **blocked edges on walkable cells** (schema v2). Rendering uses layered `tile_floor` + `edge_*` overlays. Architecture freeze exception approved for M2.7 visual foundation.

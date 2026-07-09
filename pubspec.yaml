@@ -28,6 +28,7 @@ flutter:
     - assets/images/icons/
     - assets/images/illustrations/
     - assets/images/backgrounds/
+    - assets/images/textures/
     # Flutter does not recurse — each gameplay category must be listed.
     - assets/images/gameplay/environment/
     - assets/images/gameplay/explorer/

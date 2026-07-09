@@ -8,6 +8,7 @@ import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_screen
 import 'package:labyrinth_legends/features/home/presentation/home_screen.dart';
 import 'package:labyrinth_legends/features/level_complete/presentation/level_complete_screen.dart';
 import 'package:labyrinth_legends/features/level_select/presentation/level_select_screen.dart';
+import 'package:labyrinth_legends/features/maze_render_poc/presentation/maze_render_poc_screen.dart';
 import 'package:labyrinth_legends/features/settings/presentation/settings_screen.dart';
 import 'package:labyrinth_legends/features/shop/presentation/shop_screen.dart';
 import 'package:labyrinth_legends/features/splash/presentation/splash_screen.dart';
@@ -37,6 +38,12 @@ final appRouter = GoRouter(
         path: AppRoutes.engineDebugSandbox,
         name: 'engineDebugSandbox',
         builder: (context, state) => const EngineDebugSandboxScreen(),
+      ),
+    if (AppEnv.enableDebugOverlays)
+      GoRoute(
+        path: AppRoutes.mazeRenderPoc,
+        name: 'mazeRenderPoc',
+        builder: (context, state) => const MazeRenderPocScreen(),
       ),
     GoRoute(
       path: AppRoutes.worlds,

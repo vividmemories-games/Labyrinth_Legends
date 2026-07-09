@@ -30,49 +30,49 @@ class HomeScreen extends StatelessWidget {
                       child: _HomeTitle(),
                     ),
                   ),
-                const Spacer(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: LLSpacing.screenPadding,
+                  const Spacer(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: LLSpacing.screenPadding,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        LLButton(
+                          label: 'PLAY',
+                          expanded: true,
+                          onPressed: () => context.push('/worlds'),
+                        ),
+                        const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
+                        LLButton(
+                          label: 'DAILY CHALLENGE',
+                          variant: LLButtonVariant.secondary,
+                          expanded: true,
+                          onPressed: () => context.push('/daily'),
+                        ),
+                        const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
+                        LLButton(
+                          label: 'SHOP',
+                          variant: LLButtonVariant.secondary,
+                          expanded: true,
+                          onPressed: () => context.push('/shop'),
+                        ),
+                        const SizedBox(height: LLSpacing.xxl),
+                        _HomeDock(
+                          onSettings: () => context.push('/settings'),
+                        ),
+                        const SizedBox(height: LLSpacing.sm),
+                      ],
+                    ),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      LLButton(
-                        label: 'PLAY',
-                        expanded: true,
-                        onPressed: () => context.push('/worlds'),
-                      ),
-                      const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
-                      LLButton(
-                        label: 'DAILY CHALLENGE',
-                        variant: LLButtonVariant.secondary,
-                        expanded: true,
-                        onPressed: () => context.push('/daily'),
-                      ),
-                      const SizedBox(height: LLSpacing.sm + LLSpacing.xs),
-                      LLButton(
-                        label: 'SHOP',
-                        variant: LLButtonVariant.secondary,
-                        expanded: true,
-                        onPressed: () => context.push('/shop'),
-                      ),
-                      const SizedBox(height: LLSpacing.xxl),
-                      _HomeDock(
-                        onSettings: () => context.push('/settings'),
-                      ),
-                      const SizedBox(height: LLSpacing.sm),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            if (AppEnv.enableDebugOverlays)
-              const Positioned(
-                top: 0,
-                right: LLSpacing.screenPadding,
-                child: _DevToolsMenu(),
+                ],
               ),
+              if (AppEnv.enableDebugOverlays)
+                const Positioned(
+                  top: 0,
+                  right: LLSpacing.screenPadding,
+                  child: _DevToolsMenu(),
+                ),
             ],
           ),
         ),
@@ -126,6 +126,10 @@ class _DevToolsMenu extends StatelessWidget {
           value: _DevRoute.engineSandbox,
           child: Text('Engine Sandbox'),
         ),
+        const PopupMenuItem(
+          value: _DevRoute.mazeRenderPoc,
+          child: Text('Maze Render POC'),
+        ),
       ],
     );
   }
@@ -133,7 +137,8 @@ class _DevToolsMenu extends StatelessWidget {
 
 enum _DevRoute {
   designSystem('/dev/design-system'),
-  engineSandbox('/dev/engine-sandbox');
+  engineSandbox('/dev/engine-sandbox'),
+  mazeRenderPoc('/dev/maze-render-poc');
 
   const _DevRoute(this.path);
   final String path;
