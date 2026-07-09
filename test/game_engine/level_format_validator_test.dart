@@ -30,7 +30,7 @@ void main() {
         expectedLevelId: 'level_001',
         expectedWorldId: 'world_1',
       );
-      expect(level.schemaVersion, 1);
+      expect(level.schemaVersion, 2);
       expect(level.id, 'level_001');
       expect(level.grid.findStart(), isNotNull);
       expect(level.grid.findExit(), isNotNull);
@@ -203,7 +203,7 @@ void main() {
 
   group('parse', () {
     test('throws LevelFormatValidationException on invalid json', () {
-      final json = _minimalValidLevel()..remove('schemaVersion');
+      final json = _minimalValidLevel()..remove('id');
       expect(
         () => validator.parse(json),
         throwsA(isA<LevelFormatValidationException>()),

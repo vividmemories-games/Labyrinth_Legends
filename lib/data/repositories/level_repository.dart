@@ -15,10 +15,8 @@ class LevelRepository {
   ///
   /// Levels 004+ may remain bundled but are excluded from runtime world loading
   /// until they pass structural validation (e.g. `schemaVersion` alignment).
-  static const Set<String> m1ValidatedLevelIds = {
-    'level_001',
-    'level_002',
-    'level_003',
+  static final Set<String> m1ValidatedLevelIds = {
+    for (var i = 1; i <= 10; i++) 'level_${i.toString().padLeft(3, '0')}',
   };
 
   final AssetBundle _bundle;
@@ -39,11 +37,11 @@ class LevelRepository {
   }
 
   Future<List<LevelDefinition>> loadWorld(String worldId) async {
-    final manifest = await _bundle.loadString('AssetManifest.json');
-    final assets = jsonDecode(manifest) as Map<String, dynamic>;
+    final manifest = await AssetManifest.loadFromAssetBundle(_bundle);
     final prefix = 'assets/levels/$worldId/';
 
-    final levelPaths = assets.keys
+    final levelPaths = manifest
+        .listAssets()
         .where((key) => key.startsWith(prefix) && key.endsWith('.json'))
         .where((key) {
           final levelId = key.split('/').last.replaceAll('.json', '');

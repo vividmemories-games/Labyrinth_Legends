@@ -6,7 +6,7 @@
 | **Type** | Gameplay visual-direction reference |
 | **Source Image** | `assets/images/ff0c236709512ed283c279b7b207ce35119e6587c81d9930151444f324d6ea0b.png` |
 | **Canonical Use** | Supporting reference for gameplay mood, hierarchy, and board readability |
-| **Status** | Active reference |
+| **Status** | **Non-canonical** — superseded for MVP by [Gameplay_Screen_Master_Mockup.md](Gameplay_Screen_Master_Mockup.md) |
 
 ## Purpose
 

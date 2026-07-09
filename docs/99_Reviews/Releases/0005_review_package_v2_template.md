@@ -189,7 +189,6 @@ scripts/new_review_package.sh
 ## Ready For
 
 - [x] Codex Engineering Review
-- [x] ChatGPT Product Review
 - [ ] Human Approval
 
 ---
@@ -204,14 +203,6 @@ scripts/new_review_package.sh
 - **Blocking Issues:**
 - **Recommendations:**
 
-### ChatGPT Product Review
-
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
 
 ### Human Approval
 

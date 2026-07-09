@@ -131,7 +131,7 @@ All interactive components must support perceptible multichannel states per WS11
 | **Domain** | Shared shell |
 | **Tier** | Functional |
 | **Purpose** | Full-screen temple backdrop with optional hero image and veil |
-| **API** | `child`, `heroImageAsset?`, `heroAlignment` |
+| **API** | `child`, `heroImageAsset?`, `heroAlignment`, `veilStrength` (default `1.0`), `heroScale` (default `1.0`) |
 | **States** | Static |
 | **Tokens** | `LLColor.templeBlack`, `LLGradient.screenVeil` |
 | **Used by** | Home, Showcase |
@@ -146,11 +146,12 @@ All interactive components must support perceptible multichannel states per WS11
 |-------|-------|
 | **Domain** | Shared (gameplay + meta-game) |
 | **Tier** | Functional; ceremonial accent only on reward flows |
-| **Purpose** | Mechanism of commitment — engraved plate actions |
-| **Variants** | `primary` (gold), `secondary` (cyan energy), `ghost`, `danger` |
+| **Purpose** | Mechanism of commitment — weathered engraved bronze / stone plates |
+| **Variants** | `primary` (weathered bronze), `secondary` (cracked stone + cyan edge), `ghost`, `danger` |
 | **API** | `label`, `onPressed?`, `icon?`, `variant`, `expanded`, `enabled` |
-| **States** | Default, pressed, disabled (opacity + no glow), focus (ink splash) |
-| **Tokens** | `LLGradient.goldButton`, `LLShadow.goldGlow`, `LLTextStyle.button` |
+| **States** | Default, pressed, disabled (opacity + darken texture), focus (ink splash) |
+| **Plate rendering** | `ClipRRect` → gradient underlay → optional weathered texture (`BoxFit.cover`, primary uses slight center scale to clip ornate corner frame) → label |
+| **Tokens** | `LLGradient.goldButton`, `LLGradient.secondaryButton`, `LLShadow.weatheredPlate`, texture assets in `LLAssetPaths`, `LLTextStyle.buttonPrimary` / `buttonSecondary` |
 | **Rules** | One primary gold CTA per surface; cyan = secondary/magical only |
 | **Used by** | Home, Showcase, LLDialog, future Gameplay controls |
 | **Accessibility** | `Semantics` label; min height via padding + `LLSize.touchTarget` |
@@ -227,6 +228,17 @@ All interactive components must support perceptible multichannel states per WS11
 | **Tokens** | `LLSurface.pill`, `LLTextStyle.currencyValue` |
 | **Rules** | Progressive HUD per WS4 — surface only when phase requires |
 | **Used by** | Home, Showcase, future Gameplay HUD |
+
+#### GameplayTopBar · GameplayHeaderIconButton · GameplayControlBar · GameplayRoundActionButton · GameplayStatColumn · LLGameplayAsset
+
+| Field | Value |
+|-------|-------|
+| **Domain** | Gameplay screen chrome + in-maze sprites (MVP mockup panel 3) |
+| **Tier** | Functional only |
+| **Purpose** | Header (back, level + stars, settings/pause); rustic 52px header icon plates; bottom UNDO/ERASE/HINT row with PNG icons; MOVES/GEMS/KEYS stats; GO CTA; tile/object sprites with painter fallback |
+| **Implementation** | `lib/design_system/components/gameplay/` · `ll_gameplay_assets.dart` |
+| **Rules** | Control bar hidden during execution; stats conditional per level; hint badge from player progress; HUD PNG icons untinted; header back/settings transparent icon-only (~88% + 1.2× visual scale); round actions 64px plate with ~84% + 1.22× visual scale |
+| **Used by** | `GameplayLayout`, `TileView`, `docs/03_Screens/Gameplay.md` |
 
 #### LLProgressBar
 

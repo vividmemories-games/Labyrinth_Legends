@@ -115,7 +115,6 @@ fvm flutter analyze --no-fatal-infos
 ## Ready For
 
 - [x] Codex Engineering Review
-- [x] ChatGPT Product Review
 - [ ] Human Approval
 
 ---
@@ -128,7 +127,6 @@ _Date:_
 _Verdict:_  
 _Notes:_
 
-### ChatGPT Product Review
 
 _Date:_  
 _Verdict:_  

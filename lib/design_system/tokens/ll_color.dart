@@ -15,6 +15,9 @@ abstract final class LLColor {
   static const Color ancientGold = Color(0xFFD4A63A);
   static const Color ancientGoldLight = Color(0xFFE8C56A);
   static const Color ancientGoldDark = Color(0xFF9A7424);
+  static const Color bronzeRust = Color(0xFF7A4F2A);
+  static const Color oxidizedBronze = Color(0xFF4A3520);
+  static const Color weatheredStone = Color(0xFF151A24);
   static const Color portalBlue = Color(0xFF00AEEF);
   static const Color energyCyan = Color(0xFF00D9FF);
   static const Color crystalPurple = Color(0xFF8A5CFF);
@@ -30,7 +33,9 @@ abstract final class LLColor {
 
   // Opacity helpers (component-token composition)
   static const double borderGoldAlpha = 0.25;
+  static const double borderWeatheredGoldAlpha = 0.45;
   static const double borderCyanAlpha = 0.55;
+  static const double borderWeatheredCyanAlpha = 0.32;
   static const double veilTopAlpha = 0.55;
   static const double veilMidAlpha = 0.88;
   static const double veilBottomAlpha = 0.96;

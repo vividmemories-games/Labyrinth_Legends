@@ -953,6 +953,90 @@ This document is **Approved**. It satisfies the Level Format prerequisite for **
 
 ---
 
+## 17. Schema Version 2 — Edge-Blocked Grids
+
+**Status:** Active (M2.7). Supersedes wall-cell perimeter model for new and migrated levels.
+
+### Concept
+
+| v1 | v2 |
+|----|-----|
+| Outer `wall` cells + interior `wall` pillars | All cells are walkable types (`floor`, `start`, `exit`) |
+| Impassability via `!cell.isWalkable` | Impassability via **blocked edges** + out-of-bounds perimeter |
+| Autotile combined PNGs per cell | `tile_floor` base + `edge_*` overlay stack |
+
+### `schemaVersion`
+
+| Value | Meaning |
+|-------|---------|
+| `1` | Legacy wall-cell grids — auto-converted to v2 at parse time via `LevelV1ToV2Converter` |
+| `2` | Edge-blocked walkable grid (authoritative for new content) |
+
+### Cell `edges` object (optional per cell)
+
+```json
+{
+  "type": "floor",
+  "edges": {
+    "north": true,
+    "east": false,
+    "south": false,
+    "west": true
+  }
+}
+```
+
+| Field | Type | Meaning |
+|-------|------|---------|
+| `north` / `east` / `south` / `west` | `boolean` | `true` = raised impassable side on that edge |
+
+Omitted edges default to `false` (open). Grid perimeter edges are **implicitly blocked** at runtime (`MazeGrid.resolvedEdgesAt`).
+
+### Movement rule
+
+Path step `A → B` is legal iff:
+
+1. `A` and `B` are orthogonally adjacent
+2. `MazeGrid.canTraverse(A, B)` — shared edge is not blocked on either cell
+
+### Validation changes (v2)
+
+| ID | Rule |
+|----|------|
+| LV-01 | `schemaVersion` must be `1` or `2` |
+| LV-13 | **Skipped** for v2 — perimeter is implicit via edge resolution |
+| LV-20 | v2 cells must **not** use `type: "wall"` — use `edges` instead |
+
+### Example v2 level
+
+```json
+{
+  "schemaVersion": 2,
+  "id": "level_001",
+  "grid": {
+    "width": 3,
+    "height": 3,
+    "cells": [
+      [{"type": "start"}, {"type": "floor"}, {"type": "floor"}],
+      [{"type": "floor"}, {"type": "floor"}, {"type": "floor"}],
+      [{"type": "floor"}, {"type": "floor"}, {"type": "exit"}]
+    ]
+  }
+}
+```
+
+### M1 validated band (edge QA)
+
+`level_001`–`level_010` in `assets/levels/world_1/` are purpose-built v2 edge-test levels. `LevelRepository.m1ValidatedLevelIds` loads this band for runtime progression.
+
+### Migration
+
+- v1 JSON: cropped to walkable bounding box; wall cells become neighbor edge flags; interior wall cells become impassable floor pillars
+- Tool: `WRITE_V2_LEVELS=1 fvm flutter test test/tool/write_v2_levels_test.dart`
+- Decision record: [Decisions.md](../00_Project/Decisions.md) — edge-based maze model
+
+---
+
 ## Cross References
 
 - [Technical Implementation Plan](Technical_Implementation_Plan.md)

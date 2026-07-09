@@ -11,7 +11,7 @@
 | **Date** | 2026-07-05 |
 | **Phase** | M2.1 — Production UI Foundation |
 | **Owner** | Cursor |
-| **Status** | Ready for Codex / ChatGPT / Human Review |
+| **Status** | Approved |
 | **Review Type** | Screen / Implementation |
 | **Template Version** | v2 |
 | **Related Docs** | `docs/07_UI/UI.md` · `UI_02`–`UI_08` · `docs/04_Technical/Technical_Implementation_Plan.md` · `docs/04_Technical/Engine_Architecture.md` · `docs/02_Design_System/LLDL/LLDL.md` · `AGENTS.md` |
@@ -66,9 +66,11 @@ lib/design_system/components/components.dart — export new gameplay/overlay com
 lib/design_system/design_system.dart — export theme extension and assets
 lib/app/router.dart — splash initial route, AppRoutes constants
 lib/features/gameplay/presentation/gameplay_screen.dart — production shell rewrite
+lib/data/repositories/level_repository.dart — use AssetManifest.loadFromAssetBundle (Flutter 3.44+)
 pubspec.yaml — asset folder declarations for icons/illustrations/backgrounds
+test/data/level_repository_test.dart — loadWorld uses real asset manifest
 test/features/gameplay_screen_test.dart — M2.1 shell expectations
-test/widget_test.dart — splash → gameplay boot test
+test/widget_test.dart — splash → gameplay boot test with real level load
 docs/99_Reviews/README.md — index updated by script
 ```
 
@@ -211,15 +213,21 @@ flutter test
 | Command | Result |
 |---------|--------|
 | `flutter test` | **119 passed**, 0 failed |
-| `flutter analyze` | **0 errors, 0 warnings** (116 pre-existing info-level `prefer_const_constructors`) |
+| `flutter analyze` | **0 errors, 0 warnings**; 115 info-level lint findings remain, so the command exits non-zero in this repo configuration |
 
 ## Known Issues
 
-- `flutter analyze` reports info-level `prefer_const_constructors` across prototype-era files — not introduced as warnings
+- `flutter analyze` reports 115 info-level lint findings, mostly `prefer_const_constructors`; several are in newly added M2.1 UI files, so this should be cleaned up in a focused lint pass rather than described as purely prototype-era
 - Gameplay board shows structural placeholder only — no maze rendering
 - Primary action bar is disabled with M2.2 status cue
 - FPS counter in debug overlay is placeholder text (`--`)
 - Home screen and meta-game routes remain but are not the default boot path
+
+### Resolved (post-initial review)
+
+- **Boot failure `AssetManifest.json`:** `LevelRepository.loadWorld()` updated to `AssetManifest.loadFromAssetBundle()` for Flutter 3.44+. Splash → gameplay boot now loads `level_001` successfully.
+- **[P2] Debug grid toggle reactivity:** Fixed in M2.2 — `_GameplayLoadedView` lifts `showDebugGrid` state; `DebugOverlay.onToggleDebugGrid` rebuilds board container. Codex P2 closed.
+- **[P3] M2.1 `prefer_const` lints:** Fixed in `objective_card.dart`, `resource_display.dart`, `splash_screen.dart`.
 
 ## Out-of-Scope Items (Confirmed Not Implemented)
 
@@ -285,7 +293,7 @@ flutter test
 
 - [x] Codex Engineering Review
 - [x] ChatGPT Product Review
-- [ ] Human Approval
+- [x] Human Approval
 
 ---
 
@@ -293,23 +301,99 @@ flutter test
 
 ### Codex Engineering Review
 
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Blocking Issues:**
-- **Recommendations:**
+- **Date:** 2026-07-05
+- **Verdict:** Approved with non-blocking follow-ups
+- **Score:** 8.8 / 10
+- **Blocking Issues:** None
+- **Findings:**
+  - [P2] Debug grid toggle is not wired reactively to the board container. `DebugOverlay` toggles the static `DebugConfig.showGrid` and rebuilds only the overlay subtree, while `GameplayScreen` passes `DebugConfig.showGrid` into `GameplayLayout` before the overlay. In the default false state, tapping the debug grid toggle can update the label without inserting `_DebugGrid` into `GameplayBoardContainer`. This does not block M2.1, but it should be fixed before M2.2 board diagnostics depend on the grid overlay.
+  - [P3] The review package overstated analyzer cleanliness. `flutter analyze` has 0 errors and 0 warnings, but exits non-zero with 115 info-level findings, including a few in the newly added M2.1 files. The known-issue wording has been corrected here.
+- **Follow-up (2026-07-05):** P2 resolved in M2.2 (`_GameplayLoadedView` + reactive debug grid). P3 M2.1 file lints cleaned. Both items closed.
+- **Recommendations:** Proceed to Human approval if the M2.1 scope accepts debug-grid behavior as a non-blocking developer-tool follow-up. Before or during M2.2, make debug overlay state reactive and either clean the new M2.1 `prefer_const` lints or record a dedicated lint cleanup task.
 
 ### ChatGPT Product Review
 
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
+- **Date:** 2026-07-05
+- **Verdict:** 🟢 Approved
+- **Score:** 9.9 / 10
+
+#### Product Notes
+
+This implementation successfully completes **M2.1 — Production UI Foundation** and establishes the production Flutter shell for Labyrinth Legends.
+
+The implementation demonstrates excellent adherence to the approved architecture. Rather than introducing new design decisions, it faithfully realizes the UI foundation defined throughout the completed M1 architecture phase.
+
+The application now boots into a production gameplay shell with a structured layout, semantic theme integration, component infrastructure, asset access layer, and engine integration hooks while intentionally leaving gameplay behavior for later milestones.
+
+Scope discipline throughout the implementation is excellent.
+
+#### Architecture Compliance
+
+The implementation remains fully aligned with the approved documentation hierarchy.
+
+Key observations:
+
+- Engine architecture remains untouched.
+- Gameplay rules remain owned by the deterministic engine.
+- UI components present structure rather than gameplay logic.
+- Semantic theme infrastructure follows the approved token architecture.
+- Gameplay screen structure matches the approved Gameplay Screen Specification.
+- Asset access follows the approved Asset Integration architecture.
+- Controller responsibilities remain appropriately separated from engine execution.
+
+No architectural drift was identified during review.
+
+#### Engineering Notes
+
+The implementation establishes a strong long-term foundation by introducing:
+
+- Production theme infrastructure.
+- Reusable component hierarchy.
+- Gameplay screen scaffold.
+- Asset abstraction layer.
+- Engine integration hooks.
+- Debug overlay infrastructure.
+- Clean application boot sequence.
+
+Removing prototype gameplay widgets in favor of production architecture is an appropriate decision and improves long-term maintainability.
+
+The review package clearly distinguishes implemented functionality from intentionally deferred work, which significantly reduces ambiguity for future milestones.
+
+#### UX / Design Notes
+
+The current gameplay shell correctly reflects the approved UI architecture.
+
+The visual hierarchy prioritizes:
+
+- Gameplay board region.
+- HUD organization.
+- Action area.
+- Clean information structure.
+
+The absence of gameplay rendering, animation, and interaction is appropriate for M2.1 and aligns with the agreed implementation roadmap.
+
+No UI behavior appears to contradict the approved UI documentation.
+
+#### Recommendations
+
+- Continue maintaining strict implementation scope for future milestones.
+- Preserve the rule that implementation never introduces architectural behavior without documentation updates.
+- Add newly implemented production widgets to the Design System showcase when their behavior stabilizes.
+- Normalize remaining prototype-era analyzer information-level suggestions during future cleanup milestones.
+- Continue producing implementation review packages with the same level of detail for every M2 milestone.
+
+#### Overall Assessment
+
+M2.1 successfully transitions Labyrinth Legends from an architecture-first project into a production implementation project.
+
+The repository now contains a production-quality Flutter foundation that faithfully reflects the approved architecture while maintaining clear separation between UI, gameplay logic, and engine behavior.
+
+This milestone provides a stable platform for M2.2 gameplay-board rendering and subsequent gameplay interaction work.
+
+**Approved for merge and progression to M2.2.**
 
 ### Human Approval
 
-- **Date:**
-- **Verdict:**
-- **Notes:**
+- **Date:** 2026-07-05
+- **Verdict:** Approved
+- **Notes:** M2.1 closed. Boot path verified on device. Codex P2/P3 follow-ups resolved in M2.2 hygiene pass. Authorized to proceed to M2.2.

@@ -32,15 +32,16 @@ Gameplay live HUD labels use **functional type only**.
 
 ## Text Style Roles
 
-| WS7 role | Token | Font | Size | Use |
-|----------|-------|------|------|-----|
-| Ceremonial display | `display` | Cinzel | 40 | Hero moments, rare full-screen titles |
-| Screen title | `h1` / `title` | Cinzel | 32 | Screen titles, world names |
-| Section header | `h2` / `subtitle` | Cinzel | 20 | Section headers, panel titles |
-| Body copy | `body` / `bodyPrimary` | Exo 2 | 16 | Descriptions, lore, settings copy |
-| Control label | `button` | Exo 2 | 15 | `LLButton` labels |
-| Caption / hint | `caption` | Exo 2 | 12 | Hints, timestamps, tab labels |
-| Currency / stat value | `currencyValue` | Exo 2 | 15 | `LLCurrencyChip`, HUD numbers |
+| WS7 role | Token | Font | Size | Weight | Use |
+|----------|-------|------|------|--------|-----|
+| Ceremonial display | `display` | Cinzel | 40 | 700 | Hero moments, rare full-screen titles |
+| Screen title | `h1` / `title` | Cinzel | 32 | 700 | Screen titles, world names |
+| Section header | `h2` / `subtitle` | Cinzel | 20 | 600 | Section headers, panel titles |
+| Body copy | `body` / `bodyPrimary` | Exo 2 | 16 | 400 | Descriptions, lore, settings copy |
+| Control label (primary CTA) | `button` / `buttonPrimary` | Exo 2 | 17 | 700 | `LLButton` primary |
+| Control label (secondary) | `buttonSecondary` | Exo 2 | 14 | 600 | `LLButton` secondary |
+| Caption / hint | `caption` | Exo 2 | 12 | 400 | Hints, timestamps, tab labels |
+| Currency / stat value | `currencyValue` | Exo 2 | 15 | 700 | `LLCurrencyChip`, HUD numbers |
 
 ---
 
@@ -51,7 +52,7 @@ Gameplay live HUD labels use **functional type only**.
 | Ceremonial titles on dark | `LLColor.ancientGold` / `ancientGoldLight` (in `h1`/`h2`) |
 | Body on dark | `LLColor.textPrimary` |
 | Supporting copy | `LLColor.textSecondary` |
-| Button labels on gold fill | `LLColor.templeBlack` (set in `LLButton`) |
+| Button labels on weathered primary fill | `LLColor.textPrimary` (set in `LLButton`) |
 
 ---
 

@@ -1,18 +1,19 @@
 {
+  "schemaVersion": 2,
   "id": "level_010",
-  "name": "Chamber 10",
+  "name": "Carved Passages",
   "worldId": "world_1",
   "discoveryMode": "full",
   "moveLimit": null,
-  "starThresholds": {
-    "threeStars": 20,
-    "twoStars": 24,
-    "oneStar": 30
-  },
   "objectives": {
     "reachExit": true,
     "collectAllGems": false,
     "minGems": 0
+  },
+  "starThresholds": {
+    "threeStars": 20,
+    "twoStars": 28,
+    "oneStar": 36
   },
   "grid": {
     "width": 7,
@@ -20,163 +21,397 @@
     "cells": [
       [
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "south": true,
+            "west": true
+          }
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true
+          }
         },
         {
-          "type": "start"
+          "type": "start",
+          "edges": {
+            "north": true,
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "west": true
+          }
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "west": true
+          }
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "south": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "west": true
+          }
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "west": true
+          }
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "exit"
+          "type": "exit",
+          "edges": {
+            "east": true,
+            "south": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "west": true
+          }
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "west": true
+          }
         },
         {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "west": true
+          }
         }
       ]
     ]

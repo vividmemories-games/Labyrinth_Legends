@@ -35,6 +35,33 @@ abstract final class LLShadow {
         ),
       ];
 
+  /// Weathered engraved plate — inset depth, minimal bloom.
+  static List<BoxShadow> get weatheredPlate => [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.55),
+          blurRadius: 2,
+          offset: const Offset(0, 1),
+        ),
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.4),
+          blurRadius: 8,
+          offset: const Offset(0, 4),
+        ),
+      ];
+
+  static List<BoxShadow> get weatheredPlateSecondary => [
+        BoxShadow(
+          color: Colors.black.withValues(alpha: 0.5),
+          blurRadius: 2,
+          offset: const Offset(0, 1),
+        ),
+        BoxShadow(
+          color: LLColor.energyCyan.withValues(alpha: 0.06),
+          blurRadius: 6,
+          offset: const Offset(0, 2),
+        ),
+      ];
+
   static List<BoxShadow> get cyanGlow => [
         BoxShadow(
           color: LLColor.energyCyan.withValues(alpha: 0.15),
@@ -54,6 +81,15 @@ abstract final class LLShadow {
         Shadow(
           color: LLColor.ancientGold.withValues(alpha: 0.5),
           blurRadius: 16,
+        ),
+      ];
+
+  /// Engraved plate label legibility on weathered textures.
+  static List<Shadow> get buttonPlate => [
+        Shadow(
+          color: Colors.black.withValues(alpha: 0.65),
+          offset: const Offset(0, 1),
+          blurRadius: 2,
         ),
       ];
 }

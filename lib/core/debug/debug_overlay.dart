@@ -9,10 +9,16 @@ class DebugOverlay extends StatefulWidget {
     super.key,
     required this.child,
     this.engineStatus = 'Idle',
+    this.debugDetails,
+    this.showDebugGrid = false,
+    this.onToggleDebugGrid,
   });
 
   final Widget child;
   final String engineStatus;
+  final String? debugDetails;
+  final bool showDebugGrid;
+  final ValueChanged<bool>? onToggleDebugGrid;
 
   @override
   State<DebugOverlay> createState() => _DebugOverlayState();
@@ -37,7 +43,13 @@ class _DebugOverlayState extends State<DebugOverlay> {
           child: _DebugPanel(
             theme: theme,
             engineStatus: widget.engineStatus,
-            onToggleGrid: () => setState(DebugConfig.toggleGrid),
+            debugDetails: widget.debugDetails,
+            showDebugGrid: widget.showDebugGrid,
+            onToggleGrid: () {
+              final next = !widget.showDebugGrid;
+              DebugConfig.showGrid = next;
+              widget.onToggleDebugGrid?.call(next);
+            },
           ),
         ),
       ],
@@ -49,11 +61,15 @@ class _DebugPanel extends StatelessWidget {
   const _DebugPanel({
     required this.theme,
     required this.engineStatus,
+    required this.showDebugGrid,
     required this.onToggleGrid,
+    this.debugDetails,
   });
 
   final LLThemeExtension theme;
   final String engineStatus;
+  final String? debugDetails;
+  final bool showDebugGrid;
   final VoidCallback onToggleGrid;
 
   @override
@@ -65,7 +81,7 @@ class _DebugPanel extends StatelessWidget {
         border: Border.all(color: theme.pathEnergy.withValues(alpha: 0.5)),
       ),
       child: Padding(
-        padding: EdgeInsets.all(LLSpacing.sm),
+        padding: const EdgeInsets.all(LLSpacing.sm),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
@@ -76,13 +92,20 @@ class _DebugPanel extends StatelessWidget {
                 style: LLTextStyle.caption.copyWith(color: theme.pathEnergy),
               ),
             if (DebugConfig.showEngineStatus) ...[
-              SizedBox(height: LLSpacing.xs),
+              const SizedBox(height: LLSpacing.xs),
               Text(
                 'Engine: $engineStatus',
                 style: LLTextStyle.caption.copyWith(color: theme.textSecondary),
               ),
             ],
-            SizedBox(height: LLSpacing.xs),
+            if (debugDetails != null) ...[
+              const SizedBox(height: LLSpacing.xs),
+              Text(
+                debugDetails!,
+                style: LLTextStyle.caption.copyWith(color: theme.textSecondary),
+              ),
+            ],
+            const SizedBox(height: LLSpacing.xs),
             TextButton(
               onPressed: onToggleGrid,
               style: TextButton.styleFrom(
@@ -91,7 +114,7 @@ class _DebugPanel extends StatelessWidget {
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
               child: Text(
-                'Grid: ${DebugConfig.showGrid ? 'ON' : 'OFF'}',
+                'Grid: ${showDebugGrid ? 'ON' : 'OFF'}',
                 style: LLTextStyle.caption.copyWith(color: theme.actionPrimary),
               ),
             ),

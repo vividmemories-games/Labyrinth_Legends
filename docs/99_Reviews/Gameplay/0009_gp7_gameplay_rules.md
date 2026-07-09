@@ -196,13 +196,6 @@ Author **Puzzle_Elements.md** (GP3 Integration catalogue) or begin **engine step
 
 ### ChatGPT Product Review
 
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
-
 ### Human Approval
 
 - **Date:** 2026-07-03

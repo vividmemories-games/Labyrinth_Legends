@@ -1,13 +1,14 @@
 {
+  "schemaVersion": 2,
   "id": "level_004",
-  "name": "Veiled Corridors",
+  "name": "L Turn",
   "worldId": "world_1",
-  "discoveryMode": "fog",
+  "discoveryMode": "full",
   "moveLimit": null,
   "starThresholds": {
-    "threeStars": 14,
-    "twoStars": 18,
-    "oneStar": 22
+    "threeStars": 12,
+    "twoStars": 16,
+    "oneStar": 20
   },
   "objectives": {
     "reachExit": true,
@@ -15,29 +16,45 @@
     "minGems": 0
   },
   "grid": {
-    "width": 7,
-    "height": 7,
+    "width": 3,
+    "height": 3,
     "cells": [
       [
-        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+        {
+          "type": "start"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        }
       ],
       [
-        {"type": "wall"}, {"type": "start"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "wall"}
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "south": true,
+            "east": true
+          }
+        },
+        {
+          "type": "floor"
+        }
       ],
       [
-        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "exit"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "exit"
+        }
       ]
     ]
   }

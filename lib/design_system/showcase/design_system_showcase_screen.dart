@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:labyrinth_legends/design_system/assets/ll_asset_paths.dart';
 import 'package:labyrinth_legends/design_system/components/components.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
 
@@ -61,11 +62,13 @@ class DesignSystemShowcaseScreen extends StatelessWidget {
           SizedBox(height: LLSpacing.sm),
           Text('H2 — Crumbling Temple', style: LLTextStyle.h2),
           SizedBox(height: LLSpacing.sm),
-          Text('Body — Draw your fate through ancient ruins.', style: LLTextStyle.body),
+          Text('Body — Draw your fate through ancient ruins.',
+              style: LLTextStyle.body),
           SizedBox(height: LLSpacing.sm),
           Text('Caption — Seeded daily challenge', style: LLTextStyle.caption),
           SizedBox(height: LLSpacing.sm),
-          Text('Button Label', style: LLTextStyle.button.copyWith(color: LLColor.ancientGold)),
+          Text('Button Label',
+              style: LLTextStyle.button.copyWith(color: LLColor.ancientGold)),
         ],
       ),
     );
@@ -144,7 +147,11 @@ class DesignSystemShowcaseScreen extends StatelessWidget {
   Widget _buttonsSection(BuildContext context) {
     return Column(
       children: [
-        LLButton(label: 'Primary — Play', icon: Icons.play_arrow, expanded: true, onPressed: () {}),
+        LLButton(
+            label: 'Primary — Play',
+            icon: Icons.play_arrow,
+            expanded: true,
+            onPressed: () {}),
         SizedBox(height: LLSpacing.sm),
         LLButton(
           label: 'Secondary — Daily',
@@ -154,9 +161,17 @@ class DesignSystemShowcaseScreen extends StatelessWidget {
           onPressed: () {},
         ),
         SizedBox(height: LLSpacing.sm),
-        LLButton(label: 'Ghost', variant: LLButtonVariant.ghost, expanded: true, onPressed: () {}),
+        LLButton(
+            label: 'Ghost',
+            variant: LLButtonVariant.ghost,
+            expanded: true,
+            onPressed: () {}),
         SizedBox(height: LLSpacing.sm),
-        LLButton(label: 'Danger', variant: LLButtonVariant.danger, expanded: true, onPressed: () {}),
+        LLButton(
+            label: 'Danger',
+            variant: LLButtonVariant.danger,
+            expanded: true,
+            onPressed: () {}),
       ],
     );
   }
@@ -166,9 +181,15 @@ class DesignSystemShowcaseScreen extends StatelessWidget {
       children: [
         LLIconButton(icon: Icons.settings, onPressed: () {}),
         SizedBox(width: LLSpacing.sm),
-        LLIconButton(icon: Icons.share, variant: LLIconButtonVariant.ghost, onPressed: () {}),
+        LLIconButton(
+            icon: Icons.share,
+            variant: LLIconButtonVariant.ghost,
+            onPressed: () {}),
         SizedBox(width: LLSpacing.sm),
-        LLIconButton(icon: Icons.delete_outline, variant: LLIconButtonVariant.danger, onPressed: () {}),
+        LLIconButton(
+            icon: Icons.delete_outline,
+            variant: LLIconButtonVariant.danger,
+            onPressed: () {}),
         const Spacer(),
         LLFloatingButton(icon: Icons.add, onPressed: () {}),
       ],
@@ -210,17 +231,25 @@ class DesignSystemShowcaseScreen extends StatelessWidget {
       spacing: LLSpacing.sm,
       runSpacing: LLSpacing.sm,
       children: const [
-        LLBadge(label: 'Locked', variant: LLBadgeVariant.locked, icon: Icons.lock),
-        LLBadge(label: 'Done', variant: LLBadgeVariant.completed, icon: Icons.check),
+        LLBadge(
+            label: 'Locked', variant: LLBadgeVariant.locked, icon: Icons.lock),
+        LLBadge(
+            label: 'Done',
+            variant: LLBadgeVariant.completed,
+            icon: Icons.check),
         LLBadge(label: 'New', variant: LLBadgeVariant.newItem),
-        LLBadge(label: 'Perfect', variant: LLBadgeVariant.perfect, icon: Icons.star),
+        LLBadge(
+            label: 'Perfect',
+            variant: LLBadgeVariant.perfect,
+            icon: Icons.star),
       ],
     );
   }
 
   Widget _progressSection() {
     return const LLPanel(
-      child: LLProgressBar(value: 0.65, label: 'World Progress', showPercent: true),
+      child: LLProgressBar(
+          value: 0.65, label: 'World Progress', showPercent: true),
     );
   }
 
@@ -248,7 +277,8 @@ class DesignSystemShowcaseScreen extends StatelessWidget {
   Widget _navigationSection() {
     return LLBottomBar(
       items: [
-        LLBottomBarItem(icon: Icons.home, label: 'Home', selected: true, onTap: () {}),
+        LLBottomBarItem(
+            icon: Icons.home, label: 'Home', selected: true, onTap: () {}),
         LLBottomBarItem(icon: Icons.map, label: 'Worlds', onTap: () {}),
         LLBottomBarItem(icon: Icons.storefront, label: 'Shop', onTap: () {}),
         LLBottomBarItem(icon: Icons.settings, label: 'Settings', onTap: () {}),
@@ -265,7 +295,8 @@ class DesignSystemShowcaseScreen extends StatelessWidget {
           label: 'Show Toast',
           variant: LLButtonVariant.secondary,
           expanded: true,
-          onPressed: () => LLToast.show(context, message: 'Temple systems online.'),
+          onPressed: () =>
+              LLToast.show(context, message: 'Temple systems online.'),
         ),
         SizedBox(height: LLSpacing.sm),
         LLButton(
@@ -275,7 +306,8 @@ class DesignSystemShowcaseScreen extends StatelessWidget {
           onPressed: () => LLDialog.show(
             context: context,
             title: 'Ancient Seal',
-            content: Text('Proceed through the portal?', style: LLTextStyle.body),
+            content:
+                Text('Proceed through the portal?', style: LLTextStyle.body),
           ),
         ),
       ],
@@ -287,8 +319,8 @@ class DesignSystemShowcaseScreen extends StatelessWidget {
       height: LLSpacing.xxl * 4,
       child: ClipRRect(
         borderRadius: LLRadius.panelBorder,
-        child: const LLScreenBackground(
-          heroImageAsset: 'assets/images/ui_mockup.png',
+        child: LLScreenBackground(
+          heroImageAsset: LLAssetPaths.homeScreenBackground,
           child: Center(
             child: Text(
               'LLScreenBackground',

@@ -4,6 +4,30 @@ Log material decisions here. Format: date, decision, reason, status.
 
 ---
 
+## 2026-07-06 — Edge-based maze model (schema v2)
+
+**Decision:** Migrate gameplay grid from impassable `wall` cells to **blocked edges on walkable cells** (schema v2). Rendering uses layered `tile_floor` + `edge_*` overlays. Architecture freeze exception approved for M2.7 visual foundation.
+
+**Reason:** Combined autotile PNGs (`tile_n`, `wall_fill`) produced visible seams and inconsistent floor textures. Edge-blockage matches the design intent: raised sides on walkable tiles, not separate wall blocks.
+
+**Impact:** `Level_Format.md` schema v2; `MazeGrid.canTraverse()`; `PathValidator` edge checks; `CellEdgeMask` rendering; `level_001`–`level_010` edge-test band; supersedes review packages 0087/0088.
+
+**Status:** Accepted
+
+---
+
+## 2026-07-06 — Review workflow: Codex + Human only
+
+**Decision:** Remove ChatGPT from the mandatory review package workflow. Pending and future review packages require **Codex engineering review** and **Human approval** only.
+
+**Reason:** Streamline handoff; Codex covers technical quality and implementation compliance. Human retains final product authority.
+
+**Impact:** `Review_Template.md`, `docs/99_Reviews/README.md`, `AGENTS.md`, and Cursor workflow updated. Historical approved packages may retain ChatGPT reviewer notes for audit.
+
+**Status:** Accepted
+
+---
+
 ## 2026-06-28 — Project restart: LLDS as source of truth
 
 **Decision:** Restart implementation direction. Documentation system (LLDS) must exist before new gameplay/UI code.
@@ -130,5 +154,38 @@ Log material decisions here. Format: date, decision, reason, status.
 | Terra Incognita GM multiplayer | Different product category |
 | Cyberpunk neon UI | Conflicts with LLDL |
 | Default Material buttons/cards | Conflicts with LLDL |
+| 2.5D environment compositor as MVP target | Over-engineered for Flutter MVP; superseded by master mockup sprite approach |
+| World 01 cinematic environment boards as MVP blocker | Deferred to post-MVP per master mockup pivot |
 
 Prior detailed log preserved in `docs/second-brain/06_Decisions/` (archive).
+
+---
+
+## 2026-07-06 — MVP visual pivot: back to master mockup
+
+**Decision:** MVP visual target is the original master mockup (`docs/assets/mockups/ui_board_master.png`) — static 2D sprites, simple grid gameplay, standard Flutter UI screens. Not the World 01 2.5D environment compositor, procedural environment painters, or M2.8 camera/layering work.
+
+**Reason:** Human Owner direction. The master mockup is achievable in Flutter + Cursor, matches product scope (10 screens, Draw/Solve/Escape), and the cinematic environment direction created unsustainable implementation complexity without improving the core puzzle loop.
+
+**Impact:**
+- World 01 Phase 1/2/3 studies and reference boards → **deferred** (archived, not deleted)
+- Citadel experiment code → **removed**
+- M2.7 painters → interim fallback until PNG sprites ship; sprite-first per AB2
+- M2.8 camera/layering → **cancelled** for MVP
+- Splash boots to Home, not citadel prototype
+
+**Authority:** [MVP_Visual_Target.md](../06_Asset_Bible/MVP_Visual_Target.md)
+
+**Status:** Accepted
+
+---
+
+## 2026-07-06 — Global weathered button plates
+
+**Decision:** All `LLButton` variants use weathered engraved-plate styling — oxidized bronze primary, cracked stone secondary, texture skins under `assets/images/ui/`, updated gradient/shadow tokens. Primary labels use `textPrimary` on bronze (not `templeBlack` on bright gold).
+
+**Reason:** Master mockup and LLDL Components language describe engraved temple mechanisms, not glossy mobile gradients. Single token change propagates to Home, pause, shop, level complete, dialogs, and gameplay action bar.
+
+**Impact:** `LLGradient.goldButton`, `LLGradient.secondaryButton`, `LLShadow.weatheredPlate*`, `LLButton`, `LLFloatingButton`, Home title layout (Cinzel over gate, zoomed hero).
+
+**Status:** Accepted

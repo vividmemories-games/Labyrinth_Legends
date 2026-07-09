@@ -182,7 +182,6 @@ Upgrade review package template to **v2** with motivation, risk, dependencies, p
 ## Ready For
 
 - [x] Codex Engineering Review
-- [x] ChatGPT Product Review
 - [ ] Human Approval
 
 ---
@@ -197,14 +196,6 @@ Upgrade review package template to **v2** with motivation, risk, dependencies, p
 - **Blocking Issues:**
 - **Recommendations:**
 
-### ChatGPT Product Review
-
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
 
 ### Human Approval
 

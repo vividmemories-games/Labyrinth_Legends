@@ -1,13 +1,14 @@
 {
+  "schemaVersion": 2,
   "id": "level_008",
-  "name": "Chamber 8",
+  "name": "Central Pillar",
   "worldId": "world_1",
   "discoveryMode": "full",
   "moveLimit": null,
   "starThresholds": {
-    "threeStars": 18,
-    "twoStars": 22,
-    "oneStar": 28
+    "threeStars": 12,
+    "twoStars": 16,
+    "oneStar": 20
   },
   "objectives": {
     "reachExit": true,
@@ -15,36 +16,10 @@
     "minGems": 0
   },
   "grid": {
-    "width": 7,
-    "height": 7,
+    "width": 5,
+    "height": 5,
     "cells": [
       [
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        }
-      ],
-      [
-        {
-          "type": "wall"
-        },
         {
           "type": "start"
         },
@@ -59,84 +34,72 @@
         },
         {
           "type": "floor"
-        },
-        {
-          "type": "wall"
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor"
         },
         {
           "type": "floor"
         },
         {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "south": true
+          }
         },
         {
           "type": "floor"
         },
         {
-          "type": "wall"
+          "type": "floor"
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor"
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "east": true
+          }
         },
         {
           "type": "floor"
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "west": true
+          }
         },
         {
           "type": "floor"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "wall"
         }
       ],
       [
         {
-          "type": "wall"
+          "type": "floor"
         },
         {
           "type": "floor"
         },
         {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
+          "type": "floor",
+          "edges": {
+            "north": true
+          }
         },
         {
           "type": "floor"
         },
         {
-          "type": "wall"
+          "type": "floor"
         }
       ],
       [
-        {
-          "type": "wall"
-        },
         {
           "type": "floor"
         },
@@ -151,32 +114,6 @@
         },
         {
           "type": "exit"
-        },
-        {
-          "type": "wall"
-        }
-      ],
-      [
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
-        },
-        {
-          "type": "wall"
         }
       ]
     ]
