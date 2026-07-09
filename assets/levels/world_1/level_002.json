@@ -1,44 +1,114 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "level_002",
-  "name": "Shimmering Stones",
+  "name": "North South Corridor",
   "worldId": "world_1",
   "discoveryMode": "full",
   "moveLimit": null,
   "starThresholds": {
-    "threeStars": 14,
-    "twoStars": 18,
-    "oneStar": 24
+    "threeStars": 12,
+    "twoStars": 16,
+    "oneStar": 20
   },
   "objectives": {
     "reachExit": true,
-    "collectAllGems": true,
+    "collectAllGems": false,
     "minGems": 0
   },
   "grid": {
-    "width": 7,
-    "height": 7,
+    "width": 3,
+    "height": 5,
     "cells": [
       [
-        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+        {
+          "type": "start"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        }
       ],
       [
-        {"type": "wall"}, {"type": "start"}, {"type": "floor", "hasGem": true}, {"type": "floor"}, {"type": "floor", "hasGem": true}, {"type": "floor"}, {"type": "wall"}
+        {
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
+        }
       ],
       [
-        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
+        {
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
+        }
       ],
       [
-        {"type": "wall"}, {"type": "floor"}, {"type": "floor", "hasGem": true}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "wall"}
+        {
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
+        }
       ],
       [
-        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor", "hasGem": true}, {"type": "floor"}, {"type": "exit"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "exit"
+        }
       ]
     ]
   }

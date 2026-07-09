@@ -8,4 +8,7 @@ abstract final class LLSpacing {
   static const double xl = 32;
   static const double xxl = 48;
   static const double screenPadding = 24;
+
+  /// Extra horizontal inset for full-width CTAs (home, dialogs).
+  static const double buttonHorizontalInset = 16;
 }

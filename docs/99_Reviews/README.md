@@ -1,6 +1,6 @@
 # Review Packages (99_Reviews)
 
-Formal handoff artifacts for **ChatGPT**, **Codex**, and **Human** review — without requiring continuous access to the local project folder.
+Formal handoff artifacts for **Codex** and **Human** review — without requiring continuous access to the local project folder.
 
 ## Purpose
 
@@ -18,7 +18,7 @@ All new review packages must use **template v2**, which includes:
 - **Product Impact** — player, visual, UX, performance, developer experience
 - **Future Technical Debt** — shortcuts, temporary implementations, cleanup tasks
 - **Recommended Next Task** — suggested follow-up for the next milestone
-- **Reviewer Notes** — standardized Codex, ChatGPT, and Human sections with verdict, score, and recommendations
+- **Reviewer Notes** — standardized Codex and Human sections with verdict, score, and recommendations
 
 Scaffold with `./scripts/new_review_package.sh` — it always uses the current v2 template.
 
@@ -30,14 +30,12 @@ Cursor implements task
     → Runs test / analyze
     → Scaffolds review package (scripts/new_review_package.sh — v2 template)
     → Fills all v2 sections (motivation, risk, dependencies, product impact, debt, next task)
-    → Marks Ready For: Codex + ChatGPT + Human
-Codex / ChatGPT review the package (+ selected files if repo access available)
+    → Marks Ready For: Codex + Human
+Codex reviews the package (+ selected files if repo access available)
     → Fill Reviewer Notes section
 Human approves
     → Next phase may begin
 ```
-
-Exception: review packages for documents authored under `docs/07_UI/` use **ChatGPT + Human** review only unless Codex review is explicitly requested.
 
 **Do not start the next major phase until the review package is approved** (or explicitly waived by Human).
 
@@ -116,11 +114,10 @@ Reload Cursor (or save `hooks.json`) after changes. Check the **Hooks** output c
 
 | Reviewer | Focus |
 |----------|-------|
-| **Codex** | Architecture, maintainability, performance, tests, Flutter quality |
-| **ChatGPT** | UX, LLDL compliance, gameplay feel, monetization, player experience, polish |
+| **Codex** | Architecture, maintainability, performance, tests, Flutter quality, LLDL implementation compliance |
 | **Human** | Final product/business approval |
 
-For the `docs/07_UI/` document family, **ChatGPT** is the default external reviewer and **Human** remains the approval authority. **Codex** is optional for those UI-document review packages unless explicitly requested.
+ChatGPT is no longer part of the review workflow (see `Decisions.md` — 2026-07-06). Historical review packages may retain ChatGPT reviewer notes for audit purposes.
 
 ## Sharing Without Repo Access
 
@@ -196,12 +193,39 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0057 | [Architecture/0057_ui_04_design_tokens.md](Architecture/0057_ui_04_design_tokens.md) | Approved |
 | 0058 | [Architecture/0058_ui_05_component_library.md](Architecture/0058_ui_05_component_library.md) | Approved |
 | 0059 | [Architecture/0059_ui_behavior_layer.md](Architecture/0059_ui_behavior_layer.md) | Approved |
-| 0060 | [Releases/0060_docs_hygiene_ui_architecture_status_alignment.md](Releases/0060_docs_hygiene_ui_architecture_status_alignment.md) | Codex Approved — Ready for ChatGPT / Human Review |
+| 0060 | [Releases/0060_docs_hygiene_ui_architecture_status_alignment.md](Releases/0060_docs_hygiene_ui_architecture_status_alignment.md) | Codex Approved — Ready for Human Review |
 | 0061 | [Architecture/0061_ui_chapter_integration.md](Architecture/0061_ui_chapter_integration.md) | Draft |
-| 0062 | [Screens/0062_m2_1_production_ui_foundation.md](Screens/0062_m2_1_production_ui_foundation.md) | Draft |
-| 0063 | [Design_System/0063_maze_render_poc.md](Design_System/0063_maze_render_poc.md) | Draft |
+| 0062 | [Screens/0062_m2_1_production_ui_foundation.md](Screens/0062_m2_1_production_ui_foundation.md) | Approved |
+| 0063 | [Screens/0063_m2_2_gameplay_board_rendering_path_drawing.md](Screens/0063_m2_2_gameplay_board_rendering_path_drawing.md) | Codex Approved — Ready for Human Approval |
+| 0064 | [Screens/0064_m2_3_path_execution_explorer_movement.md](Screens/0064_m2_3_path_execution_explorer_movement.md) | Codex Approved — Ready for Human Approval |
+| 0065 | [Screens/0065_m2_4_world_state_objective_feedback.md](Screens/0065_m2_4_world_state_objective_feedback.md) | Codex Approved — Ready for Human Review |
+| 0066 | [Screens/0066_m2_5_terminal_outcome_retry_flow.md](Screens/0066_m2_5_terminal_outcome_retry_flow.md) | Codex Approved — Ready for Human Review |
+| 0067 | [Implementation/0067_m2_6_gameplay_feedback_interaction_polish.md](Implementation/0067_m2_6_gameplay_feedback_interaction_polish.md) | Codex Approved — Ready for Human Review |
+| 0068 | [Implementation/0068_m2_7_premium_visual_foundation.md](Implementation/0068_m2_7_premium_visual_foundation.md) | Ready for Review |
+| 0069 | [Releases/0069_world_01_phase1_visual_language_study.md](Releases/0069_world_01_phase1_visual_language_study.md) | Draft |
+| 0070 | [Screens/0070_world_01_phase3_simulator_prototype_v2.md](Screens/0070_world_01_phase3_simulator_prototype_v2.md) | Ready for Review |
+| 0071 | [Releases/0071_mvp_visual_pivot_back_to_basics.md](Releases/0071_mvp_visual_pivot_back_to_basics.md) | Ready for Review |
+| 0072 | [Screens/0072_m2_8_home_mockup_visual_pass.md](Screens/0072_m2_8_home_mockup_visual_pass.md) | Draft |
+| 0073 | [Design_System/0073_weathered_button_tokens.md](Design_System/0073_weathered_button_tokens.md) | Draft |
+| 0074 | [Screens/0074_m2_8_home_button_visual_polish.md](Screens/0074_m2_8_home_button_visual_polish.md) | Draft |
+| 0075 | [Design_System/0075_button_typography_tokens.md](Design_System/0075_button_typography_tokens.md) | Draft |
+| 0076 | [Screens/0076_m2_8_home_layout_button_polish.md](Screens/0076_m2_8_home_layout_button_polish.md) | Draft |
+| 0077 | [Design_System/0077_primary_button_corner_fix.md](Design_System/0077_primary_button_corner_fix.md) | Draft |
+| 0078 | [Screens/0078_home_logo_asset_restore.md](Screens/0078_home_logo_asset_restore.md) | Draft |
+| 0079 | [Screens/0079_home_background_asset_swap.md](Screens/0079_home_background_asset_swap.md) | Draft |
+| 0080 | [Screens/0080_home_logo_layout_pin.md](Screens/0080_home_logo_layout_pin.md) | Draft |
+| 0081 | [Screens/0081_home_currency_removal_logo_top.md](Screens/0081_home_currency_removal_logo_top.md) | Draft |
+| 0082 | [Screens/0082_level_select_winding_map.md](Screens/0082_level_select_winding_map.md) | Approved |
+| 0083 | [Screens/0083_worlds_chapter_backgrounds.md](Screens/0083_worlds_chapter_backgrounds.md) | Approved |
+| 0084 | [Releases/0084_review_hygiene_p1_p3.md](Releases/0084_review_hygiene_p1_p3.md) | Approved |
+| 0085 | [Screens/0085_m2_8_gameplay_mockup_visual_pass.md](Screens/0085_m2_8_gameplay_mockup_visual_pass.md) | Ready for Review |
+| 0086 | [Screens/0086_gameplay_board_sprite_wiring.md](Screens/0086_gameplay_board_sprite_wiring.md) | Ready for Review |
+| 0087 | [Screens/0087_gameplay_wall_autotiling_procedural_assets.md](Screens/0087_gameplay_wall_autotiling_procedural_assets.md) | Ready for Review |
+| 0088 | [Screens/0088_gameplay_authored_autotile_pngs.md](Screens/0088_gameplay_authored_autotile_pngs.md) | Ready for Review |
+| 0089 | [Architecture/0089_edge_based_maze_authored_tiles.md](Architecture/0089_edge_based_maze_authored_tiles.md) | Ready for Review |
+| 0090 | [Design_System/0090_maze_render_poc.md](Design_System/0090_maze_render_poc.md) | Draft |
 
-**Next ID:** 0064
+**Next ID:** 0091
 
 ## Related Docs
 

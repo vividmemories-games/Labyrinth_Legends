@@ -1,31 +1,30 @@
 # Home Screen
 
 **Route:** `/`  
-**Mockup ref:** Top-left panel in `docs/assets/mockups/ui_board_master.png`
+**Mockup ref:** Splash/Home panel in `docs/assets/mockups/ui_board_master.png`
 
 ## Purpose
 
-Main hub — atmosphere, title, primary navigation.
+Main hub — portal atmosphere, title over gate lintel, primary navigation.
 
 ## Layout
 
 ```
-LLScreenBackground (ruins hero + dark gradient veil)
+LLScreenBackground (portal ruins, heroScale 1.04, light veil)
 ├─ SafeArea
-│   ├─ Top: LLCurrencyChip (coins) + LLCurrencyChip (gems)
-│   ├─ Center: Title "Labyrinth Legends" (LLTextStyle.title, gold)
-│   ├─ Subtitle tagline (LLTextStyle.body)
-│   └─ Bottom stack:
-│       ├─ LLButton primary — Play
-│       ├─ LLButton secondary — Daily Challenge
-│       └─ Row: LLButton ghost Shop | LLButton ghost Settings
+│   └─ Stack
+│       ├─ Column: logo (top) → Spacer → buttons + dock
+│       └─ Dev menu (dev flavor, top-right)
 ```
 
 ## Visual
 
-- Hero: temple ruins with portal glow (art asset or cropped mockup)
-- Title: gold metallic, subtle gold glow shadow
-- No cyan primary buttons
+- Hero: `assets/images/backgrounds/home_screen.png` via `LLAssetPaths.homeScreenBackground` (AB reference plate)
+- Title: `logo_labyrinth_legends.png` — near full-width (`LLSpacing.sm` inset), pinned to top of SafeArea (sky band above arch)
+- Currency chips: **removed from Home MVP shell** (future: shop/profile surfaces)
+- `heroScale: 1.04`, `heroAlignment: (0, 0.02)`, `veilStrength: 0.38`
+- Buttons: global weathered `LLButton` — primary gradient plate; secondary stone texture
+- Dev flavor: `PopupMenuButton` (`</>` icon) → Design System, Engine Sandbox
 
 ## Navigation
 
@@ -34,7 +33,7 @@ LLScreenBackground (ruins hero + dark gradient veil)
 | Play | `/worlds` |
 | Daily | `/daily` |
 | Shop | `/shop` |
-| Settings | `/settings` |
+| Settings (dock) | `/settings` |
 
 ## States
 
@@ -45,4 +44,4 @@ LLScreenBackground (ruins hero + dark gradient veil)
 
 ## Components Used
 
-`LLScreenBackground`, `LLCurrencyChip`, `LLButton`, `LLTextStyle.title`, `LLTextStyle.body`
+`LLScreenBackground`, `LLButton`, `LLIconButton`

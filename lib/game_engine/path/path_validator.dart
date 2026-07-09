@@ -63,6 +63,28 @@ class PathValidator {
         );
       }
 
+      if (index > 0 && !path[index - 1].isAdjacentTo(position)) {
+        return PathValidationResult.failure(
+          PathValidationError(
+            code: PathValidationErrorCode.notAdjacent,
+            message: 'Path must move to orthogonally adjacent cells at step $index',
+            stepIndex: index,
+            position: position,
+          ),
+        );
+      }
+
+      if (index > 0 && !grid.canTraverse(path[index - 1], position)) {
+        return PathValidationResult.failure(
+          PathValidationError(
+            code: PathValidationErrorCode.notWalkable,
+            message: 'Path crosses a blocked edge at step $index',
+            stepIndex: index,
+            position: position,
+          ),
+        );
+      }
+
       if (!cell.isWalkable) {
         return PathValidationResult.failure(
           PathValidationError(
@@ -79,17 +101,6 @@ class PathValidator {
           PathValidationError(
             code: PathValidationErrorCode.hiddenCell,
             message: 'Path crosses a hidden cell at step $index',
-            stepIndex: index,
-            position: position,
-          ),
-        );
-      }
-
-      if (index > 0 && !path[index - 1].isAdjacentTo(position)) {
-        return PathValidationResult.failure(
-          PathValidationError(
-            code: PathValidationErrorCode.notAdjacent,
-            message: 'Path must move to orthogonally adjacent cells at step $index',
             stepIndex: index,
             position: position,
           ),

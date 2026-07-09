@@ -4,12 +4,9 @@ import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
 
 /// A raised wall edge lying on the boundary between two grid cells.
 ///
-/// Edge-based wall model: instead of walls occupying cells, a raised edge
-/// exists wherever a walkable cell borders a wall cell. The whole board
-/// reads as floor tiles, and a one-cell-thick wall line in the data
-/// collapses visually into ridges on the surrounding tiles' borders —
-/// e.g. in level_001 the corridor tiles above an interior wall row get a
-/// raised bottom edge, and the tiles below it get a raised top edge.
+/// Edge-based wall model: a raised edge exists wherever traversal is blocked
+/// between neighboring cells — either from legacy wall cells (`CellType.wall`)
+/// or schema-v2 `blockedEdges` on walkable cells.
 class MazeEdge {
   const MazeEdge.vertical({required this.row, required this.col})
       : isVertical = true;
@@ -38,16 +35,22 @@ class MazeEdge {
       '${isVertical ? 'V' : 'H'}($row, $col)';
 }
 
-/// Pure, UI-free edge extraction from a cell-based [MazeGrid].
+/// Pure, UI-free edge extraction from a [MazeGrid].
+///
+/// Supports both:
+/// - **Legacy wall cells** — an edge wherever wall-ness flips between neighbors
+/// - **Schema v2 `blockedEdges`** — an edge for each authored blocked side
+///
+/// Outer perimeter edges from `resolvedEdgesAt` are omitted so the maze sits
+/// on a continuous tiled floor (matching the original POC silhouette rule).
 abstract final class WallEdgeBuilder {
   static List<MazeEdge> build(MazeGrid grid) {
-    final edges = <MazeEdge>[];
+    final edges = <MazeEdge>{};
+
+    // Legacy: wall-cell adjacency flips.
     for (var row = 0; row < grid.height; row++) {
       for (var col = 0; col < grid.width; col++) {
         final wall = _isWall(grid, row, col);
-        // Only interior boundaries where wall-ness flips become edges; the
-        // outer silhouette of a border wall ring is intentionally open so
-        // the maze sits on a continuous tiled floor.
         if (col + 1 < grid.width && wall != _isWall(grid, row, col + 1)) {
           edges.add(MazeEdge.vertical(row: row, col: col));
         }
@@ -56,7 +59,31 @@ abstract final class WallEdgeBuilder {
         }
       }
     }
-    return edges;
+
+    // Schema v2: authored blockedEdges on walkable cells (interior only).
+    for (var row = 0; row < grid.height; row++) {
+      for (var col = 0; col < grid.width; col++) {
+        final cell = grid.cellAt(GridPosition(row: row, col: col));
+        if (cell.type == CellType.wall) {
+          continue;
+        }
+        final blocked = cell.blockedEdges;
+        if (blocked.east && col + 1 < grid.width) {
+          edges.add(MazeEdge.vertical(row: row, col: col));
+        }
+        if (blocked.west && col > 0) {
+          edges.add(MazeEdge.vertical(row: row, col: col - 1));
+        }
+        if (blocked.south && row + 1 < grid.height) {
+          edges.add(MazeEdge.horizontal(row: row, col: col));
+        }
+        if (blocked.north && row > 0) {
+          edges.add(MazeEdge.horizontal(row: row - 1, col: col));
+        }
+      }
+    }
+
+    return edges.toList();
   }
 
   static bool _isWall(MazeGrid grid, int row, int col) {

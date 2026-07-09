@@ -2,7 +2,8 @@
 
 **Route:** `/play/:levelId`  
 **Authority:** [WS4 — UI Language](../02_Design_System/LLDL/WS4_UI_Language.md) (progressive HUD)  
-**Mockup ref:** Center gameplay panel in `docs/assets/mockups/ui_board_master.png`
+**MVP visual authority:** [MVP_Visual_Target.md](../06_Asset_Bible/MVP_Visual_Target.md)  
+**Mockup ref:** Panel 3 in `docs/assets/mockups/ui_board_master.png` · `docs/06_Asset_Bible/get back to basics.png`
 
 ## Purpose
 
@@ -12,17 +13,21 @@ The gameplay HUD is **not a persistent dashboard**. It surfaces only what the cu
 
 ---
 
-## Layout (Shell)
+## Layout (Shell) — MVP mockup
 
 ```
-Scaffold (LLColor.templeBlack)
-├─ LLTopBar or minimal chrome: back, level name, pause (LLIconButton)
-├─ [Phase-aware HUD band — see below]
-├─ LLPanel (maze frame, gold border)
-│   └─ MazeBoard (painter — LLMazeTile planned)
-├─ [Phase-aware status line]
-└─ [Phase-aware control bar — drawing only]
+LLScreenBackground (optional gameplay_screen.png when bundled)
+├─ GameplayTopBar: back · LEVEL N + stars · settings (pause)
+├─ GameplayBoardContainer (gold-bordered maze frame)
+│   └─ BoardRenderer (tile sprites + path overlay + explorer)
+└─ GameplayControlBar (drawing phase only)
+    ├─ UNDO · ERASE · HINT (round stone buttons)
+    ├─ MOVES · GEMS · KEYS stat row (conditional)
+    ├─ status cue
+    └─ GO / Draw Path primary CTA
 ```
+
+During **execution**, the control bar hides (maze + explorer only).
 
 ---
 
@@ -32,8 +37,8 @@ Maps `GameplayUiPhase` to WS4 loop temperament.
 
 | Phase | WS4 temperament | Visible UI |
 |-------|-----------------|------------|
-| **Study / Drawing** (`drawing`) | Near-minimal — objectives as needed | Optional stat chips (gems/key only if level requires); path tools; validation message |
-| **Execute** (`executing`) | Consequence communication — not cluttered | **Hide** HUD row and control bar; maze + character animation only |
+| **Study / Drawing** (`drawing`) | Near-minimal — objectives as needed | Stat chips when level requires; path tools; validation message |
+| **Execute** (`executing`) | Consequence communication — not cluttered | **Hide** control bar; maze + character animation only |
 | **Paused** (`paused`) | Brief overlay | Pause overlay only — see `Pause.md` |
 | **Won** (`won`) | Outcome then release | Navigate to `Victory.md` |
 | **Lost** (`lost`) | Retry overlay | Overlay message + retry action |
@@ -44,11 +49,11 @@ Show stat chips **only when fairness requires**:
 
 | Chip | When visible |
 |------|--------------|
-| Moves / path length | Optional — prefer maze legibility over constant counter |
+| Moves | Always during drawing (draft path length) |
 | Gems collected | When level has gems (`collectAllGems` or gems on grid) |
 | Key slot | When level requires a key |
 
-Use `LLCurrencyChip` / functional stat chips — **functional tier only** (no ceremonial seals).
+Use `GameplayStatColumn` — **functional tier only** (no ceremonial seals).
 
 **Must not:**
 - Show full stat dashboard during execution
@@ -62,12 +67,12 @@ Use `LLCurrencyChip` / functional stat chips — **functional tier only** (no ce
 
 Visible only when `uiPhase == drawing`:
 
-| Control | Component | Variant |
-|---------|-----------|---------|
-| Undo | `LLButton` | `ghost` |
-| Erase | `LLButton` | `ghost` |
-| Hint | `LLButton` | `secondary` |
-| Go | `LLButton` | `primary` (gold) |
+| Control | Component | Notes |
+|---------|-----------|-------|
+| Undo | `GameplayRoundActionButton` | `controller.undoDraftPath` |
+| Erase | `GameplayRoundActionButton` | `controller.clearDraftPath` |
+| Hint | `GameplayRoundActionButton` | Badge from `hintsRemaining`; solver wiring post-MVP |
+| Go | `LLButton` primary (gold) | Label `GO` when path valid |
 
 Hidden during `executing`, `paused`, `won`, `lost`.
 
@@ -77,14 +82,17 @@ Hidden during `executing`, `paused`, `won`, `lost`.
 
 | Element | Token / note |
 |---------|--------------|
-| Walls | `LLColor.stoneMid` |
-| Floor | `LLColor.stoneDark` |
-| Path stroke | `LLColor.energyCyan` glow |
-| Portal exit | `LLColor.portalBlue` + `LLAnimation.portalPulse` |
-| Gems | `LLColor.crystalPurple` |
-| Character | cyan energy orb |
-| Fog | `LLColor.fogVeil` |
-| Hazards | `LLColor.emberRed` + shape/icon — not color alone |
+| Floor base | `tile_floor.png` on **every** walkable cell (identical stone slab) |
+| Raised walls | Transparent edge overlays: `edge_n/e/s/w`, `edge_ne/nw/se/sw`, `edge_inner_*` stacked via `CellEdgeMask.layeredOverlays` |
+| Path model | No `wall` cell type in schema v2 — impassability is **blocked edges** on walkable cells + implicit perimeter |
+| Path stroke | `LLColor.energyCyan` glow (`PremiumPathOverlayPainter`) |
+| Portal exit | `LLGameplayAsset` exit portal + painter fallback |
+| Gems / keys / locks | Full-cell sprites |
+| Character | `explorer_idle.png` — full cell |
+| Board frame | `GameplayBoardContainer` gold border; dark translucent inner |
+| Screen backdrop | `gameplay_screen.png` via `LLScreenBackground` |
+
+Environment tiles are **authored PNGs** (not procedurally painted). Layer order per cell: `tile_floor` base, then edge overlay stack. Regenerate via image pipeline documented in `docs/06_Asset_Bible/AB2_Game_Assets.md`.
 
 ---
 
@@ -110,9 +118,7 @@ Touch targets on maze cells must tolerate finger scale per [Accessibility](../02
 
 ## Components
 
-`LLPanel`, `LLButton`, `LLIconButton`, `LLCurrencyChip` (when needed), `MazeBoard` painter, `LLTopBar` (preferred over raw `AppBar`)
-
-**Planned:** `LLMazeTile`, gameplay HUD chip family
+`GameplayTopBar`, `GameplayHeaderIconButton`, `GameplayControlBar`, `GameplayRoundActionButton`, `GameplayStatColumn`, `GameplayBoardContainer`, `BoardRenderer`, `LLGameplayAsset`, `LLButton`, `LLScreenBackground`
 
 ---
 
@@ -124,8 +130,8 @@ All rules in `game_engine/` — screen only renders `GameplayUiState`.
 
 ## WS4 Compliance Checklist
 
-- [ ] HUD progressive — not persistent full dashboard
-- [ ] Controls hidden during execution
-- [ ] One gold primary CTA (`Go`) per control surface
-- [ ] Functional tier only on gameplay chrome
-- [ ] No prototype `ruins_*` / `app_colors` bypass
+- [x] HUD progressive — not persistent full dashboard
+- [x] Controls hidden during execution
+- [x] One gold primary CTA (`GO`) per control surface
+- [x] Functional tier only on gameplay chrome
+- [x] No prototype `ruins_*` / `app_colors` bypass

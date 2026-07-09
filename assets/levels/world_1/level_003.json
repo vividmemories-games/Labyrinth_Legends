@@ -1,14 +1,14 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "id": "level_003",
-  "name": "Locked Passage",
+  "name": "East West Corridor",
   "worldId": "world_1",
   "discoveryMode": "full",
   "moveLimit": null,
   "starThresholds": {
-    "threeStars": 16,
-    "twoStars": 20,
-    "oneStar": 26
+    "threeStars": 12,
+    "twoStars": 16,
+    "oneStar": 20
   },
   "objectives": {
     "reachExit": true,
@@ -16,29 +16,83 @@
     "minGems": 0
   },
   "grid": {
-    "width": 7,
-    "height": 7,
+    "width": 5,
+    "height": 3,
     "cells": [
       [
-        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+        {
+          "type": "start"
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "exit"
+        }
       ],
       [
-        {"type": "wall"}, {"type": "start"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor", "keyId": "bronze_key"}, {"type": "floor"}, {"type": "wall"}
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor"
+        }
       ],
       [
-        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "floor", "lockId": "bronze_key"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "floor"}, {"type": "exit"}, {"type": "wall"}
-      ],
-      [
-        {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}, {"type": "wall"}
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        },
+        {
+          "type": "floor"
+        }
       ]
     ]
   }

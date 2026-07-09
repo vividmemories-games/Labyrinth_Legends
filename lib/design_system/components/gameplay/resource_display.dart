@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:labyrinth_legends/design_system/assets/ll_gameplay_assets.dart';
+import 'package:labyrinth_legends/design_system/components/gameplay/ll_hud_icon.dart';
 import 'package:labyrinth_legends/design_system/theme/ll_theme_extension.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
 
@@ -8,13 +10,13 @@ enum ResourceDisplayState { hidden, idle, updating, depleted, emphasized }
 class ResourceDisplay extends StatelessWidget {
   const ResourceDisplay({
     super.key,
-    required this.icon,
+    required this.iconKind,
     required this.value,
     this.label,
     this.state = ResourceDisplayState.idle,
   });
 
-  final IconData icon;
+  final GameplayHudIconKind iconKind;
   final String value;
   final String? label;
   final ResourceDisplayState state;
@@ -27,28 +29,43 @@ class ResourceDisplay extends StatelessWidget {
 
     final theme = context.llTheme;
     final semanticsLabel = label == null ? value : '$value $label';
+    final borderColor = switch (state) {
+      ResourceDisplayState.emphasized => theme.actionPrimary,
+      ResourceDisplayState.updating => theme.pathEnergy.withValues(alpha: 0.7),
+      ResourceDisplayState.depleted =>
+        theme.feedbackDanger.withValues(alpha: 0.5),
+      _ => null,
+    };
 
     return Semantics(
       label: semanticsLabel,
-      child: DecoratedBox(
-        decoration: LLSurface.pill(
-          borderColor: state == ResourceDisplayState.emphasized
-              ? theme.actionPrimary
-              : null,
-        ),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOut,
+        decoration: LLSurface.pill(borderColor: borderColor),
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: theme.spacingHudInset + LLSpacing.xs,
-            vertical: theme.spacingHudInset,
+            horizontal: theme.spacingHudInset + LLSpacing.sm,
+            vertical: theme.spacingHudInset + LLSpacing.xs,
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(icon, size: LLSize.iconSm, color: theme.actionPrimary),
-              SizedBox(width: LLSpacing.xs),
-              Text(
-                value,
-                style: LLTextStyle.caption.copyWith(color: theme.textPrimary),
+              LLHudIcon(
+                kind: iconKind,
+                size: LLSize.iconSm,
+              ),
+              const SizedBox(width: LLSpacing.sm),
+              AnimatedSwitcher(
+                duration: const Duration(milliseconds: 180),
+                child: Text(
+                  value,
+                  key: ValueKey<String>(value),
+                  style: LLTextStyle.caption.copyWith(
+                    color: theme.textPrimary,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
             ],
           ),

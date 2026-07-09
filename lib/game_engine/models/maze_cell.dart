@@ -1,4 +1,5 @@
 import 'package:labyrinth_legends/game_engine/models/cell_type.dart';
+import 'package:labyrinth_legends/game_engine/models/cell_edges.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_visibility.dart';
 
 class MazeCell {
@@ -11,6 +12,7 @@ class MazeCell {
     this.relicId,
     this.hiddenUntilRelicId,
     this.visibility = CellVisibility.visible,
+    this.blockedEdges = CellEdges.none,
   });
 
   final CellType type;
@@ -21,6 +23,7 @@ class MazeCell {
   final String? relicId;
   final String? hiddenUntilRelicId;
   final CellVisibility visibility;
+  final CellEdges blockedEdges;
 
   bool get isWalkable => type.isWalkable;
 
@@ -37,6 +40,7 @@ class MazeCell {
     String? relicId,
     String? hiddenUntilRelicId,
     CellVisibility? visibility,
+    CellEdges? blockedEdges,
     bool clearKeyId = false,
     bool clearLockId = false,
     bool clearRelicId = false,
@@ -53,6 +57,7 @@ class MazeCell {
           ? null
           : (hiddenUntilRelicId ?? this.hiddenUntilRelicId),
       visibility: visibility ?? this.visibility,
+      blockedEdges: blockedEdges ?? this.blockedEdges,
     );
   }
 
@@ -67,6 +72,7 @@ class MazeCell {
       if (hiddenUntilRelicId != null) 'hiddenUntilRelicId': hiddenUntilRelicId,
       if (visibility != CellVisibility.visible)
         'visibility': visibility.toJson(),
+      if (blockedEdges != CellEdges.none) 'edges': blockedEdges.toJson(),
     };
   }
 
@@ -82,6 +88,7 @@ class MazeCell {
       visibility: CellVisibility.fromJson(
         json['visibility'] as String? ?? 'visible',
       ),
+      blockedEdges: CellEdges.fromJson(json['edges'] as Map<String, dynamic>?),
     );
   }
 }

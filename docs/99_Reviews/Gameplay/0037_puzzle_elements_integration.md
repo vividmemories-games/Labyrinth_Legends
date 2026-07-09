@@ -193,7 +193,6 @@ Human approval and lock for `Puzzle_Elements.md`; then begin level JSON schema o
 ## Ready For
 
 - [x] Codex Engineering Review
-- [ ] ChatGPT Product Review
 - [ ] Human Approval
 
 ---
@@ -208,14 +207,6 @@ Human approval and lock for `Puzzle_Elements.md`; then begin level JSON schema o
 - **Blocking Issues:** None. `Puzzle_Elements.md` correctly fills the GP3 integration gap as a catalogue/index layer rather than a new rule source. Authority boundaries are explicit: GP1, GP2, GP7, and GP3.1–GP3.5 remain the source of behavioural truth; open questions are indexed but not resolved; hazard, objective, feedback, UI, and implementation scopes are kept out of this document. The local Markdown link check was rerun during Codex review and verified **0 missing local targets across 2,733 checked links**.
 - **Recommendations:** Approve the GP3 integration direction. The prior hygiene follow-ups are complete: the `Markdown link check (before)` count now matches the verified review-0036 baseline of 45 planned `Puzzle_Elements.md` links, and `0036_docs_hygiene_audit.md` now records the post-integration 0-missing-link result. No Flutter test/analyze is required for this documentation-only package.
 
-### ChatGPT Product Review
-
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
 
 ### Human Approval
 

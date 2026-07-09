@@ -207,7 +207,6 @@ docs/99_Reviews/Design_System/0025_tier3_downstream_accessibility_migration.md
 ## Ready For
 
 - [x] Codex Engineering Review
-- [x] ChatGPT Product Review
 - [x] Human Approval
 
 ---
@@ -222,14 +221,6 @@ docs/99_Reviews/Design_System/0025_tier3_downstream_accessibility_migration.md
 - **Blocking Issues:**
 - **Recommendations:**
 
-### ChatGPT Product Review
-
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
 
 ### Human Approval
 

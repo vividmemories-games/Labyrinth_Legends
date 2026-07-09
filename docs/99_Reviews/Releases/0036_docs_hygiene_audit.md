@@ -239,13 +239,6 @@ Add a lightweight docs link-check script to the review workflow so future docume
 
 ### ChatGPT Product Review
 
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
-
 ### Human Approval
 
 - **Date:**

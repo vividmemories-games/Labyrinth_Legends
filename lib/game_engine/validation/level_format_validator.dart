@@ -1,3 +1,4 @@
+import 'package:labyrinth_legends/game_engine/migration/level_v1_to_v2_converter.dart';
 import 'package:labyrinth_legends/game_engine/models/level_definition.dart';
 import 'package:labyrinth_legends/game_engine/validation/level_format_validation_error.dart';
 import 'package:labyrinth_legends/game_engine/validation/level_format_validation_result.dart';
@@ -41,7 +42,10 @@ class LevelFormatValidator {
     'relicId',
     'hiddenUntilRelicId',
     'visibility',
+    'edges',
   };
+
+  static const _edgeKeys = {'north', 'east', 'south', 'west'};
 
   static const _cellTypes = {'floor', 'wall', 'start', 'exit'};
 
@@ -80,20 +84,41 @@ class LevelFormatValidator {
   /// Validates then parses into an immutable [LevelDefinition].
   ///
   /// Throws [LevelFormatValidationException] when structural validation fails.
+  /// Schema v1 levels are auto-converted to v2 edge-blocked grids.
   LevelDefinition parse(
     Map<String, dynamic> json, {
     String? expectedLevelId,
     String? expectedWorldId,
   }) {
+    final normalized = _normalizeSchema(json);
     final result = validate(
-      json,
+      normalized,
       expectedLevelId: expectedLevelId,
       expectedWorldId: expectedWorldId,
     );
     if (!result.isValid) {
       throw LevelFormatValidationException(result.errors);
     }
-    return LevelDefinition.fromJson(json);
+    return LevelDefinition.fromJson(normalized);
+  }
+
+  Map<String, dynamic> _normalizeSchema(Map<String, dynamic> json) {
+    final schemaVersion = _readSchemaVersion(json['schemaVersion']) ?? 1;
+    if (schemaVersion >= 2) {
+      return json;
+    }
+    return const LevelV1ToV2Converter().convertLevelJson(json);
+  }
+
+  /// Accepts JSON `int` or whole-number `double` (some encoders emit `2.0`).
+  static int? _readSchemaVersion(dynamic value) {
+    if (value is int) {
+      return value;
+    }
+    if (value is num && value == value.roundToDouble()) {
+      return value.toInt();
+    }
+    return null;
   }
 
   void _validateSchemaVersion(
@@ -105,17 +130,18 @@ class LevelFormatValidator {
       errors.add(
         const LevelFormatValidationError(
           ruleId: 'LV-01',
-          message: 'schemaVersion is required and must be 1',
+          message: 'schemaVersion is required and must be 1 or 2',
           path: 'schemaVersion',
         ),
       );
       return;
     }
-    if (value is! int || value != 1) {
+    final version = _readSchemaVersion(value);
+    if (version == null || (version != 1 && version != 2)) {
       errors.add(
         LevelFormatValidationError(
           ruleId: 'LV-01',
-          message: 'schemaVersion must be integer 1',
+          message: 'schemaVersion must be integer 1 or 2',
           path: 'schemaVersion',
         ),
       );
@@ -485,6 +511,10 @@ class LevelFormatValidator {
     final collectAllGems = json['objectives'] is Map &&
         (json['objectives'] as Map)['collectAllGems'] == true;
 
+    final rawSchemaVersion = json['schemaVersion'];
+    final resolvedSchemaVersion = _readSchemaVersion(rawSchemaVersion);
+    final schemaVersion = resolvedSchemaVersion ?? 1;
+
     for (var row = 0; row < cells.length; row++) {
       final rowData = cells[row];
       if (rowData is! List) {
@@ -535,8 +565,18 @@ class LevelFormatValidator {
         } else {
           if (type == 'start') startCount++;
           if (type == 'exit') exitCount++;
+          if (schemaVersion >= 2 && type == 'wall') {
+            errors.add(
+              LevelFormatValidationError(
+                ruleId: 'LV-20',
+                message: 'schema v2 must not use wall cells — use edges instead',
+                path: '$path.type',
+              ),
+            );
+          }
         }
 
+        _validateCellEdges(cellMap, path, errors);
         _validateCellModifiers(cellMap, path, errors);
 
         if (cellMap['hasGem'] == true) {
@@ -555,7 +595,9 @@ class LevelFormatValidator {
             row == height - 1 ||
             col == 0 ||
             col == width - 1;
-        if (onPerimeter && type != 'wall') {
+        if (resolvedSchemaVersion == 1 &&
+            onPerimeter &&
+            type != 'wall') {
           errors.add(
             LevelFormatValidationError(
               ruleId: 'LV-13',
@@ -603,6 +645,40 @@ class LevelFormatValidator {
             ruleId: 'LV-12',
             message: 'keyId "$keyId" has no matching lockId in this level',
             path: 'grid.cells',
+          ),
+        );
+      }
+    }
+  }
+
+  void _validateCellEdges(
+    Map<String, dynamic> cellMap,
+    String path,
+    List<LevelFormatValidationError> errors,
+  ) {
+    final edges = cellMap['edges'];
+    if (edges == null) {
+      return;
+    }
+    if (edges is! Map) {
+      errors.add(
+        LevelFormatValidationError(
+          ruleId: 'LV-20',
+          message: 'edges must be an object',
+          path: '$path.edges',
+        ),
+      );
+      return;
+    }
+    final edgeMap = Map<String, dynamic>.from(edges);
+    _rejectUnknownKeys(edgeMap, _edgeKeys, '$path.edges', errors);
+    for (final key in _edgeKeys) {
+      if (edgeMap.containsKey(key) && edgeMap[key] is! bool) {
+        errors.add(
+          LevelFormatValidationError(
+            ruleId: 'LV-20',
+            message: 'edges.$key must be a boolean',
+            path: '$path.edges.$key',
           ),
         );
       }

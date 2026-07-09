@@ -1,96 +1,85 @@
 import 'package:flutter/material.dart';
-import 'package:labyrinth_legends/core/debug/debug_config.dart';
 import 'package:labyrinth_legends/design_system/theme/ll_theme_extension.dart';
 import 'package:labyrinth_legends/design_system/tokens/tokens.dart';
+import 'package:labyrinth_legends/features/gameplay/presentation/widgets/board_renderer.dart';
+import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
+import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
 
-/// Central world / board zone container — UI_02 + UI_03 structural stage.
-///
-/// Gameplay rendering is intentionally absent in M2.1.
+/// Central world / board zone container — UI_02 + UI_03 board stage.
 class GameplayBoardContainer extends StatelessWidget {
   const GameplayBoardContainer({
     super.key,
+    required this.grid,
+    required this.visualPath,
+    required this.onTileInteraction,
+    this.explorerPosition,
+    this.selectedTile,
+    this.invalidTarget,
+    this.planningExtensionHints = const {},
+    this.traversedPathPositions = const {},
+    this.isExecuting = false,
     this.showDebugGrid = false,
+    this.inputEnabled = true,
+    this.effectiveKeyIds = const {},
   });
 
+  final MazeGrid grid;
+  final List<GridPosition> visualPath;
+  final ValueChanged<GridPosition> onTileInteraction;
+  final GridPosition? explorerPosition;
+  final GridPosition? selectedTile;
+  final GridPosition? invalidTarget;
+  final Set<GridPosition> planningExtensionHints;
+  final Set<GridPosition> traversedPathPositions;
+  final bool isExecuting;
   final bool showDebugGrid;
+  final bool inputEnabled;
+  final Set<String> effectiveKeyIds;
 
   @override
   Widget build(BuildContext context) {
     final theme = context.llTheme;
+
+    final board = BoardRenderer(
+      grid: grid,
+      visualPath: visualPath,
+      explorerPosition: explorerPosition,
+      selectedTile: selectedTile,
+      onTileInteraction: onTileInteraction,
+      invalidTarget: invalidTarget,
+      planningExtensionHints: planningExtensionHints,
+      traversedPathPositions: traversedPathPositions,
+      isExecuting: isExecuting,
+      showDebugGrid: showDebugGrid,
+      enabled: inputEnabled,
+      effectiveKeyIds: effectiveKeyIds,
+    );
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: theme.spacingHudInset),
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: theme.radiusPanel,
-          gradient: LLGradient.stonePanel,
+          color: LLColor.templeBlack.withValues(alpha: 0.45),
           border: Border.all(
-            color: theme.borderSubtle,
-            width: LLSize.borderWidth,
+            color:
+                theme.actionPrimary.withValues(alpha: LLColor.borderGoldAlpha),
+            width: LLSize.borderWidth * 2,
           ),
-          boxShadow: LLShadow.soft,
+          boxShadow: [
+            ...LLShadow.panel,
+            BoxShadow(
+              color: theme.actionPrimary.withValues(alpha: 0.12),
+              blurRadius: 18,
+              spreadRadius: 1,
+            ),
+          ],
         ),
         child: ClipRRect(
           borderRadius: theme.radiusPanel,
-          child: Stack(
-            fit: StackFit.expand,
-            children: [
-              if (showDebugGrid) const _DebugGrid(),
-              Center(
-                child: Icon(
-                  Icons.grid_view_rounded,
-                  size: LLSize.iconLg * 2,
-                  color: theme.textSecondary.withValues(alpha: 0.35),
-                ),
-              ),
-            ],
-          ),
+          child: board,
         ),
       ),
     );
-  }
-}
-
-class _DebugGrid extends StatelessWidget {
-  const _DebugGrid();
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: _GridPainter(
-        color: context.llTheme.pathEnergy.withValues(alpha: 0.15),
-      ),
-    );
-  }
-}
-
-class _GridPainter extends CustomPainter {
-  _GridPainter({required this.color});
-
-  final Color color;
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    if (!DebugConfig.showGrid) return;
-
-    final paint = Paint()
-      ..color = color
-      ..strokeWidth = 1;
-
-    const divisions = 8;
-    final cellW = size.width / divisions;
-    final cellH = size.height / divisions;
-
-    for (var i = 1; i < divisions; i++) {
-      final x = cellW * i;
-      canvas.drawLine(Offset(x, 0), Offset(x, size.height), paint);
-      final y = cellH * i;
-      canvas.drawLine(Offset(0, y), Offset(size.width, y), paint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant _GridPainter oldDelegate) {
-    return oldDelegate.color != color;
   }
 }

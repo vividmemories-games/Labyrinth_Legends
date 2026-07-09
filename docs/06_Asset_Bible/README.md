@@ -175,6 +175,14 @@ Do not bypass this workflow. See [Cursor Workflow](../05_AI/Cursor/Workflow.md) 
 
 Asset Bible workshops **AB0–AB6** are **Approved — Locked**. [Asset_Bible.md](Asset_Bible.md) integration is **Approved**; human lock pending for the integration document.
 
+### World 01 — Forgotten Ruins
+
+MVP visual authority: [MVP_Visual_Target.md](MVP_Visual_Target.md) · [ui_board_master.png](../assets/mockups/ui_board_master.png)
+
+Post-MVP environment studies (deferred):
+
+- [World_01_Forgotten_Citadel/](World_01_Forgotten_Citadel/) — archived reference boards + Phase 1/2 studies
+
 ---
 
 ## 10. Next Step

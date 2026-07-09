@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:labyrinth_legends/features/maze_render_poc/rendering/wall_edge_builder.dart';
+import 'package:labyrinth_legends/game_engine/models/cell_edges.dart';
 import 'package:labyrinth_legends/game_engine/models/cell_type.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_cell.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
@@ -47,7 +48,7 @@ void main() {
 
     test('level_001 layout: corridor tiles share edges with the wall line',
         () {
-      // Same layout as assets/levels/world_1/level_001.json.
+      // Same layout as the pre-v2 assets/levels/world_1/level_001.json.
       final grid = gridFrom([
         '#######',
         '#.....#',
@@ -89,6 +90,87 @@ void main() {
         edges,
         isNot(contains(const MazeEdge.horizontal(row: 0, col: 0))),
       );
+    });
+
+    test('schema v2 blockedEdges produce the same boundary edges', () {
+      // Equivalent to a single interior wall cell at (1,1) expressed as
+      // blockedEdges on the four surrounding floor cells.
+      final grid = MazeGrid(
+        width: 3,
+        height: 3,
+        cells: [
+          [
+            const MazeCell(type: CellType.floor),
+            const MazeCell(
+              type: CellType.floor,
+              blockedEdges: CellEdges(south: true),
+            ),
+            const MazeCell(type: CellType.floor),
+          ],
+          [
+            const MazeCell(
+              type: CellType.floor,
+              blockedEdges: CellEdges(east: true),
+            ),
+            const MazeCell(type: CellType.floor),
+            const MazeCell(
+              type: CellType.floor,
+              blockedEdges: CellEdges(west: true),
+            ),
+          ],
+          [
+            const MazeCell(type: CellType.floor),
+            const MazeCell(
+              type: CellType.floor,
+              blockedEdges: CellEdges(north: true),
+            ),
+            const MazeCell(type: CellType.floor),
+          ],
+        ],
+      );
+
+      final edges = WallEdgeBuilder.build(grid);
+
+      expect(edges, hasLength(4));
+      expect(edges, contains(const MazeEdge.vertical(row: 1, col: 0)));
+      expect(edges, contains(const MazeEdge.vertical(row: 1, col: 1)));
+      expect(edges, contains(const MazeEdge.horizontal(row: 0, col: 1)));
+      expect(edges, contains(const MazeEdge.horizontal(row: 1, col: 1)));
+    });
+
+    test('schema v2 T-junction (level_005) yields three edges on center cell',
+        () {
+      final grid = MazeGrid(
+        width: 3,
+        height: 3,
+        cells: [
+          [
+            const MazeCell(type: CellType.start),
+            const MazeCell(type: CellType.floor),
+            const MazeCell(type: CellType.floor),
+          ],
+          [
+            const MazeCell(type: CellType.floor),
+            const MazeCell(
+              type: CellType.floor,
+              blockedEdges: CellEdges(north: true, south: true, east: true),
+            ),
+            const MazeCell(type: CellType.floor),
+          ],
+          [
+            const MazeCell(type: CellType.floor),
+            const MazeCell(type: CellType.floor),
+            const MazeCell(type: CellType.exit),
+          ],
+        ],
+      );
+
+      final edges = WallEdgeBuilder.build(grid);
+
+      expect(edges, contains(const MazeEdge.horizontal(row: 0, col: 1)));
+      expect(edges, contains(const MazeEdge.horizontal(row: 1, col: 1)));
+      expect(edges, contains(const MazeEdge.vertical(row: 1, col: 1)));
+      expect(edges, hasLength(3));
     });
   });
 }

@@ -206,13 +206,6 @@ No new open questions introduced. Gameplay.md §18 consolidates existing cross-g
 
 ### ChatGPT Product Review
 
-- **Date:**
-- **Verdict:**
-- **Score:**
-- **Product Notes:**
-- **UX / Design Notes:**
-- **Recommendations:**
-
 ### Human Approval
 
 - **Date:** 2026-07-03
