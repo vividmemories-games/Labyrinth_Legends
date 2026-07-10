@@ -12,7 +12,7 @@
 | **Date**               | 2026-07-03                                                                                                    |
 | **Phase**              | M1.2 — GameplaySession Skeleton                                                                               |
 | **Owner**              | Cursor                                                                                                        |
-| **Status**             | Approved & Locked                                                                                            |
+| **Status**             | Approved & Locked|
 | **Review Type**        | Release                                                                                                       |
 | **Template Version**   | v2                                                                                                            |
 | **Related Docs**       | `Engine_Architecture.md` · `Coding_Standards.md` · `Level_Format.md` · `0043_m1_1_level_format_validation.md` |

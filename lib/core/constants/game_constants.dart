@@ -10,6 +10,8 @@ abstract final class GameConstants {
 
   static const Duration pathStepDuration = Duration(milliseconds: 280);
   static const Duration levelCompleteDelay = Duration(milliseconds: 600);
+  /// Minimum board celebration while [CompletionSyncService] persists (Firebase hook later).
+  static const Duration victoryCelebrationMinDuration = Duration(milliseconds: 1500);
 
   static const double mazeSkewRadians = 0.35;
   static const double mazeScale = 0.92;

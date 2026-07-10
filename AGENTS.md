@@ -3,9 +3,9 @@
 
 | Field            | Value      |
 | ---------------- | ---------- |
-| **Version**      | 3.0.0      |
+| **Version**      | 3.1.0      |
 | **Status**       | Active     |
-| **Last Updated** | 2026-07-02 |
+| **Last Updated** | 2026-07-09 |
 
 
 This repository contains **Labyrinth Legends**, a premium Flutter mobile puzzle adventure game for iOS and Android.
@@ -84,7 +84,7 @@ Avoid duplicate prose — **link** to authoritative documents.
 - Must follow `[.cursor/rules/labyrinth-legends.mdc](.cursor/rules/labyrinth-legends.mdc)`
 - Must read relevant docs before implementation (see §5)
 - Must update LLDS when implementation changes behavior or design
-- **Must generate a review package after every major task** (see §4)
+- **Does not** create review packages per task — batches them weekly on Human request (see §4)
 
 
 
@@ -114,24 +114,30 @@ Avoid duplicate prose — **link** to authoritative documents.
 
 
 
-# 4. Mandatory Review Packages
+# 4. Review Packages (Weekly Batch)
 
-After every **major task**, Cursor must create a review package in `docs/99_Reviews/`. Review packages are the **official handoff artifact** for **Codex** and **Human** approval.
+Review packages in `docs/99_Reviews/` are the **official handoff artifact** for **Codex** and **Human** approval.
 
-**Cursor must not mark a major task complete until the review package exists.**
+## Cadence (Human override — 2026-07-09)
 
-All review packages must use the **v2 template** (`[docs/99_Reviews/Review_Template.md](docs/99_Reviews/Review_Template.md)`), including:
+| When | Rule |
+|------|------|
+| **During implementation** | Cursor does **not** scaffold a review package after every major task |
+| **Weekly Codex session** | Human asks Cursor to generate **one batch package** covering all work since the last package |
+| **Baseline cutoff** | Last completed batch ended at review package **0091** (`Screens/0091_gameplay_floor_tile_variation.md`) |
+| **Next ID** | **0092** when the next weekly batch is requested |
 
-- Motivation, risk assessment, dependencies, product impact
-- Future technical debt and recommended next task
-- Standardized reviewer notes (Codex, Human)
+## When Human requests a weekly batch
 
-1. Run `./scripts/new_review_package.sh <Category> <topic_slug> --update-index`
-2. Fill all v2 sections per the template
-3. Include screenshots if UI changed
-4. Mark **Ready For** checkboxes when complete
+1. Diff all changes since the last review package (code, docs, assets, `Decisions.md`)
+2. Run `./scripts/new_review_package.sh <Category> <topic_slug> --phase "..." --update-index` (split by category only if the batch is very large)
+3. Fill all v2 sections per `[docs/99_Reviews/Review_Template.md](docs/99_Reviews/Review_Template.md)`
+4. Run `fvm flutter test` and `fvm flutter analyze --no-fatal-infos`
+5. Mark **Ready For** Codex + Human when complete
 
-**Do not proceed to the next phase until review is approved** (or explicitly waived by Human).
+## Per-task rule (suspended)
+
+The former rule — *create a review package after every major task* — is **suspended** until Human reinstates it. Implementation may continue without blocking on per-task packages.
 
 See `[docs/99_Reviews/README.md](docs/99_Reviews/README.md)` for folder structure and naming.
 
@@ -473,18 +479,16 @@ Document non-MVP ideas in `[docs/00_Project/Decisions.md](docs/00_Project/Decisi
 
 Any pull request or major AI-generated change should include:
 
-1. Relevant LLDS documentation updates **and** a review package in `docs/99_Reviews/` for major tasks
+1. Relevant LLDS documentation updates when behavior, design, or architecture changed
 
-**or**
+**Weekly review packages** are batched on Human request (§4) — not required on every PR.
 
-1. A short explanation:
+If no doc update is needed, include a short explanation:
 
 ```text
 No documentation update needed because this change is purely internal/refactor-only
 and does not affect design, architecture, product direction, roadmap, or decisions.
 ```
-
-Minor fixes may skip a review package; major milestones may not.
 
 ---
 
@@ -502,7 +506,7 @@ Docs updated:
 -
 
 Review package:
-docs/99_Reviews/{Category}/NNNN_topic.md (or N/A for minor fixes)
+N/A (weekly batch) — or docs/99_Reviews/{Category}/NNNN_topic.md when Human requested a batch
 
 Decisions added:
 -
@@ -531,12 +535,11 @@ A task is complete only when:
 - Core game logic remains outside widgets
 - Relevant tests are added or updated where practical
 - LLDS docs are updated when behavior or design changed
-- **A review package exists** in `docs/99_Reviews/` for major tasks
 - Important decisions are logged in `Decisions.md`
 - Open questions are recorded
 - No unrelated scope is introduced
 
-If documentation or the review package is missing for a major task, the task is **not done**.
+**Per-task review packages are not required** under the weekly batch cadence (§4). Human may request a batch package at the weekly Codex session.
 
 ---
 

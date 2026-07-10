@@ -15,7 +15,6 @@ class GameplayBoardContainer extends StatelessWidget {
     this.explorerPosition,
     this.selectedTile,
     this.invalidTarget,
-    this.planningExtensionHints = const {},
     this.traversedPathPositions = const {},
     this.isExecuting = false,
     this.showDebugGrid = false,
@@ -30,7 +29,6 @@ class GameplayBoardContainer extends StatelessWidget {
   final GridPosition? explorerPosition;
   final GridPosition? selectedTile;
   final GridPosition? invalidTarget;
-  final Set<GridPosition> planningExtensionHints;
   final Set<GridPosition> traversedPathPositions;
   final bool isExecuting;
   final bool showDebugGrid;
@@ -49,7 +47,6 @@ class GameplayBoardContainer extends StatelessWidget {
       selectedTile: selectedTile,
       onTileInteraction: onTileInteraction,
       invalidTarget: invalidTarget,
-      planningExtensionHints: planningExtensionHints,
       traversedPathPositions: traversedPathPositions,
       isExecuting: isExecuting,
       showDebugGrid: showDebugGrid,

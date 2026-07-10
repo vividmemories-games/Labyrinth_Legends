@@ -11,7 +11,7 @@
 | **Date** | 2026-07-03 |
 | **Phase** | M1.5 — Objective Evaluation |
 | **Owner** | Cursor |
-| **Status** | Approved & Locked |
+| **Status** | Approved & Locked|
 | **Review Type** | Release |
 | **Template Version** | v2 |
 | **Related Docs** | `Engine_Architecture.md` · `Coding_Standards.md` · `Level_Format.md` · GP5 · GP7 · `0043`–`0046` |

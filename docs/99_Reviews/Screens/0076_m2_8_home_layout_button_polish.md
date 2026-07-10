@@ -11,7 +11,7 @@
 | **Date** | 2026-07-06 |
 | **Phase** | M2.8 Home Layout + Button Plate Polish |
 | **Owner** | Cursor |
-| **Status** | Ready for Review |
+| **Status** | Approved|
 | **Review Type** | Screen + Design System |
 | **Template Version** | v2 |
 | **Related Docs** | `Home.md` · `Components.md` · `Typography.md` |
@@ -173,7 +173,7 @@ Human Home sign-off → Level Select shell against mockup panel 2.
 ## Ready For
 
 - [x] Codex Engineering Review
-- [ ] Human Approval
+- [x] Human Approval
 
 ---
 

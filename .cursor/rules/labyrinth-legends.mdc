@@ -66,17 +66,17 @@ Do **not** extend `ruins_button`, `app_colors`, or prototype theme. Rebuild via 
 
 No joystick. No real-time movement control.
 
-## Mandatory Review Package
+## Mandatory Review Package (weekly batch)
 
-After every **major task**, create a review package in `docs/99_Reviews/`. Review packages are the **official handoff artifact** for **Codex** and **Human** approval. Cursor must **not** mark a major task complete until the review package exists.
+Review packages are batched **weekly on Human request** — not after every major task. See `AGENTS.md` §4 and `docs/99_Reviews/README.md`.
 
-All packages must use the **v2 template** (motivation, risk, dependencies, product impact, future debt, recommended next task, standardized reviewer notes).
+When Human asks for the weekly batch, scaffold with:
 
 ```bash
 ./scripts/new_review_package.sh <Category> <topic_slug> --phase "..." --update-index
 ```
 
-Then fill in all sections from `docs/99_Reviews/Review_Template.md` (v2).
+Fill all sections from `docs/99_Reviews/Review_Template.md` (v2). Baseline cutoff: package **0091**; next batch starts at **0092**.
 
 ## Definition of Done
 
@@ -85,7 +85,7 @@ Then fill in all sections from `docs/99_Reviews/Review_Template.md` (v2).
 - Engine logic tested (not in widgets)
 - `Decisions.md` updated for material choices
 - No scope creep beyond task
-- **Review package created** in `docs/99_Reviews/` for major tasks
+- **Weekly review package** only when Human requests the batch (not per task)
 
 ## AI Workflows
 

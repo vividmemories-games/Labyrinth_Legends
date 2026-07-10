@@ -1,7 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:labyrinth_legends/core/constants/game_constants.dart';
+import 'package:labyrinth_legends/core/services/completion_sync_service.dart';
 import 'package:labyrinth_legends/data/daily_level_builder.dart';
 import 'package:labyrinth_legends/data/local/local_progress_store.dart';
+import 'package:labyrinth_legends/data/models/level_completion_snapshot.dart';
 import 'package:labyrinth_legends/data/models/player_progress.dart';
 import 'package:labyrinth_legends/data/models/reward_result.dart';
 import 'package:labyrinth_legends/data/repositories/level_repository.dart';
@@ -146,3 +148,16 @@ final playerProgressProvider =
     AsyncNotifierProvider<PlayerProgressNotifier, PlayerProgress>(
   PlayerProgressNotifier.new,
 );
+
+final completionSyncServiceProvider = Provider<CompletionSyncService>((ref) {
+  return LocalCompletionSyncService(
+    recordCompletion: ({required String levelId, required RewardResult reward}) =>
+        ref
+            .read(playerProgressProvider.notifier)
+            .recordCompletion(levelId: levelId, reward: reward),
+  );
+});
+
+/// Set when gameplay win flow finishes sync; read on Victory screen then clear.
+final pendingLevelCompletionProvider =
+    StateProvider<LevelCompletionSnapshot?>((ref) => null);

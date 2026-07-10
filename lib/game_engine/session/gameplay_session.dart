@@ -1,3 +1,5 @@
+import 'package:labyrinth_legends/game_engine/discovery/discovery_engine.dart';
+import 'package:labyrinth_legends/game_engine/models/discovery_mode.dart';
 import 'package:labyrinth_legends/game_engine/models/gameplay_phase.dart';
 import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
 import 'package:labyrinth_legends/game_engine/models/level_definition.dart';
@@ -22,16 +24,24 @@ class GameplaySession {
     PathExecutor? pathExecutor,
     ObjectiveEvaluator? objectiveEvaluator,
     RewardCalculator? rewardCalculator,
+    DiscoveryEngine? discoveryEngine,
   })  : _pathValidator = pathValidator ?? const PathValidator(),
         _pathExecutor = pathExecutor ?? const PathExecutor(),
         _objectiveEvaluator = objectiveEvaluator ?? const ObjectiveEvaluator(),
         _rewardCalculator = rewardCalculator ?? const RewardCalculator(),
-        _state = GameplaySessionState.initial(level);
+        _discoveryEngine =
+            discoveryEngine ?? DiscoveryEngine(discoveryMode: level.discoveryMode),
+        _state = GameplaySessionState.initial(
+          level,
+          discoveryEngine: discoveryEngine ??
+              DiscoveryEngine(discoveryMode: level.discoveryMode),
+        );
 
   final PathValidator _pathValidator;
   final PathExecutor _pathExecutor;
   final ObjectiveEvaluator _objectiveEvaluator;
   final RewardCalculator _rewardCalculator;
+  final DiscoveryEngine _discoveryEngine;
   GameplaySessionState _state;
 
   /// Current immutable session snapshot.
@@ -62,7 +72,7 @@ class GameplaySession {
   /// Validates the current draft path without changing phase.
   PathValidationResult validateDraftPath() {
     return _pathValidator.validate(
-      grid: _state.level.grid,
+      grid: _state.grid,
       path: _state.draftPath,
       requireExit: _state.level.objectives.reachExit,
     );
@@ -73,6 +83,7 @@ class GameplaySession {
     _assertDrawing(GameplaySessionExceptionCode.updateDraftPath);
     _state = _state.copyWith(
       draftPath: List<GridPosition>.of(path),
+      runtimeGrid: _discoveryGridForDraft(path),
       clearLifecycleMessage: true,
     );
   }
@@ -82,6 +93,7 @@ class GameplaySession {
     _assertDrawing(GameplaySessionExceptionCode.resetDraftPath);
     _state = _state.copyWith(
       draftPath: const [],
+      runtimeGrid: _discoveryGridForDraft(const []),
       clearLifecycleMessage: true,
     );
   }
@@ -89,8 +101,10 @@ class GameplaySession {
   /// Appends one position to the draft path without path validation.
   void appendDraftPosition(GridPosition position) {
     _assertDrawing(GameplaySessionExceptionCode.appendDraftPath);
+    final path = [..._state.draftPath, position];
     _state = _state.copyWith(
-      draftPath: [..._state.draftPath, position],
+      draftPath: path,
+      runtimeGrid: _discoveryGridForDraft(path),
       clearLifecycleMessage: true,
     );
   }
@@ -101,8 +115,10 @@ class GameplaySession {
     if (_state.draftPath.isEmpty) {
       return;
     }
+    final path = _state.draftPath.sublist(0, _state.draftPath.length - 1);
     _state = _state.copyWith(
-      draftPath: _state.draftPath.sublist(0, _state.draftPath.length - 1),
+      draftPath: path,
+      runtimeGrid: _discoveryGridForDraft(path),
       clearLifecycleMessage: true,
     );
   }
@@ -131,7 +147,10 @@ class GameplaySession {
       draftPath: const [],
       clearLifecycleMessage: true,
       executionPathIndex: 0,
-      runtimeGrid: _state.level.grid,
+      runtimeGrid: _applyDiscovery(
+        _state.level.grid,
+        path: committed,
+      ),
       executionComplete: false,
     );
   }
@@ -177,10 +196,16 @@ class GameplaySession {
 
     final resolution = step.resolution!;
     final atPathEnd = step.pathIndex == path.length - 1;
+    final discoveredGrid = _applyDiscovery(
+      resolution.grid,
+      path: path,
+      playerPosition: step.position,
+      collectedRelics: resolution.attemptContext.collectedRelics,
+    );
     _state = _state.copyWith(
       executionPathIndex: step.pathIndex,
       attemptContext: resolution.attemptContext,
-      runtimeGrid: resolution.grid,
+      runtimeGrid: discoveredGrid,
       executionComplete: atPathEnd,
     );
 
@@ -242,7 +267,56 @@ class GameplaySession {
 
   /// Starts a new attempt for the same level.
   void restart() {
-    _state = GameplaySessionState.initial(_state.level);
+    _state = GameplaySessionState.initial(
+      _state.level,
+      discoveryEngine: _discoveryEngine,
+    );
+  }
+
+  MazeGrid? _discoveryGridForDraft(List<GridPosition> path) {
+    if (_state.level.discoveryMode == DiscoveryMode.full) {
+      return null;
+    }
+    return _applyDiscovery(_state.level.grid, path: path);
+  }
+
+  MazeGrid _applyDiscovery(
+    MazeGrid mechanicsGrid, {
+    List<GridPosition>? path,
+    GridPosition? playerPosition,
+    Set<String>? collectedRelics,
+  }) {
+    switch (_discoveryEngine.discoveryMode) {
+      case DiscoveryMode.full:
+        return mechanicsGrid;
+      case DiscoveryMode.fog:
+        final revealCenters = <GridPosition>[
+          if (path != null) ...path,
+          if (playerPosition != null &&
+              (path == null || !path.contains(playerPosition)))
+            playerPosition,
+        ];
+        return _discoveryEngine.revealFromPath(mechanicsGrid, revealCenters);
+      case DiscoveryMode.relicGated:
+        final relics = collectedRelics ??
+            (path == null ? _state.attemptContext.collectedRelics : _relicsAlongPath(path));
+        return _discoveryEngine.revealAfterRelicCollection(
+          mechanicsGrid,
+          relics,
+        );
+    }
+  }
+
+  Set<String> _relicsAlongPath(List<GridPosition> path) {
+    final relics = <String>{};
+    final grid = _state.level.grid;
+    for (final position in path) {
+      final cell = grid.cellAt(position);
+      if (cell.hasRelic) {
+        relics.add(cell.relicId ?? 'relic_${position.row}_${position.col}');
+      }
+    }
+    return relics;
   }
 
   void _assertDrawing(GameplaySessionExceptionCode operation) {

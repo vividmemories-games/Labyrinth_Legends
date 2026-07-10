@@ -23,7 +23,7 @@ class GameplayLayout extends StatelessWidget {
     required this.onErase,
     required this.onHint,
     required this.onPrimaryAction,
-    required this.onBack,
+    this.onBack,
     required this.onPause,
     required this.onResume,
     required this.isPausedOverlayVisible,
@@ -31,9 +31,9 @@ class GameplayLayout extends StatelessWidget {
     this.hasNextLevel = false,
     this.onTryAgain,
     this.onNextLevel,
+    this.onRetryCompletionSync,
     this.explorerPosition,
     this.selectedTile,
-    this.planningExtensionHints = const {},
     this.traversedPathPositions = const {},
     this.isExecuting = false,
     this.completionStatusCue,
@@ -65,7 +65,7 @@ class GameplayLayout extends StatelessWidget {
   final VoidCallback onErase;
   final VoidCallback onHint;
   final VoidCallback onPrimaryAction;
-  final VoidCallback onBack;
+  final VoidCallback? onBack;
   final VoidCallback onPause;
   final VoidCallback onResume;
   final bool isPausedOverlayVisible;
@@ -73,9 +73,9 @@ class GameplayLayout extends StatelessWidget {
   final bool hasNextLevel;
   final VoidCallback? onTryAgain;
   final VoidCallback? onNextLevel;
+  final VoidCallback? onRetryCompletionSync;
   final GridPosition? explorerPosition;
   final GridPosition? selectedTile;
-  final Set<GridPosition> planningExtensionHints;
   final Set<GridPosition> traversedPathPositions;
   final bool isExecuting;
   final String? completionStatusCue;
@@ -107,11 +107,13 @@ class GameplayLayout extends StatelessWidget {
 
     final primaryLabel = isTerminalLost
         ? 'Try Again'
-        : isTerminalWon
-            ? (hasNextLevel ? 'Next Level' : 'Complete')
-            : canConfirmDraft
-                ? 'GO'
-                : 'Draw Path';
+        : isTerminalWon && onRetryCompletionSync != null
+            ? 'Retry Save'
+            : isTerminalWon
+                ? 'Victory…'
+                : canConfirmDraft
+                    ? 'GO'
+                    : 'Draw Path';
 
     final controlState = isExecuting
         ? GameplayControlBarState.executingHidden
@@ -127,11 +129,13 @@ class GameplayLayout extends StatelessWidget {
 
     final VoidCallback? primaryHandler = isTerminalLost
         ? onTryAgain
-        : isTerminalWon && hasNextLevel
-            ? onNextLevel
-            : canConfirmDraft && !isInteractionLocked
-                ? onPrimaryAction
-                : null;
+        : isTerminalWon && onRetryCompletionSync != null
+            ? onRetryCompletionSync
+            : isTerminalWon && hasNextLevel
+                ? onNextLevel
+                : canConfirmDraft && !isInteractionLocked
+                    ? onPrimaryAction
+                    : null;
 
     final statusCue = _resolveStatusCue(
       theme: theme,
@@ -204,7 +208,6 @@ class GameplayLayout extends StatelessWidget {
                           selectedTile: selectedTile,
                           onTileInteraction: onTileInteraction,
                           invalidTarget: invalidTarget,
-                          planningExtensionHints: planningExtensionHints,
                           traversedPathPositions: traversedPathPositions,
                           isExecuting: isExecuting,
                           showDebugGrid: showDebugGrid,

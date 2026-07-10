@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-# Cursor stop hook — remind the agent to scaffold a review package after major tasks.
+# Cursor stop hook — remind about weekly review batch (not per-task packages).
 #
 # Fires when lib/ or test/ Dart files are newer than the latest review package.
-# Skips if a review package was already created/updated in the same work window.
 
 set -euo pipefail
 
@@ -84,20 +83,19 @@ newest_code_mtime() {
 code_mtime="$(newest_code_mtime)"
 review_mtime="$(newest_review_mtime)"
 
-# Code changed after the latest review package → likely needs a new/updated review.
 if (( code_mtime > review_mtime && code_mtime > 0 )); then
   python3 - <<'PY'
 import json
 
 print(json.dumps({
     "followup_message": (
-        "Before you finish: if this was a **major task**, scaffold and complete a review package:\n\n"
+        "Weekly review cadence is active — **do not** create a per-task package.\n\n"
+        "If Human requested the weekly batch, generate **one package since 0091**:\n\n"
         "```bash\n"
         "./scripts/new_review_package.sh <Category> <topic_slug> --phase \"...\" --update-index\n"
         "```\n\n"
-        "Fill all sections per `docs/99_Reviews/Review_Template.md`, run tests/analyze, "
-        "and mark **Ready For** when complete.\n\n"
-        "Skip this only for minor fixes that do not need a review package."
+        "Fill `docs/99_Reviews/Review_Template.md` (v2), run tests/analyze, mark **Ready For**.\n"
+        "Otherwise continue implementation — batch review happens in the weekly Codex session."
     )
 }))
 PY

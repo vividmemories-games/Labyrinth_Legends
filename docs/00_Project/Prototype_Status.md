@@ -1,7 +1,19 @@
 # Prototype Status
 
-**Date:** 2026-06-28  
-**Context:** Intentional restart. LLDS is now authoritative; existing code is **reference only** until a formal rebuild task.
+**Date:** 2026-07-09  
+**Context:** Production rebuild is **in progress**. LLDS is authoritative. Legacy prototype patterns must not be extended.
+
+## Current production state (M2)
+
+| Area | Status |
+|------|--------|
+| `lib/design_system/` | Active — LLDL tokens and components |
+| `lib/game_engine/` | Active — M1 complete; schema v2 |
+| `lib/features/gameplay/` | Active — draw/commit/execute loop; `MazePainter` board |
+| `lib/data/` | Active — progress repositories (win→save wiring pending) |
+| `lib/features/home/`, `level_select/` | Active — M2.8 visual passes |
+| `lib/features/maze_render_poc/` | **Legacy** — POC promoted to gameplay; route may remain for dev only |
+| `lib/core/widgets/ruins_*` | **Deprecated** — do not extend |
 
 ## Preserve (do not delete yet)
 
@@ -9,10 +21,10 @@
 |------|--------|
 | `android/`, `ios/` | Flutter platform scaffold, flavors, CocoaPods |
 | `.fvmrc`, `pubspec.yaml` | Tooling pins and dependency baseline |
-| `assets/levels/world_1/*.json` | Level data format reference — validate against new spec before reuse |
+| `assets/levels/world_1/*.json` | Level data — validate against schema v2 before reuse |
 | `DesignReferences/` | Original design inputs |
 | `docs/second-brain/` | Archive — migrate useful content into LLDS, then deprecate |
-| `AGENTS.md` | Update to point at LLDS (pending) |
+| `AGENTS.md` | Agent governance |
 | `reviews/codex/phase1-review.md` | Historical review findings |
 
 ## Marked for replacement (do not extend)
@@ -20,13 +32,10 @@
 | Path | Issue |
 |------|-------|
 | `lib/app/theme.dart` | Hardcoded colors; not LLDL tokens |
-| `lib/core/constants/app_colors.dart` | **Deprecated** — feature code migrated to `LLColor`; thin legacy file remains |
+| `lib/core/constants/app_colors.dart` | **Deprecated** — thin legacy file remains |
 | `lib/core/widgets/ruins_button.dart` | **Deprecated** — delegates to `LLButton` |
 | `lib/core/widgets/currency_pill.dart` | **Deprecated** — delegates to `LLCurrencyChip` |
-| `lib/features/**` | Prototype screens migrated to `design_system/` (2026-06-30 Tier 3) — Settings included |
-| `lib/game_engine/**` | Logic direction OK; re-implement against updated `Mechanics.md` and tests |
-| `lib/data/**` | Rebuild after save-system spec locked |
-| `test/**` | Rewrite after engine reset |
+| `lib/features/maze_render_poc/**` | POC superseded by `features/gameplay/presentation/rendering/` |
 
 ## Do not build on prototype UI
 
@@ -38,8 +47,8 @@ Future tasks must:
 
 ## Recommended cleanup task (future)
 
-After M1 design system lands:
+After vertical slice:
 
 1. Remove `lib/core/widgets/ruins_*` and prototype theme
-2. Archive or delete `docs/second-brain/` once migration verified
-3. Squash git history optional — user decision
+2. Remove or gate `maze_render_poc` dev route if unused
+3. Archive or delete `docs/second-brain/` once migration verified

@@ -54,17 +54,23 @@ final appRouter = GoRouter(
     GoRoute(
       path: AppRoutes.gameplay,
       name: 'play',
-      builder: (context, state) {
+      pageBuilder: (context, state) {
         final levelId = state.pathParameters['levelId']!;
-        return GameplayScreen(levelId: levelId);
+        return NoTransitionPage<void>(
+          key: state.pageKey,
+          child: GameplayScreen(levelId: levelId),
+        );
       },
     ),
     GoRoute(
       path: AppRoutes.complete,
       name: 'complete',
-      builder: (context, state) {
+      pageBuilder: (context, state) {
         final levelId = state.pathParameters['levelId']!;
-        return LevelCompleteScreen(levelId: levelId);
+        return NoTransitionPage<void>(
+          key: state.pageKey,
+          child: LevelCompleteScreen(levelId: levelId),
+        );
       },
     ),
     GoRoute(

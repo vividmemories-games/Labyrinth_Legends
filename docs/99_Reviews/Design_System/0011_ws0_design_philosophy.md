@@ -12,7 +12,7 @@
 | **Date**               | 2026-06-29                                                                                                       |
 | **Phase**              | Design System — WS0 Foundation                                                                                   |
 | **Owner**              | Cursor                                                                                                           |
-| **Status**             | Approved                                                                                                         |
+| **Status**             | Approved|
 | **Review Type**        | Design System                                                                                                    |
 | **Template Version**   | v2                                                                                                               |
 | **Related Docs**       | `docs/02_Design_System/WS0_Design_Philosophy.md` · `docs/02_Design_System/LLDL/LLDL.md` · `docs/00_Project/Vision.md` |

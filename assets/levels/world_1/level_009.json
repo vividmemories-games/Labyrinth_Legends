@@ -23,7 +23,6 @@
         {
           "type": "start",
           "edges": {
-            "east": true,
             "south": true
           }
         },
@@ -51,62 +50,44 @@
           }
         },
         {
-          "type": "floor",
-          "edges": {
-            "south": true,
-            "west": true
-          }
+          "type": "floor"
         }
       ],
       [
         {
           "type": "floor",
           "edges": {
-            "east": true,
-            "west": true
+            "north": true
           }
         },
         {
           "type": "floor",
           "edges": {
             "north": true,
-            "east": true,
-            "south": true,
-            "west": true
+            "south": true
           }
         },
         {
           "type": "floor",
           "edges": {
             "north": true,
-            "east": true,
-            "south": true,
-            "west": true
+            "south": true
           }
         },
         {
           "type": "floor",
           "edges": {
             "north": true,
-            "east": true,
-            "south": true,
-            "west": true
+            "south": true
           }
         },
         {
-          "type": "floor",
-          "edges": {
-            "east": true,
-            "west": true
-          }
+          "type": "floor"
         }
       ],
       [
         {
-          "type": "floor",
-          "edges": {
-            "east": true
-          }
+          "type": "floor"
         },
         {
           "type": "floor",
@@ -131,62 +112,44 @@
           }
         },
         {
+          "type": "floor"
+        }
+      ],
+      [
+        {
+          "type": "floor"
+        },
+        {
           "type": "floor",
           "edges": {
-            "west": true
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "south": true
           }
         }
       ],
       [
         {
-          "type": "floor",
-          "edges": {
-            "east": true,
-            "west": true
-          }
-        },
-        {
-          "type": "floor",
-          "edges": {
-            "north": true,
-            "east": true,
-            "south": true,
-            "west": true
-          }
-        },
-        {
-          "type": "floor",
-          "edges": {
-            "north": true,
-            "east": true,
-            "south": true,
-            "west": true
-          }
-        },
-        {
-          "type": "floor",
-          "edges": {
-            "north": true,
-            "east": true,
-            "south": true,
-            "west": true
-          }
-        },
-        {
-          "type": "floor",
-          "edges": {
-            "east": true,
-            "west": true
-          }
-        }
-      ],
-      [
-        {
-          "type": "floor",
-          "edges": {
-            "north": true,
-            "east": true
-          }
+          "type": "floor"
         },
         {
           "type": "floor",
@@ -211,11 +174,7 @@
           }
         },
         {
-          "type": "exit",
-          "edges": {
-            "north": true,
-            "west": true
-          }
+          "type": "exit"
         }
       ]
     ]

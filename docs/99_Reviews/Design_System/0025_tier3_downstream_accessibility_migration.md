@@ -11,7 +11,7 @@
 | **Date** | 2026-06-30 |
 | **Phase** | Design System — Tier 3 Downstream |
 | **Owner** | Cursor |
-| **Status** | Approved |
+| **Status** | Approved|
 | **Review Type** | Design System |
 | **Template Version** | v2 |
 | **Related Docs** | WS4 · WS5 · WS6 · WS8 · WS9 · `Accessibility.md` · `Gameplay.md` · `0024` |

@@ -11,7 +11,7 @@
 | **Date** | 2026-06-29 |
 | **Phase** | Documentation Phase 1 — Gameplay Integration |
 | **Owner** | Cursor |
-| **Status** | Approved & Locked |
+| **Status** | Approved & Locked|
 | **Review Type** | Gameplay |
 | **Template Version** | v2 |
 | **Related Docs** | `docs/01_Game_Design/Gameplay/Gameplay.md` · GP1–GP7 · `docs/01_Game_Design/Gameplay/README.md` · `docs/README.md` |

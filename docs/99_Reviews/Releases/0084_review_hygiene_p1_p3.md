@@ -11,7 +11,7 @@
 | **Date** | 2026-07-06 |
 | **Phase** | M2.8 — Review Hygiene |
 | **Owner** | Cursor |
-| **Status** | Approved |
+| **Status** | Approved|
 | **Review Type** | Release |
 | **Template Version** | v2 |
 | **Related Docs** | `0082_level_select_winding_map` · `0083_worlds_chapter_backgrounds` |

@@ -72,10 +72,14 @@ class LLButton extends StatelessWidget {
                   Icon(icon, size: LLSpacing.md + LLSpacing.xs, color: foreground),
                   SizedBox(width: LLSpacing.sm),
                 ],
-                Text(
-                  label,
-                  textAlign: TextAlign.center,
-                  style: _labelStyleFor(variant, foreground),
+                Flexible(
+                  child: Text(
+                    label,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
+                    style: _labelStyleFor(variant, foreground),
+                  ),
                 ),
               ],
             ),

@@ -10,7 +10,7 @@
 | **Date** | 2026-07-06 |
 | **Phase** | M2.8 Weathered Button Tokens |
 | **Owner** | Cursor |
-| **Status** | Ready for Review |
+| **Status** | Approved|
 | **Review Type** | Design System |
 | **Template Version** | v2 |
 | **Related Docs** | `Design_Tokens.md` · `Components.md` · `Home.md` · `Decisions.md` |
@@ -192,7 +192,7 @@ Level Select shell against mockup + spot-check pause/level-complete buttons on d
 ## Ready For
 
 - [x] Codex Engineering Review
-- [ ] Human Approval
+- [x] Human Approval
 
 ---
 

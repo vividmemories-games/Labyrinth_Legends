@@ -11,7 +11,7 @@
 | **Date** | 2026-07-06 |
 | **Phase** | M2.8 — Gameplay Visual Pass |
 | **Owner** | Cursor |
-| **Status** | Ready for Review |
+| **Status** | Approved|
 | **Review Type** | Screen |
 | **Template Version** | v2 |
 | **Related Docs** | `docs/03_Screens/Gameplay.md` · `docs/06_Asset_Bible/MVP_Visual_Target.md` · `docs/02_Design_System/Components.md` |

@@ -11,7 +11,7 @@
 | **Date** | 2026-07-06 |
 | **Phase** | M2.8 Home + Weathered Button Polish |
 | **Owner** | Cursor |
-| **Status** | Ready for Review |
+| **Status** | Approved|
 | **Review Type** | Screen + Design System |
 | **Template Version** | v2 |
 | **Related Docs** | `MVP_Visual_Target.md` · `Design_Tokens.md` · `Components.md` · `Home.md` · `Decisions.md` |
@@ -211,7 +211,7 @@ fvm flutter analyze --no-fatal-infos
 ## Ready For
 
 - [x] Codex Engineering Review
-- [ ] Human Approval
+- [x] Human Approval
 
 ---
 

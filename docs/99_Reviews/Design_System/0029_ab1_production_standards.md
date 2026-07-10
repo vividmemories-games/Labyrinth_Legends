@@ -12,7 +12,7 @@
 | **Date**               | 2026-07-01                                                                                                                                    |
 | **Phase**              | Asset Bible — AB1 Production Standards                                                                                                        |
 | **Owner**              | Cursor                                                                                                                                        |
-| **Status**             | Approved                                                                                                                                      |
+| **Status**             | Approved|
 | **Review Type**        | Design System                                                                                                                                 |
 | **Template Version**   | v2                                                                                                                                            |
 | **Related Docs**       | `AB1_Production_Standards.md` · `AB0_Asset_Philosophy_Production_Principles.md` · `06_Asset_Bible/README.md` · `0028_ab0_asset_philosophy.md` |

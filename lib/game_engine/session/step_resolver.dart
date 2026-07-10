@@ -29,6 +29,7 @@ class StepResolver {
     }
 
     context = _resolveKey(cell, context);
+    context = _resolveRelic(cell, position, context);
     context = _resolveGem(cell, position, context);
     if (cell.hasGem && context.collectedGemPositions.contains(position)) {
       currentGrid = currentGrid.withCellAt(
@@ -68,6 +69,25 @@ class StepResolver {
     }
     return context.copyWith(
       collectedKeys: {...context.collectedKeys, keyId},
+    );
+  }
+
+  GameplayAttemptContext _resolveRelic(
+    MazeCell cell,
+    GridPosition position,
+    GameplayAttemptContext context,
+  ) {
+    if (!cell.hasRelic) {
+      return context;
+    }
+
+    final relicId = cell.relicId ?? 'relic_${position.row}_${position.col}';
+    if (context.collectedRelics.contains(relicId)) {
+      return context;
+    }
+
+    return context.copyWith(
+      collectedRelics: {...context.collectedRelics, relicId},
     );
   }
 

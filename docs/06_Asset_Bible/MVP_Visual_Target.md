@@ -62,18 +62,20 @@ Deferred reference material: [World_01_Forgotten_Citadel/archive/](World_01_Forg
 
 ## Gameplay Presentation
 
-Per the master mockup gameplay panel:
+Per the master mockup gameplay panel (updated 2026-07-09):
 
 | Element | MVP delivery |
 |---------|--------------|
-| Floor / wall tiles | PNG sprites (painter fallback until assets ship) |
-| Explorer | Cyan glowing sprite |
+| Floor / walls | Code-drawn `MazePainter` + variant floor PNGs (`tile_floor_1`–`4`); raised stone edges — **not** per-cell autotile PNG stack |
+| Explorer | Cyan glowing sprite (`LLGameplayAsset`) |
 | Path | Cyan `CustomPainter` line |
 | Gems | Purple faceted sprite |
 | Keys | Gold sprite |
 | Exit portal | Cyan glowing portal sprite |
 | HUD | Level title, Undo / Erase / Hint, Moves / Gems / Key counters |
-| Board frame | Simple gold-bordered panel — not environmental integration |
+| Board frame | Shrink-wrapped board; subtle perspective tilt — gold frame removed |
+
+Collectibles/HUD remain AB2 PNG sprites. Maze structure is not authored as edge overlay PNGs.
 
 Engine and gameplay loop (M2.1–M2.6) are unchanged.
 

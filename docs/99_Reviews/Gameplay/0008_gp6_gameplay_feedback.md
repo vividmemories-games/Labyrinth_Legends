@@ -11,7 +11,7 @@
 | **Date** | 2026-06-29 |
 | **Phase** | Phase 2 — Gameplay Specifications |
 | **Owner** | Cursor |
-| **Status** | Approved & Locked |
+| **Status** | Approved & Locked|
 | **Review Type** | Gameplay |
 | **Template Version** | v2 |
 | **Related Docs** | `docs/01_Game_Design/Gameplay/GP6_Gameplay_Feedback.md` · GP4 · GP5 · GP1–GP3 · GP7 |

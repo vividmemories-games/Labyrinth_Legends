@@ -12,7 +12,7 @@
 | **Date**               | 2026-07-01                                                                                                                 |
 | **Phase**              | Asset Bible — AB0 Philosophy                                                                                               |
 | **Owner**              | Cursor                                                                                                                     |
-| **Status**             | Approved                                                                                                                   |
+| **Status**             | Approved|
 | **Review Type**        | Design System                                                                                                              |
 | **Template Version**   | v2                                                                                                                         |
 | **Related Docs**       | `AB0_Asset_Philosophy_Production_Principles.md` · `06_Asset_Bible/README.md` · `LLDL.md` · `0027_asset_bible_structure.md` |

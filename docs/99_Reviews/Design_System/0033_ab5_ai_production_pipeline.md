@@ -12,7 +12,7 @@
 | **Date**               | 2026-07-02                                                                                               |
 | **Phase**              | Asset Bible — AB5 AI Production Pipeline                                                                 |
 | **Owner**              | Cursor                                                                                                   |
-| **Status**             | Approved                                                                                                 |
+| **Status**             | Approved|
 | **Review Type**        | Design System                                                                                            |
 | **Template Version**   | v2                                                                                                       |
 | **Related Docs**       | `AB5_AI_Production_Pipeline.md` · `AB4_Marketing_Store_Assets.md` · `0032_ab4_marketing_store_assets.md` |

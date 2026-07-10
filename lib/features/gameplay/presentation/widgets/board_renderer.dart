@@ -23,7 +23,6 @@ class BoardRenderer extends StatefulWidget {
     this.explorerPosition,
     this.selectedTile,
     this.invalidTarget,
-    this.planningExtensionHints = const {},
     this.traversedPathPositions = const {},
     this.isExecuting = false,
     this.showDebugGrid = false,
@@ -39,7 +38,6 @@ class BoardRenderer extends StatefulWidget {
   final GridPosition? explorerPosition;
   final GridPosition? selectedTile;
   final GridPosition? invalidTarget;
-  final Set<GridPosition> planningExtensionHints;
   final Set<GridPosition> traversedPathPositions;
   final bool isExecuting;
   final bool showDebugGrid;
@@ -141,8 +139,7 @@ class _BoardRendererState extends State<BoardRenderer> {
       builder: (context, constraints) {
         final geometry = BoardGeometry.fromGrid(
           grid: widget.grid,
-          maxSize: Size(constraints.maxWidth, constraints.maxHeight),
-          padding: theme.spacingHudInset,
+          maxSize: constraints.biggest,
         );
 
         final pathSet = widget.visualPath.toSet();
@@ -201,48 +198,39 @@ class _BoardRendererState extends State<BoardRenderer> {
                 floorLayout: _floorLayout,
               ),
             ),
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                for (var row = 0; row < widget.grid.height; row++)
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      for (var col = 0; col < widget.grid.width; col++)
-                        Builder(
-                          builder: (context) {
-                            final position = GridPosition(row: row, col: col);
-                            final cell = widget.grid.cellAt(position);
-                            final isOnPath = pathSet.contains(position);
-                            final isEndpoint = widget.visualPath.isNotEmpty &&
-                                widget.visualPath.last == position;
+            for (var row = 0; row < widget.grid.height; row++)
+              for (var col = 0; col < widget.grid.width; col++)
+                Builder(
+                  builder: (context) {
+                    final position = GridPosition(row: row, col: col);
+                    final cell = widget.grid.cellAt(position);
+                    final isOnPath = pathSet.contains(position);
+                    final isEndpoint = widget.visualPath.isNotEmpty &&
+                        widget.visualPath.last == position;
+                    final cellRect = geometry.cellRect(position);
 
-                            return CellOverlay(
-                              cell: cell,
-                              size: geometry.cellSize,
-                              isPathTile: isOnPath,
-                              isPathEndpoint: isEndpoint,
-                              isInvalidTarget:
-                                  widget.invalidTarget == position,
-                              effectiveKeyIds: widget.effectiveKeyIds,
-                              isSelected: widget.selectedTile == position,
-                              isExtensionHint: widget
-                                      .planningExtensionHints
-                                      .contains(position) &&
-                                  !isOnPath &&
-                                  widget.invalidTarget != position,
-                              isTraversed: widget.traversedPathPositions
-                                  .contains(position),
-                              isExecutionFocus: widget.isExecuting &&
-                                  explorer == position,
-                              isPressed: _pressedTile == position,
-                            );
-                          },
-                        ),
-                    ],
-                  ),
-              ],
-            ),
+                    return Positioned(
+                      left: cellRect.left,
+                      top: cellRect.top,
+                      width: cellRect.width,
+                      height: cellRect.height,
+                      child: CellOverlay(
+                        cell: cell,
+                        size: geometry.cellSize,
+                        isPathTile: isOnPath,
+                        isPathEndpoint: isEndpoint,
+                        isInvalidTarget: widget.invalidTarget == position,
+                        effectiveKeyIds: widget.effectiveKeyIds,
+                        isSelected: widget.selectedTile == position,
+                        isTraversed:
+                            widget.traversedPathPositions.contains(position),
+                        isExecutionFocus:
+                            widget.isExecuting && explorer == position,
+                        isPressed: _pressedTile == position,
+                      ),
+                    );
+                  },
+                ),
             PathOverlay(
               geometry: geometry,
               path: widget.visualPath,

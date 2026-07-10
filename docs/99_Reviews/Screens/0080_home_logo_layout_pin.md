@@ -11,7 +11,7 @@
 | **Date** | 2026-07-06 |
 | **Phase** | M2.8 — Home Visual Polish |
 | **Owner** | Cursor |
-| **Status** | Ready for Review |
+| **Status** | Approved|
 | **Review Type** | Screen |
 | **Template Version** | v2 |
 | **Related Docs** | `Home.md` · `0078_home_logo_asset_restore` · `0079_home_background_asset_swap` |

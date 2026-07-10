@@ -140,30 +140,6 @@ extension GameplayShellFeedback on GameplayShellState {
     return !effectiveKeyIds.contains(cell.lockId);
   }
 
-  /// Walkable orthogonal neighbors eligible for planning extension hints.
-  Set<GridPosition> get planningExtensionHints {
-    if (isInteractionLocked || !session.canUpdateDraftPath) {
-      return const {};
-    }
-
-    final grid = session.grid;
-    final path = session.draftPath;
-    if (path.isEmpty) {
-      final start = grid.findStart();
-      return start != null ? {start} : const {};
-    }
-
-    final hints = <GridPosition>{};
-    for (final neighbor in path.last.orthogonalNeighbors()) {
-      if (!grid.isInBounds(neighbor)) continue;
-      if (!grid.cellAt(neighbor).isWalkable) continue;
-      if (!grid.canTraverse(path.last, neighbor)) continue;
-      if (isLockBlockedAt(neighbor)) continue;
-      hints.add(neighbor);
-    }
-    return hints;
-  }
-
   /// Confirmed path tiles already traversed during execution.
   Set<GridPosition> get traversedPathPositions {
     if (phase != GameplayShellPhase.executing &&

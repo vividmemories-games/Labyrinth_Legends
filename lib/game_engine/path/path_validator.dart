@@ -1,5 +1,6 @@
 import 'package:labyrinth_legends/game_engine/models/cell_visibility.dart';
 import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
+import 'package:labyrinth_legends/game_engine/models/maze_cell.dart';
 import 'package:labyrinth_legends/game_engine/models/maze_grid.dart';
 import 'package:labyrinth_legends/game_engine/path/path_validation_error.dart';
 import 'package:labyrinth_legends/game_engine/path/path_validation_result.dart';
@@ -47,6 +48,7 @@ class PathValidator {
     }
 
     final keys = <String>{};
+    final relics = <String>{};
 
     for (var index = 0; index < path.length; index++) {
       final position = path[index];
@@ -96,7 +98,7 @@ class PathValidator {
         );
       }
 
-      if (cell.visibility == CellVisibility.hidden) {
+      if (!_isCellVisibleForPath(cell, relics)) {
         return PathValidationResult.failure(
           PathValidationError(
             code: PathValidationErrorCode.hiddenCell,
@@ -110,6 +112,10 @@ class PathValidator {
       final keyId = cell.keyId;
       if (keyId != null) {
         keys.add(keyId);
+      }
+
+      if (cell.hasRelic) {
+        relics.add(cell.relicId ?? 'relic_${position.row}_${position.col}');
       }
 
       final lockId = cell.lockId;
@@ -148,5 +154,13 @@ class PathValidator {
     }
 
     return PathValidationResult.valid;
+  }
+
+  bool _isCellVisibleForPath(MazeCell cell, Set<String> collectedRelics) {
+    final relicGate = cell.hiddenUntilRelicId;
+    if (relicGate != null) {
+      return collectedRelics.contains(relicGate);
+    }
+    return cell.visibility != CellVisibility.hidden;
   }
 }

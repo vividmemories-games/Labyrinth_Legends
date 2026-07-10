@@ -11,7 +11,7 @@
 | **Date** | 2026-07-03 |
 | **Phase** | M1.6 — Deterministic Engine Integration & Reward Calculation |
 | **Owner** | Cursor |
-| **Status** | Approved & Locked |
+| **Status** | Approved & Locked|
 | **Review Type** | Release |
 | **Template Version** | v2 |
 | **Related Docs** | `Engine_Architecture.md` · `Level_Format.md` §14 · GP5 · `0043`–`0047` |

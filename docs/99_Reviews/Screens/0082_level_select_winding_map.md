@@ -11,7 +11,7 @@
 | **Date** | 2026-07-06 |
 | **Phase** | M2.8 — Level Select Visual Pass |
 | **Owner** | Cursor |
-| **Status** | Approved |
+| **Status** | Approved|
 | **Review Type** | Screen |
 | **Template Version** | v2 |
 | **Related Docs** | `Level_Select.md` · `MVP_Visual_Target.md` · `get back to basics.png` panel 2 |

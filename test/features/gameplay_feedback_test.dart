@@ -47,7 +47,6 @@ void main() {
       expect(shell.feedbackState, GameplayFeedbackState.planning);
       expect(shell.interactionMode, GameplayInteractionMode.planning);
       expect(shell.objectiveCardState, ObjectiveCardState.focused);
-      expect(shell.planningExtensionHints, isNotEmpty);
     });
 
     test('path ready feedback when draft validates', () {
@@ -155,7 +154,6 @@ void main() {
       );
 
       expect(shell.isBoardInputEnabled, isFalse);
-      expect(shell.planningExtensionHints, isEmpty);
     });
 
     test('lock blocked without key in draft path', () {
@@ -209,10 +207,6 @@ void main() {
       );
 
       expect(shell.isLockBlockedAt(const GridPosition(row: 2, col: 1)), isTrue);
-      expect(
-        shell.planningExtensionHints,
-        contains(const GridPosition(row: 1, col: 1)),
-      );
 
       session.updateDraftPath([
         const GridPosition(row: 0, col: 1),
@@ -229,10 +223,6 @@ void main() {
         isFalse,
       );
       expect(withKey.effectiveKeyIds, contains('bronze_key'));
-      expect(
-        withKey.planningExtensionHints,
-        contains(const GridPosition(row: 2, col: 1)),
-      );
     });
 
     test('draft path validation message when crossing locked gate', () {

@@ -11,7 +11,7 @@
 | **Date** | 2026-07-06 |
 | **Phase** | M2.8 — Home Visual Polish |
 | **Owner** | Cursor |
-| **Status** | Ready for Review |
+| **Status** | Approved|
 | **Review Type** | Screen |
 | **Template Version** | v2 |
 | **Related Docs** | `Home.md` · `0080_home_logo_layout_pin` |

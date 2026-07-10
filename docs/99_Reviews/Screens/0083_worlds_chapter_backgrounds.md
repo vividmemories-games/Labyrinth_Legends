@@ -11,7 +11,7 @@
 | **Date** | 2026-07-06 |
 | **Phase** | M2.8 — Worlds Visual Pass |
 | **Owner** | Cursor |
-| **Status** | Approved |
+| **Status** | Approved|
 | **Review Type** | Screen |
 | **Template Version** | v2 |
 | **Related Docs** | `docs/03_Screens/Worlds.md` · `docs/01_Game_Design/Worlds.md` · `MVP_Visual_Target.md` panel 7 |

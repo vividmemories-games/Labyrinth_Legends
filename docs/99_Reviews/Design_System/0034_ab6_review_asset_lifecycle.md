@@ -11,7 +11,7 @@
 | **Date** | 2026-07-02 |
 | **Phase** | Asset Bible — AB6 Review & Asset Lifecycle |
 | **Owner** | Cursor |
-| **Status** | Approved |
+| **Status** | Approved|
 | **Review Type** | Design System |
 | **Template Version** | v2 |
 | **Related Docs** | `AB6_Review_Asset_Lifecycle.md` · `AB5_AI_Production_Pipeline.md` · `0033_ab5_ai_production_pipeline.md` |

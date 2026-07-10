@@ -11,7 +11,7 @@
 | **Date** | 2026-07-02 |
 | **Phase** | M0 — Level Format Schema (Phase 1 Prerequisite) |
 | **Owner** | Cursor |
-| **Status** | Approved & Locked |
+| **Status** | Approved & Locked|
 | **Review Type** | Release |
 | **Template Version** | v2 |
 | **Related Docs** | `docs/04_Technical/Level_Format.md` · `docs/04_Technical/Technical_Implementation_Plan.md` · GP2 · GP5 · GP7 · `docs/01_Game_Design/Level_Design.md` |

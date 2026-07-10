@@ -11,7 +11,7 @@
 | **Date** | 2026-07-06 |
 | **Phase** | M2.8 Home Visual Pass |
 | **Owner** | Cursor |
-| **Status** | Ready for Review |
+| **Status** | Approved|
 | **Review Type** | Screen |
 | **Template Version** | v2 |
 | **Related Docs** | `MVP_Visual_Target.md` · `docs/03_Screens/Home.md` · `ui_board_master.png` |
@@ -193,7 +193,7 @@ fvm flutter analyze --no-fatal-infos lib/features/home lib/design_system/compone
 ## Ready For
 
 - [x] Codex Engineering Review
-- [ ] Human Approval
+- [x] Human Approval
 
 ---
 

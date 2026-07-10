@@ -1,3 +1,5 @@
+import 'package:labyrinth_legends/game_engine/discovery/discovery_engine.dart';
+import 'package:labyrinth_legends/game_engine/models/discovery_mode.dart';
 import 'package:labyrinth_legends/game_engine/models/gameplay_phase.dart';
 import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
 import 'package:labyrinth_legends/game_engine/models/level_definition.dart';
@@ -24,12 +26,30 @@ class GameplaySessionState {
             : List<GridPosition>.unmodifiable(confirmedPath),
         attemptContext = attemptContext ?? GameplayAttemptContext();
 
-  factory GameplaySessionState.initial(LevelDefinition level) {
+  factory GameplaySessionState.initial(
+    LevelDefinition level, {
+    DiscoveryEngine? discoveryEngine,
+  }) {
+    final engine =
+        discoveryEngine ?? DiscoveryEngine(discoveryMode: level.discoveryMode);
+    final runtimeGrid = _initialRuntimeGrid(level, engine);
+
     return GameplaySessionState(
       level: level,
       phase: GameplayPhase.drawing,
       draftPath: const [],
+      runtimeGrid: runtimeGrid,
     );
+  }
+
+  static MazeGrid? _initialRuntimeGrid(
+    LevelDefinition level,
+    DiscoveryEngine engine,
+  ) {
+    if (level.discoveryMode == DiscoveryMode.full) {
+      return null;
+    }
+    return engine.applyInitialVisibility(level.grid);
   }
 
   final LevelDefinition level;

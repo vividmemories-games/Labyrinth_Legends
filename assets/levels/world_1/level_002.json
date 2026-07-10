@@ -1,78 +1,60 @@
 {
   "schemaVersion": 2,
   "id": "level_002",
-  "name": "North South Corridor",
+  "name": "Shimmering Stones",
   "worldId": "world_1",
   "discoveryMode": "full",
   "moveLimit": null,
   "starThresholds": {
-    "threeStars": 12,
-    "twoStars": 16,
-    "oneStar": 20
+    "threeStars": 14,
+    "twoStars": 18,
+    "oneStar": 24
   },
   "objectives": {
     "reachExit": true,
-    "collectAllGems": false,
+    "collectAllGems": true,
     "minGems": 0
   },
   "grid": {
-    "width": 3,
+    "width": 5,
     "height": 5,
     "cells": [
       [
         {
-          "type": "start"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
-        }
-      ],
-      [
-        {
-          "type": "floor",
+          "type": "start",
           "edges": {
-            "east": true,
+            "north": true,
             "west": true
           }
         },
         {
           "type": "floor",
+          "hasGem": true,
           "edges": {
-            "east": true,
-            "west": true
+            "north": true,
+            "south": true
           }
         },
         {
           "type": "floor",
           "edges": {
-            "east": true,
-            "west": true
+            "north": true,
+            "south": true
           }
-        }
-      ],
-      [
+        },
         {
           "type": "floor",
+          "hasGem": true,
           "edges": {
-            "east": true,
-            "west": true
+            "north": true,
+            "south": true
           }
         },
         {
           "type": "floor",
           "edges": {
-            "east": true,
-            "west": true
-          }
-        },
-        {
-          "type": "floor",
-          "edges": {
-            "east": true,
-            "west": true
+            "north": true,
+            "east": true
           }
         }
       ],
@@ -87,7 +69,27 @@
         {
           "type": "floor",
           "edges": {
+            "north": true,
             "east": true,
+            "south": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
             "west": true
           }
         },
@@ -101,15 +103,129 @@
       ],
       [
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "west": true
+          }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "hasGem": true,
+          "edges": {
+            "north": true,
+            "south": true
+          }
         },
         {
-          "type": "exit"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "east": true
+          }
+        }
+      ],
+      [
+        {
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "east": true,
+            "south": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "east": true,
+            "west": true
+          }
+        }
+      ],
+      [
+        {
+          "type": "floor",
+          "edges": {
+            "south": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor",
+          "hasGem": true,
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true
+          }
+        },
+        {
+          "type": "exit",
+          "edges": {
+            "east": true,
+            "south": true
+          }
         }
       ]
+    ]
+  },
+  "tutorial": {
+    "band": "world_1_tutorial",
+    "sequence": 2,
+    "teaches": [
+      "collect_gem",
+      "optional_route_planning"
     ]
   }
 }

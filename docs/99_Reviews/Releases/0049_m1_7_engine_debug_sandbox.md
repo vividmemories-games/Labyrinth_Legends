@@ -11,7 +11,7 @@
 | **Date** | 2026-07-03 |
 | **Phase** | M1.7 — Engine Debug Sandbox |
 | **Owner** | Cursor |
-| **Status** | Approved & Locked |
+| **Status** | Approved & Locked|
 | **Review Type** | Release |
 | **Template Version** | v2 |
 | **Related Docs** | `Engine_Architecture.md` · `Coding_Standards.md` · `0043`–`0048` |

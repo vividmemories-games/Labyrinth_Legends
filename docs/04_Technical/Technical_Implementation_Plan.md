@@ -547,7 +547,7 @@ Do **not** implement these in the vertical slice unless Human explicitly approve
 | Full GP4 hazard families | Add when level design requires |
 | Adaptive hints | GP6 open question — post-MVP |
 | Checkpoint retry | GP4 open question — defer |
-| Discovery/fog engine | Level 004+ — stretch goal |
+| Discovery/fog engine | `DiscoveryEngine` wired to `GameplaySession` (M2.10) — fog + relic-gated visibility on draft and execution |
 
 ### Polish
 
@@ -771,7 +771,7 @@ These rules apply to all Cursor tasks executing this plan.
 
 - Add unit tests for every engine behaviour change
 - Update LLDS docs when behaviour or architecture changes
-- Create review package after every major task
+- Create review package in **weekly batch** when Human requests (see `AGENTS.md` §4) — not after every major task
 - Log material decisions in [Decisions.md](../00_Project/Decisions.md)
 - Report conflicts upward — do not silently reinterpret design
 

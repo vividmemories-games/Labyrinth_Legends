@@ -28,27 +28,28 @@ For UI work, read in this order:
 | New mechanic | Mechanics.md → update → then engine |
 | Service integration | Architecture.md, Firebase.md |
 
-## End of Every Major Task — Review Package
+## Review Packages — Weekly Batch (not per task)
 
-**Every major task requires a review package.** Review packages are the **official handoff artifact** for **Codex** and **Human** approval. Cursor must **not** mark a major task complete until the review package exists.
+Review packages are the official handoff artifact for Codex + Human approval.
 
-All review packages must use the **v2 template** (`docs/99_Reviews/Review_Template.md`), including motivation, risk assessment, dependencies, product impact, future technical debt, recommended next task, and standardized reviewer notes.
+**Cadence (2026-07-09):** Cursor does **not** create a review package after every major task. Human requests **one weekly batch package** covering work since the last package.
 
-1. Scaffold with the generator script:
+| Field | Value |
+|-------|-------|
+| Last batch cutoff | **0091** — `Screens/0091_gameplay_floor_tile_variation.md` |
+| Next batch ID | **0092** |
+
+When Human requests the weekly batch:
 
 ```bash
 ./scripts/new_review_package.sh <Category> <topic_slug> --phase "..." --update-index
 ```
 
-2. Fill all v2 sections honestly — what changed, why, risks, dependencies, product impact, future debt, recommended next task, plus files changed, docs updated, commands, test/analyze output, LLDL compliance, scope boundaries
-3. Add screenshots if UI changed
-4. Mark **Ready For** when complete
+Fill all v2 sections per `docs/99_Reviews/Review_Template.md`, run tests/analyze, mark **Ready For** when complete.
 
-**Do not proceed to the next phase until review is approved** (Codex + Human, or Human waiver).
+See `docs/99_Reviews/README.md` and `AGENTS.md` §4.
 
-See `docs/99_Reviews/README.md` for naming and folder rules.
-
-A **stop hook** (`.cursor/hooks/remind-review-package.sh`) nudges the agent at session end when code changed but no review package was updated — see `docs/99_Reviews/README.md`.
+The stop hook (`.cursor/hooks/remind-review-package.sh`) reminds about the weekly batch only — not per-task packages.
 
 ## Definition of Done
 
@@ -57,7 +58,7 @@ A **stop hook** (`.cursor/hooks/remind-review-package.sh`) nudges the agent at s
 - [ ] Tests for engine changes
 - [ ] `Decisions.md` entry if material choice made
 - [ ] Codex checklist considered for major PRs
-- [ ] **Review package created** in `docs/99_Reviews/`
+- [ ] Review package **only when Human requests weekly batch** (not per task)
 
 ## Prompt Library
 

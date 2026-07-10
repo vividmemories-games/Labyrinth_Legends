@@ -12,7 +12,7 @@
 | **Date**               | 2026-06-30                                                                                          |
 | **Phase**              | Design System — WS7 Typography Authority                                                            |
 | **Owner**              | Cursor                                                                                              |
-| **Status**             | Draft                                                                                               |
+| **Status**             | Approved|
 | **Review Type**        | Design System                                                                                       |
 | **Template Version**   | v2                                                                                                  |
 | **Related Docs**       | `docs/02_Design_System/LLDL/WS7_Typography_Language.md` · WS0–WS6 · `docs/02_Design_System/LLDL/LLDL.md` |

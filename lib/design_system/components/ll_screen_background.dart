@@ -36,12 +36,14 @@ class LLScreenBackground extends StatelessWidget {
                 alignment: heroAlignment,
               ),
             ),
-          DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LLGradient.screenVeil(strength: veilStrength),
+          Positioned.fill(
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LLGradient.screenVeil(strength: veilStrength),
+              ),
             ),
           ),
-          child,
+          Positioned.fill(child: child),
         ],
       ),
     );

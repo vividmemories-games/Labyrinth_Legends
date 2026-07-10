@@ -1,51 +1,125 @@
 {
   "schemaVersion": 2,
   "id": "level_003",
-  "name": "East West Corridor",
+  "name": "Gate of Echoes",
   "worldId": "world_1",
   "discoveryMode": "full",
   "moveLimit": null,
   "starThresholds": {
-    "threeStars": 12,
-    "twoStars": 16,
-    "oneStar": 20
+    "threeStars": 10,
+    "twoStars": 14,
+    "oneStar": 18
   },
   "objectives": {
     "reachExit": true,
     "collectAllGems": false,
     "minGems": 0
   },
+  "tutorial": {
+    "band": "world_1_tutorial",
+    "sequence": 3,
+    "teaches": ["collect_key", "locked_gate"]
+  },
   "grid": {
-    "width": 5,
+    "width": 6,
     "height": 3,
     "cells": [
       [
         {
-          "type": "start"
-        },
-        {
           "type": "floor",
           "edges": {
             "north": true,
-            "south": true
+            "south": true,
+            "east": true,
+            "west": true
           }
         },
         {
           "type": "floor",
           "edges": {
             "north": true,
-            "south": true
+            "south": true,
+            "east": true,
+            "west": true
           }
         },
         {
           "type": "floor",
           "edges": {
             "north": true,
-            "south": true
+            "south": true,
+            "east": true,
+            "west": true
           }
         },
         {
-          "type": "exit"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
+        }
+      ],
+      [
+        {
+          "type": "start",
+          "edges": {
+            "east": true,
+            "north": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true
+          }
+        },
+        {
+          "type": "floor",
+          "lockId": "citadel_key",
+          "edges": {
+            "north": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true
+          }
+        },
+        {
+          "type": "exit",
+          "edges": {
+            "north": true,
+            "east": true
+          }
         }
       ],
       [
@@ -53,6 +127,13 @@
           "type": "floor"
         },
         {
+          "type": "floor"
+        },
+        {
+          "type": "floor",
+          "keyId": "citadel_key"
+        },
+        {
           "type": "floor",
           "edges": {
             "north": true,
@@ -72,26 +153,6 @@
             "north": true,
             "south": true
           }
-        },
-        {
-          "type": "floor"
-        }
-      ],
-      [
-        {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
         }
       ]
     ]

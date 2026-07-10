@@ -12,7 +12,7 @@
 | **Date**               | 2026-06-30                                                                                      |
 | **Phase**              | Design System — WS5 Motion Authority                                                            |
 | **Owner**              | Cursor                                                                                          |
-| **Status**             | Draft                                                                                           |
+| **Status**             | Approved|
 | **Review Type**        | Design System                                                                                   |
 | **Template Version**   | v2                                                                                              |
 | **Related Docs**       | `docs/02_Design_System/LLDL/WS5_Motion_Language.md` · WS0–WS4 · `docs/02_Design_System/LLDL/LLDL.md` |

@@ -20,7 +20,6 @@ class CellOverlay extends StatelessWidget {
     this.isInvalidTarget = false,
     this.effectiveKeyIds = const {},
     this.isSelected = false,
-    this.isExtensionHint = false,
     this.isTraversed = false,
     this.isExecutionFocus = false,
     this.isPressed = false,
@@ -33,7 +32,6 @@ class CellOverlay extends StatelessWidget {
   final bool isInvalidTarget;
   final Set<String> effectiveKeyIds;
   final bool isSelected;
-  final bool isExtensionHint;
   final bool isTraversed;
   final bool isExecutionFocus;
   final bool isPressed;
@@ -80,8 +78,6 @@ class CellOverlay extends StatelessWidget {
                   decoration: BoxDecoration(border: border),
                 ),
               ),
-            if (isExtensionHint && !isPathTile && !isInvalidTarget)
-              objectLayer(GameplayAssetKind.extensionHint),
             if (cell.hasGem) objectLayer(GameplayAssetKind.gem, label: 'Gem'),
             if (cell.keyId != null && !effectiveKeyIds.contains(cell.keyId))
               objectLayer(GameplayAssetKind.key, label: 'Key'),
@@ -114,9 +110,6 @@ class CellOverlay extends StatelessWidget {
     if (isLockedGate && !isPathTile) {
       return theme.feedbackDanger.withValues(alpha: 0.12);
     }
-    if (isExtensionHint) {
-      return theme.pathEnergy.withValues(alpha: 0.08);
-    }
     if (isPathTile) {
       return theme.pathEnergy.withValues(alpha: pathFillAlpha);
     }
@@ -143,8 +136,6 @@ class CellOverlay extends StatelessWidget {
       color = theme.pathEnergy;
     } else if (isSelected) {
       color = theme.actionPrimary;
-    } else if (isExtensionHint) {
-      color = theme.pathEnergy.withValues(alpha: 0.55);
     }
 
     if (color == null) {
@@ -155,7 +146,7 @@ class CellOverlay extends StatelessWidget {
       width *= 1.4;
     } else if (isLockedGate || isPathEndpoint) {
       width *= 1.35;
-    } else if (isSelected || isExtensionHint) {
+    } else if (isSelected) {
       width *= 1.1;
     }
 

@@ -4,6 +4,62 @@ Log material decisions here. Format: date, decision, reason, status.
 
 ---
 
+## 2026-07-09 — Vertical slice: win → sync → Victory screen
+
+**Decision:** On win, show a **foreground celebration overlay** (~1.5s minimum) while `CompletionSyncService` persists progress in the background (Firebase hook point later). Then navigate to `/complete/:levelId`. Victory screen uses light LLDL (`LLScreenBackground`); Next Level / Retry live on Victory only — not on gameplay terminal state.
+
+**Reason:** Option A vertical slice closure; reserves time for future Firebase sync without blocking UI.
+
+**Impact:** `GameplayCompletionFlow`, `CompletionSyncService`, `GameplayRewardMapper`, `pendingLevelCompletionProvider`, `VictoryCelebrationOverlay`, `LevelCompleteScreen` polish.
+
+**Status:** Accepted
+
+---
+
+## 2026-07-09 — Weekly review package cadence (Human override)
+
+**Decision:** Suspend per-task review packages. Cursor generates **one batch review package per week** when Human requests it (weekly Codex session). Baseline cutoff: package **0091**. Next batch: **0092**. All packages through 0091 batch-approved by Codex + Human on 2026-07-09.
+
+**Reason:** Per-task packages slowed implementation; weekly batch is sufficient for solo dev + Codex review.
+
+**Impact:** `AGENTS.md` §4, `.cursor/rules/labyrinth-legends.mdc`, `docs/99_Reviews/README.md`, `docs/05_AI/Cursor/Workflow.md`, stop hook message updated.
+
+**Status:** Accepted
+
+---
+
+## 2026-07-09 — Maze rendering complete for current milestone
+
+**Decision:** Stop maze visual work for now. Production board uses code-drawn `MazePainter` + floor tile variation (0090/0091). Further maze polish (camera tokens, per-world theme maps) deferred until after vertical slice closure.
+
+**Reason:** Human satisfied with current maze look; higher leverage is win → save → Victory loop and tutorial content.
+
+**Status:** Accepted
+
+---
+
+## 2026-07-10 — M2.10 tutorial band (levels 002–005) + discovery wiring
+
+**Decision:** Author tutorial levels 002–005 per `Level_Design.md` arc. Wire `DiscoveryEngine` into `GameplaySession` for fog (`revealFromPath` on draft + execution) and relic-gated visibility (`revealAfterRelicCollection`; draft path reveals hidden cells after relic node). Add relic collection to `StepResolver`. Extend `PathValidator` and `HintSolver` for relic-gated hidden cells.
+
+**Reason:** M2.9 vertical slice QA approved; tutorial band was the agreed next task.
+
+**Impact:** `assets/levels/world_1/level_002.json`–`level_005.json`; engine session/path/hint modules; gameplay controller rejects taps on hidden cells.
+
+**Status:** Accepted — implemented M2.10
+
+---
+
+## 2026-07-09 — Tutorial band content gap (levels 002–005)
+
+**Decision:** `Level_Design.md` tutorial arc (gems, key+lock, fog, relic) is **design authority** but **not yet implemented** in level JSON. Levels 001–010 are geometry/engine test chambers. `DiscoveryEngine` exists but is **not wired** to `GameplaySession`.
+
+**Reason:** M2 focused on engine + board rendering; content authoring and discovery wiring are next after vertical slice.
+
+**Status:** Superseded by 2026-07-10 M2.10 implementation
+
+---
+
 ## 2026-07-09 — Gameplay floor tile variation (per-attempt shuffle)
 
 **Decision:** Floor slabs use a **four-variant PNG pool** (`tile_floor_1`–`tile_floor_4`) with `tile_floor.png` as fallback. Each walkable cell gets a random variant and 0/90/180/270° rotation per level attempt. Seed = `Object.hash(levelId, retryCount)` so layout reshuffles on Try Again but stays stable during play. Raised wall stones reuse the adjacent walkable cell's placement.
@@ -12,7 +68,7 @@ Log material decisions here. Format: date, decision, reason, status.
 
 **Impact:** `FloorTileLayout`, `MazePainter`, `MazeTheme`/`MazeTextureLoader`, `BoardRenderer` seed wiring; `Gameplay.md` updated. Engine/schema unchanged.
 
-**Status:** Accepted (pending Human visual QA — review package 0091)
+**Status:** Accepted
 
 ---
 

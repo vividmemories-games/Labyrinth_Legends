@@ -106,8 +106,8 @@ class GameplayShellState {
       GameplayShellPhase.executionComplete =>
         'Execution complete — objectives evaluated',
       GameplayShellPhase.terminalWon => hasNextLevel
-          ? 'Objectives complete — continue when ready'
-          : 'Final chamber cleared — no further levels',
+          ? 'Victory secured — syncing progress…'
+          : 'Final chamber cleared — syncing progress…',
       GameplayShellPhase.terminalLost =>
         '${session.statusMessage ?? 'Objective not met'} — try again when ready',
       _ => null,

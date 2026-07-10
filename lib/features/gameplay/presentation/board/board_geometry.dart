@@ -44,8 +44,14 @@ class BoardGeometry {
     required Size maxSize,
     double padding = 0,
   }) {
-    final availableWidth = math.max(0, maxSize.width - padding * 2);
-    final availableHeight = math.max(0, maxSize.height - padding * 2);
+    final boundedWidth = maxSize.width.isFinite ? maxSize.width : 0.0;
+    final boundedHeight = maxSize.height.isFinite ? maxSize.height : 0.0;
+    final availableWidth = math.max(0, boundedWidth - padding * 2);
+    final availableHeight = math.max(0, boundedHeight - padding * 2);
+    if (availableWidth == 0 || availableHeight == 0 || grid.width == 0 || grid.height == 0) {
+      return BoardGeometry(cellSize: 0, grid: grid);
+    }
+
     final cellWidth = availableWidth / grid.width;
     final cellHeight = availableHeight / grid.height;
     final cellSize = math.min(cellWidth, cellHeight);

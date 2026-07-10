@@ -5,6 +5,7 @@ import 'package:labyrinth_legends/core/constants/game_constants.dart';
 import 'package:labyrinth_legends/features/gameplay/level_navigator.dart';
 import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_feedback.dart';
 import 'package:labyrinth_legends/features/gameplay/presentation/gameplay_shell_state.dart';
+import 'package:labyrinth_legends/game_engine/models/cell_visibility.dart';
 import 'package:labyrinth_legends/game_engine/models/gameplay_phase.dart';
 import 'package:labyrinth_legends/game_engine/models/grid_position.dart';
 import 'package:labyrinth_legends/game_engine/models/level_definition.dart';
@@ -65,6 +66,11 @@ class GameplayController extends StateNotifier<GameplayShellState> {
     final cell = grid.cellAt(position);
     if (!cell.isWalkable) {
       _rejectInput('That tile is blocked', position);
+      return;
+    }
+
+    if (cell.visibility == CellVisibility.hidden) {
+      _rejectInput('That passage is still concealed', position);
       return;
     }
 

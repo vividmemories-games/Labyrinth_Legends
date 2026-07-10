@@ -12,7 +12,7 @@
 | **Date**               | 2026-07-01                                                                                                  |
 | **Phase**              | Asset Bible — AB3 UI & Brand                                                                                |
 | **Owner**              | Cursor                                                                                                      |
-| **Status**             | Approved                                                                                                    |
+| **Status**             | Approved|
 | **Review Type**        | Design System                                                                                               |
 | **Template Version**   | v2                                                                                                          |
 | **Related Docs**       | `AB3_UI_Brand_Assets.md` · `AB2_Game_Assets.md` · `AB1_Production_Standards.md` · `0030_ab2_game_assets.md` |

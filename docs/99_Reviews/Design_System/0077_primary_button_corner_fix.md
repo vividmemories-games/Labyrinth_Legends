@@ -11,7 +11,7 @@
 | **Date** | 2026-07-06 |
 | **Phase** | M2.8 — Home Visual Polish |
 | **Owner** | Cursor |
-| **Status** | Ready for Review |
+| **Status** | Approved|
 | **Review Type** | Design System |
 | **Template Version** | v2 |
 | **Related Docs** | `Components.md` · `0073_weathered_button_tokens` · `0076_m2_8_home_layout_button_polish` |

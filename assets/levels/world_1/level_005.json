@@ -1,60 +1,152 @@
 {
   "schemaVersion": 2,
   "id": "level_005",
-  "name": "T Junction",
+  "name": "Ancient Lens",
   "worldId": "world_1",
-  "discoveryMode": "full",
+  "discoveryMode": "relicGated",
   "moveLimit": null,
   "starThresholds": {
-    "threeStars": 12,
-    "twoStars": 16,
-    "oneStar": 20
+    "threeStars": 8,
+    "twoStars": 10,
+    "oneStar": 14
   },
   "objectives": {
     "reachExit": true,
     "collectAllGems": false,
     "minGems": 0
   },
+  "tutorial": {
+    "band": "world_1_tutorial",
+    "sequence": 5,
+    "teaches": ["collect_relic", "hidden_passage"]
+  },
   "grid": {
-    "width": 3,
+    "width": 5,
     "height": 3,
     "cells": [
       [
         {
-          "type": "start"
-        },
-        {
-          "type": "floor"
-        },
-        {
-          "type": "floor"
-        }
-      ],
-      [
-        {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
         },
         {
           "type": "floor",
           "edges": {
             "north": true,
             "south": true,
-            "east": true
+            "east": true,
+            "west": true
           }
         },
         {
-          "type": "floor"
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
         }
       ],
       [
         {
-          "type": "floor"
+          "type": "start",
+          "edges": {
+            "north": true,
+            "south": true,
+            "west": true
+          }
         },
         {
           "type": "floor"
         },
         {
-          "type": "exit"
+          "type": "floor",
+          "hasRelic": true,
+          "relicId": "ancient_lens"
+        },
+        {
+          "type": "floor",
+          "hiddenUntilRelicId": "ancient_lens",
+          "visibility": "hidden"
+        },
+        {
+          "type": "exit",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true
+          }
+        }
+      ],
+      [
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
+        },
+        {
+          "type": "floor",
+          "edges": {
+            "north": true,
+            "south": true,
+            "east": true,
+            "west": true
+          }
         }
       ]
     ]

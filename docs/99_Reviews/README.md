@@ -4,163 +4,157 @@ Formal handoff artifacts for **Codex** and **Human** review — without requirin
 
 ## Purpose
 
-After every major Cursor task, a review package is created here. It is the **official handoff artifact** recording what changed, why it changed, risks, dependencies, product impact, future debt, and whether it is ready for external review.
+Review packages record what changed, why it changed, risks, dependencies, product impact, future debt, and approval status.
 
-**Every major task requires a review package.** Cursor must **not** mark a major task complete until the review package exists and is filled in using the **v2 template** (`docs/99_Reviews/Review_Template.md`).
+## Cadence (Human override — 2026-07-09)
 
-## v2 Template (required)
+| When | Rule |
+|------|------|
+| **During implementation** | Cursor does **not** scaffold a review package after every major task |
+| **Weekly Codex session** | Human asks Cursor to generate **one batch package** since the last package |
+| **Baseline cutoff** | Last batch: **0092** (`Releases/0092_m2_9_vertical_slice_closure.md`) — Approved |
+| **Next ID** | **0093** |
 
-All new review packages must use **template v2**, which includes:
+The former per-task rule is **suspended** until Human reinstates it. See `AGENTS.md` §4.
 
-- **Motivation** — why the work was undertaken and why this approach
-- **Risk Assessment** — level, affected areas, rollback, migration, user impact
-- **Dependencies** — depends on, enables, blocks
-- **Product Impact** — player, visual, UX, performance, developer experience
-- **Future Technical Debt** — shortcuts, temporary implementations, cleanup tasks
-- **Recommended Next Task** — suggested follow-up for the next milestone
-- **Reviewer Notes** — standardized Codex and Human sections with verdict, score, and recommendations
+## v2 Template (required for new batches)
 
-Scaffold with `./scripts/new_review_package.sh` — it always uses the current v2 template.
+All new review packages must use **template v2** (`docs/99_Reviews/Review_Template.md`):
+
+- Motivation, Risk Assessment, Dependencies, Product Impact
+- Future Technical Debt, Recommended Next Task
+- Reviewer Notes (Codex, Human)
+
+Scaffold with `./scripts/new_review_package.sh`.
 
 ## Workflow
 
 ```text
-Cursor implements task
+Cursor implements tasks (no per-task package)
     → Updates LLDS docs as needed
     → Runs test / analyze
-    → Scaffolds review package (scripts/new_review_package.sh — v2 template)
-    → Fills all v2 sections (motivation, risk, dependencies, product impact, debt, next task)
-    → Marks Ready For: Codex + Human
-Codex reviews the package (+ selected files if repo access available)
-    → Fill Reviewer Notes section
-Human approves
-    → Next phase may begin
+Weekly: Human requests batch
+    → Cursor diffs since last package (0091+)
+    → Scaffolds 0092 (or split if very large)
+    → Fills v2 sections, marks Ready For
+Codex reviews in weekly session
+    → Fill / confirm Reviewer Notes
+Human approves batch
+    → Next implementation week begins
 ```
-
-**Do not start the next major phase until the review package is approved** (or explicitly waived by Human).
 
 ## Folder Structure
 
 ```text
 docs/99_Reviews/
 ├── README.md                 ← this file
-├── Review_Template.md        ← v2 template for every new review
-├── Design_System/            ← tokens, components, showcase
-├── Screens/                  ← screen shells and UI flows
-├── Gameplay/                 ← engine, mechanics, levels
-├── Architecture/             ← structure, services, state
-├── Economy/                  ← monetization, currencies, shop
-└── Releases/                 ← milestones, LLDS governance, releases
+├── Review_Template.md        ← v2 template
+├── Design_System/
+├── Screens/
+├── Gameplay/
+├── Architecture/
+├── Economy/
+├── Implementation/
+└── Releases/
 ```
 
 ## Naming Convention
-
-Sequential global IDs with snake_case topic:
 
 ```text
 NNNN_topic_name.md
 ```
 
-Examples:
-
-- `Design_System/0001_design_system_foundation.md`
-- `Screens/0002_home_screen_shell.md`
-- `Architecture/0003_folder_structure_review.md`
-
-**Next ID:** Check all category folders for highest number; increment by 1 — or run the generator script (below).
+**Next ID:** **0093** (or run the generator script).
 
 ## Automate Creation
-
-Use `scripts/new_review_package.sh` instead of copying the template manually:
 
 ```bash
 ./scripts/new_review_package.sh <Category> <topic_slug> [options]
 ```
 
-Examples:
-
-```bash
-# Level select screen shell (next ID assigned automatically)
-./scripts/new_review_package.sh Screens level_select_shell
-
-# Custom title and phase; also append to index table
-./scripts/new_review_package.sh Design_System token_refresh \
-  --task-name "Token Refresh" \
-  --phase "Phase 2 — Design System" \
-  --update-index
-
-# Preview without writing files
-./scripts/new_review_package.sh Screens level_select_shell --dry-run
-```
-
 **Options:** `--task-name`, `--phase`, `--owner`, `--update-index`, `--dry-run`
 
-Categories: `Design_System`, `Screens`, `Gameplay`, `Architecture`, `Economy`, `Releases` (case-insensitive; `-` also works).
-
-Cursor should run this at the **start** of filling in a review package (scaffold), then complete the sections after implementation.
+Categories: `Design_System`, `Screens`, `Gameplay`, `Architecture`, `Economy`, `Releases`, `Implementation`.
 
 ### Cursor stop hook
 
-A project-level **stop hook** (`.cursor/hooks.json`) reminds the agent at session end when `lib/` or `test/` Dart files are newer than the latest review package:
-
-```text
-.cursor/hooks.json
-.cursor/hooks/remind-review-package.sh
-```
-
-Reload Cursor (or save `hooks.json`) after changes. Check the **Hooks** output channel if debugging.
+`.cursor/hooks/remind-review-package.sh` nudges the agent at session end when code changed but no review package was updated since the last batch — reminder text points to **weekly batch**, not per-task creation.
 
 ## Who Reviews What
 
 | Reviewer | Focus |
 |----------|-------|
-| **Codex** | Architecture, maintainability, performance, tests, Flutter quality, LLDL implementation compliance |
+| **Codex** | Architecture, maintainability, performance, tests, Flutter quality, LLDL implementation |
 | **Human** | Final product/business approval |
 
-ChatGPT is no longer part of the review workflow (see `Decisions.md` — 2026-07-06). Historical review packages may retain ChatGPT reviewer notes for audit purposes.
+ChatGPT is no longer part of the review workflow (`Decisions.md` — 2026-07-06). Historical packages may retain ChatGPT notes for audit.
 
-## Sharing Without Repo Access
+## Superseded packages (historical)
 
-Share with reviewers:
+| IDs | Superseded by | Notes |
+|-----|---------------|-------|
+| 0087, 0088, 0089 | **0090** | PNG autotile / edge-tile rendering — replaced by code-drawn `MazePainter` |
+| 0070 | **0071**, **0090** | World 01 Phase 3 environment prototype — MVP pivoted to static mockup + `MazePainter` |
 
-1. The review package markdown file (copy/paste or export)
-2. Screenshots listed in **Screenshots / Visual Evidence**
-3. Selected file excerpts if needed
-4. Test/analyze output from **Commands Run**
+Packages remain in the index for audit; status **Approved** with superseded notes in file headers.
 
-The in-app showcase (`/dev/design-system`) is the live visual reference when running the dev build locally.
+## Index of Reviews
 
-## Index of Completed Reviews
+All packages through **0091** are **Approved** (batch hygiene pass 2026-07-09). See individual files for detail.
+
+| ID range | Category | Status |
+|----------|----------|--------|
+| 0001–0037 | Design_System, Screens, Gameplay, Releases | Approved |
+| 0038–0051 | Releases (M0/M1) | Approved & Locked where noted |
+| 0052–0061 | Releases, Architecture | Approved |
+| 0062–0091 | Screens, Implementation, Architecture | Approved |
+
+Full per-file index (legacy table): expand individual category folders or run:
+
+```bash
+find docs/99_Reviews -mindepth 2 -maxdepth 2 -name '*.md' ! -name 'README.md' | sort
+```
+
+**Next batch:** 0093
+
+## Related Docs
+
+- `AGENTS.md` — agent roles and weekly review cadence
+- `.cursor/rules/labyrinth-legends.mdc`
+- `docs/05_AI/Cursor/Workflow.md`
+- `docs/05_AI/Codex/Review_Checklist.md`
+
+## Full Index
 
 | ID | File | Status |
 |----|------|--------|
-| 0001 | [Design_System/0001_design_system_foundation.md](Design_System/0001_design_system_foundation.md) | Ready for Review |
-| 0002 | [Screens/0002_home_screen_shell.md](Screens/0002_home_screen_shell.md) | Ready for Review |
-| 0003 | [Releases/0003_review_package_workflow.md](Releases/0003_review_package_workflow.md) | Ready for Review |
-| 0004 | [Releases/0004_review_package_stop_hook.md](Releases/0004_review_package_stop_hook.md) | Ready for Review |
-| 0005 | [Releases/0005_review_package_v2_template.md](Releases/0005_review_package_v2_template.md) | Ready for Review |
+| 0001 | [Design_System/0001_design_system_foundation.md](Design_System/0001_design_system_foundation.md) | Approved |
+| 0002 | [Screens/0002_home_screen_shell.md](Screens/0002_home_screen_shell.md) | Approved |
+| 0003 | [Releases/0003_review_package_workflow.md](Releases/0003_review_package_workflow.md) | Approved |
+| 0004 | [Releases/0004_review_package_stop_hook.md](Releases/0004_review_package_stop_hook.md) | Approved |
+| 0005 | [Releases/0005_review_package_v2_template.md](Releases/0005_review_package_v2_template.md) | Approved |
 | 0006 | [Gameplay/0006_gp4_hazards_failure.md](Gameplay/0006_gp4_hazards_failure.md) | Approved & Locked |
 | 0007 | [Gameplay/0007_gp5_objectives_completion.md](Gameplay/0007_gp5_objectives_completion.md) | Approved & Locked |
 | 0008 | [Gameplay/0008_gp6_gameplay_feedback.md](Gameplay/0008_gp6_gameplay_feedback.md) | Approved & Locked |
 | 0009 | [Gameplay/0009_gp7_gameplay_rules.md](Gameplay/0009_gp7_gameplay_rules.md) | Approved & Locked |
 | 0010 | [Gameplay/0010_gameplay_integration.md](Gameplay/0010_gameplay_integration.md) | Approved & Locked |
 | 0011 | [Design_System/0011_ws0_design_philosophy.md](Design_System/0011_ws0_design_philosophy.md) | Approved |
-| 0012 | [Design_System/0012_ws1_visual_identity.md](Design_System/0012_ws1_visual_identity.md) | Draft |
-| 0013 | [Design_System/0013_ws2_color_language.md](Design_System/0013_ws2_color_language.md) | Draft |
-| 0014 | [Design_System/0014_ws3_environment_language.md](Design_System/0014_ws3_environment_language.md) | Draft |
-| 0015 | [Design_System/0015_ws4_ui_language.md](Design_System/0015_ws4_ui_language.md) | Draft |
-| 0016 | [Design_System/0016_ws5_motion_language.md](Design_System/0016_ws5_motion_language.md) | Draft |
-| 0017 | [Design_System/0017_ws6_audio_language.md](Design_System/0017_ws6_audio_language.md) | Draft |
-| 0018 | [Design_System/0018_ws7_typography_language.md](Design_System/0018_ws7_typography_language.md) | Draft |
-| 0019 | [Design_System/0019_ws8_iconography_language.md](Design_System/0019_ws8_iconography_language.md) | Draft |
-| 0020 | [Design_System/0020_ws9_accessibility_language.md](Design_System/0020_ws9_accessibility_language.md) | Draft |
-| 0021 | [Design_System/0021_ws10_design_tokens_language.md](Design_System/0021_ws10_design_tokens_language.md) | Draft |
-| 0022 | [Design_System/0022_ws11_components_language.md](Design_System/0022_ws11_components_language.md) | Draft |
+| 0012 | [Design_System/0012_ws1_visual_identity.md](Design_System/0012_ws1_visual_identity.md) | Approved |
+| 0013 | [Design_System/0013_ws2_color_language.md](Design_System/0013_ws2_color_language.md) | Approved |
+| 0014 | [Design_System/0014_ws3_environment_language.md](Design_System/0014_ws3_environment_language.md) | Approved |
+| 0015 | [Design_System/0015_ws4_ui_language.md](Design_System/0015_ws4_ui_language.md) | Approved |
+| 0016 | [Design_System/0016_ws5_motion_language.md](Design_System/0016_ws5_motion_language.md) | Approved |
+| 0017 | [Design_System/0017_ws6_audio_language.md](Design_System/0017_ws6_audio_language.md) | Approved |
+| 0018 | [Design_System/0018_ws7_typography_language.md](Design_System/0018_ws7_typography_language.md) | Approved |
+| 0019 | [Design_System/0019_ws8_iconography_language.md](Design_System/0019_ws8_iconography_language.md) | Approved |
+| 0020 | [Design_System/0020_ws9_accessibility_language.md](Design_System/0020_ws9_accessibility_language.md) | Approved |
+| 0021 | [Design_System/0021_ws10_design_tokens_language.md](Design_System/0021_ws10_design_tokens_language.md) | Approved |
+| 0022 | [Design_System/0022_ws11_components_language.md](Design_System/0022_ws11_components_language.md) | Approved |
 | 0023 | [Design_System/0023_lldl_architecture_integration.md](Design_System/0023_lldl_architecture_integration.md) | Approved |
 | 0024 | [Design_System/0024_ws10_ws11_implementation_reconciliation.md](Design_System/0024_ws10_ws11_implementation_reconciliation.md) | Approved |
 | 0025 | [Design_System/0025_tier3_downstream_accessibility_migration.md](Design_System/0025_tier3_downstream_accessibility_migration.md) | Approved |
-| 0026 | [Releases/0026_llds_repository_consistency_cleanup.md](Releases/0026_llds_repository_consistency_cleanup.md) | Ready for Review |
-| 0027 | [Design_System/0027_asset_bible_structure.md](Design_System/0027_asset_bible_structure.md) | Draft |
+| 0026 | [Releases/0026_llds_repository_consistency_cleanup.md](Releases/0026_llds_repository_consistency_cleanup.md) | Approved |
+| 0027 | [Design_System/0027_asset_bible_structure.md](Design_System/0027_asset_bible_structure.md) | Approved |
 | 0028 | [Design_System/0028_ab0_asset_philosophy.md](Design_System/0028_ab0_asset_philosophy.md) | Approved |
 | 0029 | [Design_System/0029_ab1_production_standards.md](Design_System/0029_ab1_production_standards.md) | Approved |
 | 0030 | [Design_System/0030_ab2_game_assets.md](Design_System/0030_ab2_game_assets.md) | Approved |
@@ -170,7 +164,7 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0034 | [Design_System/0034_ab6_review_asset_lifecycle.md](Design_System/0034_ab6_review_asset_lifecycle.md) | Approved |
 | 0035 | [Design_System/0035_asset_bible_integration.md](Design_System/0035_asset_bible_integration.md) | Approved |
 | 0036 | [Releases/0036_docs_hygiene_audit.md](Releases/0036_docs_hygiene_audit.md) | Approved |
-| 0037 | [Gameplay/0037_puzzle_elements_integration.md](Gameplay/0037_puzzle_elements_integration.md) | Ready for Review |
+| 0037 | [Gameplay/0037_puzzle_elements_integration.md](Gameplay/0037_puzzle_elements_integration.md) | Approved |
 | 0038 | [Releases/0038_technical_implementation_plan.md](Releases/0038_technical_implementation_plan.md) | Approved |
 | 0039 | [Releases/0039_level_format.md](Releases/0039_level_format.md) | Approved & Locked |
 | 0040 | [Releases/0040_coding_standards.md](Releases/0040_coding_standards.md) | Approved & Locked |
@@ -185,7 +179,7 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0049 | [Releases/0049_m1_7_engine_debug_sandbox.md](Releases/0049_m1_7_engine_debug_sandbox.md) | Approved & Locked |
 | 0050 | [Releases/0050_m1_completion_docs_hygiene.md](Releases/0050_m1_completion_docs_hygiene.md) | Approved & Locked |
 | 0051 | [Releases/0051_non_m1_review_status_hygiene.md](Releases/0051_non_m1_review_status_hygiene.md) | Approved & Locked |
-| 0052 | [Releases/0052_documentation_template_standards.md](Releases/0052_documentation_template_standards.md) | Ready for Review |
+| 0052 | [Releases/0052_documentation_template_standards.md](Releases/0052_documentation_template_standards.md) | Approved |
 | 0053 | [Releases/0053_ui_documentation_governance_alignment.md](Releases/0053_ui_documentation_governance_alignment.md) | Approved |
 | 0054 | [Architecture/0054_ui_01_ui_philosophy.md](Architecture/0054_ui_01_ui_philosophy.md) | Approved |
 | 0055 | [Architecture/0055_ui_02_layout_system.md](Architecture/0055_ui_02_layout_system.md) | Approved |
@@ -193,44 +187,38 @@ The in-app showcase (`/dev/design-system`) is the live visual reference when run
 | 0057 | [Architecture/0057_ui_04_design_tokens.md](Architecture/0057_ui_04_design_tokens.md) | Approved |
 | 0058 | [Architecture/0058_ui_05_component_library.md](Architecture/0058_ui_05_component_library.md) | Approved |
 | 0059 | [Architecture/0059_ui_behavior_layer.md](Architecture/0059_ui_behavior_layer.md) | Approved |
-| 0060 | [Releases/0060_docs_hygiene_ui_architecture_status_alignment.md](Releases/0060_docs_hygiene_ui_architecture_status_alignment.md) | Codex Approved — Ready for Human Review |
-| 0061 | [Architecture/0061_ui_chapter_integration.md](Architecture/0061_ui_chapter_integration.md) | Draft |
+| 0060 | [Releases/0060_docs_hygiene_ui_architecture_status_alignment.md](Releases/0060_docs_hygiene_ui_architecture_status_alignment.md) | Approved |
+| 0061 | [Architecture/0061_ui_chapter_integration.md](Architecture/0061_ui_chapter_integration.md) | Approved |
 | 0062 | [Screens/0062_m2_1_production_ui_foundation.md](Screens/0062_m2_1_production_ui_foundation.md) | Approved |
-| 0063 | [Screens/0063_m2_2_gameplay_board_rendering_path_drawing.md](Screens/0063_m2_2_gameplay_board_rendering_path_drawing.md) | Codex Approved — Ready for Human Approval |
-| 0064 | [Screens/0064_m2_3_path_execution_explorer_movement.md](Screens/0064_m2_3_path_execution_explorer_movement.md) | Codex Approved — Ready for Human Approval |
-| 0065 | [Screens/0065_m2_4_world_state_objective_feedback.md](Screens/0065_m2_4_world_state_objective_feedback.md) | Codex Approved — Ready for Human Review |
-| 0066 | [Screens/0066_m2_5_terminal_outcome_retry_flow.md](Screens/0066_m2_5_terminal_outcome_retry_flow.md) | Codex Approved — Ready for Human Review |
-| 0067 | [Implementation/0067_m2_6_gameplay_feedback_interaction_polish.md](Implementation/0067_m2_6_gameplay_feedback_interaction_polish.md) | Codex Approved — Ready for Human Review |
-| 0068 | [Implementation/0068_m2_7_premium_visual_foundation.md](Implementation/0068_m2_7_premium_visual_foundation.md) | Ready for Review |
-| 0069 | [Releases/0069_world_01_phase1_visual_language_study.md](Releases/0069_world_01_phase1_visual_language_study.md) | Draft |
-| 0070 | [Screens/0070_world_01_phase3_simulator_prototype_v2.md](Screens/0070_world_01_phase3_simulator_prototype_v2.md) | Ready for Review |
-| 0071 | [Releases/0071_mvp_visual_pivot_back_to_basics.md](Releases/0071_mvp_visual_pivot_back_to_basics.md) | Ready for Review |
-| 0072 | [Screens/0072_m2_8_home_mockup_visual_pass.md](Screens/0072_m2_8_home_mockup_visual_pass.md) | Draft |
-| 0073 | [Design_System/0073_weathered_button_tokens.md](Design_System/0073_weathered_button_tokens.md) | Draft |
-| 0074 | [Screens/0074_m2_8_home_button_visual_polish.md](Screens/0074_m2_8_home_button_visual_polish.md) | Draft |
-| 0075 | [Design_System/0075_button_typography_tokens.md](Design_System/0075_button_typography_tokens.md) | Draft |
-| 0076 | [Screens/0076_m2_8_home_layout_button_polish.md](Screens/0076_m2_8_home_layout_button_polish.md) | Draft |
-| 0077 | [Design_System/0077_primary_button_corner_fix.md](Design_System/0077_primary_button_corner_fix.md) | Draft |
-| 0078 | [Screens/0078_home_logo_asset_restore.md](Screens/0078_home_logo_asset_restore.md) | Draft |
-| 0079 | [Screens/0079_home_background_asset_swap.md](Screens/0079_home_background_asset_swap.md) | Draft |
-| 0080 | [Screens/0080_home_logo_layout_pin.md](Screens/0080_home_logo_layout_pin.md) | Draft |
-| 0081 | [Screens/0081_home_currency_removal_logo_top.md](Screens/0081_home_currency_removal_logo_top.md) | Draft |
+| 0063 | [Screens/0063_m2_2_gameplay_board_rendering_path_drawing.md](Screens/0063_m2_2_gameplay_board_rendering_path_drawing.md) | Approved |
+| 0064 | [Screens/0064_m2_3_path_execution_explorer_movement.md](Screens/0064_m2_3_path_execution_explorer_movement.md) | Approved |
+| 0065 | [Screens/0065_m2_4_world_state_objective_feedback.md](Screens/0065_m2_4_world_state_objective_feedback.md) | Approved |
+| 0066 | [Screens/0066_m2_5_terminal_outcome_retry_flow.md](Screens/0066_m2_5_terminal_outcome_retry_flow.md) | Approved |
+| 0067 | [Implementation/0067_m2_6_gameplay_feedback_interaction_polish.md](Implementation/0067_m2_6_gameplay_feedback_interaction_polish.md) | Approved |
+| 0068 | [Implementation/0068_m2_7_premium_visual_foundation.md](Implementation/0068_m2_7_premium_visual_foundation.md) | Approved |
+| 0069 | [Releases/0069_world_01_phase1_visual_language_study.md](Releases/0069_world_01_phase1_visual_language_study.md) | Approved |
+| 0070 | [Screens/0070_world_01_phase3_simulator_prototype_v2.md](Screens/0070_world_01_phase3_simulator_prototype_v2.md) | Approved |
+| 0071 | [Releases/0071_mvp_visual_pivot_back_to_basics.md](Releases/0071_mvp_visual_pivot_back_to_basics.md) | Approved |
+| 0072 | [Screens/0072_m2_8_home_mockup_visual_pass.md](Screens/0072_m2_8_home_mockup_visual_pass.md) | Approved |
+| 0073 | [Design_System/0073_weathered_button_tokens.md](Design_System/0073_weathered_button_tokens.md) | Approved |
+| 0074 | [Screens/0074_m2_8_home_button_visual_polish.md](Screens/0074_m2_8_home_button_visual_polish.md) | Approved |
+| 0075 | [Design_System/0075_button_typography_tokens.md](Design_System/0075_button_typography_tokens.md) | Approved |
+| 0076 | [Screens/0076_m2_8_home_layout_button_polish.md](Screens/0076_m2_8_home_layout_button_polish.md) | Approved |
+| 0077 | [Design_System/0077_primary_button_corner_fix.md](Design_System/0077_primary_button_corner_fix.md) | Approved |
+| 0078 | [Screens/0078_home_logo_asset_restore.md](Screens/0078_home_logo_asset_restore.md) | Approved |
+| 0079 | [Screens/0079_home_background_asset_swap.md](Screens/0079_home_background_asset_swap.md) | Approved |
+| 0080 | [Screens/0080_home_logo_layout_pin.md](Screens/0080_home_logo_layout_pin.md) | Approved |
+| 0081 | [Screens/0081_home_currency_removal_logo_top.md](Screens/0081_home_currency_removal_logo_top.md) | Approved |
 | 0082 | [Screens/0082_level_select_winding_map.md](Screens/0082_level_select_winding_map.md) | Approved |
 | 0083 | [Screens/0083_worlds_chapter_backgrounds.md](Screens/0083_worlds_chapter_backgrounds.md) | Approved |
 | 0084 | [Releases/0084_review_hygiene_p1_p3.md](Releases/0084_review_hygiene_p1_p3.md) | Approved |
-| 0085 | [Screens/0085_m2_8_gameplay_mockup_visual_pass.md](Screens/0085_m2_8_gameplay_mockup_visual_pass.md) | Ready for Review |
-| 0086 | [Screens/0086_gameplay_board_sprite_wiring.md](Screens/0086_gameplay_board_sprite_wiring.md) | Ready for Review |
-| 0087 | [Screens/0087_gameplay_wall_autotiling_procedural_assets.md](Screens/0087_gameplay_wall_autotiling_procedural_assets.md) | Ready for Review |
-| 0088 | [Screens/0088_gameplay_authored_autotile_pngs.md](Screens/0088_gameplay_authored_autotile_pngs.md) | Ready for Review |
-| 0089 | [Architecture/0089_edge_based_maze_authored_tiles.md](Architecture/0089_edge_based_maze_authored_tiles.md) | Ready for Review |
-| 0090 | [Screens/0090_gameplay_maze_poc_renderer.md](Screens/0090_gameplay_maze_poc_renderer.md) | Draft |
-| 0091 | [Screens/0091_gameplay_floor_tile_variation.md](Screens/0091_gameplay_floor_tile_variation.md) | Ready for Review |
+| 0085 | [Screens/0085_m2_8_gameplay_mockup_visual_pass.md](Screens/0085_m2_8_gameplay_mockup_visual_pass.md) | Approved |
+| 0086 | [Screens/0086_gameplay_board_sprite_wiring.md](Screens/0086_gameplay_board_sprite_wiring.md) | Approved |
+| 0087 | [Screens/0087_gameplay_wall_autotiling_procedural_assets.md](Screens/0087_gameplay_wall_autotiling_procedural_assets.md) | Approved |
+| 0088 | [Screens/0088_gameplay_authored_autotile_pngs.md](Screens/0088_gameplay_authored_autotile_pngs.md) | Approved |
+| 0089 | [Architecture/0089_edge_based_maze_authored_tiles.md](Architecture/0089_edge_based_maze_authored_tiles.md) | Approved |
+| 0090 | [Screens/0090_gameplay_maze_poc_renderer.md](Screens/0090_gameplay_maze_poc_renderer.md) | Approved |
+| 0091 | [Screens/0091_gameplay_floor_tile_variation.md](Screens/0091_gameplay_floor_tile_variation.md) | Approved |
+| 0092 | [Releases/0092_m2_9_vertical_slice_closure.md](Releases/0092_m2_9_vertical_slice_closure.md) | Approved |
 
-**Next ID:** 0092
-
-## Related Docs
-
-- `AGENTS.md` — agent roles and mandatory review rule
-- `.cursor/rules/labyrinth-legends.mdc` — Cursor mandatory review package
-- `docs/05_AI/Cursor/Workflow.md`
-- `docs/05_AI/Codex/Review_Checklist.md`
+**Next ID:** 0093

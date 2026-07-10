@@ -185,7 +185,7 @@ void main() {
       expect(controller.state.objectiveProgressLabel, 'Objectives complete');
       expect(
         controller.state.completionStatusCue(hasNextLevel: true),
-        'Objectives complete — continue when ready',
+        'Victory secured — syncing progress…',
       );
       expect(controller.hasNextLevel, isTrue);
       expect(controller.nextLevelId, 'level_002');
@@ -364,7 +364,7 @@ void main() {
 
       expect(
         terminalWon.completionStatusCue(hasNextLevel: false),
-        'Final chamber cleared — no further levels',
+        'Final chamber cleared — syncing progress…',
       );
     });
   });
